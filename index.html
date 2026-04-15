@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="site-root" content="/">
+  <title>Airport Code Lookup — IATA &amp; ICAO Codes for 8,800+ Airports</title>
+  <meta name="description" content="Look up IATA and ICAO airport codes for 8,800+ airports worldwide. Find location, weather, maps and nearby airports.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="canonical" href="https://airport-code.com/">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0f1f3d;
+      --blue: #1a56db;
+      --blue-light: #e8f0fe;
+      --sky: #38bdf8;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --green: #10b981;
+    }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; zoom: 1.12; }
+    nav { background: var(--navy); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { color: #fff; font-size: 19px; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; display: flex; align-items: center; gap: 6px; line-height: 1; }
+    .nav-logo svg { flex-shrink: 0; }
+    .nav-logo span { color: var(--sky); }
+    .nav-search { display: flex; align-items: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 6px 14px; gap: 8px; width: 280px; position: relative; }
+    .nav-search input { background: none; border: none; outline: none; color: #fff; font-size: 14px; width: 100%; font-family: 'Outfit', sans-serif; }
+    .nav-search input::placeholder { color: rgba(255,255,255,0.4); }
+    #search-results { position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: #fff; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 200; overflow: hidden; display: none; }
+    #search-results a { display: flex; align-items: center; gap: 10px; padding: 10px 14px; text-decoration: none; color: var(--text); font-size: 13px; border-bottom: 1px solid var(--border); transition: background 0.15s; }
+    #search-results a:last-child { border-bottom: none; }
+    #search-results a:hover { background: var(--bg); }
+    #search-results .sr-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 12px; padding: 2px 7px; border-radius: 5px; min-width: 38px; text-align: center; }
+    #search-results .sr-name { font-weight: 600; }
+    #search-results .sr-city { color: var(--muted); font-size: 11px; }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .hero { background: linear-gradient(135deg, var(--navy) 0%, #1a3a6b 100%); color: #fff; padding: 48px 0 56px; position: relative; overflow: hidden; }
+    .hero::before { content: '✈'; position: absolute; right: -20px; top: -20px; font-size: 220px; opacity: 0.04; transform: rotate(25deg); }
+    .hero-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .breadcrumb { font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 20px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .breadcrumb a:hover { color: rgba(255,255,255,0.8); }
+    .breadcrumb span.sep { color: rgba(255,255,255,0.3); }
+    .hero-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .hero-title { display: flex; align-items: flex-start; gap: 24px; }
+    .iata-badge { background: var(--blue); border: 2px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 14px 20px; text-align: center; min-width: 100px; flex-shrink: 0; }
+    .iata-badge .code { font-size: 40px; font-weight: 800; letter-spacing: 2px; color: #fff; line-height: 1; }
+    .iata-badge .label { font-size: 10px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
+    .hero-name { padding-top: 4px; }
+    .hero-name h1 { font-size: 38px; font-weight: 800; line-height: 1.1; color: #fff; }
+    .hero-name .location { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.65); font-size: 15px; margin-top: 6px; }
+    .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+    .badge { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.3px; }
+    .badge-large { background: rgba(16,185,129,0.2); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
+    .badge-medium { background: rgba(56,189,248,0.15); color: #7dd3fc; border: 1px solid rgba(56,189,248,0.3); }
+    .badge-small { background: rgba(245,158,11,0.15); color: #fcd34d; border: 1px solid rgba(245,158,11,0.3); }
+    .hero-stats { display: flex; gap: 32px; margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
+    .hero-stat .value { font-size: 22px; font-weight: 700; color: #fff; }
+    .hero-stat .label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
+    .time-widget { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 16px 20px; text-align: center; min-width: 160px; }
+    .time-widget .time-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+    .time-widget .time-value { font-size: 28px; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+    .time-widget .time-tz { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+    .main { max-width: 1100px; margin: 0 auto; padding: 32px 24px; display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
+    @media (max-width: 768px) { .main { grid-template-columns: 1fr; } .hero-name h1 { font-size: 26px; } .nav-links { display: none; } .nav-search { width: 200px; } }
+    .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .card-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .card-header h2 { font-size: 14px; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.5px; }
+    .card-body { padding: 20px; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .info-item { padding: 14px 16px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+    .info-item:nth-child(even) { border-right: none; }
+    .info-item:nth-last-child(-n+2) { border-bottom: none; }
+    .info-item .key { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px; }
+    .info-item .val { font-size: 15px; font-weight: 600; color: var(--text); }
+    .info-item .val a { color: var(--blue); text-decoration: none; }
+    .info-item .val a:hover { text-decoration: underline; }
+    .weather-widget { display: flex; align-items: center; gap: 20px; padding: 16px; background: linear-gradient(135deg, #e0f2fe, #f0f9ff); border-radius: 10px; margin-bottom: 16px; min-height: 100px; }
+    .weather-icon { font-size: 48px; line-height: 1; }
+    .weather-main .temp { font-size: 32px; font-weight: 700; color: var(--text); }
+    .weather-main .desc { font-size: 14px; color: var(--muted); text-transform: capitalize; }
+    .weather-details { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .weather-detail { font-size: 13px; color: var(--muted); }
+    .weather-detail strong { color: var(--text); font-weight: 600; }
+    .nearby-list { list-style: none; }
+    .nearby-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .nearby-item:last-child { border-bottom: none; }
+    .nearby-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 13px; padding: 3px 8px; border-radius: 6px; min-width: 44px; text-align: center; text-decoration: none; }
+    .nearby-code:hover { background: #ccdcfb; }
+    .nearby-info { flex: 1; margin: 0 12px; }
+    .nearby-info .name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .nearby-info .city { font-size: 11px; color: var(--muted); }
+    .nearby-dist { font-size: 12px; color: var(--muted); white-space: nowrap; }
+    .carbon-form { display: flex; flex-direction: column; gap: 12px; }
+    .carbon-form label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .carbon-form input, .carbon-form select { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-family: 'Outfit', sans-serif; color: var(--text); outline: none; transition: border-color 0.2s; }
+    .carbon-form input:focus, .carbon-form select:focus { border-color: var(--blue); }
+    .carbon-btn { background: var(--blue); color: #fff; border: none; padding: 11px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Outfit', sans-serif; transition: background 0.2s; }
+    .carbon-btn:hover { background: #1447c0; }
+    .carbon-result { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px; text-align: center; display: none; }
+    .carbon-result .co2 { font-size: 24px; font-weight: 800; color: var(--green); }
+    .carbon-result .co2-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .sidebar-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .sidebar-card .card-header { padding: 14px 16px; }
+    .sidebar-card .card-body { padding: 16px; }
+    .codes-display { display: flex; gap: 12px; }
+    .code-box { flex: 1; text-align: center; padding: 16px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; }
+    .code-box .code-val { font-size: 28px; font-weight: 800; color: var(--navy); letter-spacing: 1px; }
+    .code-box .code-type { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; }
+    footer { background: var(--navy); color: rgba(255,255,255,0.5); text-align: center; padding: 24px; font-size: 13px; margin-top: 40px; }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; margin: 0 12px; }
+    footer a:hover { color: #fff; }
+
+    .hero-home { background: linear-gradient(135deg, var(--navy) 0%, #1a3a6b 100%); color:#fff; padding:80px 24px; text-align:center; position:relative; overflow:hidden; }
+    .hero-home::before { content:'✈'; position:absolute; right:-40px; top:-40px; font-size:300px; opacity:0.04; transform:rotate(25deg); }
+    .hero-home h1 { font-size:48px; font-weight:800; line-height:1.15; color:#fff; margin-bottom:16px; }
+    .hero-home h1 span { color: var(--sky); }
+    .hero-home p { font-size:18px; color:rgba(255,255,255,0.7); margin-bottom:36px; }
+    .search-big { display:flex; align-items:center; background:#fff; border-radius:12px; padding:8px 8px 8px 20px; gap:8px; max-width:580px; margin:0 auto; box-shadow:0 4px 20px rgba(0,0,0,0.2); position:relative; }
+    .search-big input { flex:1; border:none; outline:none; font-size:17px; font-family:'Outfit',sans-serif; color:var(--text); }
+    .search-big input::placeholder { color:#94a3b8; }
+    .search-big button { background:var(--blue); color:#fff; border:none; border-radius:8px; padding:10px 22px; font-size:15px; font-weight:600; cursor:pointer; font-family:'Outfit',sans-serif; white-space:nowrap; }
+    #home-results { position:absolute; top:calc(100% + 6px); left:0; right:0; background:#fff; border:1px solid var(--border); border-radius:10px; box-shadow:0 8px 24px rgba(0,0,0,0.12); z-index:200; overflow:hidden; display:none; }
+    #home-results a { display:flex;align-items:center;gap:10px;padding:10px 14px;text-decoration:none;color:var(--text);font-size:13px;border-bottom:1px solid var(--border);transition:background 0.15s; }
+    #home-results a:last-child { border-bottom:none; }
+    #home-results a:hover { background:var(--bg); }
+    #home-results .sr-code { background:var(--blue-light);color:var(--blue);font-weight:700;font-size:12px;padding:2px 7px;border-radius:5px;min-width:38px;text-align:center; }
+    #home-results .sr-name { font-weight:600; }
+    #home-results .sr-city { color:var(--muted);font-size:11px; }
+    .stats-bar { display:flex; justify-content:center; gap:48px; padding:32px 24px; background:var(--white); border-bottom:1px solid var(--border); flex-wrap:wrap; }
+    .stat-item .num { font-size:28px; font-weight:800; color:var(--navy); }
+    .stat-item .lbl { font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:0.6px; }
+    .section { max-width:1100px; margin:0 auto; padding:40px 24px; }
+    .section h2 { font-size:22px; font-weight:800; color:var(--navy); margin-bottom:20px; }
+    .featured-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(300px,1fr)); gap:12px; }
+    .az-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(44px,1fr)); gap:8px; }
+    .az-link { display:flex; align-items:center; justify-content:center; background:#fff; border:1px solid var(--border); border-radius:8px; height:44px; font-size:18px; font-weight:700; color:var(--blue); text-decoration:none; transition:all 0.2s; }
+    .az-link:hover { background:var(--blue); color:#fff; border-color:var(--blue); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/index.html" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="9" fill="#1a56db"/><path d="M24.5 8.5C25.3 9.3 25.3 10.6 24.5 11.4L19.8 16.1L22 25L19.5 27.5L16 19L11.5 23.5L12 26L10 28L8 24L4 22L6 20L8.5 20.5L13 16L5.5 12.5L8 10L17 12.2L21.6 7.5C22.4 6.7 23.7 6.7 24.5 8.5Z" fill="white"/></svg>
+    Airport<span>Code</span>
+  </a>
+  <div class="nav-search">
+    <svg width="14" height="14" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="navSearchInput" placeholder="Search airport or code…" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <div class="nav-links">
+    <a href="/az.html">A–Z</a>
+    <a href="/countries.html">By Country</a>
+  </div>
+</nav>
+
+<div class="hero-home">
+  <h1>Find Any <span>Airport Code</span></h1>
+  <p>IATA &amp; ICAO codes for 8,800+ airports worldwide</p>
+  <div class="search-big">
+    <svg width="18" height="18" fill="none" stroke="#94a3b8" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="homeSearch" placeholder="Airport name, city or IATA code…" autocomplete="off">
+    <button onclick="doSearch()">Search</button>
+    <div id="home-results"></div>
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat-item"><div class="num">8,810</div><div class="lbl">Airports</div></div>
+  <div class="stat-item"><div class="num">200+</div><div class="lbl">Countries</div></div>
+  <div class="stat-item"><div class="num">Live</div><div class="lbl">Weather Data</div></div>
+  <div class="stat-item"><div class="num">Free</div><div class="lbl">No Sign-up</div></div>
+</div>
+
+<div class="section">
+  <h2>✈️ Popular Airports</h2>
+  <div class="featured-grid">
+    
+    <a href="/lhr/index.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="background:var(--blue-light);color:var(--blue);font-weight:800;font-size:15px;padding:8px 10px;border-radius:8px;min-width:52px;text-align:center;">LHR</span>
+      <div>
+        <div style="font-weight:600;font-size:14px;color:var(--text)">London Heathrow Airport</div>
+        <div style="font-size:12px;color:var(--muted)">🇬🇧 London, UK</div>
+      </div>
+    </a>
+    <a href="/jfk/index.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="background:var(--blue-light);color:var(--blue);font-weight:800;font-size:15px;padding:8px 10px;border-radius:8px;min-width:52px;text-align:center;">JFK</span>
+      <div>
+        <div style="font-weight:600;font-size:14px;color:var(--text)">John F. Kennedy International Airport</div>
+        <div style="font-size:12px;color:var(--muted)">🇺🇸 New York, A.S</div>
+      </div>
+    </a>
+    <a href="/dxb/index.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="background:var(--blue-light);color:var(--blue);font-weight:800;font-size:15px;padding:8px 10px;border-radius:8px;min-width:52px;text-align:center;">DXB</span>
+      <div>
+        <div style="font-weight:600;font-size:14px;color:var(--text)">Dubai International Airport</div>
+        <div style="font-size:12px;color:var(--muted)">🇦🇪 Dubai, Emiriah Arab Bersatu</div>
+      </div>
+    </a>
+    <a href="/cdg/index.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="background:var(--blue-light);color:var(--blue);font-weight:800;font-size:15px;padding:8px 10px;border-radius:8px;min-width:52px;text-align:center;">CDG</span>
+      <div>
+        <div style="font-weight:600;font-size:14px;color:var(--text)">Charles de Gaulle International Airport</div>
+        <div style="font-size:12px;color:var(--muted)">🇫🇷 Paris (Roissy-en-France, Val-d'Oise), Perancis</div>
+      </div>
+    </a>
+    <a href="/sin/index.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="background:var(--blue-light);color:var(--blue);font-weight:800;font-size:15px;padding:8px 10px;border-radius:8px;min-width:52px;text-align:center;">SIN</span>
+      <div>
+        <div style="font-weight:600;font-size:14px;color:var(--text)">Singapore Changi Airport</div>
+        <div style="font-size:12px;color:var(--muted)">🇸🇬 Singapore, Singapura</div>
+      </div>
+    </a>
+    <a href="/ams/index.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="background:var(--blue-light);color:var(--blue);font-weight:800;font-size:15px;padding:8px 10px;border-radius:8px;min-width:52px;text-align:center;">AMS</span>
+      <div>
+        <div style="font-weight:600;font-size:14px;color:var(--text)">Amsterdam Airport Schiphol</div>
+        <div style="font-size:12px;color:var(--muted)">🇳🇱 Amsterdam, Belanda</div>
+      </div>
+    </a>
+    <a href="/fra/index.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="background:var(--blue-light);color:var(--blue);font-weight:800;font-size:15px;padding:8px 10px;border-radius:8px;min-width:52px;text-align:center;">FRA</span>
+      <div>
+        <div style="font-weight:600;font-size:14px;color:var(--text)">Frankfurt Main Airport</div>
+        <div style="font-size:12px;color:var(--muted)">🇩🇪 Frankfurt am Main, Jerman</div>
+      </div>
+    </a>
+    <a href="/syd/index.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="background:var(--blue-light);color:var(--blue);font-weight:800;font-size:15px;padding:8px 10px;border-radius:8px;min-width:52px;text-align:center;">SYD</span>
+      <div>
+        <div style="font-weight:600;font-size:14px;color:var(--text)">Sydney Kingsford Smith International Airport</div>
+        <div style="font-size:12px;color:var(--muted)">🇦🇺 Sydney (Mascot), Australia</div>
+      </div>
+    </a>
+    <a href="/lax/index.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="background:var(--blue-light);color:var(--blue);font-weight:800;font-size:15px;padding:8px 10px;border-radius:8px;min-width:52px;text-align:center;">LAX</span>
+      <div>
+        <div style="font-weight:600;font-size:14px;color:var(--text)">Los Angeles International Airport</div>
+        <div style="font-size:12px;color:var(--muted)">🇺🇸 Los Angeles, A.S</div>
+      </div>
+    </a>
+    <a href="/nrt/index.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="background:var(--blue-light);color:var(--blue);font-weight:800;font-size:15px;padding:8px 10px;border-radius:8px;min-width:52px;text-align:center;">NRT</span>
+      <div>
+        <div style="font-weight:600;font-size:14px;color:var(--text)">Narita International Airport</div>
+        <div style="font-size:12px;color:var(--muted)">🇯🇵 Narita, Jepun</div>
+      </div>
+    </a>
+    <a href="/hkg/index.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="background:var(--blue-light);color:var(--blue);font-weight:800;font-size:15px;padding:8px 10px;border-radius:8px;min-width:52px;text-align:center;">HKG</span>
+      <div>
+        <div style="font-weight:600;font-size:14px;color:var(--text)">Hong Kong International Airport</div>
+        <div style="font-size:12px;color:var(--muted)">🇭🇰 Hong Kong, Hong Kong</div>
+      </div>
+    </a>
+    <a href="/icn/index.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="background:var(--blue-light);color:var(--blue);font-weight:800;font-size:15px;padding:8px 10px;border-radius:8px;min-width:52px;text-align:center;">ICN</span>
+      <div>
+        <div style="font-weight:600;font-size:14px;color:var(--text)">Incheon International Airport</div>
+        <div style="font-size:12px;color:var(--muted)">🇰🇷 Seoul, Korea Selatan</div>
+      </div>
+    </a>
+    <a href="/bkk/index.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="background:var(--blue-light);color:var(--blue);font-weight:800;font-size:15px;padding:8px 10px;border-radius:8px;min-width:52px;text-align:center;">BKK</span>
+      <div>
+        <div style="font-weight:600;font-size:14px;color:var(--text)">Suvarnabhumi Airport</div>
+        <div style="font-size:12px;color:var(--muted)">🇹🇭 Bangkok, Thailand</div>
+      </div>
+    </a>
+    <a href="/mad/index.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="background:var(--blue-light);color:var(--blue);font-weight:800;font-size:15px;padding:8px 10px;border-radius:8px;min-width:52px;text-align:center;">MAD</span>
+      <div>
+        <div style="font-weight:600;font-size:14px;color:var(--text)">Adolfo Suárez Madrid–Barajas Airport</div>
+        <div style="font-size:12px;color:var(--muted)">🇪🇸 Madrid, Sepanyol</div>
+      </div>
+    </a>
+    <a href="/fco/index.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="background:var(--blue-light);color:var(--blue);font-weight:800;font-size:15px;padding:8px 10px;border-radius:8px;min-width:52px;text-align:center;">FCO</span>
+      <div>
+        <div style="font-weight:600;font-size:14px;color:var(--text)">Rome–Fiumicino Leonardo da Vinci International Airport</div>
+        <div style="font-size:12px;color:var(--muted)">🇮🇹 Rome, Itali</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<div class="section" style="background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);max-width:100%;padding:40px 0">
+  <div style="max-width:1100px;margin:0 auto;padding:0 24px">
+    <h2>🔤 Browse A–Z</h2>
+    <div class="az-grid">
+      <a href="/az/a.html" class="az-link">A</a><a href="/az/b.html" class="az-link">B</a><a href="/az/c.html" class="az-link">C</a><a href="/az/d.html" class="az-link">D</a><a href="/az/e.html" class="az-link">E</a><a href="/az/f.html" class="az-link">F</a><a href="/az/g.html" class="az-link">G</a><a href="/az/h.html" class="az-link">H</a><a href="/az/i.html" class="az-link">I</a><a href="/az/j.html" class="az-link">J</a><a href="/az/k.html" class="az-link">K</a><a href="/az/l.html" class="az-link">L</a><a href="/az/m.html" class="az-link">M</a><a href="/az/n.html" class="az-link">N</a><a href="/az/o.html" class="az-link">O</a><a href="/az/p.html" class="az-link">P</a><a href="/az/q.html" class="az-link">Q</a><a href="/az/r.html" class="az-link">R</a><a href="/az/s.html" class="az-link">S</a><a href="/az/t.html" class="az-link">T</a><a href="/az/u.html" class="az-link">U</a><a href="/az/v.html" class="az-link">V</a><a href="/az/w.html" class="az-link">W</a><a href="/az/x.html" class="az-link">X</a><a href="/az/y.html" class="az-link">Y</a><a href="/az/z.html" class="az-link">Z</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div style="margin-bottom:10px">
+    <a href="/az.html">A–Z Index</a>
+    <a href="/countries.html">By Country</a>
+    <a href="/about.html">About</a>
+  </div>
+  <div>© 2025 airport-code.com · Data sourced from OurAirports &amp; Open-Meteo · <a href="https://ourairports.com">OurAirports</a></div>
+</footer>
+
+<script>
+let homeDB = null;
+async function loadHomeDB(){
+  if (homeDB) return;
+  const r = await fetch('/airports.json');
+  homeDB = await r.json();
+}
+const homeInput = document.getElementById('homeSearch');
+const homeResults = document.getElementById('home-results');
+homeInput.addEventListener('focus', loadHomeDB);
+homeInput.addEventListener('input', async function(){
+  const q = this.value.trim().toUpperCase();
+  if (q.length < 2) { homeResults.style.display='none'; return; }
+  await loadHomeDB();
+  const matches = homeDB.filter(a =>
+    a.iata.startsWith(q) || a.name.toUpperCase().includes(q) || a.city.toUpperCase().includes(q)
+  ).slice(0,8);
+  if (!matches.length) { homeResults.style.display='none'; return; }
+  homeResults.innerHTML = matches.map(a =>
+    `<a href="/${a.iata.toLowerCase()}/index.html">
+      <span class="sr-code">${a.iata}</span>
+      <div><div class="sr-name">${a.name}</div><div class="sr-city">${a.city}, ${a.country}</div></div>
+    </a>`
+  ).join('');
+  homeResults.style.display = 'block';
+});
+document.addEventListener('click', function(e){
+  if (!homeInput.contains(e.target)) homeResults.style.display='none';
+});
+function doSearch(){
+  const q = homeInput.value.trim().toUpperCase();
+  if (q.length === 3 && homeDB) {
+    const a = homeDB.find(x => x.iata === q);
+    if (a) { window.location = '/' + q.toLowerCase() + '/index.html'; return; }
+  }
+  homeInput.dispatchEvent(new Event('input'));
+}
+homeInput.addEventListener('keydown', function(e){ if(e.key==='Enter') doSearch(); });
+</script>
+
+</body>
+</html>

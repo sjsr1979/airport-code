@@ -1,0 +1,1653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="site-root" content="/">
+  <title>Airports Starting With J | Airport Code</title>
+  <meta name="description" content="All airports with IATA codes starting with the letter J. Browse airport codes, names and locations.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0f1f3d;
+      --blue: #1a56db;
+      --blue-light: #e8f0fe;
+      --sky: #38bdf8;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --green: #10b981;
+    }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; zoom: 1.12; }
+    nav { background: var(--navy); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { color: #fff; font-size: 19px; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; display: flex; align-items: center; gap: 6px; line-height: 1; }
+    .nav-logo svg { flex-shrink: 0; }
+    .nav-logo span { color: var(--sky); }
+    .nav-search { display: flex; align-items: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 6px 14px; gap: 8px; width: 280px; position: relative; }
+    .nav-search input { background: none; border: none; outline: none; color: #fff; font-size: 14px; width: 100%; font-family: 'Outfit', sans-serif; }
+    .nav-search input::placeholder { color: rgba(255,255,255,0.4); }
+    #search-results { position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: #fff; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 200; overflow: hidden; display: none; }
+    #search-results a { display: flex; align-items: center; gap: 10px; padding: 10px 14px; text-decoration: none; color: var(--text); font-size: 13px; border-bottom: 1px solid var(--border); transition: background 0.15s; }
+    #search-results a:last-child { border-bottom: none; }
+    #search-results a:hover { background: var(--bg); }
+    #search-results .sr-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 12px; padding: 2px 7px; border-radius: 5px; min-width: 38px; text-align: center; }
+    #search-results .sr-name { font-weight: 600; }
+    #search-results .sr-city { color: var(--muted); font-size: 11px; }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .hero { background: linear-gradient(135deg, var(--navy) 0%, #1a3a6b 100%); color: #fff; padding: 48px 0 56px; position: relative; overflow: hidden; }
+    .hero::before { content: '✈'; position: absolute; right: -20px; top: -20px; font-size: 220px; opacity: 0.04; transform: rotate(25deg); }
+    .hero-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .breadcrumb { font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 20px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .breadcrumb a:hover { color: rgba(255,255,255,0.8); }
+    .breadcrumb span.sep { color: rgba(255,255,255,0.3); }
+    .hero-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .hero-title { display: flex; align-items: flex-start; gap: 24px; }
+    .iata-badge { background: var(--blue); border: 2px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 14px 20px; text-align: center; min-width: 100px; flex-shrink: 0; }
+    .iata-badge .code { font-size: 40px; font-weight: 800; letter-spacing: 2px; color: #fff; line-height: 1; }
+    .iata-badge .label { font-size: 10px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
+    .hero-name { padding-top: 4px; }
+    .hero-name h1 { font-size: 38px; font-weight: 800; line-height: 1.1; color: #fff; }
+    .hero-name .location { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.65); font-size: 15px; margin-top: 6px; }
+    .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+    .badge { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.3px; }
+    .badge-large { background: rgba(16,185,129,0.2); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
+    .badge-medium { background: rgba(56,189,248,0.15); color: #7dd3fc; border: 1px solid rgba(56,189,248,0.3); }
+    .badge-small { background: rgba(245,158,11,0.15); color: #fcd34d; border: 1px solid rgba(245,158,11,0.3); }
+    .hero-stats { display: flex; gap: 32px; margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
+    .hero-stat .value { font-size: 22px; font-weight: 700; color: #fff; }
+    .hero-stat .label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
+    .time-widget { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 16px 20px; text-align: center; min-width: 160px; }
+    .time-widget .time-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+    .time-widget .time-value { font-size: 28px; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+    .time-widget .time-tz { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+    .main { max-width: 1100px; margin: 0 auto; padding: 32px 24px; display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
+    @media (max-width: 768px) { .main { grid-template-columns: 1fr; } .hero-name h1 { font-size: 26px; } .nav-links { display: none; } .nav-search { width: 200px; } }
+    .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .card-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .card-header h2 { font-size: 14px; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.5px; }
+    .card-body { padding: 20px; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .info-item { padding: 14px 16px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+    .info-item:nth-child(even) { border-right: none; }
+    .info-item:nth-last-child(-n+2) { border-bottom: none; }
+    .info-item .key { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px; }
+    .info-item .val { font-size: 15px; font-weight: 600; color: var(--text); }
+    .info-item .val a { color: var(--blue); text-decoration: none; }
+    .info-item .val a:hover { text-decoration: underline; }
+    .weather-widget { display: flex; align-items: center; gap: 20px; padding: 16px; background: linear-gradient(135deg, #e0f2fe, #f0f9ff); border-radius: 10px; margin-bottom: 16px; min-height: 100px; }
+    .weather-icon { font-size: 48px; line-height: 1; }
+    .weather-main .temp { font-size: 32px; font-weight: 700; color: var(--text); }
+    .weather-main .desc { font-size: 14px; color: var(--muted); text-transform: capitalize; }
+    .weather-details { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .weather-detail { font-size: 13px; color: var(--muted); }
+    .weather-detail strong { color: var(--text); font-weight: 600; }
+    .nearby-list { list-style: none; }
+    .nearby-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .nearby-item:last-child { border-bottom: none; }
+    .nearby-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 13px; padding: 3px 8px; border-radius: 6px; min-width: 44px; text-align: center; text-decoration: none; }
+    .nearby-code:hover { background: #ccdcfb; }
+    .nearby-info { flex: 1; margin: 0 12px; }
+    .nearby-info .name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .nearby-info .city { font-size: 11px; color: var(--muted); }
+    .nearby-dist { font-size: 12px; color: var(--muted); white-space: nowrap; }
+    .carbon-form { display: flex; flex-direction: column; gap: 12px; }
+    .carbon-form label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .carbon-form input, .carbon-form select { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-family: 'Outfit', sans-serif; color: var(--text); outline: none; transition: border-color 0.2s; }
+    .carbon-form input:focus, .carbon-form select:focus { border-color: var(--blue); }
+    .carbon-btn { background: var(--blue); color: #fff; border: none; padding: 11px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Outfit', sans-serif; transition: background 0.2s; }
+    .carbon-btn:hover { background: #1447c0; }
+    .carbon-result { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px; text-align: center; display: none; }
+    .carbon-result .co2 { font-size: 24px; font-weight: 800; color: var(--green); }
+    .carbon-result .co2-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .sidebar-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .sidebar-card .card-header { padding: 14px 16px; }
+    .sidebar-card .card-body { padding: 16px; }
+    .codes-display { display: flex; gap: 12px; }
+    .code-box { flex: 1; text-align: center; padding: 16px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; }
+    .code-box .code-val { font-size: 28px; font-weight: 800; color: var(--navy); letter-spacing: 1px; }
+    .code-box .code-type { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; }
+    footer { background: var(--navy); color: rgba(255,255,255,0.5); text-align: center; padding: 24px; font-size: 13px; margin-top: 40px; }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; margin: 0 12px; }
+    footer a:hover { color: #fff; }
+
+    .az-nav { display:flex; gap:6px; flex-wrap:wrap; padding:20px 0; }
+    .az-nav a { display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:6px;text-decoration:none;font-weight:700;font-size:14px; }
+    .az-nav a.active { background:var(--blue);color:#fff; }
+    .az-nav a:not(.active) { background:#fff;color:var(--blue);border:1px solid var(--border); }
+    .az-nav a:not(.active):hover { background:var(--blue-light); }
+    table { width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden; }
+    thead th { padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid var(--border);background:#f8fafc; }
+    tbody tr { border-bottom:1px solid #f5f5f5; }
+    tbody tr:last-child { border-bottom:none; }
+    tbody tr:hover { background:#fafbfc; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/index.html" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="9" fill="#1a56db"/><path d="M24.5 8.5C25.3 9.3 25.3 10.6 24.5 11.4L19.8 16.1L22 25L19.5 27.5L16 19L11.5 23.5L12 26L10 28L8 24L4 22L6 20L8.5 20.5L13 16L5.5 12.5L8 10L17 12.2L21.6 7.5C22.4 6.7 23.7 6.7 24.5 8.5Z" fill="white"/></svg>
+    Airport<span>Code</span>
+  </a>
+  <div class="nav-search">
+    <svg width="14" height="14" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="navSearchInput" placeholder="Search airport or code…" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <div class="nav-links">
+    <a href="/az.html">A–Z</a>
+    <a href="/countries.html">By Country</a>
+  </div>
+</nav>
+
+<div style="max-width:1100px;margin:0 auto;padding:32px 24px">
+  <div style="margin-bottom:8px;font-size:12px;color:var(--muted)"><a href="/index.html" style="color:var(--blue);text-decoration:none">Home</a> › <a href="/az.html" style="color:var(--blue);text-decoration:none">A–Z Index</a> › J</div>
+  <h1 style="font-size:28px;font-weight:800;color:var(--navy);margin-bottom:4px">Airports: J</h1>
+  <p style="color:var(--muted);margin-bottom:16px">179 airports with IATA codes starting with J</p>
+
+  <div class="az-nav">
+    <a href="/az/a.html" class="">A</a><a href="/az/b.html" class="">B</a><a href="/az/c.html" class="">C</a><a href="/az/d.html" class="">D</a><a href="/az/e.html" class="">E</a><a href="/az/f.html" class="">F</a><a href="/az/g.html" class="">G</a><a href="/az/h.html" class="">H</a><a href="/az/i.html" class="">I</a><a href="/az/j.html" class="active">J</a><a href="/az/k.html" class="">K</a><a href="/az/l.html" class="">L</a><a href="/az/m.html" class="">M</a><a href="/az/n.html" class="">N</a><a href="/az/o.html" class="">O</a><a href="/az/p.html" class="">P</a><a href="/az/q.html" class="">Q</a><a href="/az/r.html" class="">R</a><a href="/az/s.html" class="">S</a><a href="/az/t.html" class="">T</a><a href="/az/u.html" class="">U</a><a href="/az/v.html" class="">V</a><a href="/az/w.html" class="">W</a><a href="/az/x.html" class="">X</a><a href="/az/y.html" class="">Y</a><a href="/az/z.html" class="">Z</a>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>IATA</th><th>ICAO</th><th>Airport Name</th><th>City</th><th>Country</th><th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jaa/index.html" style="color:var(--blue);text-decoration:none;">JAA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">OAJL</td>
+        <td style="padding:12px 16px;"><a href="/jaa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jalalabad Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jalalabad</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇫 Afghanistan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jab/index.html" style="color:var(--blue);text-decoration:none;">JAB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">YJAB</td>
+        <td style="padding:12px 16px;"><a href="/jab/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jabiru Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jac/index.html" style="color:var(--blue);text-decoration:none;">JAC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KJAC</td>
+        <td style="padding:12px 16px;"><a href="/jac/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jackson Hole Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jackson</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jad/index.html" style="color:var(--blue);text-decoration:none;">JAD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">YPJT</td>
+        <td style="padding:12px 16px;"><a href="/jad/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Perth Jandakot Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Perth</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jae/index.html" style="color:var(--blue);text-decoration:none;">JAE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SPJE</td>
+        <td style="padding:12px 16px;"><a href="/jae/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Shumba Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jaén</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇪 Peru</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jaf/index.html" style="color:var(--blue);text-decoration:none;">JAF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VCCJ</td>
+        <td style="padding:12px 16px;"><a href="/jaf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jaffna International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jaffna</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇱🇰 Sri Lanka</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jag/index.html" style="color:var(--blue);text-decoration:none;">JAG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">OPJA</td>
+        <td style="padding:12px 16px;"><a href="/jag/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Shahbaz Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jacobabad</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇰 Pakistan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jai/index.html" style="color:var(--blue);text-decoration:none;">JAI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VIJP</td>
+        <td style="padding:12px 16px;"><a href="/jai/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jaipur International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jaipur</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jak/index.html" style="color:var(--blue);text-decoration:none;">JAK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">MTJA</td>
+        <td style="padding:12px 16px;"><a href="/jak/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jacmel Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jacmel</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇭🇹 Haiti</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jal/index.html" style="color:var(--blue);text-decoration:none;">JAL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">MMJA</td>
+        <td style="padding:12px 16px;"><a href="/jal/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">El Lencero Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Emiliano Zapata</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇽 Mexico</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jam/index.html" style="color:var(--blue);text-decoration:none;">JAM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/jam/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bezmer Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bezmer</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇬 Bulgaria</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jan/index.html" style="color:var(--blue);text-decoration:none;">JAN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KJAN</td>
+        <td style="padding:12px 16px;"><a href="/jan/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jackson-Medgar Wiley Evers International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jackson</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jap/index.html" style="color:var(--blue);text-decoration:none;">JAP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">MRCH</td>
+        <td style="padding:12px 16px;"><a href="/jap/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Chacarita Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Puntarenas</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇷 Costa Rica</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jaq/index.html" style="color:var(--blue);text-decoration:none;">JAQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/jaq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jacquinot Bay Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jacquinot Bay</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jar/index.html" style="color:var(--blue);text-decoration:none;">JAR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">OISJ</td>
+        <td style="padding:12px 16px;"><a href="/jar/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jahrom Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jahrom</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇷 Iran</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jas/index.html" style="color:var(--blue);text-decoration:none;">JAS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KJAS</td>
+        <td style="padding:12px 16px;"><a href="/jas/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jasper County Airport Bell Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jasper</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jat/index.html" style="color:var(--blue);text-decoration:none;">JAT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/jat/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jabot Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ailinglapalap Atoll</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇭 Kepulauan Marshall</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jau/index.html" style="color:var(--blue);text-decoration:none;">JAU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SPJJ</td>
+        <td style="padding:12px 16px;"><a href="/jau/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Francisco Carle Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jauja</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇪 Peru</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jav/index.html" style="color:var(--blue);text-decoration:none;">JAV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">BGJN</td>
+        <td style="padding:12px 16px;"><a href="/jav/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ilulissat Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ilulissat</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇱 Greenland</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jaw/index.html" style="color:var(--blue);text-decoration:none;">JAW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/jaw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Araripina Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Araripina</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jax/index.html" style="color:var(--blue);text-decoration:none;">JAX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KJAX</td>
+        <td style="padding:12px 16px;"><a href="/jax/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jacksonville International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jacksonville</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jbb/index.html" style="color:var(--blue);text-decoration:none;">JBB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WARE</td>
+        <td style="padding:12px 16px;"><a href="/jbb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Notohadinegoro Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jember</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jbk/index.html" style="color:var(--blue);text-decoration:none;">JBK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZWQT</td>
+        <td style="padding:12px 16px;"><a href="/jbk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Qitai Jiangbulake Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Qitai</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jbq/index.html" style="color:var(--blue);text-decoration:none;">JBQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">MDJB</td>
+        <td style="padding:12px 16px;"><a href="/jbq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">La Isabela International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">La Isabela</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇴 Republik Dominica</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jbr/index.html" style="color:var(--blue);text-decoration:none;">JBR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KJBR</td>
+        <td style="padding:12px 16px;"><a href="/jbr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jonesboro Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jonesboro</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jbs/index.html" style="color:var(--blue);text-decoration:none;">JBS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/jbs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">São Borja Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">São Borja</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jcb/index.html" style="color:var(--blue);text-decoration:none;">JCB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SSJA</td>
+        <td style="padding:12px 16px;"><a href="/jcb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Santa Terezinha Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Joaçaba</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jci/index.html" style="color:var(--blue);text-decoration:none;">JCI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KIXD</td>
+        <td style="padding:12px 16px;"><a href="/jci/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">New Century AirCenter Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">New Century</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jck/index.html" style="color:var(--blue);text-decoration:none;">JCK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">YJLC</td>
+        <td style="padding:12px 16px;"><a href="/jck/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Julia Creek Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jcl/index.html" style="color:var(--blue);text-decoration:none;">JCL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LKCS</td>
+        <td style="padding:12px 16px;"><a href="/jcl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">České Budějovice South Bohemian Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">České Budějovice</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇿 Czechia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jcm/index.html" style="color:var(--blue);text-decoration:none;">JCM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SNJB</td>
+        <td style="padding:12px 16px;"><a href="/jcm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jacobina Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jacobina</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jcr/index.html" style="color:var(--blue);text-decoration:none;">JCR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SBEK</td>
+        <td style="padding:12px 16px;"><a href="/jcr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jacareacanga Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jacareacanga</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jcs/index.html" style="color:var(--blue);text-decoration:none;">JCS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/jcs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Crateús Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Crateús</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jct/index.html" style="color:var(--blue);text-decoration:none;">JCT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KJCT</td>
+        <td style="padding:12px 16px;"><a href="/jct/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kimble County Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Junction</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jcy/index.html" style="color:var(--blue);text-decoration:none;">JCY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/jcy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">LBJ Ranch Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Stonewall</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jda/index.html" style="color:var(--blue);text-decoration:none;">JDA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KGCD</td>
+        <td style="padding:12px 16px;"><a href="/jda/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Grant County Regional Airport / Ogilvie Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">John Day</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jde/index.html" style="color:var(--blue);text-decoration:none;">JDE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/jde/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jiande Qiandaohu General Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Hangzhou</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jdf/index.html" style="color:var(--blue);text-decoration:none;">JDF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SBJF</td>
+        <td style="padding:12px 16px;"><a href="/jdf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Francisco de Assis Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Juiz de Fora</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jdg/index.html" style="color:var(--blue);text-decoration:none;">JDG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RKPD</td>
+        <td style="padding:12px 16px;"><a href="/jdg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jeongseok Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jeju Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇰🇷 Korea Selatan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jdh/index.html" style="color:var(--blue);text-decoration:none;">JDH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VIJO</td>
+        <td style="padding:12px 16px;"><a href="/jdh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jodhpur Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jodhpur</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jdn/index.html" style="color:var(--blue);text-decoration:none;">JDN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KJDN</td>
+        <td style="padding:12px 16px;"><a href="/jdn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jordan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jordan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jdo/index.html" style="color:var(--blue);text-decoration:none;">JDO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SBJU</td>
+        <td style="padding:12px 16px;"><a href="/jdo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Orlando Bezerra de Menezes Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Juazeiro do Norte</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jdr/index.html" style="color:var(--blue);text-decoration:none;">JDR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SNJR</td>
+        <td style="padding:12px 16px;"><a href="/jdr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Prefeito Octávio de Almeida Neves Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">São João Del Rei</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jdz/index.html" style="color:var(--blue);text-decoration:none;">JDZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZSJD</td>
+        <td style="padding:12px 16px;"><a href="/jdz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jingdezhen Luojia Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jingdezhen</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jed/index.html" style="color:var(--blue);text-decoration:none;">JED</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">OEJN</td>
+        <td style="padding:12px 16px;"><a href="/jed/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">King Abdulaziz International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jeddah</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇦 Arab Saudi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jee/index.html" style="color:var(--blue);text-decoration:none;">JEE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">MTJE</td>
+        <td style="padding:12px 16px;"><a href="/jee/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jérémie Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Carrefour Sanon</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇭🇹 Haiti</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jef/index.html" style="color:var(--blue);text-decoration:none;">JEF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KJEF</td>
+        <td style="padding:12px 16px;"><a href="/jef/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jefferson City Memorial Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jefferson City</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jeg/index.html" style="color:var(--blue);text-decoration:none;">JEG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">BGAA</td>
+        <td style="padding:12px 16px;"><a href="/jeg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Aasiaat Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Aasiaat</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇱 Greenland</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jej/index.html" style="color:var(--blue);text-decoration:none;">JEJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/jej/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jeh Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ailinglapalap Atoll</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇭 Kepulauan Marshall</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jek/index.html" style="color:var(--blue);text-decoration:none;">JEK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/jek/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jeki Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jeki</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇿🇲 Zambia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jeq/index.html" style="color:var(--blue);text-decoration:none;">JEQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SNJK</td>
+        <td style="padding:12px 16px;"><a href="/jeq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jequié Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jequié</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jer/index.html" style="color:var(--blue);text-decoration:none;">JER</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGJJ</td>
+        <td style="padding:12px 16px;"><a href="/jer/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jersey Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">St. Peter</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇯🇪 Jersey</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jfk/index.html" style="color:var(--blue);text-decoration:none;">JFK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KJFK</td>
+        <td style="padding:12px 16px;"><a href="/jfk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">John F. Kennedy International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">New York</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jfn/index.html" style="color:var(--blue);text-decoration:none;">JFN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KHZY</td>
+        <td style="padding:12px 16px;"><a href="/jfn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Northeast Ohio Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ashtabula</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jfr/index.html" style="color:var(--blue);text-decoration:none;">JFR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">BGPT</td>
+        <td style="padding:12px 16px;"><a href="/jfr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Paamiut Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Paamiut</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇱 Greenland</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jga/index.html" style="color:var(--blue);text-decoration:none;">JGA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VAJM</td>
+        <td style="padding:12px 16px;"><a href="/jga/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jamnagar Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jamnagar</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jgb/index.html" style="color:var(--blue);text-decoration:none;">JGB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEJR</td>
+        <td style="padding:12px 16px;"><a href="/jgb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jagdalpur Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jagdalpur</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jgd/index.html" style="color:var(--blue);text-decoration:none;">JGD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZYJD</td>
+        <td style="padding:12px 16px;"><a href="/jgd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Daxing'anling Elunchun Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jiagedaqi</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jgn/index.html" style="color:var(--blue);text-decoration:none;">JGN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZLJQ</td>
+        <td style="padding:12px 16px;"><a href="/jgn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jiayuguan International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jiayuguan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jgs/index.html" style="color:var(--blue);text-decoration:none;">JGS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZSGS</td>
+        <td style="padding:12px 16px;"><a href="/jgs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jinggangshan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ji'an</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jhb/index.html" style="color:var(--blue);text-decoration:none;">JHB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WMKJ</td>
+        <td style="padding:12px 16px;"><a href="/jhb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Senai International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Johor Bahru</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇾 Malaysia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jhf/index.html" style="color:var(--blue);text-decoration:none;">JHF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SBJH</td>
+        <td style="padding:12px 16px;"><a href="/jhf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">São Paulo Catarina Executive Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">São Roque</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jhg/index.html" style="color:var(--blue);text-decoration:none;">JHG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZPJH</td>
+        <td style="padding:12px 16px;"><a href="/jhg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Xishuangbanna Gasa International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jinghong (Gasa)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jhl/index.html" style="color:var(--blue);text-decoration:none;">JHL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/jhl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fort MacKay/Albian Aerodrome</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Albian Village</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jhm/index.html" style="color:var(--blue);text-decoration:none;">JHM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">PHJH</td>
+        <td style="padding:12px 16px;"><a href="/jhm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kapalua Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lahaina</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jhn/index.html" style="color:var(--blue);text-decoration:none;">JHN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIMF</td>
+        <td style="padding:12px 16px;"><a href="/jhn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jenderal Besar Abdul Haris Nasution Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mandailing</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jhs/index.html" style="color:var(--blue);text-decoration:none;">JHS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">BGSS</td>
+        <td style="padding:12px 16px;"><a href="/jhs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sisimiut Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sisimiut</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇱 Greenland</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jhw/index.html" style="color:var(--blue);text-decoration:none;">JHW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KJHW</td>
+        <td style="padding:12px 16px;"><a href="/jhw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Chautauqua County-Jamestown Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jamestown</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jia/index.html" style="color:var(--blue);text-decoration:none;">JIA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SWJN</td>
+        <td style="padding:12px 16px;"><a href="/jia/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Juína Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Juína</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jib/index.html" style="color:var(--blue);text-decoration:none;">JIB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">HDAM</td>
+        <td style="padding:12px 16px;"><a href="/jib/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Djibouti-Ambouli Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Djibouti City</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇯 Djibouti</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jic/index.html" style="color:var(--blue);text-decoration:none;">JIC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZLJC</td>
+        <td style="padding:12px 16px;"><a href="/jic/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jinchang Jinchuan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jinchang</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jij/index.html" style="color:var(--blue);text-decoration:none;">JIJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">HAJJ</td>
+        <td style="padding:12px 16px;"><a href="/jij/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Gerad Wilwal International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jijiga</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇹 Ethiopia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jik/index.html" style="color:var(--blue);text-decoration:none;">JIK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LGIK</td>
+        <td style="padding:12px 16px;"><a href="/jik/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ikaria Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ikaria Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇷 Greece</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jil/index.html" style="color:var(--blue);text-decoration:none;">JIL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZYJL</td>
+        <td style="padding:12px 16px;"><a href="/jil/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jilin Ertaizi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jilin</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jim/index.html" style="color:var(--blue);text-decoration:none;">JIM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">HAJM</td>
+        <td style="padding:12px 16px;"><a href="/jim/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jimma Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jimma</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇹 Ethiopia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jin/index.html" style="color:var(--blue);text-decoration:none;">JIN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">HUJI</td>
+        <td style="padding:12px 16px;"><a href="/jin/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jinja Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jinja</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇬 Uganda</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jio/index.html" style="color:var(--blue);text-decoration:none;">JIO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAPM</td>
+        <td style="padding:12px 16px;"><a href="/jio/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jos Orno Imsula Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tiakur</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jip/index.html" style="color:var(--blue);text-decoration:none;">JIP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SEJI</td>
+        <td style="padding:12px 16px;"><a href="/jip/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jipijapa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jipijapa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇨 Ecuador</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jiq/index.html" style="color:var(--blue);text-decoration:none;">JIQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZUQJ</td>
+        <td style="padding:12px 16px;"><a href="/jiq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Qianjiang Wulingshan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Qianjiang</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jir/index.html" style="color:var(--blue);text-decoration:none;">JIR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VNJI</td>
+        <td style="padding:12px 16px;"><a href="/jir/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jiri Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jiri</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇵 Nepal</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jiu/index.html" style="color:var(--blue);text-decoration:none;">JIU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZSJJ</td>
+        <td style="padding:12px 16px;"><a href="/jiu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jiujiang Lushan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jiujiang</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jjd/index.html" style="color:var(--blue);text-decoration:none;">JJD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SBJE</td>
+        <td style="padding:12px 16px;"><a href="/jjd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Comandante Ariston Pessoa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cruz</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jjg/index.html" style="color:var(--blue);text-decoration:none;">JJG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SBJA</td>
+        <td style="padding:12px 16px;"><a href="/jjg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Humberto Ghizzo Bortoluzzi Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jaguaruna</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jji/index.html" style="color:var(--blue);text-decoration:none;">JJI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SPJI</td>
+        <td style="padding:12px 16px;"><a href="/jji/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Juanjui Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Juanjuí</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇪 Peru</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jjm/index.html" style="color:var(--blue);text-decoration:none;">JJM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">HKMK</td>
+        <td style="padding:12px 16px;"><a href="/jjm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mulika Lodge Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Meru-Kinna</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇰🇪 Kenya</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jjn/index.html" style="color:var(--blue);text-decoration:none;">JJN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZSQZ</td>
+        <td style="padding:12px 16px;"><a href="/jjn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Quanzhou Jinjiang International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Quanzhou</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jkg/index.html" style="color:var(--blue);text-decoration:none;">JKG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESGJ</td>
+        <td style="padding:12px 16px;"><a href="/jkg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jönköping Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jönköping</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇪 Sweden</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jkh/index.html" style="color:var(--blue);text-decoration:none;">JKH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LGHI</td>
+        <td style="padding:12px 16px;"><a href="/jkh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Chios Island National Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Chios Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇷 Greece</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jkl/index.html" style="color:var(--blue);text-decoration:none;">JKL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LGKY</td>
+        <td style="padding:12px 16px;"><a href="/jkl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kalymnos Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kalymnos Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇷 Greece</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jkr/index.html" style="color:var(--blue);text-decoration:none;">JKR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VNJP</td>
+        <td style="padding:12px 16px;"><a href="/jkr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Janakpur Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Janakpur</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇵 Nepal</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jkv/index.html" style="color:var(--blue);text-decoration:none;">JKV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KJSO</td>
+        <td style="padding:12px 16px;"><a href="/jkv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Cherokee County Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jacksonville</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jla/index.html" style="color:var(--blue);text-decoration:none;">JLA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/jla/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Quartz Creek Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cooper Landing</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jlg/index.html" style="color:var(--blue);text-decoration:none;">JLG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VAJL</td>
+        <td style="padding:12px 16px;"><a href="/jlg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jalgaon Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jalgaon</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jln/index.html" style="color:var(--blue);text-decoration:none;">JLN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KJLN</td>
+        <td style="padding:12px 16px;"><a href="/jln/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Joplin Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Joplin</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jlr/index.html" style="color:var(--blue);text-decoration:none;">JLR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VAJB</td>
+        <td style="padding:12px 16px;"><a href="/jlr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jabalpur Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jabalpur</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jls/index.html" style="color:var(--blue);text-decoration:none;">JLS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SDJL</td>
+        <td style="padding:12px 16px;"><a href="/jls/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jales Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jales</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jma/index.html" style="color:var(--blue);text-decoration:none;">JMA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/jma/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Aeroporto Elias Breder Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Manhuaçu</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jmb/index.html" style="color:var(--blue);text-decoration:none;">JMB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FNJM</td>
+        <td style="padding:12px 16px;"><a href="/jmb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jamba Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jamba</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇴 Angola</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jmj/index.html" style="color:var(--blue);text-decoration:none;">JMJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZPJM</td>
+        <td style="padding:12px 16px;"><a href="/jmj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Lancang Jingmai Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Pu'er (Lancang)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jmk/index.html" style="color:var(--blue);text-decoration:none;">JMK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LGMK</td>
+        <td style="padding:12px 16px;"><a href="/jmk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mykonos Island National Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mykonos</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇷 Greece</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jmo/index.html" style="color:var(--blue);text-decoration:none;">JMO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VNJS</td>
+        <td style="padding:12px 16px;"><a href="/jmo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jomsom Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jomsom</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇵 Nepal</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jmr/index.html" style="color:var(--blue);text-decoration:none;">JMR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/jmr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Maricá Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Maricá</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jms/index.html" style="color:var(--blue);text-decoration:none;">JMS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KJMS</td>
+        <td style="padding:12px 16px;"><a href="/jms/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jamestown Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jamestown</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jmu/index.html" style="color:var(--blue);text-decoration:none;">JMU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZYJM</td>
+        <td style="padding:12px 16px;"><a href="/jmu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jiamusi Songjiang International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jiamusi</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jna/index.html" style="color:var(--blue);text-decoration:none;">JNA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SNJN</td>
+        <td style="padding:12px 16px;"><a href="/jna/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Januária Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Januária</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jnb/index.html" style="color:var(--blue);text-decoration:none;">JNB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FAOR</td>
+        <td style="padding:12px 16px;"><a href="/jnb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">O.R. Tambo International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Johannesburg</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇿🇦 Afrika Selatan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jng/index.html" style="color:var(--blue);text-decoration:none;">JNG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZSJG</td>
+        <td style="padding:12px 16px;"><a href="/jng/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jining Da'an Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jining</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jnh/index.html" style="color:var(--blue);text-decoration:none;">JNH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZSJX</td>
+        <td style="padding:12px 16px;"><a href="/jnh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jiaxing Nanhu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Xiuzhou, Hangzhou</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jnj/index.html" style="color:var(--blue);text-decoration:none;">JNJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/jnj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ja'Aluni Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Duqm</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇴🇲 Oman</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jnu/index.html" style="color:var(--blue);text-decoration:none;">JNU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">PAJN</td>
+        <td style="padding:12px 16px;"><a href="/jnu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Juneau International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Juneau</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jnx/index.html" style="color:var(--blue);text-decoration:none;">JNX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LGNX</td>
+        <td style="padding:12px 16px;"><a href="/jnx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Naxos Island National Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Naxos</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇷 Greece</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jnz/index.html" style="color:var(--blue);text-decoration:none;">JNZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZYJZ</td>
+        <td style="padding:12px 16px;"><a href="/jnz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jinzhou Bay Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jinzhou (Linghai)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/joe/index.html" style="color:var(--blue);text-decoration:none;">JOE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EFJO</td>
+        <td style="padding:12px 16px;"><a href="/joe/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Joensuu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Joensuu</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇮 Finland</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jog/index.html" style="color:var(--blue);text-decoration:none;">JOG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAHH</td>
+        <td style="padding:12px 16px;"><a href="/jog/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Adisutjipto International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yogyakarta</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/joh/index.html" style="color:var(--blue);text-decoration:none;">JOH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FAPJ</td>
+        <td style="padding:12px 16px;"><a href="/joh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Port St Johns Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Port St Johns</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇿🇦 Afrika Selatan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/joi/index.html" style="color:var(--blue);text-decoration:none;">JOI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SBJV</td>
+        <td style="padding:12px 16px;"><a href="/joi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Lauro Carneiro de Loyola Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Joinville</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/joj/index.html" style="color:var(--blue);text-decoration:none;">JOJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/joj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Doris Lake</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Hope Bay</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jok/index.html" style="color:var(--blue);text-decoration:none;">JOK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UWKJ</td>
+        <td style="padding:12px 16px;"><a href="/jok/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yoshkar-Ola Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yoshkar-Ola</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jol/index.html" style="color:var(--blue);text-decoration:none;">JOL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPMJ</td>
+        <td style="padding:12px 16px;"><a href="/jol/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jolo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jolo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇭 Filipina</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jom/index.html" style="color:var(--blue);text-decoration:none;">JOM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">HTNJ</td>
+        <td style="padding:12px 16px;"><a href="/jom/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Njombe Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Njombe</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇿 Tanzania</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jop/index.html" style="color:var(--blue);text-decoration:none;">JOP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">AYJS</td>
+        <td style="padding:12px 16px;"><a href="/jop/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Josephstaal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Josephstaal</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jos/index.html" style="color:var(--blue);text-decoration:none;">JOS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">DNJO</td>
+        <td style="padding:12px 16px;"><a href="/jos/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yakubu Gowon Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jos</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇬 Nigeria</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jot/index.html" style="color:var(--blue);text-decoration:none;">JOT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KJOT</td>
+        <td style="padding:12px 16px;"><a href="/jot/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Joliet Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Joliet</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jpa/index.html" style="color:var(--blue);text-decoration:none;">JPA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SBJP</td>
+        <td style="padding:12px 16px;"><a href="/jpa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Presidente Castro Pinto International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">João Pessoa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jpe/index.html" style="color:var(--blue);text-decoration:none;">JPE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/jpe/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nagib Demachki Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Paragominas</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jpo/index.html" style="color:var(--blue);text-decoration:none;">JPO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/jpo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Aeroporto Brigadeiro Firmino Ayres</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Patos</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jpr/index.html" style="color:var(--blue);text-decoration:none;">JPR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/jpr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ji-Paraná Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ji-Paraná</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jpy/index.html" style="color:var(--blue);text-decoration:none;">JPY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/jpy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Paraty Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Paraty</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jqa/index.html" style="color:var(--blue);text-decoration:none;">JQA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">BGUQ</td>
+        <td style="padding:12px 16px;"><a href="/jqa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Qaarsut Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Uummannaq</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇱 Greenland</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jqe/index.html" style="color:var(--blue);text-decoration:none;">JQE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">MPJE</td>
+        <td style="padding:12px 16px;"><a href="/jqe/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jaqué Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jaqué</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇦 Panama</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jrf/index.html" style="color:var(--blue);text-decoration:none;">JRF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">PHJR</td>
+        <td style="padding:12px 16px;"><a href="/jrf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kalaeloa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kapolei</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jrg/index.html" style="color:var(--blue);text-decoration:none;">JRG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEJH</td>
+        <td style="padding:12px 16px;"><a href="/jrg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jharsuguda Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jrh/index.html" style="color:var(--blue);text-decoration:none;">JRH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEJT</td>
+        <td style="padding:12px 16px;"><a href="/jrh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jorhat Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jorhat</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jrj/index.html" style="color:var(--blue);text-decoration:none;">JRJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZSRJ</td>
+        <td style="padding:12px 16px;"><a href="/jrj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ganzhou Ruijin Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ganzhou</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jrn/index.html" style="color:var(--blue);text-decoration:none;">JRN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/jrn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Juruena Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Juruena</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jro/index.html" style="color:var(--blue);text-decoration:none;">JRO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">HTKJ</td>
+        <td style="padding:12px 16px;"><a href="/jro/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kilimanjaro International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Arusha</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇿 Tanzania</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jrt/index.html" style="color:var(--blue);text-decoration:none;">JRT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/jrt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Juruti Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Juruti</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jsa/index.html" style="color:var(--blue);text-decoration:none;">JSA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VIJR</td>
+        <td style="padding:12px 16px;"><a href="/jsa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jaisalmer Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jsb/index.html" style="color:var(--blue);text-decoration:none;">JSB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/jsb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Walfrido Salmito de Almeida Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">São Benedito</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jsh/index.html" style="color:var(--blue);text-decoration:none;">JSH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LGST</td>
+        <td style="padding:12px 16px;"><a href="/jsh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sitia Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Crete Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇷 Greece</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jsi/index.html" style="color:var(--blue);text-decoration:none;">JSI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LGSK</td>
+        <td style="padding:12px 16px;"><a href="/jsi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Skiathos Island National Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Skiathos</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇷 Greece</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jsj/index.html" style="color:var(--blue);text-decoration:none;">JSJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZYJS</td>
+        <td style="padding:12px 16px;"><a href="/jsj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jiansanjiang Shidi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jiansanjiang</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jsk/index.html" style="color:var(--blue);text-decoration:none;">JSK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">OIZJ</td>
+        <td style="padding:12px 16px;"><a href="/jsk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jask Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bandar-e-Jask</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇷 Iran</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jsm/index.html" style="color:var(--blue);text-decoration:none;">JSM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SAWS</td>
+        <td style="padding:12px 16px;"><a href="/jsm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jose De San Martin Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Chubut</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇷 Argentina</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jso/index.html" style="color:var(--blue);text-decoration:none;">JSO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/jso/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Dr. Luciano de Arruda Coelho Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sobral</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jsr/index.html" style="color:var(--blue);text-decoration:none;">JSR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VGJR</td>
+        <td style="padding:12px 16px;"><a href="/jsr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jessore Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jashore (Jessore)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇩 Bangladesh</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jst/index.html" style="color:var(--blue);text-decoration:none;">JST</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KJST</td>
+        <td style="padding:12px 16px;"><a href="/jst/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">John Murtha Johnstown Cambria County Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Johnstown</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jsu/index.html" style="color:var(--blue);text-decoration:none;">JSU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">BGMQ</td>
+        <td style="padding:12px 16px;"><a href="/jsu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Maniitsoq Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Maniitsoq</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇱 Greenland</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jsy/index.html" style="color:var(--blue);text-decoration:none;">JSY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LGSO</td>
+        <td style="padding:12px 16px;"><a href="/jsy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Syros Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Syros Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇷 Greece</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jta/index.html" style="color:var(--blue);text-decoration:none;">JTA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/jta/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pedro Teixeira Castelo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tauá</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jtc/index.html" style="color:var(--blue);text-decoration:none;">JTC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SBAE</td>
+        <td style="padding:12px 16px;"><a href="/jtc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bauru/Arealva–Moussa Nakhal Tobias State Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bauru</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jti/index.html" style="color:var(--blue);text-decoration:none;">JTI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SWJW</td>
+        <td style="padding:12px 16px;"><a href="/jti/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jataí Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jataí</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jtn/index.html" style="color:var(--blue);text-decoration:none;">JTN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/jtn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Itanhaém Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Itanhaém</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jtr/index.html" style="color:var(--blue);text-decoration:none;">JTR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LGSR</td>
+        <td style="padding:12px 16px;"><a href="/jtr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Santorini International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Santorini Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇷 Greece</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jty/index.html" style="color:var(--blue);text-decoration:none;">JTY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LGPL</td>
+        <td style="padding:12px 16px;"><a href="/jty/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Astypalaia Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Astypalaia Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇷 Greece</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jua/index.html" style="color:var(--blue);text-decoration:none;">JUA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SIZX</td>
+        <td style="padding:12px 16px;"><a href="/jua/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Inácio Luís do Nascimento Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Juara</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jub/index.html" style="color:var(--blue);text-decoration:none;">JUB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">HJJJ</td>
+        <td style="padding:12px 16px;"><a href="/jub/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Juba International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Juba</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇸 Sudan Selatan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/juh/index.html" style="color:var(--blue);text-decoration:none;">JUH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZSJH</td>
+        <td style="padding:12px 16px;"><a href="/juh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Chizhou Jiuhuashan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Chizhou</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jui/index.html" style="color:var(--blue);text-decoration:none;">JUI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EDWJ</td>
+        <td style="padding:12px 16px;"><a href="/jui/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Juist Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Juist</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇪 Jerman</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/juj/index.html" style="color:var(--blue);text-decoration:none;">JUJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SASJ</td>
+        <td style="padding:12px 16px;"><a href="/juj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Gobernador Horacio Guzman International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">San Salvador de Jujuy</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇷 Argentina</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jul/index.html" style="color:var(--blue);text-decoration:none;">JUL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SPJL</td>
+        <td style="padding:12px 16px;"><a href="/jul/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Inca Manco Capac International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Juliaca</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇪 Peru</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jum/index.html" style="color:var(--blue);text-decoration:none;">JUM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VNJL</td>
+        <td style="padding:12px 16px;"><a href="/jum/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jumla Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jumla</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇵 Nepal</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jun/index.html" style="color:var(--blue);text-decoration:none;">JUN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">YJDA</td>
+        <td style="padding:12px 16px;"><a href="/jun/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jundah Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jundah</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/juo/index.html" style="color:var(--blue);text-decoration:none;">JUO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKJU</td>
+        <td style="padding:12px 16px;"><a href="/juo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Juradó Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Juradó</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇴 Colombia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jur/index.html" style="color:var(--blue);text-decoration:none;">JUR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">YJUR</td>
+        <td style="padding:12px 16px;"><a href="/jur/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jurien Bay Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jurien Bay</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jut/index.html" style="color:var(--blue);text-decoration:none;">JUT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">MHJU</td>
+        <td style="padding:12px 16px;"><a href="/jut/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jutigalpa airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jutigalpa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇭🇳 Honduras</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/juv/index.html" style="color:var(--blue);text-decoration:none;">JUV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">BGUK</td>
+        <td style="padding:12px 16px;"><a href="/juv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Upernavik Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Upernavik</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇱 Greenland</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/juz/index.html" style="color:var(--blue);text-decoration:none;">JUZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZSJU</td>
+        <td style="padding:12px 16px;"><a href="/juz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Quzhou Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Quzhou (Kezheng)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jva/index.html" style="color:var(--blue);text-decoration:none;">JVA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FMMK</td>
+        <td style="padding:12px 16px;"><a href="/jva/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ankavandra Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ankavandra</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇬 Madagaskar</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jvi/index.html" style="color:var(--blue);text-decoration:none;">JVI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/jvi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Central Jersey Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Manville</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jvl/index.html" style="color:var(--blue);text-decoration:none;">JVL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KJVL</td>
+        <td style="padding:12px 16px;"><a href="/jvl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Southern Wisconsin Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Janesville</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jwa/index.html" style="color:var(--blue);text-decoration:none;">JWA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FBJW</td>
+        <td style="padding:12px 16px;"><a href="/jwa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jwaneng Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jwaneng</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇼 Botswana</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jwn/index.html" style="color:var(--blue);text-decoration:none;">JWN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">OITZ</td>
+        <td style="padding:12px 16px;"><a href="/jwn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zanjan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zanjan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇷 Iran</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jwo/index.html" style="color:var(--blue);text-decoration:none;">JWO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RKTI</td>
+        <td style="padding:12px 16px;"><a href="/jwo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jungwon Air Base/Chungju Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Gimseang-ro</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇰🇷 Korea Selatan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jxa/index.html" style="color:var(--blue);text-decoration:none;">JXA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZYJX</td>
+        <td style="padding:12px 16px;"><a href="/jxa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jixi Xingkaihu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jixi</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jxn/index.html" style="color:var(--blue);text-decoration:none;">JXN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KJXN</td>
+        <td style="padding:12px 16px;"><a href="/jxn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jackson County Airport/Reynolds Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jackson</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jyr/index.html" style="color:var(--blue);text-decoration:none;">JYR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">OIKJ</td>
+        <td style="padding:12px 16px;"><a href="/jyr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jiroft Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jiroft</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇷 Iran</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jyv/index.html" style="color:var(--blue);text-decoration:none;">JYV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EFJY</td>
+        <td style="padding:12px 16px;"><a href="/jyv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jyväskylä Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jyväskylän Maalaiskunta</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇮 Finland</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jzh/index.html" style="color:var(--blue);text-decoration:none;">JZH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZUJZ</td>
+        <td style="padding:12px 16px;"><a href="/jzh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jiuzhai Huanglong Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ngawa (Songpan)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<footer>
+  <div style="margin-bottom:10px">
+    <a href="/az.html">A–Z Index</a>
+    <a href="/countries.html">By Country</a>
+    <a href="/about.html">About</a>
+  </div>
+  <div>© 2025 airport-code.com · Data sourced from OurAirports &amp; Open-Meteo · <a href="https://ourairports.com">OurAirports</a></div>
+</footer>
+
+<script>
+(function(){
+  let db = null;
+  const input = document.getElementById('navSearchInput');
+  const results = document.getElementById('search-results');
+  if (!input) return;
+
+  async function loadDB() {
+    if (db) return;
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    const r = await fetch(root + 'airports.json');
+    db = await r.json();
+  }
+
+  input.addEventListener('focus', loadDB);
+  input.addEventListener('input', async function() {
+    const q = this.value.trim().toUpperCase();
+    if (q.length < 2) { results.style.display = 'none'; return; }
+    await loadDB();
+    const matches = db.filter(a =>
+      a.iata.startsWith(q) ||
+      a.name.toUpperCase().includes(q) ||
+      a.city.toUpperCase().includes(q)
+    ).slice(0, 7);
+    if (!matches.length) { results.style.display = 'none'; return; }
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    results.innerHTML = matches.map(a =>
+      `<a href="${root}${a.iata.toLowerCase()}/index.html">
+        <span class="sr-code">${a.iata}</span>
+        <div><div class="sr-name">${a.name}</div><div class="sr-city">${a.city}, ${a.country}</div></div>
+      </a>`
+    ).join('');
+    results.style.display = 'block';
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!input.contains(e.target) && !results.contains(e.target)) results.style.display = 'none';
+  });
+})();
+</script>
+
+</body>
+</html>

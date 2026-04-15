@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="site-root" content="/">
+  <title>Airports in Perancis | Airport Code</title>
+  <meta name="description" content="All airport codes for airports in Perancis. Browse IATA and ICAO codes for 120 airports.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0f1f3d;
+      --blue: #1a56db;
+      --blue-light: #e8f0fe;
+      --sky: #38bdf8;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --green: #10b981;
+    }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; zoom: 1.12; }
+    nav { background: var(--navy); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { color: #fff; font-size: 19px; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; display: flex; align-items: center; gap: 6px; line-height: 1; }
+    .nav-logo svg { flex-shrink: 0; }
+    .nav-logo span { color: var(--sky); }
+    .nav-search { display: flex; align-items: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 6px 14px; gap: 8px; width: 280px; position: relative; }
+    .nav-search input { background: none; border: none; outline: none; color: #fff; font-size: 14px; width: 100%; font-family: 'Outfit', sans-serif; }
+    .nav-search input::placeholder { color: rgba(255,255,255,0.4); }
+    #search-results { position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: #fff; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 200; overflow: hidden; display: none; }
+    #search-results a { display: flex; align-items: center; gap: 10px; padding: 10px 14px; text-decoration: none; color: var(--text); font-size: 13px; border-bottom: 1px solid var(--border); transition: background 0.15s; }
+    #search-results a:last-child { border-bottom: none; }
+    #search-results a:hover { background: var(--bg); }
+    #search-results .sr-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 12px; padding: 2px 7px; border-radius: 5px; min-width: 38px; text-align: center; }
+    #search-results .sr-name { font-weight: 600; }
+    #search-results .sr-city { color: var(--muted); font-size: 11px; }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .hero { background: linear-gradient(135deg, var(--navy) 0%, #1a3a6b 100%); color: #fff; padding: 48px 0 56px; position: relative; overflow: hidden; }
+    .hero::before { content: '✈'; position: absolute; right: -20px; top: -20px; font-size: 220px; opacity: 0.04; transform: rotate(25deg); }
+    .hero-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .breadcrumb { font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 20px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .breadcrumb a:hover { color: rgba(255,255,255,0.8); }
+    .breadcrumb span.sep { color: rgba(255,255,255,0.3); }
+    .hero-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .hero-title { display: flex; align-items: flex-start; gap: 24px; }
+    .iata-badge { background: var(--blue); border: 2px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 14px 20px; text-align: center; min-width: 100px; flex-shrink: 0; }
+    .iata-badge .code { font-size: 40px; font-weight: 800; letter-spacing: 2px; color: #fff; line-height: 1; }
+    .iata-badge .label { font-size: 10px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
+    .hero-name { padding-top: 4px; }
+    .hero-name h1 { font-size: 38px; font-weight: 800; line-height: 1.1; color: #fff; }
+    .hero-name .location { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.65); font-size: 15px; margin-top: 6px; }
+    .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+    .badge { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.3px; }
+    .badge-large { background: rgba(16,185,129,0.2); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
+    .badge-medium { background: rgba(56,189,248,0.15); color: #7dd3fc; border: 1px solid rgba(56,189,248,0.3); }
+    .badge-small { background: rgba(245,158,11,0.15); color: #fcd34d; border: 1px solid rgba(245,158,11,0.3); }
+    .hero-stats { display: flex; gap: 32px; margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
+    .hero-stat .value { font-size: 22px; font-weight: 700; color: #fff; }
+    .hero-stat .label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
+    .time-widget { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 16px 20px; text-align: center; min-width: 160px; }
+    .time-widget .time-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+    .time-widget .time-value { font-size: 28px; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+    .time-widget .time-tz { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+    .main { max-width: 1100px; margin: 0 auto; padding: 32px 24px; display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
+    @media (max-width: 768px) { .main { grid-template-columns: 1fr; } .hero-name h1 { font-size: 26px; } .nav-links { display: none; } .nav-search { width: 200px; } }
+    .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .card-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .card-header h2 { font-size: 14px; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.5px; }
+    .card-body { padding: 20px; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .info-item { padding: 14px 16px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+    .info-item:nth-child(even) { border-right: none; }
+    .info-item:nth-last-child(-n+2) { border-bottom: none; }
+    .info-item .key { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px; }
+    .info-item .val { font-size: 15px; font-weight: 600; color: var(--text); }
+    .info-item .val a { color: var(--blue); text-decoration: none; }
+    .info-item .val a:hover { text-decoration: underline; }
+    .weather-widget { display: flex; align-items: center; gap: 20px; padding: 16px; background: linear-gradient(135deg, #e0f2fe, #f0f9ff); border-radius: 10px; margin-bottom: 16px; min-height: 100px; }
+    .weather-icon { font-size: 48px; line-height: 1; }
+    .weather-main .temp { font-size: 32px; font-weight: 700; color: var(--text); }
+    .weather-main .desc { font-size: 14px; color: var(--muted); text-transform: capitalize; }
+    .weather-details { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .weather-detail { font-size: 13px; color: var(--muted); }
+    .weather-detail strong { color: var(--text); font-weight: 600; }
+    .nearby-list { list-style: none; }
+    .nearby-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .nearby-item:last-child { border-bottom: none; }
+    .nearby-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 13px; padding: 3px 8px; border-radius: 6px; min-width: 44px; text-align: center; text-decoration: none; }
+    .nearby-code:hover { background: #ccdcfb; }
+    .nearby-info { flex: 1; margin: 0 12px; }
+    .nearby-info .name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .nearby-info .city { font-size: 11px; color: var(--muted); }
+    .nearby-dist { font-size: 12px; color: var(--muted); white-space: nowrap; }
+    .carbon-form { display: flex; flex-direction: column; gap: 12px; }
+    .carbon-form label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .carbon-form input, .carbon-form select { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-family: 'Outfit', sans-serif; color: var(--text); outline: none; transition: border-color 0.2s; }
+    .carbon-form input:focus, .carbon-form select:focus { border-color: var(--blue); }
+    .carbon-btn { background: var(--blue); color: #fff; border: none; padding: 11px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Outfit', sans-serif; transition: background 0.2s; }
+    .carbon-btn:hover { background: #1447c0; }
+    .carbon-result { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px; text-align: center; display: none; }
+    .carbon-result .co2 { font-size: 24px; font-weight: 800; color: var(--green); }
+    .carbon-result .co2-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .sidebar-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .sidebar-card .card-header { padding: 14px 16px; }
+    .sidebar-card .card-body { padding: 16px; }
+    .codes-display { display: flex; gap: 12px; }
+    .code-box { flex: 1; text-align: center; padding: 16px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; }
+    .code-box .code-val { font-size: 28px; font-weight: 800; color: var(--navy); letter-spacing: 1px; }
+    .code-box .code-type { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; }
+    footer { background: var(--navy); color: rgba(255,255,255,0.5); text-align: center; padding: 24px; font-size: 13px; margin-top: 40px; }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; margin: 0 12px; }
+    footer a:hover { color: #fff; }
+
+    table { width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden; }
+    thead th { padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid var(--border);background:#f8fafc; }
+    tbody tr { border-bottom:1px solid #f5f5f5; }
+    tbody tr:last-child { border-bottom:none; }
+    tbody tr:hover { background:#fafbfc; }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/index.html" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="9" fill="#1a56db"/><path d="M24.5 8.5C25.3 9.3 25.3 10.6 24.5 11.4L19.8 16.1L22 25L19.5 27.5L16 19L11.5 23.5L12 26L10 28L8 24L4 22L6 20L8.5 20.5L13 16L5.5 12.5L8 10L17 12.2L21.6 7.5C22.4 6.7 23.7 6.7 24.5 8.5Z" fill="white"/></svg>
+    Airport<span>Code</span>
+  </a>
+  <div class="nav-search">
+    <svg width="14" height="14" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="navSearchInput" placeholder="Search airport or code…" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <div class="nav-links">
+    <a href="/az.html">A–Z</a>
+    <a href="/countries.html">By Country</a>
+  </div>
+</nav>
+<div style="max-width:1100px;margin:0 auto;padding:32px 24px">
+  <div style="margin-bottom:8px;font-size:12px;color:var(--muted)"><a href="/index.html" style="color:var(--blue);text-decoration:none">Home</a> › <a href="/countries.html" style="color:var(--blue);text-decoration:none">By Country</a> › Perancis</div>
+  <h1 style="font-size:28px;font-weight:800;color:var(--navy);margin-bottom:4px">🇫🇷 Airports in Perancis</h1>
+  <p style="color:var(--muted);margin-bottom:24px">120 airports with IATA codes</p>
+  <table>
+    <thead><tr><th>IATA</th><th>ICAO</th><th>Airport Name</th><th>City</th><th>Type</th></tr></thead>
+    <tbody>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bes/index.html" style="color:var(--blue);text-decoration:none;">BES</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFRB</td>
+        <td style="padding:12px 16px;"><a href="/bes/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Brest Bretagne airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Brest</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bia/index.html" style="color:var(--blue);text-decoration:none;">BIA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFKB</td>
+        <td style="padding:12px 16px;"><a href="/bia/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bastia-Poretta International airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bastia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bod/index.html" style="color:var(--blue);text-decoration:none;">BOD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFBD</td>
+        <td style="padding:12px 16px;"><a href="/bod/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bordeaux–Mérignac Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bordeaux</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bsl/index.html" style="color:var(--blue);text-decoration:none;">BSL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFSB</td>
+        <td style="padding:12px 16px;"><a href="/bsl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">EuroAirport Basel–Mulhouse–Freiburg</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bâle / Mulhouse</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bva/index.html" style="color:var(--blue);text-decoration:none;">BVA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFOB</td>
+        <td style="padding:12px 16px;"><a href="/bva/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Beauvais-Tillé airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Beauvais</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cdg/index.html" style="color:var(--blue);text-decoration:none;">CDG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFPG</td>
+        <td style="padding:12px 16px;"><a href="/cdg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Charles de Gaulle International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Paris (Roissy-en-France, Val-d'Oise)</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cfe/index.html" style="color:var(--blue);text-decoration:none;">CFE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFLC</td>
+        <td style="padding:12px 16px;"><a href="/cfe/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Clermont-Ferrand Auvergne airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Clermont-Ferrand</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fsc/index.html" style="color:var(--blue);text-decoration:none;">FSC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFKF</td>
+        <td style="padding:12px 16px;"><a href="/fsc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Figari Sud-Corse Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Figari</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lbg/index.html" style="color:var(--blue);text-decoration:none;">LBG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFPB</td>
+        <td style="padding:12px 16px;"><a href="/lbg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Paris-Le Bourget International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Paris</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lil/index.html" style="color:var(--blue);text-decoration:none;">LIL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFQQ</td>
+        <td style="padding:12px 16px;"><a href="/lil/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Lille Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lesquin</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lys/index.html" style="color:var(--blue);text-decoration:none;">LYS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFLL</td>
+        <td style="padding:12px 16px;"><a href="/lys/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Lyon Saint-Exupéry Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Colombier-Saugnieu, Rhône</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mpl/index.html" style="color:var(--blue);text-decoration:none;">MPL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFMT</td>
+        <td style="padding:12px 16px;"><a href="/mpl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Montpellier-Méditerranée Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Montpellier/Méditerranée</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mrs/index.html" style="color:var(--blue);text-decoration:none;">MRS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFML</td>
+        <td style="padding:12px 16px;"><a href="/mrs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Marseille Provence Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Marignane, Bouches-du-Rhône</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nce/index.html" style="color:var(--blue);text-decoration:none;">NCE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFMN</td>
+        <td style="padding:12px 16px;"><a href="/nce/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nice-Côte d'Azur Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nice, Alpes-Maritimes</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ory/index.html" style="color:var(--blue);text-decoration:none;">ORY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFPO</td>
+        <td style="padding:12px 16px;"><a href="/ory/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Paris-Orly Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Paris (Orly, Val-de-Marne)</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sxb/index.html" style="color:var(--blue);text-decoration:none;">SXB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFST</td>
+        <td style="padding:12px 16px;"><a href="/sxb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Strasbourg Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Strasbourg</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tls/index.html" style="color:var(--blue);text-decoration:none;">TLS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFBO</td>
+        <td style="padding:12px 16px;"><a href="/tls/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Toulouse-Blagnac Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Toulouse/Blagnac</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/agf/index.html" style="color:var(--blue);text-decoration:none;">AGF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFBA</td>
+        <td style="padding:12px 16px;"><a href="/agf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Agen La Garenne airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Agen</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/aja/index.html" style="color:var(--blue);text-decoration:none;">AJA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFKJ</td>
+        <td style="padding:12px 16px;"><a href="/aja/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ajaccio Napoléon Bonaparte airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ajaccio</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ane/index.html" style="color:var(--blue);text-decoration:none;">ANE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFJR</td>
+        <td style="padding:12px 16px;"><a href="/ane/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Angers Marcé airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Angers</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ang/index.html" style="color:var(--blue);text-decoration:none;">ANG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFBU</td>
+        <td style="padding:12px 16px;"><a href="/ang/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Angoulême Brie-Champniers airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Angoulême</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/auf/index.html" style="color:var(--blue);text-decoration:none;">AUF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFLA</td>
+        <td style="padding:12px 16px;"><a href="/auf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Auxerre Branches airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Auxerre</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/aur/index.html" style="color:var(--blue);text-decoration:none;">AUR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFLW</td>
+        <td style="padding:12px 16px;"><a href="/aur/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Aurillac airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Aurillac</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/avn/index.html" style="color:var(--blue);text-decoration:none;">AVN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFMV</td>
+        <td style="padding:12px 16px;"><a href="/avn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Avignon Caumont airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Avignon</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/biq/index.html" style="color:var(--blue);text-decoration:none;">BIQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFBZ</td>
+        <td style="padding:12px 16px;"><a href="/biq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Biarritz Pays Basque airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Biarritz</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bou/index.html" style="color:var(--blue);text-decoration:none;">BOU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFLD</td>
+        <td style="padding:12px 16px;"><a href="/bou/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bourges airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bourges</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bve/index.html" style="color:var(--blue);text-decoration:none;">BVE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFSL</td>
+        <td style="padding:12px 16px;"><a href="/bve/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Brive Souillac airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Brive</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bzr/index.html" style="color:var(--blue);text-decoration:none;">BZR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFMU</td>
+        <td style="padding:12px 16px;"><a href="/bzr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Béziers Vias airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Béziers</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ccf/index.html" style="color:var(--blue);text-decoration:none;">CCF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFMK</td>
+        <td style="padding:12px 16px;"><a href="/ccf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Carcassonne Salvaza Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Carcassonne</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ceq/index.html" style="color:var(--blue);text-decoration:none;">CEQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFMD</td>
+        <td style="padding:12px 16px;"><a href="/ceq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Cannes Mandelieu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cannes</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cer/index.html" style="color:var(--blue);text-decoration:none;">CER</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFRC</td>
+        <td style="padding:12px 16px;"><a href="/cer/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Cherbourg Manche airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cherbourg</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cfr/index.html" style="color:var(--blue);text-decoration:none;">CFR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFRK</td>
+        <td style="padding:12px 16px;"><a href="/cfr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Caen Carpiquet airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Caen</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/chr/index.html" style="color:var(--blue);text-decoration:none;">CHR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFLX</td>
+        <td style="padding:12px 16px;"><a href="/chr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Châteauroux Déols airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Châteauroux</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cly/index.html" style="color:var(--blue);text-decoration:none;">CLY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFKC</td>
+        <td style="padding:12px 16px;"><a href="/cly/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Calvi Sainte Catherine Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Calvi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cmf/index.html" style="color:var(--blue);text-decoration:none;">CMF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFLB</td>
+        <td style="padding:12px 16px;"><a href="/cmf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Chambéry Aix les Bains airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Chambéry</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cmr/index.html" style="color:var(--blue);text-decoration:none;">CMR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFGA</td>
+        <td style="padding:12px 16px;"><a href="/cmr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Colmar Houssen airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Colmar</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cng/index.html" style="color:var(--blue);text-decoration:none;">CNG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFBG</td>
+        <td style="padding:12px 16px;"><a href="/cng/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Cognac-Châteaubernard (BA 709) Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cognac/Châteaubernard</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cqf/index.html" style="color:var(--blue);text-decoration:none;">CQF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFAC</td>
+        <td style="padding:12px 16px;"><a href="/cqf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Calais Marck Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Calais</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/csf/index.html" style="color:var(--blue);text-decoration:none;">CSF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFPC</td>
+        <td style="padding:12px 16px;"><a href="/csf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Creil Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Creil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ctt/index.html" style="color:var(--blue);text-decoration:none;">CTT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFMQ</td>
+        <td style="padding:12px 16px;"><a href="/ctt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Le Castellet Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Le Castellet, Var</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dcm/index.html" style="color:var(--blue);text-decoration:none;">DCM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFCK</td>
+        <td style="padding:12px 16px;"><a href="/dcm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Castres Mazamet Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Castres</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dij/index.html" style="color:var(--blue);text-decoration:none;">DIJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFSD</td>
+        <td style="padding:12px 16px;"><a href="/dij/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Dijon Longvic airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Dijon</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dle/index.html" style="color:var(--blue);text-decoration:none;">DLE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFGJ</td>
+        <td style="padding:12px 16px;"><a href="/dle/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Dole Tavaux Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Dole</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dnr/index.html" style="color:var(--blue);text-decoration:none;">DNR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFRD</td>
+        <td style="padding:12px 16px;"><a href="/dnr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Dinard Pleurtuit Saint-Malo airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Dinard</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dol/index.html" style="color:var(--blue);text-decoration:none;">DOL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFRG</td>
+        <td style="padding:12px 16px;"><a href="/dol/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Deauville Normandie airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Deauville</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ebu/index.html" style="color:var(--blue);text-decoration:none;">EBU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFMH</td>
+        <td style="padding:12px 16px;"><a href="/ebu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Saint-Étienne-Bouthéon Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Andrézieux-Bouthéon, Loire</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/edm/index.html" style="color:var(--blue);text-decoration:none;">EDM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFRI</td>
+        <td style="padding:12px 16px;"><a href="/edm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">La Roche-sur-Yon Les Ajoncs Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">La Roche-sur-Yon</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/egc/index.html" style="color:var(--blue);text-decoration:none;">EGC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFBE</td>
+        <td style="padding:12px 16px;"><a href="/egc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bergerac Dordogne-Périgord airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bergerac</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/enc/index.html" style="color:var(--blue);text-decoration:none;">ENC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFSN</td>
+        <td style="padding:12px 16px;"><a href="/enc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nancy-Essey Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tomblaine, Meurthe-et-Moselle</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/epl/index.html" style="color:var(--blue);text-decoration:none;">EPL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFSG</td>
+        <td style="padding:12px 16px;"><a href="/epl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Épinal Mirecourt Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Épinal</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/etz/index.html" style="color:var(--blue);text-decoration:none;">ETZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFJL</td>
+        <td style="padding:12px 16px;"><a href="/etz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Metz-Nancy-Lorraine Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Goin</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/evx/index.html" style="color:var(--blue);text-decoration:none;">EVX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFOE</td>
+        <td style="padding:12px 16px;"><a href="/evx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Évreux-Fauville (BA 105) Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fauville, Eure</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fni/index.html" style="color:var(--blue);text-decoration:none;">FNI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFTW</td>
+        <td style="padding:12px 16px;"><a href="/fni/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nîmes-Arles-Camargue Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nîmes/Garons</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gfr/index.html" style="color:var(--blue);text-decoration:none;">GFR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFRF</td>
+        <td style="padding:12px 16px;"><a href="/gfr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Granville Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bréville-sur-Mer, Manche</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gnb/index.html" style="color:var(--blue);text-decoration:none;">GNB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFLS</td>
+        <td style="padding:12px 16px;"><a href="/gnb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Grenoble Alpes Isère Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Grenoble</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hzb/index.html" style="color:var(--blue);text-decoration:none;">HZB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFQT</td>
+        <td style="padding:12px 16px;"><a href="/hzb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Merville-Calonne Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Merville, Nord</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lai/index.html" style="color:var(--blue);text-decoration:none;">LAI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFRO</td>
+        <td style="padding:12px 16px;"><a href="/lai/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Lannion Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lannion</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lbi/index.html" style="color:var(--blue);text-decoration:none;">LBI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFCI</td>
+        <td style="padding:12px 16px;"><a href="/lbi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Albi Le Sequestre airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Albi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lby/index.html" style="color:var(--blue);text-decoration:none;">LBY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFRE</td>
+        <td style="padding:12px 16px;"><a href="/lby/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">La Baule-Escoublac Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">La Baule-Escoublac</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lde/index.html" style="color:var(--blue);text-decoration:none;">LDE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFBT</td>
+        <td style="padding:12px 16px;"><a href="/lde/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tarbes-Lourdes-Pyrénées Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tarbes/Lourdes/Pyrénées</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ldv/index.html" style="color:var(--blue);text-decoration:none;">LDV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFRJ</td>
+        <td style="padding:12px 16px;"><a href="/ldv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Landivisiau Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Landivisiau</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/leh/index.html" style="color:var(--blue);text-decoration:none;">LEH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFOH</td>
+        <td style="padding:12px 16px;"><a href="/leh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Le Havre-Octeville Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Le Havre</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lig/index.html" style="color:var(--blue);text-decoration:none;">LIG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFBL</td>
+        <td style="padding:12px 16px;"><a href="/lig/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Limoges Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Limoges/Bellegarde</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lme/index.html" style="color:var(--blue);text-decoration:none;">LME</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFRM</td>
+        <td style="padding:12px 16px;"><a href="/lme/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Le Mans-Arnage Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Le Mans, Sarthe</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lrh/index.html" style="color:var(--blue);text-decoration:none;">LRH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFBH</td>
+        <td style="padding:12px 16px;"><a href="/lrh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">La Rochelle Île de Ré Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">La Rochelle</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lrt/index.html" style="color:var(--blue);text-decoration:none;">LRT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFRH</td>
+        <td style="padding:12px 16px;"><a href="/lrt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Lorient South Brittany (Bretagne Sud) Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lorient/Lann/Bihoué</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ltq/index.html" style="color:var(--blue);text-decoration:none;">LTQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFAT</td>
+        <td style="padding:12px 16px;"><a href="/ltq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Le Touquet-Côte d'Opale Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Le Touquet-Paris-Plage</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lva/index.html" style="color:var(--blue);text-decoration:none;">LVA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFOV</td>
+        <td style="padding:12px 16px;"><a href="/lva/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Laval-Entrammes Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Laval, Mayenne</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lyn/index.html" style="color:var(--blue);text-decoration:none;">LYN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFLY</td>
+        <td style="padding:12px 16px;"><a href="/lyn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Lyon Bron Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Chassieu, Lyon</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mcu/index.html" style="color:var(--blue);text-decoration:none;">MCU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFBK</td>
+        <td style="padding:12px 16px;"><a href="/mcu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Montluçon-Guéret Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lépaud, Creuse</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/men/index.html" style="color:var(--blue);text-decoration:none;">MEN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFNB</td>
+        <td style="padding:12px 16px;"><a href="/men/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mende-Brenoux Airfield</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mende/Brénoux</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mxn/index.html" style="color:var(--blue);text-decoration:none;">MXN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFRU</td>
+        <td style="padding:12px 16px;"><a href="/mxn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Morlaix-Ploujean Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Morlaix/Ploujean</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ncy/index.html" style="color:var(--blue);text-decoration:none;">NCY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFLP</td>
+        <td style="padding:12px 16px;"><a href="/ncy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Annecy Meythet airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Annecy</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nit/index.html" style="color:var(--blue);text-decoration:none;">NIT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFBN</td>
+        <td style="padding:12px 16px;"><a href="/nit/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Niort - Marais Poitevin Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Niort/Souché</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nte/index.html" style="color:var(--blue);text-decoration:none;">NTE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFRS</td>
+        <td style="padding:12px 16px;"><a href="/nte/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nantes Atlantique Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nantes</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nvs/index.html" style="color:var(--blue);text-decoration:none;">NVS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFQG</td>
+        <td style="padding:12px 16px;"><a href="/nvs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nevers-Fourchambault Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Marzy, Nièvre</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/obs/index.html" style="color:var(--blue);text-decoration:none;">OBS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFHO</td>
+        <td style="padding:12px 16px;"><a href="/obs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Aubenas-South Ardèche Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lanas, Ardèche</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pgf/index.html" style="color:var(--blue);text-decoration:none;">PGF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFMP</td>
+        <td style="padding:12px 16px;"><a href="/pgf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Perpignan-Rivesaltes (Llabanère) Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Perpignan/Rivesaltes</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pgx/index.html" style="color:var(--blue);text-decoration:none;">PGX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFBX</td>
+        <td style="padding:12px 16px;"><a href="/pgx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Périgueux-Bassillac Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Périgueux/Bassillac</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pis/index.html" style="color:var(--blue);text-decoration:none;">PIS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFBI</td>
+        <td style="padding:12px 16px;"><a href="/pis/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Poitiers-Biard Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Poitiers/Biard</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pox/index.html" style="color:var(--blue);text-decoration:none;">POX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFPT</td>
+        <td style="padding:12px 16px;"><a href="/pox/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pontoise-Cormeilles Aerodrome</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cormeilles-en-Vexin, Val-d'Oise</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/puf/index.html" style="color:var(--blue);text-decoration:none;">PUF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFBP</td>
+        <td style="padding:12px 16px;"><a href="/puf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pau Pyrénées Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Pau/Pyrénées (Uzein)</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rco/index.html" style="color:var(--blue);text-decoration:none;">RCO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFDN</td>
+        <td style="padding:12px 16px;"><a href="/rco/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rochefort-Saint-Agnant (BA 721) Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rochefort/Saint-Agnant</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rdz/index.html" style="color:var(--blue);text-decoration:none;">RDZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFCR</td>
+        <td style="padding:12px 16px;"><a href="/rdz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rodez–Aveyron Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rodez/Marcillac</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rne/index.html" style="color:var(--blue);text-decoration:none;">RNE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFLO</td>
+        <td style="padding:12px 16px;"><a href="/rne/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Roanne-Renaison Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Saint-Léger-sur-Roanne</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rns/index.html" style="color:var(--blue);text-decoration:none;">RNS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFRN</td>
+        <td style="padding:12px 16px;"><a href="/rns/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rennes-Saint-Jacques Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Saint-Jacques-de-la-Lande, Ille-et-Vilaine</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ryn/index.html" style="color:var(--blue);text-decoration:none;">RYN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFCY</td>
+        <td style="padding:12px 16px;"><a href="/ryn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Royan-Médis Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Royan/Médis</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sbk/index.html" style="color:var(--blue);text-decoration:none;">SBK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFRT</td>
+        <td style="padding:12px 16px;"><a href="/sbk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Saint-Brieuc-Armor Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Trémuson, Côtes-d'Armor</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/snr/index.html" style="color:var(--blue);text-decoration:none;">SNR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFRZ</td>
+        <td style="padding:12px 16px;"><a href="/snr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Saint-Nazaire-Montoir Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Saint-Nazaire/Montoir</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/soz/index.html" style="color:var(--blue);text-decoration:none;">SOZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFKS</td>
+        <td style="padding:12px 16px;"><a href="/soz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Solenzara (BA 126) Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Solenzara</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/syt/index.html" style="color:var(--blue);text-decoration:none;">SYT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFLN</td>
+        <td style="padding:12px 16px;"><a href="/syt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Saint-Yan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">L'Hôpital-le-Mercier, Saône-et-Loire</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tln/index.html" style="color:var(--blue);text-decoration:none;">TLN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFTH</td>
+        <td style="padding:12px 16px;"><a href="/tln/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Toulon-Hyères Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Hyères, Var</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tnf/index.html" style="color:var(--blue);text-decoration:none;">TNF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFPN</td>
+        <td style="padding:12px 16px;"><a href="/tnf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Toussus-le-Noble Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Toussus-le-Noble, Yvelines</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tuf/index.html" style="color:var(--blue);text-decoration:none;">TUF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFOT</td>
+        <td style="padding:12px 16px;"><a href="/tuf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tours Val de Loire Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tours, Indre-et-Loire</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uip/index.html" style="color:var(--blue);text-decoration:none;">UIP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFRQ</td>
+        <td style="padding:12px 16px;"><a href="/uip/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Quimper-Cornouaille Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Quimper/Pluguffan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uro/index.html" style="color:var(--blue);text-decoration:none;">URO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFOP</td>
+        <td style="padding:12px 16px;"><a href="/uro/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rouen Vallée de Seine Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Boos</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vaf/index.html" style="color:var(--blue);text-decoration:none;">VAF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFLU</td>
+        <td style="padding:12px 16px;"><a href="/vaf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Valence-Chabeuil Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Chabeuil, Drôme</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vhy/index.html" style="color:var(--blue);text-decoration:none;">VHY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFLV</td>
+        <td style="padding:12px 16px;"><a href="/vhy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vichy-Charmeil Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Charmeil, Allier</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/viy/index.html" style="color:var(--blue);text-decoration:none;">VIY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/viy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vélizy-Villacoublay Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vélizy-Villacoublay, Yvelines</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vne/index.html" style="color:var(--blue);text-decoration:none;">VNE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFRV</td>
+        <td style="padding:12px 16px;"><a href="/vne/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vannes-Meucon Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vannes/Meucon</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/xcr/index.html" style="color:var(--blue);text-decoration:none;">XCR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFOK</td>
+        <td style="padding:12px 16px;"><a href="/xcr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Chalons Vatry airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Chalons en Champagne</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zao/index.html" style="color:var(--blue);text-decoration:none;">ZAO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFCC</td>
+        <td style="padding:12px 16px;"><a href="/zao/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Cahors Lalbenque airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cahors</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ahz/index.html" style="color:var(--blue);text-decoration:none;">AHZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFHU</td>
+        <td style="padding:12px 16px;"><a href="/ahz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">L'Alpe d'Huez - Henri Giraud Altiport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Huez, Isère</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bae/index.html" style="color:var(--blue);text-decoration:none;">BAE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFMR</td>
+        <td style="padding:12px 16px;"><a href="/bae/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Barcelonnette - Saint-Pons Airfield</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Saint-Pons, Alpes-de-Haute-Provence</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bic/index.html" style="color:var(--blue);text-decoration:none;">BIC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFEA</td>
+        <td style="padding:12px 16px;"><a href="/bic/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Aérodrome de Belle Île</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bangor</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/byf/index.html" style="color:var(--blue);text-decoration:none;">BYF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFAQ</td>
+        <td style="padding:12px 16px;"><a href="/byf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Albert Bray airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Albert</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cet/index.html" style="color:var(--blue);text-decoration:none;">CET</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFOU</td>
+        <td style="padding:12px 16px;"><a href="/cet/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Cholet Le Pontreau airfield</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cholet</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cvf/index.html" style="color:var(--blue);text-decoration:none;">CVF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFLJ</td>
+        <td style="padding:12px 16px;"><a href="/cvf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Courchevel Altiport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Saint-Bon</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dpe/index.html" style="color:var(--blue);text-decoration:none;">DPE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFAB</td>
+        <td style="padding:12px 16px;"><a href="/dpe/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Dieppe-Saint-Aubin Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Saint-Aubin-sur-Scie</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gat/index.html" style="color:var(--blue);text-decoration:none;">GAT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFNA</td>
+        <td style="padding:12px 16px;"><a href="/gat/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Gap-Tallard Airfield</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tallard, Hautes-Alpes</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/idy/index.html" style="color:var(--blue);text-decoration:none;">IDY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFEY</td>
+        <td style="padding:12px 16px;"><a href="/idy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Île d'Yeu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Île d'Yeu</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lpy/index.html" style="color:var(--blue);text-decoration:none;">LPY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFHP</td>
+        <td style="padding:12px 16px;"><a href="/lpy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Le Puy-Loudes Airfield</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Chaspuzac, Haute-Loire</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lso/index.html" style="color:var(--blue);text-decoration:none;">LSO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFOO</td>
+        <td style="padding:12px 16px;"><a href="/lso/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Les Sables-d'Olonne Talmont Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Les Sables-d'Olonne</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ltt/index.html" style="color:var(--blue);text-decoration:none;">LTT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFTZ</td>
+        <td style="padding:12px 16px;"><a href="/ltt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">La Môle Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Saint-Tropez</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mfx/index.html" style="color:var(--blue);text-decoration:none;">MFX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFKX</td>
+        <td style="padding:12px 16px;"><a href="/mfx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Méribel Altiport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Les Allues</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mvv/index.html" style="color:var(--blue);text-decoration:none;">MVV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFHM</td>
+        <td style="padding:12px 16px;"><a href="/mvv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Megève Altiport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Megève</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ore/index.html" style="color:var(--blue);text-decoration:none;">ORE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFOZ</td>
+        <td style="padding:12px 16px;"><a href="/ore/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Orléans–Saint-Denis-de-l'Hôtel Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Saint-Denis-de-l'Hôtel, Loiret</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/oui/index.html" style="color:var(--blue);text-decoration:none;">OUI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFEC</td>
+        <td style="padding:12px 16px;"><a href="/oui/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ouessant Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ushant</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/prp/index.html" style="color:var(--blue);text-decoration:none;">PRP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFKO</td>
+        <td style="padding:12px 16px;"><a href="/prp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Propriano Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Propriano</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/scp/index.html" style="color:var(--blue);text-decoration:none;">SCP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFNC</td>
+        <td style="padding:12px 16px;"><a href="/scp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mont-Dauphin Saint-Crépin Airfield</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Saint-Crépin, Hautes-Alpes</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr></tbody>
+  </table>
+</div>
+<footer>
+  <div style="margin-bottom:10px">
+    <a href="/az.html">A–Z Index</a>
+    <a href="/countries.html">By Country</a>
+    <a href="/about.html">About</a>
+  </div>
+  <div>© 2025 airport-code.com · Data sourced from OurAirports &amp; Open-Meteo · <a href="https://ourairports.com">OurAirports</a></div>
+</footer>
+
+<script>
+(function(){
+  let db = null;
+  const input = document.getElementById('navSearchInput');
+  const results = document.getElementById('search-results');
+  if (!input) return;
+
+  async function loadDB() {
+    if (db) return;
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    const r = await fetch(root + 'airports.json');
+    db = await r.json();
+  }
+
+  input.addEventListener('focus', loadDB);
+  input.addEventListener('input', async function() {
+    const q = this.value.trim().toUpperCase();
+    if (q.length < 2) { results.style.display = 'none'; return; }
+    await loadDB();
+    const matches = db.filter(a =>
+      a.iata.startsWith(q) ||
+      a.name.toUpperCase().includes(q) ||
+      a.city.toUpperCase().includes(q)
+    ).slice(0, 7);
+    if (!matches.length) { results.style.display = 'none'; return; }
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    results.innerHTML = matches.map(a =>
+      `<a href="${root}${a.iata.toLowerCase()}/index.html">
+        <span class="sr-code">${a.iata}</span>
+        <div><div class="sr-name">${a.name}</div><div class="sr-city">${a.city}, ${a.country}</div></div>
+      </a>`
+    ).join('');
+    results.style.display = 'block';
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!input.contains(e.target) && !results.contains(e.target)) results.style.display = 'none';
+  });
+})();
+</script>
+
+</body>
+</html>

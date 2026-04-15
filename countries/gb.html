@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="site-root" content="/">
+  <title>Airports in UK | Airport Code</title>
+  <meta name="description" content="All airport codes for airports in UK. Browse IATA and ICAO codes for 98 airports.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0f1f3d;
+      --blue: #1a56db;
+      --blue-light: #e8f0fe;
+      --sky: #38bdf8;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --green: #10b981;
+    }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; zoom: 1.12; }
+    nav { background: var(--navy); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { color: #fff; font-size: 19px; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; display: flex; align-items: center; gap: 6px; line-height: 1; }
+    .nav-logo svg { flex-shrink: 0; }
+    .nav-logo span { color: var(--sky); }
+    .nav-search { display: flex; align-items: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 6px 14px; gap: 8px; width: 280px; position: relative; }
+    .nav-search input { background: none; border: none; outline: none; color: #fff; font-size: 14px; width: 100%; font-family: 'Outfit', sans-serif; }
+    .nav-search input::placeholder { color: rgba(255,255,255,0.4); }
+    #search-results { position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: #fff; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 200; overflow: hidden; display: none; }
+    #search-results a { display: flex; align-items: center; gap: 10px; padding: 10px 14px; text-decoration: none; color: var(--text); font-size: 13px; border-bottom: 1px solid var(--border); transition: background 0.15s; }
+    #search-results a:last-child { border-bottom: none; }
+    #search-results a:hover { background: var(--bg); }
+    #search-results .sr-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 12px; padding: 2px 7px; border-radius: 5px; min-width: 38px; text-align: center; }
+    #search-results .sr-name { font-weight: 600; }
+    #search-results .sr-city { color: var(--muted); font-size: 11px; }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .hero { background: linear-gradient(135deg, var(--navy) 0%, #1a3a6b 100%); color: #fff; padding: 48px 0 56px; position: relative; overflow: hidden; }
+    .hero::before { content: '✈'; position: absolute; right: -20px; top: -20px; font-size: 220px; opacity: 0.04; transform: rotate(25deg); }
+    .hero-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .breadcrumb { font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 20px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .breadcrumb a:hover { color: rgba(255,255,255,0.8); }
+    .breadcrumb span.sep { color: rgba(255,255,255,0.3); }
+    .hero-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .hero-title { display: flex; align-items: flex-start; gap: 24px; }
+    .iata-badge { background: var(--blue); border: 2px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 14px 20px; text-align: center; min-width: 100px; flex-shrink: 0; }
+    .iata-badge .code { font-size: 40px; font-weight: 800; letter-spacing: 2px; color: #fff; line-height: 1; }
+    .iata-badge .label { font-size: 10px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
+    .hero-name { padding-top: 4px; }
+    .hero-name h1 { font-size: 38px; font-weight: 800; line-height: 1.1; color: #fff; }
+    .hero-name .location { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.65); font-size: 15px; margin-top: 6px; }
+    .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+    .badge { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.3px; }
+    .badge-large { background: rgba(16,185,129,0.2); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
+    .badge-medium { background: rgba(56,189,248,0.15); color: #7dd3fc; border: 1px solid rgba(56,189,248,0.3); }
+    .badge-small { background: rgba(245,158,11,0.15); color: #fcd34d; border: 1px solid rgba(245,158,11,0.3); }
+    .hero-stats { display: flex; gap: 32px; margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
+    .hero-stat .value { font-size: 22px; font-weight: 700; color: #fff; }
+    .hero-stat .label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
+    .time-widget { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 16px 20px; text-align: center; min-width: 160px; }
+    .time-widget .time-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+    .time-widget .time-value { font-size: 28px; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+    .time-widget .time-tz { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+    .main { max-width: 1100px; margin: 0 auto; padding: 32px 24px; display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
+    @media (max-width: 768px) { .main { grid-template-columns: 1fr; } .hero-name h1 { font-size: 26px; } .nav-links { display: none; } .nav-search { width: 200px; } }
+    .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .card-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .card-header h2 { font-size: 14px; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.5px; }
+    .card-body { padding: 20px; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .info-item { padding: 14px 16px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+    .info-item:nth-child(even) { border-right: none; }
+    .info-item:nth-last-child(-n+2) { border-bottom: none; }
+    .info-item .key { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px; }
+    .info-item .val { font-size: 15px; font-weight: 600; color: var(--text); }
+    .info-item .val a { color: var(--blue); text-decoration: none; }
+    .info-item .val a:hover { text-decoration: underline; }
+    .weather-widget { display: flex; align-items: center; gap: 20px; padding: 16px; background: linear-gradient(135deg, #e0f2fe, #f0f9ff); border-radius: 10px; margin-bottom: 16px; min-height: 100px; }
+    .weather-icon { font-size: 48px; line-height: 1; }
+    .weather-main .temp { font-size: 32px; font-weight: 700; color: var(--text); }
+    .weather-main .desc { font-size: 14px; color: var(--muted); text-transform: capitalize; }
+    .weather-details { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .weather-detail { font-size: 13px; color: var(--muted); }
+    .weather-detail strong { color: var(--text); font-weight: 600; }
+    .nearby-list { list-style: none; }
+    .nearby-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .nearby-item:last-child { border-bottom: none; }
+    .nearby-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 13px; padding: 3px 8px; border-radius: 6px; min-width: 44px; text-align: center; text-decoration: none; }
+    .nearby-code:hover { background: #ccdcfb; }
+    .nearby-info { flex: 1; margin: 0 12px; }
+    .nearby-info .name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .nearby-info .city { font-size: 11px; color: var(--muted); }
+    .nearby-dist { font-size: 12px; color: var(--muted); white-space: nowrap; }
+    .carbon-form { display: flex; flex-direction: column; gap: 12px; }
+    .carbon-form label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .carbon-form input, .carbon-form select { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-family: 'Outfit', sans-serif; color: var(--text); outline: none; transition: border-color 0.2s; }
+    .carbon-form input:focus, .carbon-form select:focus { border-color: var(--blue); }
+    .carbon-btn { background: var(--blue); color: #fff; border: none; padding: 11px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Outfit', sans-serif; transition: background 0.2s; }
+    .carbon-btn:hover { background: #1447c0; }
+    .carbon-result { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px; text-align: center; display: none; }
+    .carbon-result .co2 { font-size: 24px; font-weight: 800; color: var(--green); }
+    .carbon-result .co2-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .sidebar-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .sidebar-card .card-header { padding: 14px 16px; }
+    .sidebar-card .card-body { padding: 16px; }
+    .codes-display { display: flex; gap: 12px; }
+    .code-box { flex: 1; text-align: center; padding: 16px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; }
+    .code-box .code-val { font-size: 28px; font-weight: 800; color: var(--navy); letter-spacing: 1px; }
+    .code-box .code-type { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; }
+    footer { background: var(--navy); color: rgba(255,255,255,0.5); text-align: center; padding: 24px; font-size: 13px; margin-top: 40px; }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; margin: 0 12px; }
+    footer a:hover { color: #fff; }
+
+    table { width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden; }
+    thead th { padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid var(--border);background:#f8fafc; }
+    tbody tr { border-bottom:1px solid #f5f5f5; }
+    tbody tr:last-child { border-bottom:none; }
+    tbody tr:hover { background:#fafbfc; }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/index.html" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="9" fill="#1a56db"/><path d="M24.5 8.5C25.3 9.3 25.3 10.6 24.5 11.4L19.8 16.1L22 25L19.5 27.5L16 19L11.5 23.5L12 26L10 28L8 24L4 22L6 20L8.5 20.5L13 16L5.5 12.5L8 10L17 12.2L21.6 7.5C22.4 6.7 23.7 6.7 24.5 8.5Z" fill="white"/></svg>
+    Airport<span>Code</span>
+  </a>
+  <div class="nav-search">
+    <svg width="14" height="14" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="navSearchInput" placeholder="Search airport or code…" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <div class="nav-links">
+    <a href="/az.html">A–Z</a>
+    <a href="/countries.html">By Country</a>
+  </div>
+</nav>
+<div style="max-width:1100px;margin:0 auto;padding:32px 24px">
+  <div style="margin-bottom:8px;font-size:12px;color:var(--muted)"><a href="/index.html" style="color:var(--blue);text-decoration:none">Home</a> › <a href="/countries.html" style="color:var(--blue);text-decoration:none">By Country</a> › UK</div>
+  <h1 style="font-size:28px;font-weight:800;color:var(--navy);margin-bottom:4px">🇬🇧 Airports in UK</h1>
+  <p style="color:var(--muted);margin-bottom:24px">98 airports with IATA codes</p>
+  <table>
+    <thead><tr><th>IATA</th><th>ICAO</th><th>Airport Name</th><th>City</th><th>Type</th></tr></thead>
+    <tbody>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/abz/index.html" style="color:var(--blue);text-decoration:none;">ABZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGPD</td>
+        <td style="padding:12px 16px;"><a href="/abz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Aberdeen International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Aberdeen</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bfs/index.html" style="color:var(--blue);text-decoration:none;">BFS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGAA</td>
+        <td style="padding:12px 16px;"><a href="/bfs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Belfast International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Belfast</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bhx/index.html" style="color:var(--blue);text-decoration:none;">BHX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGBB</td>
+        <td style="padding:12px 16px;"><a href="/bhx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Birmingham Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Birmingham, West Midlands</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/brs/index.html" style="color:var(--blue);text-decoration:none;">BRS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGGD</td>
+        <td style="padding:12px 16px;"><a href="/brs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bristol Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bristol</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cwl/index.html" style="color:var(--blue);text-decoration:none;">CWL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGFF</td>
+        <td style="padding:12px 16px;"><a href="/cwl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Cardiff International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cardiff</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/edi/index.html" style="color:var(--blue);text-decoration:none;">EDI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGPH</td>
+        <td style="padding:12px 16px;"><a href="/edi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Edinburgh Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Edinburgh</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ema/index.html" style="color:var(--blue);text-decoration:none;">EMA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGNX</td>
+        <td style="padding:12px 16px;"><a href="/ema/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">East Midlands Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nottingham, Leicestershire</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gla/index.html" style="color:var(--blue);text-decoration:none;">GLA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGPF</td>
+        <td style="padding:12px 16px;"><a href="/gla/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Glasgow Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Glasgow</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lba/index.html" style="color:var(--blue);text-decoration:none;">LBA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGNM</td>
+        <td style="padding:12px 16px;"><a href="/lba/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Leeds Bradford Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Leeds, West Yorkshire</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lgw/index.html" style="color:var(--blue);text-decoration:none;">LGW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGKK</td>
+        <td style="padding:12px 16px;"><a href="/lgw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">London Gatwick Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">London</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lhr/index.html" style="color:var(--blue);text-decoration:none;">LHR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGLL</td>
+        <td style="padding:12px 16px;"><a href="/lhr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">London Heathrow Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">London</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lpl/index.html" style="color:var(--blue);text-decoration:none;">LPL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGGP</td>
+        <td style="padding:12px 16px;"><a href="/lpl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Liverpool John Lennon Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Liverpool</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ltn/index.html" style="color:var(--blue);text-decoration:none;">LTN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGGW</td>
+        <td style="padding:12px 16px;"><a href="/ltn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">London Luton Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Luton, Luton</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/man/index.html" style="color:var(--blue);text-decoration:none;">MAN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGCC</td>
+        <td style="padding:12px 16px;"><a href="/man/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Manchester Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Manchester, Greater Manchester</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ncl/index.html" style="color:var(--blue);text-decoration:none;">NCL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGNT</td>
+        <td style="padding:12px 16px;"><a href="/ncl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Newcastle International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Newcastle upon Tyne, Tyne and Wear</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pik/index.html" style="color:var(--blue);text-decoration:none;">PIK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGPK</td>
+        <td style="padding:12px 16px;"><a href="/pik/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Glasgow Prestwick Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Prestwick, South Ayrshire</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/stn/index.html" style="color:var(--blue);text-decoration:none;">STN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGSS</td>
+        <td style="padding:12px 16px;"><a href="/stn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">London Stansted Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">London, Essex</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/adx/index.html" style="color:var(--blue);text-decoration:none;">ADX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGQL</td>
+        <td style="padding:12px 16px;"><a href="/adx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Leuchars Station Airfield</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Leuchars, Fife</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bbs/index.html" style="color:var(--blue);text-decoration:none;">BBS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGLK</td>
+        <td style="padding:12px 16px;"><a href="/bbs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Blackbushe Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Camberley, Surrey</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/beb/index.html" style="color:var(--blue);text-decoration:none;">BEB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGPL</td>
+        <td style="padding:12px 16px;"><a href="/beb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Benbecula Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Balivanich</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/beq/index.html" style="color:var(--blue);text-decoration:none;">BEQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGXH</td>
+        <td style="padding:12px 16px;"><a href="/beq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">RAF Honington</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bury Saint Edmunds, Suffolk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bex/index.html" style="color:var(--blue);text-decoration:none;">BEX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGUB</td>
+        <td style="padding:12px 16px;"><a href="/bex/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">RAF Benson</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wallingford, Oxfordshire</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bhd/index.html" style="color:var(--blue);text-decoration:none;">BHD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGAC</td>
+        <td style="padding:12px 16px;"><a href="/bhd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">George Best Belfast City Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Belfast</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/blk/index.html" style="color:var(--blue);text-decoration:none;">BLK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGNH</td>
+        <td style="padding:12px 16px;"><a href="/blk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Blackpool Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Blackpool</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/boh/index.html" style="color:var(--blue);text-decoration:none;">BOH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGHH</td>
+        <td style="padding:12px 16px;"><a href="/boh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bournemouth Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bournemouth</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bqh/index.html" style="color:var(--blue);text-decoration:none;">BQH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGKB</td>
+        <td style="padding:12px 16px;"><a href="/bqh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">London Biggin Hill Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">London</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/brr/index.html" style="color:var(--blue);text-decoration:none;">BRR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGPR</td>
+        <td style="padding:12px 16px;"><a href="/brr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Barra Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Eoligarry</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bwf/index.html" style="color:var(--blue);text-decoration:none;">BWF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGNL</td>
+        <td style="padding:12px 16px;"><a href="/bwf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Barrow Walney Island Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Barrow-in-Furness</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bzz/index.html" style="color:var(--blue);text-decoration:none;">BZZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGVN</td>
+        <td style="padding:12px 16px;"><a href="/bzz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">RAF Brize Norton</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Carterton, Oxfordshire</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cal/index.html" style="color:var(--blue);text-decoration:none;">CAL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGEC</td>
+        <td style="padding:12px 16px;"><a href="/cal/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Campbeltown Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Campbeltown</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cax/index.html" style="color:var(--blue);text-decoration:none;">CAX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGNC</td>
+        <td style="padding:12px 16px;"><a href="/cax/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Carlisle Lake District Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Carlisle, Cumbria</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cbg/index.html" style="color:var(--blue);text-decoration:none;">CBG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGSC</td>
+        <td style="padding:12px 16px;"><a href="/cbg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Cambridge City Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cambridge, Cambridgeshire</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ceg/index.html" style="color:var(--blue);text-decoration:none;">CEG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGNR</td>
+        <td style="padding:12px 16px;"><a href="/ceg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Hawarden Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Broughton</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cvt/index.html" style="color:var(--blue);text-decoration:none;">CVT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGBE</td>
+        <td style="padding:12px 16px;"><a href="/cvt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Coventry Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Coventry, West Midlands</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dnd/index.html" style="color:var(--blue);text-decoration:none;">DND</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGPN</td>
+        <td style="padding:12px 16px;"><a href="/dnd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Dundee Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Dundee</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/enk/index.html" style="color:var(--blue);text-decoration:none;">ENK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGAB</td>
+        <td style="padding:12px 16px;"><a href="/enk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Enniskillen/St Angelo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Enniskillen, Fermanagh and Omagh</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eoi/index.html" style="color:var(--blue);text-decoration:none;">EOI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGED</td>
+        <td style="padding:12px 16px;"><a href="/eoi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Eday Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Eday</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/esh/index.html" style="color:var(--blue);text-decoration:none;">ESH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGKA</td>
+        <td style="padding:12px 16px;"><a href="/esh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Brighton City Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Brighton, East Sussex</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ext/index.html" style="color:var(--blue);text-decoration:none;">EXT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGTE</td>
+        <td style="padding:12px 16px;"><a href="/ext/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Exeter International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Exeter, Devon</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fab/index.html" style="color:var(--blue);text-decoration:none;">FAB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGLF</td>
+        <td style="padding:12px 16px;"><a href="/fab/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Farnborough Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Farnborough, Hampshire</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ffd/index.html" style="color:var(--blue);text-decoration:none;">FFD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGVA</td>
+        <td style="padding:12px 16px;"><a href="/ffd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">RAF Fairford</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fairford, Gloucestershire</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/glo/index.html" style="color:var(--blue);text-decoration:none;">GLO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGBJ</td>
+        <td style="padding:12px 16px;"><a href="/glo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Gloucestershire Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Staverton, Gloucestershire</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/haw/index.html" style="color:var(--blue);text-decoration:none;">HAW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGFE</td>
+        <td style="padding:12px 16px;"><a href="/haw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Haverfordwest Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Haverfordwest</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/huy/index.html" style="color:var(--blue);text-decoration:none;">HUY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGNJ</td>
+        <td style="padding:12px 16px;"><a href="/huy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Humberside Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Grimsby, Lincolnshire</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ily/index.html" style="color:var(--blue);text-decoration:none;">ILY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGPI</td>
+        <td style="padding:12px 16px;"><a href="/ily/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Islay Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Isle of Islay, Argyll and Bute</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/inv/index.html" style="color:var(--blue);text-decoration:none;">INV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGPE</td>
+        <td style="padding:12px 16px;"><a href="/inv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Inverness Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Inverness</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/knf/index.html" style="color:var(--blue);text-decoration:none;">KNF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGYM</td>
+        <td style="padding:12px 16px;"><a href="/knf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">RAF Marham</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">King's Lynn, Norfolk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/koi/index.html" style="color:var(--blue);text-decoration:none;">KOI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGPA</td>
+        <td style="padding:12px 16px;"><a href="/koi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kirkwall Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kirkwall, Orkney Islands</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lcy/index.html" style="color:var(--blue);text-decoration:none;">LCY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGLC</td>
+        <td style="padding:12px 16px;"><a href="/lcy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">London City Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">London</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ldy/index.html" style="color:var(--blue);text-decoration:none;">LDY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGAE</td>
+        <td style="padding:12px 16px;"><a href="/ldy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">City of Derry Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Derry, Derry and Strabane</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lkz/index.html" style="color:var(--blue);text-decoration:none;">LKZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGUL</td>
+        <td style="padding:12px 16px;"><a href="/lkz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">RAF Lakenheath</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Brandon, Suffolk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lmo/index.html" style="color:var(--blue);text-decoration:none;">LMO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGQS</td>
+        <td style="padding:12px 16px;"><a href="/lmo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">RAF Lossiemouth</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lossiemouth, Moray</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lsi/index.html" style="color:var(--blue);text-decoration:none;">LSI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGPB</td>
+        <td style="padding:12px 16px;"><a href="/lsi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sumburgh Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lerwick, Shetland</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lyx/index.html" style="color:var(--blue);text-decoration:none;">LYX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGMD</td>
+        <td style="padding:12px 16px;"><a href="/lyx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Lydd London Ashford Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Romney Marsh, Kent</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mhz/index.html" style="color:var(--blue);text-decoration:none;">MHZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGUN</td>
+        <td style="padding:12px 16px;"><a href="/mhz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">RAF Mildenhall</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bury Saint Edmunds, Suffolk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mme/index.html" style="color:var(--blue);text-decoration:none;">MME</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGNV</td>
+        <td style="padding:12px 16px;"><a href="/mme/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Teesside International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Darlington, Durham</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nht/index.html" style="color:var(--blue);text-decoration:none;">NHT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGWU</td>
+        <td style="padding:12px 16px;"><a href="/nht/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">RAF Northolt</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Northolt, Greater London</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nqt/index.html" style="color:var(--blue);text-decoration:none;">NQT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGBN</td>
+        <td style="padding:12px 16px;"><a href="/nqt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nottingham City Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nottingham, Nottinghamshire</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nqy/index.html" style="color:var(--blue);text-decoration:none;">NQY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGHQ</td>
+        <td style="padding:12px 16px;"><a href="/nqy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Cornwall Airport Newquay</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Newquay</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nwi/index.html" style="color:var(--blue);text-decoration:none;">NWI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGSH</td>
+        <td style="padding:12px 16px;"><a href="/nwi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Norwich Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Norwich, Norfolk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/odh/index.html" style="color:var(--blue);text-decoration:none;">ODH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGVO</td>
+        <td style="padding:12px 16px;"><a href="/odh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">RAF Odiham</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Hook, Hampshire</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/oxf/index.html" style="color:var(--blue);text-decoration:none;">OXF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGTK</td>
+        <td style="padding:12px 16px;"><a href="/oxf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">London Oxford Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kidlington, Oxfordshire</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/qcy/index.html" style="color:var(--blue);text-decoration:none;">QCY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGXC</td>
+        <td style="padding:12px 16px;"><a href="/qcy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">RAF Coningsby</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lincoln, Lincolnshire</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sen/index.html" style="color:var(--blue);text-decoration:none;">SEN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGMC</td>
+        <td style="padding:12px 16px;"><a href="/sen/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">London Southend Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Southend-on-Sea, Essex</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sou/index.html" style="color:var(--blue);text-decoration:none;">SOU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGHI</td>
+        <td style="padding:12px 16px;"><a href="/sou/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Southampton Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Southampton</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sws/index.html" style="color:var(--blue);text-decoration:none;">SWS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGFH</td>
+        <td style="padding:12px 16px;"><a href="/sws/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Swansea Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Swansea</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/syy/index.html" style="color:var(--blue);text-decoration:none;">SYY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGPO</td>
+        <td style="padding:12px 16px;"><a href="/syy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Stornoway Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Stornoway, Western Isles</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tre/index.html" style="color:var(--blue);text-decoration:none;">TRE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGPU</td>
+        <td style="padding:12px 16px;"><a href="/tre/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tiree Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Balemartine, Argyll and Bute</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vly/index.html" style="color:var(--blue);text-decoration:none;">VLY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGOV</td>
+        <td style="padding:12px 16px;"><a href="/vly/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Anglesey Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Angelsey</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wic/index.html" style="color:var(--blue);text-decoration:none;">WIC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGPC</td>
+        <td style="padding:12px 16px;"><a href="/wic/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wick John O'Groats Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wick</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wrt/index.html" style="color:var(--blue);text-decoration:none;">WRT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGNO</td>
+        <td style="padding:12px 16px;"><a href="/wrt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Warton Aerodrome</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Warton</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wtn/index.html" style="color:var(--blue);text-decoration:none;">WTN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGXW</td>
+        <td style="padding:12px 16px;"><a href="/wtn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">RAF Waddington</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lincoln, Lincolnshire</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yeo/index.html" style="color:var(--blue);text-decoration:none;">YEO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGDY</td>
+        <td style="padding:12px 16px;"><a href="/yeo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">RNAS Yeovilton</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yeovil, Somerset</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bbp/index.html" style="color:var(--blue);text-decoration:none;">BBP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGHJ</td>
+        <td style="padding:12px 16px;"><a href="/bbp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bembridge Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bembridge, Isle of Wight</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/col/index.html" style="color:var(--blue);text-decoration:none;">COL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/col/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Coll Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Coll Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/csa/index.html" style="color:var(--blue);text-decoration:none;">CSA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/csa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Colonsay Airstrip</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Colonsay</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fie/index.html" style="color:var(--blue);text-decoration:none;">FIE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGEF</td>
+        <td style="padding:12px 16px;"><a href="/fie/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fair Isle Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fair Isle</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/flh/index.html" style="color:var(--blue);text-decoration:none;">FLH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/flh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Flotta Isle Airstrip</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Flotta Isle</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/foa/index.html" style="color:var(--blue);text-decoration:none;">FOA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/foa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Foula Airfield</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Foula</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gba/index.html" style="color:var(--blue);text-decoration:none;">GBA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGBP</td>
+        <td style="padding:12px 16px;"><a href="/gba/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Cotswold Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cirencester, Gloucestershire</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hyc/index.html" style="color:var(--blue);text-decoration:none;">HYC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGTB</td>
+        <td style="padding:12px 16px;"><a href="/hyc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wycombe Air Park</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Marlow, Buckinghamshire</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/isc/index.html" style="color:var(--blue);text-decoration:none;">ISC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGHE</td>
+        <td style="padding:12px 16px;"><a href="/isc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">St. Mary's Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">St. Mary's, Isles of Scilly</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/leq/index.html" style="color:var(--blue);text-decoration:none;">LEQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGHC</td>
+        <td style="padding:12px 16px;"><a href="/leq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Land's End Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Land's End, Cornwall</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lwk/index.html" style="color:var(--blue);text-decoration:none;">LWK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGET</td>
+        <td style="padding:12px 16px;"><a href="/lwk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Lerwick / Tingwall Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lerwick, Shetland Islands</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ndy/index.html" style="color:var(--blue);text-decoration:none;">NDY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGES</td>
+        <td style="padding:12px 16px;"><a href="/ndy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sanday Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sanday</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nrl/index.html" style="color:var(--blue);text-decoration:none;">NRL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGEN</td>
+        <td style="padding:12px 16px;"><a href="/nrl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">North Ronaldsay Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">North Ronaldsay</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/obn/index.html" style="color:var(--blue);text-decoration:none;">OBN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGEO</td>
+        <td style="padding:12px 16px;"><a href="/obn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Oban Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">North Connel</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/orm/index.html" style="color:var(--blue);text-decoration:none;">ORM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGBK</td>
+        <td style="padding:12px 16px;"><a href="/orm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sywell Aerodrome</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Northampton, Northamptonshire</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ppw/index.html" style="color:var(--blue);text-decoration:none;">PPW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGEP</td>
+        <td style="padding:12px 16px;"><a href="/ppw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Papa Westray Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Papa Westray, Orkney Islands</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/psl/index.html" style="color:var(--blue);text-decoration:none;">PSL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGPT</td>
+        <td style="padding:12px 16px;"><a href="/psl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Perth/Scone Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Perth, Perth and Kinross</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/qug/index.html" style="color:var(--blue);text-decoration:none;">QUG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGHR</td>
+        <td style="padding:12px 16px;"><a href="/qug/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Goodwood Aerodrome</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Chichester, West Sussex</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/quy/index.html" style="color:var(--blue);text-decoration:none;">QUY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGUY</td>
+        <td style="padding:12px 16px;"><a href="/quy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">RAF Wyton</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">St Ives, Cambridgeshire</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rcs/index.html" style="color:var(--blue);text-decoration:none;">RCS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGTO</td>
+        <td style="padding:12px 16px;"><a href="/rcs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rochester Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rochester, Kent</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/skl/index.html" style="color:var(--blue);text-decoration:none;">SKL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGEI</td>
+        <td style="padding:12px 16px;"><a href="/skl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Broadford Airstrip</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ashaig, Highland</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/soy/index.html" style="color:var(--blue);text-decoration:none;">SOY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGER</td>
+        <td style="padding:12px 16px;"><a href="/soy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Stronsay Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Stronsay</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/upv/index.html" style="color:var(--blue);text-decoration:none;">UPV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGDJ</td>
+        <td style="padding:12px 16px;"><a href="/upv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Upavon Aerodrome</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Pewsey, Wiltshire</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/whs/index.html" style="color:var(--blue);text-decoration:none;">WHS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGEH</td>
+        <td style="padding:12px 16px;"><a href="/whs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Whalsay Airstrip</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Whalsay, Shetlands</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wry/index.html" style="color:var(--blue);text-decoration:none;">WRY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGEW</td>
+        <td style="padding:12px 16px;"><a href="/wry/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Westray Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Westray, Orkney Islands</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr></tbody>
+  </table>
+</div>
+<footer>
+  <div style="margin-bottom:10px">
+    <a href="/az.html">A–Z Index</a>
+    <a href="/countries.html">By Country</a>
+    <a href="/about.html">About</a>
+  </div>
+  <div>© 2025 airport-code.com · Data sourced from OurAirports &amp; Open-Meteo · <a href="https://ourairports.com">OurAirports</a></div>
+</footer>
+
+<script>
+(function(){
+  let db = null;
+  const input = document.getElementById('navSearchInput');
+  const results = document.getElementById('search-results');
+  if (!input) return;
+
+  async function loadDB() {
+    if (db) return;
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    const r = await fetch(root + 'airports.json');
+    db = await r.json();
+  }
+
+  input.addEventListener('focus', loadDB);
+  input.addEventListener('input', async function() {
+    const q = this.value.trim().toUpperCase();
+    if (q.length < 2) { results.style.display = 'none'; return; }
+    await loadDB();
+    const matches = db.filter(a =>
+      a.iata.startsWith(q) ||
+      a.name.toUpperCase().includes(q) ||
+      a.city.toUpperCase().includes(q)
+    ).slice(0, 7);
+    if (!matches.length) { results.style.display = 'none'; return; }
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    results.innerHTML = matches.map(a =>
+      `<a href="${root}${a.iata.toLowerCase()}/index.html">
+        <span class="sr-code">${a.iata}</span>
+        <div><div class="sr-name">${a.name}</div><div class="sr-city">${a.city}, ${a.country}</div></div>
+      </a>`
+    ).join('');
+    results.style.display = 'block';
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!input.contains(e.target) && !results.contains(e.target)) results.style.display = 'none';
+  });
+})();
+</script>
+
+</body>
+</html>

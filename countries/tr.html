@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="site-root" content="/">
+  <title>Airports in Turkiye | Airport Code</title>
+  <meta name="description" content="All airport codes for airports in Turkiye. Browse IATA and ICAO codes for 66 airports.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0f1f3d;
+      --blue: #1a56db;
+      --blue-light: #e8f0fe;
+      --sky: #38bdf8;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --green: #10b981;
+    }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; zoom: 1.12; }
+    nav { background: var(--navy); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { color: #fff; font-size: 19px; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; display: flex; align-items: center; gap: 6px; line-height: 1; }
+    .nav-logo svg { flex-shrink: 0; }
+    .nav-logo span { color: var(--sky); }
+    .nav-search { display: flex; align-items: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 6px 14px; gap: 8px; width: 280px; position: relative; }
+    .nav-search input { background: none; border: none; outline: none; color: #fff; font-size: 14px; width: 100%; font-family: 'Outfit', sans-serif; }
+    .nav-search input::placeholder { color: rgba(255,255,255,0.4); }
+    #search-results { position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: #fff; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 200; overflow: hidden; display: none; }
+    #search-results a { display: flex; align-items: center; gap: 10px; padding: 10px 14px; text-decoration: none; color: var(--text); font-size: 13px; border-bottom: 1px solid var(--border); transition: background 0.15s; }
+    #search-results a:last-child { border-bottom: none; }
+    #search-results a:hover { background: var(--bg); }
+    #search-results .sr-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 12px; padding: 2px 7px; border-radius: 5px; min-width: 38px; text-align: center; }
+    #search-results .sr-name { font-weight: 600; }
+    #search-results .sr-city { color: var(--muted); font-size: 11px; }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .hero { background: linear-gradient(135deg, var(--navy) 0%, #1a3a6b 100%); color: #fff; padding: 48px 0 56px; position: relative; overflow: hidden; }
+    .hero::before { content: '✈'; position: absolute; right: -20px; top: -20px; font-size: 220px; opacity: 0.04; transform: rotate(25deg); }
+    .hero-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .breadcrumb { font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 20px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .breadcrumb a:hover { color: rgba(255,255,255,0.8); }
+    .breadcrumb span.sep { color: rgba(255,255,255,0.3); }
+    .hero-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .hero-title { display: flex; align-items: flex-start; gap: 24px; }
+    .iata-badge { background: var(--blue); border: 2px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 14px 20px; text-align: center; min-width: 100px; flex-shrink: 0; }
+    .iata-badge .code { font-size: 40px; font-weight: 800; letter-spacing: 2px; color: #fff; line-height: 1; }
+    .iata-badge .label { font-size: 10px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
+    .hero-name { padding-top: 4px; }
+    .hero-name h1 { font-size: 38px; font-weight: 800; line-height: 1.1; color: #fff; }
+    .hero-name .location { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.65); font-size: 15px; margin-top: 6px; }
+    .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+    .badge { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.3px; }
+    .badge-large { background: rgba(16,185,129,0.2); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
+    .badge-medium { background: rgba(56,189,248,0.15); color: #7dd3fc; border: 1px solid rgba(56,189,248,0.3); }
+    .badge-small { background: rgba(245,158,11,0.15); color: #fcd34d; border: 1px solid rgba(245,158,11,0.3); }
+    .hero-stats { display: flex; gap: 32px; margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
+    .hero-stat .value { font-size: 22px; font-weight: 700; color: #fff; }
+    .hero-stat .label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
+    .time-widget { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 16px 20px; text-align: center; min-width: 160px; }
+    .time-widget .time-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+    .time-widget .time-value { font-size: 28px; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+    .time-widget .time-tz { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+    .main { max-width: 1100px; margin: 0 auto; padding: 32px 24px; display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
+    @media (max-width: 768px) { .main { grid-template-columns: 1fr; } .hero-name h1 { font-size: 26px; } .nav-links { display: none; } .nav-search { width: 200px; } }
+    .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .card-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .card-header h2 { font-size: 14px; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.5px; }
+    .card-body { padding: 20px; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .info-item { padding: 14px 16px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+    .info-item:nth-child(even) { border-right: none; }
+    .info-item:nth-last-child(-n+2) { border-bottom: none; }
+    .info-item .key { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px; }
+    .info-item .val { font-size: 15px; font-weight: 600; color: var(--text); }
+    .info-item .val a { color: var(--blue); text-decoration: none; }
+    .info-item .val a:hover { text-decoration: underline; }
+    .weather-widget { display: flex; align-items: center; gap: 20px; padding: 16px; background: linear-gradient(135deg, #e0f2fe, #f0f9ff); border-radius: 10px; margin-bottom: 16px; min-height: 100px; }
+    .weather-icon { font-size: 48px; line-height: 1; }
+    .weather-main .temp { font-size: 32px; font-weight: 700; color: var(--text); }
+    .weather-main .desc { font-size: 14px; color: var(--muted); text-transform: capitalize; }
+    .weather-details { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .weather-detail { font-size: 13px; color: var(--muted); }
+    .weather-detail strong { color: var(--text); font-weight: 600; }
+    .nearby-list { list-style: none; }
+    .nearby-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .nearby-item:last-child { border-bottom: none; }
+    .nearby-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 13px; padding: 3px 8px; border-radius: 6px; min-width: 44px; text-align: center; text-decoration: none; }
+    .nearby-code:hover { background: #ccdcfb; }
+    .nearby-info { flex: 1; margin: 0 12px; }
+    .nearby-info .name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .nearby-info .city { font-size: 11px; color: var(--muted); }
+    .nearby-dist { font-size: 12px; color: var(--muted); white-space: nowrap; }
+    .carbon-form { display: flex; flex-direction: column; gap: 12px; }
+    .carbon-form label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .carbon-form input, .carbon-form select { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-family: 'Outfit', sans-serif; color: var(--text); outline: none; transition: border-color 0.2s; }
+    .carbon-form input:focus, .carbon-form select:focus { border-color: var(--blue); }
+    .carbon-btn { background: var(--blue); color: #fff; border: none; padding: 11px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Outfit', sans-serif; transition: background 0.2s; }
+    .carbon-btn:hover { background: #1447c0; }
+    .carbon-result { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px; text-align: center; display: none; }
+    .carbon-result .co2 { font-size: 24px; font-weight: 800; color: var(--green); }
+    .carbon-result .co2-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .sidebar-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .sidebar-card .card-header { padding: 14px 16px; }
+    .sidebar-card .card-body { padding: 16px; }
+    .codes-display { display: flex; gap: 12px; }
+    .code-box { flex: 1; text-align: center; padding: 16px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; }
+    .code-box .code-val { font-size: 28px; font-weight: 800; color: var(--navy); letter-spacing: 1px; }
+    .code-box .code-type { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; }
+    footer { background: var(--navy); color: rgba(255,255,255,0.5); text-align: center; padding: 24px; font-size: 13px; margin-top: 40px; }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; margin: 0 12px; }
+    footer a:hover { color: #fff; }
+
+    table { width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden; }
+    thead th { padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid var(--border);background:#f8fafc; }
+    tbody tr { border-bottom:1px solid #f5f5f5; }
+    tbody tr:last-child { border-bottom:none; }
+    tbody tr:hover { background:#fafbfc; }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/index.html" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="9" fill="#1a56db"/><path d="M24.5 8.5C25.3 9.3 25.3 10.6 24.5 11.4L19.8 16.1L22 25L19.5 27.5L16 19L11.5 23.5L12 26L10 28L8 24L4 22L6 20L8.5 20.5L13 16L5.5 12.5L8 10L17 12.2L21.6 7.5C22.4 6.7 23.7 6.7 24.5 8.5Z" fill="white"/></svg>
+    Airport<span>Code</span>
+  </a>
+  <div class="nav-search">
+    <svg width="14" height="14" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="navSearchInput" placeholder="Search airport or code…" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <div class="nav-links">
+    <a href="/az.html">A–Z</a>
+    <a href="/countries.html">By Country</a>
+  </div>
+</nav>
+<div style="max-width:1100px;margin:0 auto;padding:32px 24px">
+  <div style="margin-bottom:8px;font-size:12px;color:var(--muted)"><a href="/index.html" style="color:var(--blue);text-decoration:none">Home</a> › <a href="/countries.html" style="color:var(--blue);text-decoration:none">By Country</a> › Turkiye</div>
+  <h1 style="font-size:28px;font-weight:800;color:var(--navy);margin-bottom:4px">🇹🇷 Airports in Turkiye</h1>
+  <p style="color:var(--muted);margin-bottom:24px">66 airports with IATA codes</p>
+  <table>
+    <thead><tr><th>IATA</th><th>ICAO</th><th>Airport Name</th><th>City</th><th>Type</th></tr></thead>
+    <tbody>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ada/index.html" style="color:var(--blue);text-decoration:none;">ADA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTAF</td>
+        <td style="padding:12px 16px;"><a href="/ada/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Adana Şakirpaşa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Seyhan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/adb/index.html" style="color:var(--blue);text-decoration:none;">ADB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTBJ</td>
+        <td style="padding:12px 16px;"><a href="/adb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Adnan Menderes International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Gaziemir</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/aoe/index.html" style="color:var(--blue);text-decoration:none;">AOE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTBY</td>
+        <td style="padding:12px 16px;"><a href="/aoe/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Hasan Polatkan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Eskişehir</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/asr/index.html" style="color:var(--blue);text-decoration:none;">ASR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTAU</td>
+        <td style="padding:12px 16px;"><a href="/asr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kayseri Erkilet International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kayseri</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ayt/index.html" style="color:var(--blue);text-decoration:none;">AYT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTAI</td>
+        <td style="padding:12px 16px;"><a href="/ayt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Antalya International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Antalya</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bjv/index.html" style="color:var(--blue);text-decoration:none;">BJV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTFE</td>
+        <td style="padding:12px 16px;"><a href="/bjv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Milas Bodrum International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bodrum</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cov/index.html" style="color:var(--blue);text-decoration:none;">COV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTDB</td>
+        <td style="padding:12px 16px;"><a href="/cov/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Çukurova International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tarsus</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dlm/index.html" style="color:var(--blue);text-decoration:none;">DLM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTBS</td>
+        <td style="padding:12px 16px;"><a href="/dlm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Dalaman International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Dalaman</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/edo/index.html" style="color:var(--blue);text-decoration:none;">EDO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTFD</td>
+        <td style="padding:12px 16px;"><a href="/edo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Balıkesir Koca Seyit Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Edremit</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/esb/index.html" style="color:var(--blue);text-decoration:none;">ESB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTAC</td>
+        <td style="padding:12px 16px;"><a href="/esb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Esenboğa International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ankara</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gny/index.html" style="color:var(--blue);text-decoration:none;">GNY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTCS</td>
+        <td style="padding:12px 16px;"><a href="/gny/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Şanlıurfa GAP Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Şanlıurfa</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gzt/index.html" style="color:var(--blue);text-decoration:none;">GZT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTAJ</td>
+        <td style="padding:12px 16px;"><a href="/gzt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Gaziantep Oğuzeli International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Gaziantep</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/isl/index.html" style="color:var(--blue);text-decoration:none;">ISL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTBA</td>
+        <td style="padding:12px 16px;"><a href="/isl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">İstanbul Atatürk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Istanbul(Bakırköy)</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ist/index.html" style="color:var(--blue);text-decoration:none;">IST</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTFM</td>
+        <td style="padding:12px 16px;"><a href="/ist/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">İstanbul Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Istanbul</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kya/index.html" style="color:var(--blue);text-decoration:none;">KYA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTAN</td>
+        <td style="padding:12px 16px;"><a href="/kya/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Konya Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Konya</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nav/index.html" style="color:var(--blue);text-decoration:none;">NAV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTAZ</td>
+        <td style="padding:12px 16px;"><a href="/nav/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nevşehir Kapadokya Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nevşehir</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rzv/index.html" style="color:var(--blue);text-decoration:none;">RZV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTFO</td>
+        <td style="padding:12px 16px;"><a href="/rzv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rize–Artvin Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rize</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/saw/index.html" style="color:var(--blue);text-decoration:none;">SAW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTFJ</td>
+        <td style="padding:12px 16px;"><a href="/saw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Istanbul Sabiha Gökçen International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Pendik, Istanbul</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/adf/index.html" style="color:var(--blue);text-decoration:none;">ADF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTCP</td>
+        <td style="padding:12px 16px;"><a href="/adf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Adıyaman Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Adıyaman</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/afy/index.html" style="color:var(--blue);text-decoration:none;">AFY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTAH</td>
+        <td style="padding:12px 16px;"><a href="/afy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Afyon Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Afyonkarahisar</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/aji/index.html" style="color:var(--blue);text-decoration:none;">AJI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTCO</td>
+        <td style="padding:12px 16px;"><a href="/aji/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ağrı Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ağrı</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ank/index.html" style="color:var(--blue);text-decoration:none;">ANK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTAD</td>
+        <td style="padding:12px 16px;"><a href="/ank/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Etimesgut Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ankara</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bal/index.html" style="color:var(--blue);text-decoration:none;">BAL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTCJ</td>
+        <td style="padding:12px 16px;"><a href="/bal/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Batman Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Batman</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bdm/index.html" style="color:var(--blue);text-decoration:none;">BDM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTBG</td>
+        <td style="padding:12px 16px;"><a href="/bdm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bandırma Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bandırma</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bzi/index.html" style="color:var(--blue);text-decoration:none;">BZI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTBF</td>
+        <td style="padding:12px 16px;"><a href="/bzi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Balıkesir Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Balıkesir</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ckz/index.html" style="color:var(--blue);text-decoration:none;">CKZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTBH</td>
+        <td style="padding:12px 16px;"><a href="/ckz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Çanakkale Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Çanakkale</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/diy/index.html" style="color:var(--blue);text-decoration:none;">DIY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTCC</td>
+        <td style="padding:12px 16px;"><a href="/diy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Diyarbakır Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Diyarbakır</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dnz/index.html" style="color:var(--blue);text-decoration:none;">DNZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTAY</td>
+        <td style="padding:12px 16px;"><a href="/dnz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Çardak Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Denizli</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/erc/index.html" style="color:var(--blue);text-decoration:none;">ERC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTCD</td>
+        <td style="padding:12px 16px;"><a href="/erc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Erzincan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Erzincan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/erz/index.html" style="color:var(--blue);text-decoration:none;">ERZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTCE</td>
+        <td style="padding:12px 16px;"><a href="/erz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Erzurum International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Erzurum</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/esk/index.html" style="color:var(--blue);text-decoration:none;">ESK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTBI</td>
+        <td style="padding:12px 16px;"><a href="/esk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Eskişehir Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Eskişehir</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ezs/index.html" style="color:var(--blue);text-decoration:none;">EZS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTCA</td>
+        <td style="padding:12px 16px;"><a href="/ezs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Elazığ Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Elazığ</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gzp/index.html" style="color:var(--blue);text-decoration:none;">GZP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTFG</td>
+        <td style="padding:12px 16px;"><a href="/gzp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Gazipaşa-Alanya Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Gazipaşa</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hty/index.html" style="color:var(--blue);text-decoration:none;">HTY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTDA</td>
+        <td style="padding:12px 16px;"><a href="/hty/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Hatay Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Antakya</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/igd/index.html" style="color:var(--blue);text-decoration:none;">IGD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTCT</td>
+        <td style="padding:12px 16px;"><a href="/igd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Iğdır Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Iğdır</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/igl/index.html" style="color:var(--blue);text-decoration:none;">IGL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/igl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Çiğli Airbase</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Çiğli</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ise/index.html" style="color:var(--blue);text-decoration:none;">ISE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTFC</td>
+        <td style="padding:12px 16px;"><a href="/ise/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Süleyman Demirel International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Isparta</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kcm/index.html" style="color:var(--blue);text-decoration:none;">KCM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTCN</td>
+        <td style="padding:12px 16px;"><a href="/kcm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kahramanmaraş Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kahramanmaraş</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kco/index.html" style="color:var(--blue);text-decoration:none;">KCO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTBQ</td>
+        <td style="padding:12px 16px;"><a href="/kco/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Cengiz Topel Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kartepe</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kfs/index.html" style="color:var(--blue);text-decoration:none;">KFS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTAL</td>
+        <td style="padding:12px 16px;"><a href="/kfs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kastamonu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kastamonu</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ksy/index.html" style="color:var(--blue);text-decoration:none;">KSY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTCF</td>
+        <td style="padding:12px 16px;"><a href="/ksy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kars Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kars</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mlx/index.html" style="color:var(--blue);text-decoration:none;">MLX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTAT</td>
+        <td style="padding:12px 16px;"><a href="/mlx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Malatya Erhaç Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Malatya</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mqm/index.html" style="color:var(--blue);text-decoration:none;">MQM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTCR</td>
+        <td style="padding:12px 16px;"><a href="/mqm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mardin Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mardin</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/msr/index.html" style="color:var(--blue);text-decoration:none;">MSR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTCK</td>
+        <td style="padding:12px 16px;"><a href="/msr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Muş Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Muş</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nkt/index.html" style="color:var(--blue);text-decoration:none;">NKT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTCV</td>
+        <td style="padding:12px 16px;"><a href="/nkt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Şırnak Şerafettin Elçi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Şırnak</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nop/index.html" style="color:var(--blue);text-decoration:none;">NOP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTCM</td>
+        <td style="padding:12px 16px;"><a href="/nop/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sinop Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sinop</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ogu/index.html" style="color:var(--blue);text-decoration:none;">OGU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTCB</td>
+        <td style="padding:12px 16px;"><a href="/ogu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ordu–Giresun Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ordu</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/onq/index.html" style="color:var(--blue);text-decoration:none;">ONQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTAS</td>
+        <td style="padding:12px 16px;"><a href="/onq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zonguldak Çaycuma Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zonguldak</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sxz/index.html" style="color:var(--blue);text-decoration:none;">SXZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTCL</td>
+        <td style="padding:12px 16px;"><a href="/sxz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Siirt Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Siirt</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/szf/index.html" style="color:var(--blue);text-decoration:none;">SZF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTFH</td>
+        <td style="padding:12px 16px;"><a href="/szf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Samsun-Çarşamba Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Samsun</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/teq/index.html" style="color:var(--blue);text-decoration:none;">TEQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTBU</td>
+        <td style="padding:12px 16px;"><a href="/teq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tekirdağ Çorlu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Çorlu</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tjk/index.html" style="color:var(--blue);text-decoration:none;">TJK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTAW</td>
+        <td style="padding:12px 16px;"><a href="/tjk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tokat Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tokat</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tzx/index.html" style="color:var(--blue);text-decoration:none;">TZX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTCG</td>
+        <td style="padding:12px 16px;"><a href="/tzx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Trabzon International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Trabzon</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uab/index.html" style="color:var(--blue);text-decoration:none;">UAB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTAG</td>
+        <td style="padding:12px 16px;"><a href="/uab/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">İncirlik Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sarıçam</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/usq/index.html" style="color:var(--blue);text-decoration:none;">USQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTBO</td>
+        <td style="padding:12px 16px;"><a href="/usq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Uşak Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Uşak</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/van/index.html" style="color:var(--blue);text-decoration:none;">VAN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTCI</td>
+        <td style="padding:12px 16px;"><a href="/van/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Van Ferit Melen Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Van</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yei/index.html" style="color:var(--blue);text-decoration:none;">YEI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTBR</td>
+        <td style="padding:12px 16px;"><a href="/yei/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bursa Yenişehir Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yenişehir</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yko/index.html" style="color:var(--blue);text-decoration:none;">YKO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTCW</td>
+        <td style="padding:12px 16px;"><a href="/yko/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Hakkari Yüksekova Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Hakkari</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bgg/index.html" style="color:var(--blue);text-decoration:none;">BGG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTCU</td>
+        <td style="padding:12px 16px;"><a href="/bgg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bingöl Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bingöl</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bxn/index.html" style="color:var(--blue);text-decoration:none;">BXN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTBV</td>
+        <td style="padding:12px 16px;"><a href="/bxn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bodrum-Imsık Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bodrum</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cii/index.html" style="color:var(--blue);text-decoration:none;">CII</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTBD</td>
+        <td style="padding:12px 16px;"><a href="/cii/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Aydın Çıldır Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Aydın</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gkd/index.html" style="color:var(--blue);text-decoration:none;">GKD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTFK</td>
+        <td style="padding:12px 16px;"><a href="/gkd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Gökçeada Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Gökçeada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/izm/index.html" style="color:var(--blue);text-decoration:none;">IZM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTFB</td>
+        <td style="padding:12px 16px;"><a href="/izm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Selçuk Efes Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Selçuk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kzr/index.html" style="color:var(--blue);text-decoration:none;">KZR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTBZ</td>
+        <td style="padding:12px 16px;"><a href="/kzr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zafer Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Altıntaş</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mzh/index.html" style="color:var(--blue);text-decoration:none;">MZH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTAP</td>
+        <td style="padding:12px 16px;"><a href="/mzh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Amasya Merzifon Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Amasya</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vas/index.html" style="color:var(--blue);text-decoration:none;">VAS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTAR</td>
+        <td style="padding:12px 16px;"><a href="/vas/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sivas Nuri Demirağ Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sivas</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr></tbody>
+  </table>
+</div>
+<footer>
+  <div style="margin-bottom:10px">
+    <a href="/az.html">A–Z Index</a>
+    <a href="/countries.html">By Country</a>
+    <a href="/about.html">About</a>
+  </div>
+  <div>© 2025 airport-code.com · Data sourced from OurAirports &amp; Open-Meteo · <a href="https://ourairports.com">OurAirports</a></div>
+</footer>
+
+<script>
+(function(){
+  let db = null;
+  const input = document.getElementById('navSearchInput');
+  const results = document.getElementById('search-results');
+  if (!input) return;
+
+  async function loadDB() {
+    if (db) return;
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    const r = await fetch(root + 'airports.json');
+    db = await r.json();
+  }
+
+  input.addEventListener('focus', loadDB);
+  input.addEventListener('input', async function() {
+    const q = this.value.trim().toUpperCase();
+    if (q.length < 2) { results.style.display = 'none'; return; }
+    await loadDB();
+    const matches = db.filter(a =>
+      a.iata.startsWith(q) ||
+      a.name.toUpperCase().includes(q) ||
+      a.city.toUpperCase().includes(q)
+    ).slice(0, 7);
+    if (!matches.length) { results.style.display = 'none'; return; }
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    results.innerHTML = matches.map(a =>
+      `<a href="${root}${a.iata.toLowerCase()}/index.html">
+        <span class="sr-code">${a.iata}</span>
+        <div><div class="sr-name">${a.name}</div><div class="sr-city">${a.city}, ${a.country}</div></div>
+      </a>`
+    ).join('');
+    results.style.display = 'block';
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!input.contains(e.target) && !results.contains(e.target)) results.style.display = 'none';
+  });
+})();
+</script>
+
+</body>
+</html>

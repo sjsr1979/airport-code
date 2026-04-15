@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="site-root" content="/">
+  <title>Airports in Sweden | Airport Code</title>
+  <meta name="description" content="All airport codes for airports in Sweden. Browse IATA and ICAO codes for 52 airports.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0f1f3d;
+      --blue: #1a56db;
+      --blue-light: #e8f0fe;
+      --sky: #38bdf8;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --green: #10b981;
+    }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; zoom: 1.12; }
+    nav { background: var(--navy); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { color: #fff; font-size: 19px; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; display: flex; align-items: center; gap: 6px; line-height: 1; }
+    .nav-logo svg { flex-shrink: 0; }
+    .nav-logo span { color: var(--sky); }
+    .nav-search { display: flex; align-items: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 6px 14px; gap: 8px; width: 280px; position: relative; }
+    .nav-search input { background: none; border: none; outline: none; color: #fff; font-size: 14px; width: 100%; font-family: 'Outfit', sans-serif; }
+    .nav-search input::placeholder { color: rgba(255,255,255,0.4); }
+    #search-results { position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: #fff; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 200; overflow: hidden; display: none; }
+    #search-results a { display: flex; align-items: center; gap: 10px; padding: 10px 14px; text-decoration: none; color: var(--text); font-size: 13px; border-bottom: 1px solid var(--border); transition: background 0.15s; }
+    #search-results a:last-child { border-bottom: none; }
+    #search-results a:hover { background: var(--bg); }
+    #search-results .sr-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 12px; padding: 2px 7px; border-radius: 5px; min-width: 38px; text-align: center; }
+    #search-results .sr-name { font-weight: 600; }
+    #search-results .sr-city { color: var(--muted); font-size: 11px; }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .hero { background: linear-gradient(135deg, var(--navy) 0%, #1a3a6b 100%); color: #fff; padding: 48px 0 56px; position: relative; overflow: hidden; }
+    .hero::before { content: '✈'; position: absolute; right: -20px; top: -20px; font-size: 220px; opacity: 0.04; transform: rotate(25deg); }
+    .hero-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .breadcrumb { font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 20px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .breadcrumb a:hover { color: rgba(255,255,255,0.8); }
+    .breadcrumb span.sep { color: rgba(255,255,255,0.3); }
+    .hero-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .hero-title { display: flex; align-items: flex-start; gap: 24px; }
+    .iata-badge { background: var(--blue); border: 2px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 14px 20px; text-align: center; min-width: 100px; flex-shrink: 0; }
+    .iata-badge .code { font-size: 40px; font-weight: 800; letter-spacing: 2px; color: #fff; line-height: 1; }
+    .iata-badge .label { font-size: 10px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
+    .hero-name { padding-top: 4px; }
+    .hero-name h1 { font-size: 38px; font-weight: 800; line-height: 1.1; color: #fff; }
+    .hero-name .location { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.65); font-size: 15px; margin-top: 6px; }
+    .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+    .badge { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.3px; }
+    .badge-large { background: rgba(16,185,129,0.2); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
+    .badge-medium { background: rgba(56,189,248,0.15); color: #7dd3fc; border: 1px solid rgba(56,189,248,0.3); }
+    .badge-small { background: rgba(245,158,11,0.15); color: #fcd34d; border: 1px solid rgba(245,158,11,0.3); }
+    .hero-stats { display: flex; gap: 32px; margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
+    .hero-stat .value { font-size: 22px; font-weight: 700; color: #fff; }
+    .hero-stat .label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
+    .time-widget { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 16px 20px; text-align: center; min-width: 160px; }
+    .time-widget .time-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+    .time-widget .time-value { font-size: 28px; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+    .time-widget .time-tz { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+    .main { max-width: 1100px; margin: 0 auto; padding: 32px 24px; display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
+    @media (max-width: 768px) { .main { grid-template-columns: 1fr; } .hero-name h1 { font-size: 26px; } .nav-links { display: none; } .nav-search { width: 200px; } }
+    .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .card-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .card-header h2 { font-size: 14px; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.5px; }
+    .card-body { padding: 20px; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .info-item { padding: 14px 16px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+    .info-item:nth-child(even) { border-right: none; }
+    .info-item:nth-last-child(-n+2) { border-bottom: none; }
+    .info-item .key { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px; }
+    .info-item .val { font-size: 15px; font-weight: 600; color: var(--text); }
+    .info-item .val a { color: var(--blue); text-decoration: none; }
+    .info-item .val a:hover { text-decoration: underline; }
+    .weather-widget { display: flex; align-items: center; gap: 20px; padding: 16px; background: linear-gradient(135deg, #e0f2fe, #f0f9ff); border-radius: 10px; margin-bottom: 16px; min-height: 100px; }
+    .weather-icon { font-size: 48px; line-height: 1; }
+    .weather-main .temp { font-size: 32px; font-weight: 700; color: var(--text); }
+    .weather-main .desc { font-size: 14px; color: var(--muted); text-transform: capitalize; }
+    .weather-details { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .weather-detail { font-size: 13px; color: var(--muted); }
+    .weather-detail strong { color: var(--text); font-weight: 600; }
+    .nearby-list { list-style: none; }
+    .nearby-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .nearby-item:last-child { border-bottom: none; }
+    .nearby-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 13px; padding: 3px 8px; border-radius: 6px; min-width: 44px; text-align: center; text-decoration: none; }
+    .nearby-code:hover { background: #ccdcfb; }
+    .nearby-info { flex: 1; margin: 0 12px; }
+    .nearby-info .name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .nearby-info .city { font-size: 11px; color: var(--muted); }
+    .nearby-dist { font-size: 12px; color: var(--muted); white-space: nowrap; }
+    .carbon-form { display: flex; flex-direction: column; gap: 12px; }
+    .carbon-form label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .carbon-form input, .carbon-form select { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-family: 'Outfit', sans-serif; color: var(--text); outline: none; transition: border-color 0.2s; }
+    .carbon-form input:focus, .carbon-form select:focus { border-color: var(--blue); }
+    .carbon-btn { background: var(--blue); color: #fff; border: none; padding: 11px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Outfit', sans-serif; transition: background 0.2s; }
+    .carbon-btn:hover { background: #1447c0; }
+    .carbon-result { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px; text-align: center; display: none; }
+    .carbon-result .co2 { font-size: 24px; font-weight: 800; color: var(--green); }
+    .carbon-result .co2-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .sidebar-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .sidebar-card .card-header { padding: 14px 16px; }
+    .sidebar-card .card-body { padding: 16px; }
+    .codes-display { display: flex; gap: 12px; }
+    .code-box { flex: 1; text-align: center; padding: 16px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; }
+    .code-box .code-val { font-size: 28px; font-weight: 800; color: var(--navy); letter-spacing: 1px; }
+    .code-box .code-type { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; }
+    footer { background: var(--navy); color: rgba(255,255,255,0.5); text-align: center; padding: 24px; font-size: 13px; margin-top: 40px; }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; margin: 0 12px; }
+    footer a:hover { color: #fff; }
+
+    table { width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden; }
+    thead th { padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid var(--border);background:#f8fafc; }
+    tbody tr { border-bottom:1px solid #f5f5f5; }
+    tbody tr:last-child { border-bottom:none; }
+    tbody tr:hover { background:#fafbfc; }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/index.html" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="9" fill="#1a56db"/><path d="M24.5 8.5C25.3 9.3 25.3 10.6 24.5 11.4L19.8 16.1L22 25L19.5 27.5L16 19L11.5 23.5L12 26L10 28L8 24L4 22L6 20L8.5 20.5L13 16L5.5 12.5L8 10L17 12.2L21.6 7.5C22.4 6.7 23.7 6.7 24.5 8.5Z" fill="white"/></svg>
+    Airport<span>Code</span>
+  </a>
+  <div class="nav-search">
+    <svg width="14" height="14" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="navSearchInput" placeholder="Search airport or code…" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <div class="nav-links">
+    <a href="/az.html">A–Z</a>
+    <a href="/countries.html">By Country</a>
+  </div>
+</nav>
+<div style="max-width:1100px;margin:0 auto;padding:32px 24px">
+  <div style="margin-bottom:8px;font-size:12px;color:var(--muted)"><a href="/index.html" style="color:var(--blue);text-decoration:none">Home</a> › <a href="/countries.html" style="color:var(--blue);text-decoration:none">By Country</a> › Sweden</div>
+  <h1 style="font-size:28px;font-weight:800;color:var(--navy);margin-bottom:4px">🇸🇪 Airports in Sweden</h1>
+  <p style="color:var(--muted);margin-bottom:24px">52 airports with IATA codes</p>
+  <table>
+    <thead><tr><th>IATA</th><th>ICAO</th><th>Airport Name</th><th>City</th><th>Type</th></tr></thead>
+    <tbody>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/arn/index.html" style="color:var(--blue);text-decoration:none;">ARN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESSA</td>
+        <td style="padding:12px 16px;"><a href="/arn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Stockholm-Arlanda Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Stockholm</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/got/index.html" style="color:var(--blue);text-decoration:none;">GOT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESGG</td>
+        <td style="padding:12px 16px;"><a href="/got/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Göteborg Landvetter Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Göteborg</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/krn/index.html" style="color:var(--blue);text-decoration:none;">KRN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESNQ</td>
+        <td style="padding:12px 16px;"><a href="/krn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kiruna Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kiruna</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lla/index.html" style="color:var(--blue);text-decoration:none;">LLA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESPA</td>
+        <td style="padding:12px 16px;"><a href="/lla/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Luleå Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Luleå</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lpi/index.html" style="color:var(--blue);text-decoration:none;">LPI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESSL</td>
+        <td style="padding:12px 16px;"><a href="/lpi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Linköping City Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Linköping</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mmx/index.html" style="color:var(--blue);text-decoration:none;">MMX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESMS</td>
+        <td style="padding:12px 16px;"><a href="/mmx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Malmö Sturup Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Malmö</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nyo/index.html" style="color:var(--blue);text-decoration:none;">NYO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESKN</td>
+        <td style="padding:12px 16px;"><a href="/nyo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Stockholm Skavsta Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nyköping</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/scr/index.html" style="color:var(--blue);text-decoration:none;">SCR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/scr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Scandinavian Mountains Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Malung-Sälen</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ume/index.html" style="color:var(--blue);text-decoration:none;">UME</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESNU</td>
+        <td style="padding:12px 16px;"><a href="/ume/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Umeå Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Umeå</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vby/index.html" style="color:var(--blue);text-decoration:none;">VBY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESSV</td>
+        <td style="padding:12px 16px;"><a href="/vby/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Visby Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Visby</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vst/index.html" style="color:var(--blue);text-decoration:none;">VST</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESOW</td>
+        <td style="padding:12px 16px;"><a href="/vst/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Stockholm Västerås Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Stockholm / Västerås</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/agh/index.html" style="color:var(--blue);text-decoration:none;">AGH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESTA</td>
+        <td style="padding:12px 16px;"><a href="/agh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ängelholm-Helsingborg Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ängelholm</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ajr/index.html" style="color:var(--blue);text-decoration:none;">AJR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESNX</td>
+        <td style="padding:12px 16px;"><a href="/ajr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Arvidsjaur Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Arvidsjaur</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ble/index.html" style="color:var(--blue);text-decoration:none;">BLE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESSD</td>
+        <td style="padding:12px 16px;"><a href="/ble/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Dala Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Borlange</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bma/index.html" style="color:var(--blue);text-decoration:none;">BMA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESSB</td>
+        <td style="padding:12px 16px;"><a href="/bma/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Stockholm-Bromma Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Stockholm</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ekt/index.html" style="color:var(--blue);text-decoration:none;">EKT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESSU</td>
+        <td style="padding:12px 16px;"><a href="/ekt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Eskilstuna Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Eskilstuna</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gev/index.html" style="color:var(--blue);text-decoration:none;">GEV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESNG</td>
+        <td style="padding:12px 16px;"><a href="/gev/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Gällivare Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Gällivare</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gse/index.html" style="color:var(--blue);text-decoration:none;">GSE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESGP</td>
+        <td style="padding:12px 16px;"><a href="/gse/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Säve Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Göteborg</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gvx/index.html" style="color:var(--blue);text-decoration:none;">GVX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESSK</td>
+        <td style="padding:12px 16px;"><a href="/gvx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Gävle Sandviken Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Gävle / Sandviken</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/had/index.html" style="color:var(--blue);text-decoration:none;">HAD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESMT</td>
+        <td style="padding:12px 16px;"><a href="/had/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Halmstad Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Halmstad</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jkg/index.html" style="color:var(--blue);text-decoration:none;">JKG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESGJ</td>
+        <td style="padding:12px 16px;"><a href="/jkg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jönköping Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jönköping</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kid/index.html" style="color:var(--blue);text-decoration:none;">KID</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESMK</td>
+        <td style="padding:12px 16px;"><a href="/kid/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kristianstad Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kristianstad</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/klr/index.html" style="color:var(--blue);text-decoration:none;">KLR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESMQ</td>
+        <td style="padding:12px 16px;"><a href="/klr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kalmar Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kalmar</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/krf/index.html" style="color:var(--blue);text-decoration:none;">KRF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESNK</td>
+        <td style="padding:12px 16px;"><a href="/krf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kramfors-Sollefteå Höga Kusten Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nyland</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ksd/index.html" style="color:var(--blue);text-decoration:none;">KSD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESOK</td>
+        <td style="padding:12px 16px;"><a href="/ksd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Karlstad Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Karlstad</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ksk/index.html" style="color:var(--blue);text-decoration:none;">KSK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESKK</td>
+        <td style="padding:12px 16px;"><a href="/ksk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Karlskoga Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Karlskoga</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kvb/index.html" style="color:var(--blue);text-decoration:none;">KVB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESGR</td>
+        <td style="padding:12px 16px;"><a href="/kvb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Skövde Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Skövde</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lyc/index.html" style="color:var(--blue);text-decoration:none;">LYC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESNL</td>
+        <td style="padding:12px 16px;"><a href="/lyc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Lycksele Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lycksele</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mxx/index.html" style="color:var(--blue);text-decoration:none;">MXX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESKM</td>
+        <td style="padding:12px 16px;"><a href="/mxx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mora Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mora</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nrk/index.html" style="color:var(--blue);text-decoration:none;">NRK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESSP</td>
+        <td style="padding:12px 16px;"><a href="/nrk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Norrköping Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Norrköping</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/oer/index.html" style="color:var(--blue);text-decoration:none;">OER</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESNO</td>
+        <td style="padding:12px 16px;"><a href="/oer/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Örnsköldsvik Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Örnsköldsvik</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/orb/index.html" style="color:var(--blue);text-decoration:none;">ORB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESOE</td>
+        <td style="padding:12px 16px;"><a href="/orb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Örebro Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Örebro</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/osd/index.html" style="color:var(--blue);text-decoration:none;">OSD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESNZ</td>
+        <td style="padding:12px 16px;"><a href="/osd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Åre Östersund Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Östersund</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rnb/index.html" style="color:var(--blue);text-decoration:none;">RNB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESDF</td>
+        <td style="padding:12px 16px;"><a href="/rnb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ronneby Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ronneby</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sdl/index.html" style="color:var(--blue);text-decoration:none;">SDL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESNN</td>
+        <td style="padding:12px 16px;"><a href="/sdl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sundsvall-Härnösand Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sundsvall/ Härnösand</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sft/index.html" style="color:var(--blue);text-decoration:none;">SFT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESNS</td>
+        <td style="padding:12px 16px;"><a href="/sft/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Skellefteå Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Skellefteå</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/soo/index.html" style="color:var(--blue);text-decoration:none;">SOO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESNY</td>
+        <td style="padding:12px 16px;"><a href="/soo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Söderhamn Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Söderhamn</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sqo/index.html" style="color:var(--blue);text-decoration:none;">SQO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESUD</td>
+        <td style="padding:12px 16px;"><a href="/sqo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Storuman Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Storuman</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/thn/index.html" style="color:var(--blue);text-decoration:none;">THN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESGT</td>
+        <td style="padding:12px 16px;"><a href="/thn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Trollhättan-Vänersborg Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Trollhättan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tyf/index.html" style="color:var(--blue);text-decoration:none;">TYF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESST</td>
+        <td style="padding:12px 16px;"><a href="/tyf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Torsby Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Torsby</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vhm/index.html" style="color:var(--blue);text-decoration:none;">VHM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESNV</td>
+        <td style="padding:12px 16px;"><a href="/vhm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vilhelmina South Lapland Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vilhelmina</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vxo/index.html" style="color:var(--blue);text-decoration:none;">VXO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESMX</td>
+        <td style="padding:12px 16px;"><a href="/vxo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Växjö Kronoberg Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Växjö</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/evg/index.html" style="color:var(--blue);text-decoration:none;">EVG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESND</td>
+        <td style="padding:12px 16px;"><a href="/evg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sveg Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sveg</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hfs/index.html" style="color:var(--blue);text-decoration:none;">HFS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESOH</td>
+        <td style="padding:12px 16px;"><a href="/hfs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Hagfors Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Råda</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hlf/index.html" style="color:var(--blue);text-decoration:none;">HLF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESSF</td>
+        <td style="padding:12px 16px;"><a href="/hlf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Hultsfred Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Hultsfred</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hmv/index.html" style="color:var(--blue);text-decoration:none;">HMV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESUT</td>
+        <td style="padding:12px 16px;"><a href="/hmv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Hemavan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Hemavan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/huv/index.html" style="color:var(--blue);text-decoration:none;">HUV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESNH</td>
+        <td style="padding:12px 16px;"><a href="/huv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Hudiksvall Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Hudiksvall</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/idb/index.html" style="color:var(--blue);text-decoration:none;">IDB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESUE</td>
+        <td style="padding:12px 16px;"><a href="/idb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Idre Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Idre</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ldk/index.html" style="color:var(--blue);text-decoration:none;">LDK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESGL</td>
+        <td style="padding:12px 16px;"><a href="/ldk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Lidköping-Hovby Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lidköping</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/osk/index.html" style="color:var(--blue);text-decoration:none;">OSK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESMO</td>
+        <td style="padding:12px 16px;"><a href="/osk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Oskarshamn Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Oskarshamn</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pja/index.html" style="color:var(--blue);text-decoration:none;">PJA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESUP</td>
+        <td style="padding:12px 16px;"><a href="/pja/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pajala Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Pajala</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vvk/index.html" style="color:var(--blue);text-decoration:none;">VVK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESSW</td>
+        <td style="padding:12px 16px;"><a href="/vvk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Västervik Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Västervik</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr></tbody>
+  </table>
+</div>
+<footer>
+  <div style="margin-bottom:10px">
+    <a href="/az.html">A–Z Index</a>
+    <a href="/countries.html">By Country</a>
+    <a href="/about.html">About</a>
+  </div>
+  <div>© 2025 airport-code.com · Data sourced from OurAirports &amp; Open-Meteo · <a href="https://ourairports.com">OurAirports</a></div>
+</footer>
+
+<script>
+(function(){
+  let db = null;
+  const input = document.getElementById('navSearchInput');
+  const results = document.getElementById('search-results');
+  if (!input) return;
+
+  async function loadDB() {
+    if (db) return;
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    const r = await fetch(root + 'airports.json');
+    db = await r.json();
+  }
+
+  input.addEventListener('focus', loadDB);
+  input.addEventListener('input', async function() {
+    const q = this.value.trim().toUpperCase();
+    if (q.length < 2) { results.style.display = 'none'; return; }
+    await loadDB();
+    const matches = db.filter(a =>
+      a.iata.startsWith(q) ||
+      a.name.toUpperCase().includes(q) ||
+      a.city.toUpperCase().includes(q)
+    ).slice(0, 7);
+    if (!matches.length) { results.style.display = 'none'; return; }
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    results.innerHTML = matches.map(a =>
+      `<a href="${root}${a.iata.toLowerCase()}/index.html">
+        <span class="sr-code">${a.iata}</span>
+        <div><div class="sr-name">${a.name}</div><div class="sr-city">${a.city}, ${a.country}</div></div>
+      </a>`
+    ).join('');
+    results.style.display = 'block';
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!input.contains(e.target) && !results.contains(e.target)) results.style.display = 'none';
+  });
+})();
+</script>
+
+</body>
+</html>

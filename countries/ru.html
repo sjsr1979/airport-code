@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="site-root" content="/">
+  <title>Airports in Rusia | Airport Code</title>
+  <meta name="description" content="All airport codes for airports in Rusia. Browse IATA and ICAO codes for 218 airports.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0f1f3d;
+      --blue: #1a56db;
+      --blue-light: #e8f0fe;
+      --sky: #38bdf8;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --green: #10b981;
+    }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; zoom: 1.12; }
+    nav { background: var(--navy); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { color: #fff; font-size: 19px; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; display: flex; align-items: center; gap: 6px; line-height: 1; }
+    .nav-logo svg { flex-shrink: 0; }
+    .nav-logo span { color: var(--sky); }
+    .nav-search { display: flex; align-items: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 6px 14px; gap: 8px; width: 280px; position: relative; }
+    .nav-search input { background: none; border: none; outline: none; color: #fff; font-size: 14px; width: 100%; font-family: 'Outfit', sans-serif; }
+    .nav-search input::placeholder { color: rgba(255,255,255,0.4); }
+    #search-results { position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: #fff; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 200; overflow: hidden; display: none; }
+    #search-results a { display: flex; align-items: center; gap: 10px; padding: 10px 14px; text-decoration: none; color: var(--text); font-size: 13px; border-bottom: 1px solid var(--border); transition: background 0.15s; }
+    #search-results a:last-child { border-bottom: none; }
+    #search-results a:hover { background: var(--bg); }
+    #search-results .sr-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 12px; padding: 2px 7px; border-radius: 5px; min-width: 38px; text-align: center; }
+    #search-results .sr-name { font-weight: 600; }
+    #search-results .sr-city { color: var(--muted); font-size: 11px; }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .hero { background: linear-gradient(135deg, var(--navy) 0%, #1a3a6b 100%); color: #fff; padding: 48px 0 56px; position: relative; overflow: hidden; }
+    .hero::before { content: '✈'; position: absolute; right: -20px; top: -20px; font-size: 220px; opacity: 0.04; transform: rotate(25deg); }
+    .hero-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .breadcrumb { font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 20px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .breadcrumb a:hover { color: rgba(255,255,255,0.8); }
+    .breadcrumb span.sep { color: rgba(255,255,255,0.3); }
+    .hero-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .hero-title { display: flex; align-items: flex-start; gap: 24px; }
+    .iata-badge { background: var(--blue); border: 2px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 14px 20px; text-align: center; min-width: 100px; flex-shrink: 0; }
+    .iata-badge .code { font-size: 40px; font-weight: 800; letter-spacing: 2px; color: #fff; line-height: 1; }
+    .iata-badge .label { font-size: 10px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
+    .hero-name { padding-top: 4px; }
+    .hero-name h1 { font-size: 38px; font-weight: 800; line-height: 1.1; color: #fff; }
+    .hero-name .location { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.65); font-size: 15px; margin-top: 6px; }
+    .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+    .badge { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.3px; }
+    .badge-large { background: rgba(16,185,129,0.2); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
+    .badge-medium { background: rgba(56,189,248,0.15); color: #7dd3fc; border: 1px solid rgba(56,189,248,0.3); }
+    .badge-small { background: rgba(245,158,11,0.15); color: #fcd34d; border: 1px solid rgba(245,158,11,0.3); }
+    .hero-stats { display: flex; gap: 32px; margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
+    .hero-stat .value { font-size: 22px; font-weight: 700; color: #fff; }
+    .hero-stat .label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
+    .time-widget { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 16px 20px; text-align: center; min-width: 160px; }
+    .time-widget .time-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+    .time-widget .time-value { font-size: 28px; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+    .time-widget .time-tz { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+    .main { max-width: 1100px; margin: 0 auto; padding: 32px 24px; display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
+    @media (max-width: 768px) { .main { grid-template-columns: 1fr; } .hero-name h1 { font-size: 26px; } .nav-links { display: none; } .nav-search { width: 200px; } }
+    .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .card-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .card-header h2 { font-size: 14px; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.5px; }
+    .card-body { padding: 20px; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .info-item { padding: 14px 16px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+    .info-item:nth-child(even) { border-right: none; }
+    .info-item:nth-last-child(-n+2) { border-bottom: none; }
+    .info-item .key { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px; }
+    .info-item .val { font-size: 15px; font-weight: 600; color: var(--text); }
+    .info-item .val a { color: var(--blue); text-decoration: none; }
+    .info-item .val a:hover { text-decoration: underline; }
+    .weather-widget { display: flex; align-items: center; gap: 20px; padding: 16px; background: linear-gradient(135deg, #e0f2fe, #f0f9ff); border-radius: 10px; margin-bottom: 16px; min-height: 100px; }
+    .weather-icon { font-size: 48px; line-height: 1; }
+    .weather-main .temp { font-size: 32px; font-weight: 700; color: var(--text); }
+    .weather-main .desc { font-size: 14px; color: var(--muted); text-transform: capitalize; }
+    .weather-details { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .weather-detail { font-size: 13px; color: var(--muted); }
+    .weather-detail strong { color: var(--text); font-weight: 600; }
+    .nearby-list { list-style: none; }
+    .nearby-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .nearby-item:last-child { border-bottom: none; }
+    .nearby-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 13px; padding: 3px 8px; border-radius: 6px; min-width: 44px; text-align: center; text-decoration: none; }
+    .nearby-code:hover { background: #ccdcfb; }
+    .nearby-info { flex: 1; margin: 0 12px; }
+    .nearby-info .name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .nearby-info .city { font-size: 11px; color: var(--muted); }
+    .nearby-dist { font-size: 12px; color: var(--muted); white-space: nowrap; }
+    .carbon-form { display: flex; flex-direction: column; gap: 12px; }
+    .carbon-form label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .carbon-form input, .carbon-form select { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-family: 'Outfit', sans-serif; color: var(--text); outline: none; transition: border-color 0.2s; }
+    .carbon-form input:focus, .carbon-form select:focus { border-color: var(--blue); }
+    .carbon-btn { background: var(--blue); color: #fff; border: none; padding: 11px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Outfit', sans-serif; transition: background 0.2s; }
+    .carbon-btn:hover { background: #1447c0; }
+    .carbon-result { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px; text-align: center; display: none; }
+    .carbon-result .co2 { font-size: 24px; font-weight: 800; color: var(--green); }
+    .carbon-result .co2-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .sidebar-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .sidebar-card .card-header { padding: 14px 16px; }
+    .sidebar-card .card-body { padding: 16px; }
+    .codes-display { display: flex; gap: 12px; }
+    .code-box { flex: 1; text-align: center; padding: 16px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; }
+    .code-box .code-val { font-size: 28px; font-weight: 800; color: var(--navy); letter-spacing: 1px; }
+    .code-box .code-type { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; }
+    footer { background: var(--navy); color: rgba(255,255,255,0.5); text-align: center; padding: 24px; font-size: 13px; margin-top: 40px; }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; margin: 0 12px; }
+    footer a:hover { color: #fff; }
+
+    table { width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden; }
+    thead th { padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid var(--border);background:#f8fafc; }
+    tbody tr { border-bottom:1px solid #f5f5f5; }
+    tbody tr:last-child { border-bottom:none; }
+    tbody tr:hover { background:#fafbfc; }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/index.html" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="9" fill="#1a56db"/><path d="M24.5 8.5C25.3 9.3 25.3 10.6 24.5 11.4L19.8 16.1L22 25L19.5 27.5L16 19L11.5 23.5L12 26L10 28L8 24L4 22L6 20L8.5 20.5L13 16L5.5 12.5L8 10L17 12.2L21.6 7.5C22.4 6.7 23.7 6.7 24.5 8.5Z" fill="white"/></svg>
+    Airport<span>Code</span>
+  </a>
+  <div class="nav-search">
+    <svg width="14" height="14" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="navSearchInput" placeholder="Search airport or code…" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <div class="nav-links">
+    <a href="/az.html">A–Z</a>
+    <a href="/countries.html">By Country</a>
+  </div>
+</nav>
+<div style="max-width:1100px;margin:0 auto;padding:32px 24px">
+  <div style="margin-bottom:8px;font-size:12px;color:var(--muted)"><a href="/index.html" style="color:var(--blue);text-decoration:none">Home</a> › <a href="/countries.html" style="color:var(--blue);text-decoration:none">By Country</a> › Rusia</div>
+  <h1 style="font-size:28px;font-weight:800;color:var(--navy);margin-bottom:4px">🇷🇺 Airports in Rusia</h1>
+  <p style="color:var(--muted);margin-bottom:24px">218 airports with IATA codes</p>
+  <table>
+    <thead><tr><th>IATA</th><th>ICAO</th><th>Airport Name</th><th>City</th><th>Type</th></tr></thead>
+    <tbody>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/aba/index.html" style="color:var(--blue);text-decoration:none;">ABA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UNAA</td>
+        <td style="padding:12px 16px;"><a href="/aba/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Abakan International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Abakan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/aer/index.html" style="color:var(--blue);text-decoration:none;">AER</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">URSS</td>
+        <td style="padding:12px 16px;"><a href="/aer/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sochi International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sochi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/asf/index.html" style="color:var(--blue);text-decoration:none;">ASF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">URWA</td>
+        <td style="padding:12px 16px;"><a href="/asf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Astrakhan Narimanovo Boris M. Kustodiev International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Astrakhan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bax/index.html" style="color:var(--blue);text-decoration:none;">BAX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UNBB</td>
+        <td style="padding:12px 16px;"><a href="/bax/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Barnaul Gherman Titov International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Barnaul</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cek/index.html" style="color:var(--blue);text-decoration:none;">CEK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">USCC</td>
+        <td style="padding:12px 16px;"><a href="/cek/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kurchatov Chelyabinsk International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Chelyabinsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dme/index.html" style="color:var(--blue);text-decoration:none;">DME</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UUDD</td>
+        <td style="padding:12px 16px;"><a href="/dme/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Domodedovo International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Moscow</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/goj/index.html" style="color:var(--blue);text-decoration:none;">GOJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UWGG</td>
+        <td style="padding:12px 16px;"><a href="/goj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nizhny Novgorod / Strigino International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nizhny Novgorod</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/grv/index.html" style="color:var(--blue);text-decoration:none;">GRV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">URMG</td>
+        <td style="padding:12px 16px;"><a href="/grv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Akhmat Kadyrov Grozny International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Grozny</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gsv/index.html" style="color:var(--blue);text-decoration:none;">GSV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UWSG</td>
+        <td style="padding:12px 16px;"><a href="/gsv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Gagarin International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Saratov</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hta/index.html" style="color:var(--blue);text-decoration:none;">HTA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UIAA</td>
+        <td style="padding:12px 16px;"><a href="/hta/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Chita-Kadala International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Chita</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iar/index.html" style="color:var(--blue);text-decoration:none;">IAR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UUDL</td>
+        <td style="padding:12px 16px;"><a href="/iar/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Golden Ring Yaroslavl International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tunoshna</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ikt/index.html" style="color:var(--blue);text-decoration:none;">IKT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UIII</td>
+        <td style="padding:12px 16px;"><a href="/ikt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Irkutsk International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Irkutsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kej/index.html" style="color:var(--blue);text-decoration:none;">KEJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UNEE</td>
+        <td style="padding:12px 16px;"><a href="/kej/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Alexei Leonov Kemerovo International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kemerovo</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kgd/index.html" style="color:var(--blue);text-decoration:none;">KGD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UMKK</td>
+        <td style="padding:12px 16px;"><a href="/kgd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Khrabrovo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kaliningrad</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kja/index.html" style="color:var(--blue);text-decoration:none;">KJA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UNKL</td>
+        <td style="padding:12px 16px;"><a href="/kja/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Krasnoyarsk International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Krasnoyarsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/krr/index.html" style="color:var(--blue);text-decoration:none;">KRR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">URKK</td>
+        <td style="padding:12px 16px;"><a href="/krr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Krasnodar Pashkovsky International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Krasnodar</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kuf/index.html" style="color:var(--blue);text-decoration:none;">KUF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UWWW</td>
+        <td style="padding:12px 16px;"><a href="/kuf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kurumoch International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Samara</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kzn/index.html" style="color:var(--blue);text-decoration:none;">KZN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UWKD</td>
+        <td style="padding:12px 16px;"><a href="/kzn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kazan International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kazan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/led/index.html" style="color:var(--blue);text-decoration:none;">LED</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ULLI</td>
+        <td style="padding:12px 16px;"><a href="/led/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pulkovo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">St. Petersburg</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mcx/index.html" style="color:var(--blue);text-decoration:none;">MCX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">URML</td>
+        <td style="padding:12px 16px;"><a href="/mcx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Makhachkala Uytash International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Makhachkala</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mmk/index.html" style="color:var(--blue);text-decoration:none;">MMK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ULMM</td>
+        <td style="padding:12px 16px;"><a href="/mmk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Emperor Nicholas II Murmansk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Murmansk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mqf/index.html" style="color:var(--blue);text-decoration:none;">MQF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">USCM</td>
+        <td style="padding:12px 16px;"><a href="/mqf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Magnitogorsk International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Magnitogorsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mrv/index.html" style="color:var(--blue);text-decoration:none;">MRV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">URMM</td>
+        <td style="padding:12px 16px;"><a href="/mrv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mineralnye Vody Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mineralnyye Vody</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/njc/index.html" style="color:var(--blue);text-decoration:none;">NJC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">USNN</td>
+        <td style="padding:12px 16px;"><a href="/njc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nizhnevartovsk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nizhnevartovsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nsk/index.html" style="color:var(--blue);text-decoration:none;">NSK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UOOO</td>
+        <td style="padding:12px 16px;"><a href="/nsk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Alykel International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Norilsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/oms/index.html" style="color:var(--blue);text-decoration:none;">OMS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UNOO</td>
+        <td style="padding:12px 16px;"><a href="/oms/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Omsk Central Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Omsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ovb/index.html" style="color:var(--blue);text-decoration:none;">OVB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UNNT</td>
+        <td style="padding:12px 16px;"><a href="/ovb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Novosibirsk Tolmachevo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Novosibirsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pee/index.html" style="color:var(--blue);text-decoration:none;">PEE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">USPP</td>
+        <td style="padding:12px 16px;"><a href="/pee/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Perm International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Perm</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pkc/index.html" style="color:var(--blue);text-decoration:none;">PKC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UHPP</td>
+        <td style="padding:12px 16px;"><a href="/pkc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yelizovo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Petropavlovsk-Kamchatsky</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rov/index.html" style="color:var(--blue);text-decoration:none;">ROV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">URRP</td>
+        <td style="padding:12px 16px;"><a href="/rov/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Platov International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rostov-on-Don</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sgc/index.html" style="color:var(--blue);text-decoration:none;">SGC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">USRR</td>
+        <td style="padding:12px 16px;"><a href="/sgc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Surgut International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Surgut</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/skx/index.html" style="color:var(--blue);text-decoration:none;">SKX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UWPS</td>
+        <td style="padding:12px 16px;"><a href="/skx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Saransk International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Saransk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/svo/index.html" style="color:var(--blue);text-decoration:none;">SVO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UUEE</td>
+        <td style="padding:12px 16px;"><a href="/svo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sheremetyevo International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Moscow</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/svx/index.html" style="color:var(--blue);text-decoration:none;">SVX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">USSS</td>
+        <td style="padding:12px 16px;"><a href="/svx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Koltsovo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yekaterinburg</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tjm/index.html" style="color:var(--blue);text-decoration:none;">TJM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">USTR</td>
+        <td style="padding:12px 16px;"><a href="/tjm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Roshchino International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tyumen</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tof/index.html" style="color:var(--blue);text-decoration:none;">TOF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UNTT</td>
+        <td style="padding:12px 16px;"><a href="/tof/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tomsk Kamov Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tomsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ufa/index.html" style="color:var(--blue);text-decoration:none;">UFA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UWUU</td>
+        <td style="padding:12px 16px;"><a href="/ufa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ufa International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ufa</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ulv/index.html" style="color:var(--blue);text-decoration:none;">ULV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UWLL</td>
+        <td style="padding:12px 16px;"><a href="/ulv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ulyanovsk Baratayevka Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ulyanovsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uud/index.html" style="color:var(--blue);text-decoration:none;">UUD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UIUU</td>
+        <td style="padding:12px 16px;"><a href="/uud/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Baikal International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ulan Ude</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uus/index.html" style="color:var(--blue);text-decoration:none;">UUS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UHSS</td>
+        <td style="padding:12px 16px;"><a href="/uus/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yuzhno-Sakhalinsk International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yuzhno-Sakhalinsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vko/index.html" style="color:var(--blue);text-decoration:none;">VKO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UUWW</td>
+        <td style="padding:12px 16px;"><a href="/vko/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vnukovo International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Moscow</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vog/index.html" style="color:var(--blue);text-decoration:none;">VOG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">URWW</td>
+        <td style="padding:12px 16px;"><a href="/vog/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Volgograd International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Volgograd</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/voz/index.html" style="color:var(--blue);text-decoration:none;">VOZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UUOO</td>
+        <td style="padding:12px 16px;"><a href="/voz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Voronezh International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Voronezh</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vvo/index.html" style="color:var(--blue);text-decoration:none;">VVO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UHWW</td>
+        <td style="padding:12px 16px;"><a href="/vvo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vladivostok International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Artyom</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yks/index.html" style="color:var(--blue);text-decoration:none;">YKS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UEEE</td>
+        <td style="padding:12px 16px;"><a href="/yks/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Platon Oyunsky Yakutsk International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yakutsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zia/index.html" style="color:var(--blue);text-decoration:none;">ZIA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UUBW</td>
+        <td style="padding:12px 16px;"><a href="/zia/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zhukovsky International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Moscow</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/aaq/index.html" style="color:var(--blue);text-decoration:none;">AAQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">URKA</td>
+        <td style="padding:12px 16px;"><a href="/aaq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Anapa Vityazevo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Krasnyi Kurgan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/acs/index.html" style="color:var(--blue);text-decoration:none;">ACS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UNKS</td>
+        <td style="padding:12px 16px;"><a href="/acs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Achinsk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Achinsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/amv/index.html" style="color:var(--blue);text-decoration:none;">AMV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ULDD</td>
+        <td style="padding:12px 16px;"><a href="/amv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Amderma Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Amderma</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/arh/index.html" style="color:var(--blue);text-decoration:none;">ARH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ULAA</td>
+        <td style="padding:12px 16px;"><a href="/arh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Talagi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Archangelsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bgn/index.html" style="color:var(--blue);text-decoration:none;">BGN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UESG</td>
+        <td style="padding:12px 16px;"><a href="/bgn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Belaya Gora Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Belaya Gora</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bka/index.html" style="color:var(--blue);text-decoration:none;">BKA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/bka/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Baykit Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Baykit</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bqs/index.html" style="color:var(--blue);text-decoration:none;">BQS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UHBB</td>
+        <td style="padding:12px 16px;"><a href="/bqs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ignatyevo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Blagoveschensk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/btk/index.html" style="color:var(--blue);text-decoration:none;">BTK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UIBB</td>
+        <td style="padding:12px 16px;"><a href="/btk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bratsk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bratsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bvj/index.html" style="color:var(--blue);text-decoration:none;">BVJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">USDB</td>
+        <td style="padding:12px 16px;"><a href="/bvj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bovanenkovo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bovanenkovo</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bwo/index.html" style="color:var(--blue);text-decoration:none;">BWO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UWSB</td>
+        <td style="padding:12px 16px;"><a href="/bwo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Balakovo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Balakovo</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bzk/index.html" style="color:var(--blue);text-decoration:none;">BZK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UUBP</td>
+        <td style="padding:12px 16px;"><a href="/bzk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bryansk International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bryansk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cee/index.html" style="color:var(--blue);text-decoration:none;">CEE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ULWC</td>
+        <td style="padding:12px 16px;"><a href="/cee/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Cherepovets Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cherepovets</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ckh/index.html" style="color:var(--blue);text-decoration:none;">CKH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UESO</td>
+        <td style="padding:12px 16px;"><a href="/ckh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Chokurdakh Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Chokurdah</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ckl/index.html" style="color:var(--blue);text-decoration:none;">CKL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UUMU</td>
+        <td style="padding:12px 16px;"><a href="/ckl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Chkalovskiy Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Moscow</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/csy/index.html" style="color:var(--blue);text-decoration:none;">CSY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UWKS</td>
+        <td style="padding:12px 16px;"><a href="/csy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Cheboksary Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cheboksary</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cyx/index.html" style="color:var(--blue);text-decoration:none;">CYX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UESS</td>
+        <td style="padding:12px 16px;"><a href="/cyx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Cherskiy Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cherskiy</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dks/index.html" style="color:var(--blue);text-decoration:none;">DKS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UODD</td>
+        <td style="padding:12px 16px;"><a href="/dks/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Dikson Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Dikson</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dyr/index.html" style="color:var(--blue);text-decoration:none;">DYR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UHMA</td>
+        <td style="padding:12px 16px;"><a href="/dyr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ugolny Yuri Ryktheu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Anadyr</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ego/index.html" style="color:var(--blue);text-decoration:none;">EGO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UUOB</td>
+        <td style="padding:12px 16px;"><a href="/ego/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Belgorod International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Belgorod</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eie/index.html" style="color:var(--blue);text-decoration:none;">EIE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UNII</td>
+        <td style="padding:12px 16px;"><a href="/eie/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yeniseysk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yeniseysk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eik/index.html" style="color:var(--blue);text-decoration:none;">EIK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/eik/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yeysk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yeysk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/esl/index.html" style="color:var(--blue);text-decoration:none;">ESL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">URWI</td>
+        <td style="padding:12px 16px;"><a href="/esl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Elista Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Elista</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eyk/index.html" style="color:var(--blue);text-decoration:none;">EYK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">USHQ</td>
+        <td style="padding:12px 16px;"><a href="/eyk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Beloyarskiy Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ezv/index.html" style="color:var(--blue);text-decoration:none;">EZV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ezv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Berezovo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gdx/index.html" style="color:var(--blue);text-decoration:none;">GDX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UHMM</td>
+        <td style="padding:12px 16px;"><a href="/gdx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sokol Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Magadan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gdz/index.html" style="color:var(--blue);text-decoration:none;">GDZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">URKG</td>
+        <td style="padding:12px 16px;"><a href="/gdz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Gelendzhik Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Gelendzhik</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gvn/index.html" style="color:var(--blue);text-decoration:none;">GVN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UHKM</td>
+        <td style="padding:12px 16px;"><a href="/gvn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sovetskaya Gavan (Maygatka) Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sovetskaya Gavan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gyg/index.html" style="color:var(--blue);text-decoration:none;">GYG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UEMM</td>
+        <td style="padding:12px 16px;"><a href="/gyg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Magan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Magan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hma/index.html" style="color:var(--blue);text-decoration:none;">HMA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">USHH</td>
+        <td style="padding:12px 16px;"><a href="/hma/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Khanty Mansiysk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Khanty-Mansiysk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/htg/index.html" style="color:var(--blue);text-decoration:none;">HTG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UOHH</td>
+        <td style="padding:12px 16px;"><a href="/htg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Khatanga Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Khatanga</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iaa/index.html" style="color:var(--blue);text-decoration:none;">IAA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UOII</td>
+        <td style="padding:12px 16px;"><a href="/iaa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Igarka Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Igarka</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/igt/index.html" style="color:var(--blue);text-decoration:none;">IGT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">URMS</td>
+        <td style="padding:12px 16px;"><a href="/igt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Magas Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sunzha</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ijk/index.html" style="color:var(--blue);text-decoration:none;">IJK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">USII</td>
+        <td style="padding:12px 16px;"><a href="/ijk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Izhevsk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Izhevsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iks/index.html" style="color:var(--blue);text-decoration:none;">IKS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UEST</td>
+        <td style="padding:12px 16px;"><a href="/iks/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tiksi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tiksi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ina/index.html" style="color:var(--blue);text-decoration:none;">INA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UUYI</td>
+        <td style="padding:12px 16px;"><a href="/ina/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Inta Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Inta</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iwa/index.html" style="color:var(--blue);text-decoration:none;">IWA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UUBI</td>
+        <td style="padding:12px 16px;"><a href="/iwa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ivanovo South Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ivanovo</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jok/index.html" style="color:var(--blue);text-decoration:none;">JOK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UWKJ</td>
+        <td style="padding:12px 16px;"><a href="/jok/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yoshkar-Ola Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yoshkar-Ola</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kcy/index.html" style="color:var(--blue);text-decoration:none;">KCY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/kcy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Krasnoyarsk Cheremshanka Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Krasnoyarsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kgp/index.html" style="color:var(--blue);text-decoration:none;">KGP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">USRK</td>
+        <td style="padding:12px 16px;"><a href="/kgp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kogalym International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kogalym</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/khv/index.html" style="color:var(--blue);text-decoration:none;">KHV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UHHH</td>
+        <td style="padding:12px 16px;"><a href="/khv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Khabarovsk Novy Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Khabarovsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kld/index.html" style="color:var(--blue);text-decoration:none;">KLD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UUEM</td>
+        <td style="padding:12px 16px;"><a href="/kld/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Migalovo Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tver</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/klf/index.html" style="color:var(--blue);text-decoration:none;">KLF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UUBC</td>
+        <td style="padding:12px 16px;"><a href="/klf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Grabtsevo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kaluga</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kmw/index.html" style="color:var(--blue);text-decoration:none;">KMW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UUBA</td>
+        <td style="padding:12px 16px;"><a href="/kmw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kostroma Sokerkino Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kostroma</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kpw/index.html" style="color:var(--blue);text-decoration:none;">KPW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UHMK</td>
+        <td style="padding:12px 16px;"><a href="/kpw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Keperveem Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Keperveem</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kro/index.html" style="color:var(--blue);text-decoration:none;">KRO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">USUU</td>
+        <td style="padding:12px 16px;"><a href="/kro/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kurgan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kurgan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ksz/index.html" style="color:var(--blue);text-decoration:none;">KSZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ULKK</td>
+        <td style="padding:12px 16px;"><a href="/ksz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kotlas Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kotlas</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kvx/index.html" style="color:var(--blue);text-decoration:none;">KVX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">USKK</td>
+        <td style="padding:12px 16px;"><a href="/kvx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pobedilovo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kirov</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kxk/index.html" style="color:var(--blue);text-decoration:none;">KXK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UHKK</td>
+        <td style="padding:12px 16px;"><a href="/kxk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Komsomolsk-on-Amur Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Komsomolsk-on-Amur</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kyz/index.html" style="color:var(--blue);text-decoration:none;">KYZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UNKY</td>
+        <td style="padding:12px 16px;"><a href="/kyz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kyzyl Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kyzyl</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lnx/index.html" style="color:var(--blue);text-decoration:none;">LNX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/lnx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Smolensk North Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Smolensk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lpk/index.html" style="color:var(--blue);text-decoration:none;">LPK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UUOL</td>
+        <td style="padding:12px 16px;"><a href="/lpk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Lipetsk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lipetsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mjz/index.html" style="color:var(--blue);text-decoration:none;">MJZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UERR</td>
+        <td style="padding:12px 16px;"><a href="/mjz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mirny Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mirny</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mqj/index.html" style="color:var(--blue);text-decoration:none;">MQJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UEMA</td>
+        <td style="padding:12px 16px;"><a href="/mqj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Moma Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Khonuu</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nal/index.html" style="color:var(--blue);text-decoration:none;">NAL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">URMN</td>
+        <td style="padding:12px 16px;"><a href="/nal/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nalchik Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nalchik</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nbc/index.html" style="color:var(--blue);text-decoration:none;">NBC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UWKE</td>
+        <td style="padding:12px 16px;"><a href="/nbc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Begishevo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nizhnekamsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ner/index.html" style="color:var(--blue);text-decoration:none;">NER</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UELL</td>
+        <td style="padding:12px 16px;"><a href="/ner/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Chulman Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Neryungri</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nfg/index.html" style="color:var(--blue);text-decoration:none;">NFG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">USRN</td>
+        <td style="padding:12px 16px;"><a href="/nfg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nefteyugansk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nefteyugansk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nli/index.html" style="color:var(--blue);text-decoration:none;">NLI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UHNN</td>
+        <td style="padding:12px 16px;"><a href="/nli/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nikolayevsk-na-Amure Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nikolayevsk-na-Amure Airport</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nnm/index.html" style="color:var(--blue);text-decoration:none;">NNM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ULAM</td>
+        <td style="padding:12px 16px;"><a href="/nnm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Naryan Mar Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Naryan Mar</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/noi/index.html" style="color:var(--blue);text-decoration:none;">NOI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/noi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Krymsk Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Krymsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/noj/index.html" style="color:var(--blue);text-decoration:none;">NOJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">USRO</td>
+        <td style="padding:12px 16px;"><a href="/noj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Noyabrsk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Noyabrsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/noz/index.html" style="color:var(--blue);text-decoration:none;">NOZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UNWW</td>
+        <td style="padding:12px 16px;"><a href="/noz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Spichenkovo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Novokuznetsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nux/index.html" style="color:var(--blue);text-decoration:none;">NUX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">USMU</td>
+        <td style="padding:12px 16px;"><a href="/nux/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Novy Urengoy Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Novy Urengoy</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nya/index.html" style="color:var(--blue);text-decoration:none;">NYA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">USHN</td>
+        <td style="padding:12px 16px;"><a href="/nya/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nyagan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nyagan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nym/index.html" style="color:var(--blue);text-decoration:none;">NYM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">USMM</td>
+        <td style="padding:12px 16px;"><a href="/nym/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nadym Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nadym</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ogz/index.html" style="color:var(--blue);text-decoration:none;">OGZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">URMO</td>
+        <td style="padding:12px 16px;"><a href="/ogz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vladikavkaz Beslan International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Beslan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/oho/index.html" style="color:var(--blue);text-decoration:none;">OHO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UHOO</td>
+        <td style="padding:12px 16px;"><a href="/oho/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Okhotsk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Okhotsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/olz/index.html" style="color:var(--blue);text-decoration:none;">OLZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UEMO</td>
+        <td style="padding:12px 16px;"><a href="/olz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Olyokminsk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Olyokminsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/osw/index.html" style="color:var(--blue);text-decoration:none;">OSW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UWOR</td>
+        <td style="padding:12px 16px;"><a href="/osw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Orsk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Orsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ovs/index.html" style="color:var(--blue);text-decoration:none;">OVS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">USHS</td>
+        <td style="padding:12px 16px;"><a href="/ovs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sovetskiy Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sovetskiy</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pes/index.html" style="color:var(--blue);text-decoration:none;">PES</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ULPB</td>
+        <td style="padding:12px 16px;"><a href="/pes/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Petrozavodsk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Petrozavodsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pex/index.html" style="color:var(--blue);text-decoration:none;">PEX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UUYP</td>
+        <td style="padding:12px 16px;"><a href="/pex/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pechora Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Pechora</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pez/index.html" style="color:var(--blue);text-decoration:none;">PEZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UWPP</td>
+        <td style="padding:12px 16px;"><a href="/pez/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Penza Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Penza</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pkv/index.html" style="color:var(--blue);text-decoration:none;">PKV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ULOO</td>
+        <td style="padding:12px 16px;"><a href="/pkv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Princess Olga Pskov International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Pskov</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pvs/index.html" style="color:var(--blue);text-decoration:none;">PVS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UHMD</td>
+        <td style="padding:12px 16px;"><a href="/pvs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Provideniya Bay Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Chukotka</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pwe/index.html" style="color:var(--blue);text-decoration:none;">PWE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UHMP</td>
+        <td style="padding:12px 16px;"><a href="/pwe/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pevek Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Apapelgino</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pyj/index.html" style="color:var(--blue);text-decoration:none;">PYJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UERP</td>
+        <td style="padding:12px 16px;"><a href="/pyj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Polyarny Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yakutia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ren/index.html" style="color:var(--blue);text-decoration:none;">REN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UWOO</td>
+        <td style="padding:12px 16px;"><a href="/ren/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Orenburg Central Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Orenburg</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rgk/index.html" style="color:var(--blue);text-decoration:none;">RGK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UNBG</td>
+        <td style="padding:12px 16px;"><a href="/rgk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Gorno-Altaysk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Gorno-Altaysk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rmz/index.html" style="color:var(--blue);text-decoration:none;">RMZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/rmz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tobolsk Remezov Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tobolsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ryb/index.html" style="color:var(--blue);text-decoration:none;">RYB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UUBK</td>
+        <td style="padding:12px 16px;"><a href="/ryb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Staroselye Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rybinsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sbt/index.html" style="color:var(--blue);text-decoration:none;">SBT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">USDA</td>
+        <td style="padding:12px 16px;"><a href="/sbt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sabetta International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sabetta</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/scw/index.html" style="color:var(--blue);text-decoration:none;">SCW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UUYY</td>
+        <td style="padding:12px 16px;"><a href="/scw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Syktyvkar Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Syktyvkar</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sek/index.html" style="color:var(--blue);text-decoration:none;">SEK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UESK</td>
+        <td style="padding:12px 16px;"><a href="/sek/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Srednekolymsk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Srednekolymsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ses/index.html" style="color:var(--blue);text-decoration:none;">SES</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ses/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Svetlogorsk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Svetlogorsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sly/index.html" style="color:var(--blue);text-decoration:none;">SLY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">USDD</td>
+        <td style="padding:12px 16px;"><a href="/sly/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Salekhard Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Salekhard</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/stw/index.html" style="color:var(--blue);text-decoration:none;">STW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">URMT</td>
+        <td style="padding:12px 16px;"><a href="/stw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Stavropol Shpakovskoye Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Stavropol</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/swt/index.html" style="color:var(--blue);text-decoration:none;">SWT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UNSS</td>
+        <td style="padding:12px 16px;"><a href="/swt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Strezhevoy Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Strezhevoy</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/swv/index.html" style="color:var(--blue);text-decoration:none;">SWV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UHMW</td>
+        <td style="padding:12px 16px;"><a href="/swv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Severo-Evensk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Evensk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sys/index.html" style="color:var(--blue);text-decoration:none;">SYS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UERS</td>
+        <td style="padding:12px 16px;"><a href="/sys/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Saskylakh Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Saskylakh</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tbw/index.html" style="color:var(--blue);text-decoration:none;">TBW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UUOT</td>
+        <td style="padding:12px 16px;"><a href="/tbw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Donskoye Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tambov</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tgk/index.html" style="color:var(--blue);text-decoration:none;">TGK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">URRT</td>
+        <td style="padding:12px 16px;"><a href="/tgk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Taganrog Yuzhny Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Taganrog</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tgp/index.html" style="color:var(--blue);text-decoration:none;">TGP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UNIP</td>
+        <td style="padding:12px 16px;"><a href="/tgp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Podkamennaya Tunguska Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bor</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uct/index.html" style="color:var(--blue);text-decoration:none;">UCT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UUYH</td>
+        <td style="padding:12px 16px;"><a href="/uct/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ukhta Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ukhta</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ukx/index.html" style="color:var(--blue);text-decoration:none;">UKX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UITT</td>
+        <td style="padding:12px 16px;"><a href="/ukx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ust-Kut Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ust-Kut</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ulk/index.html" style="color:var(--blue);text-decoration:none;">ULK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UERL</td>
+        <td style="padding:12px 16px;"><a href="/ulk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Lensk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lensk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uly/index.html" style="color:var(--blue);text-decoration:none;">ULY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UWLW</td>
+        <td style="padding:12px 16px;"><a href="/uly/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ulyanovsk Vostochny Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cherdakly</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/urj/index.html" style="color:var(--blue);text-decoration:none;">URJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">USHU</td>
+        <td style="padding:12px 16px;"><a href="/urj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Uray Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Uray</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/urs/index.html" style="color:var(--blue);text-decoration:none;">URS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UUOK</td>
+        <td style="padding:12px 16px;"><a href="/urs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kursk East Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kursk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/usk/index.html" style="color:var(--blue);text-decoration:none;">USK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UUYS</td>
+        <td style="padding:12px 16px;"><a href="/usk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Usinsk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Usinsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/usr/index.html" style="color:var(--blue);text-decoration:none;">USR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UEMT</td>
+        <td style="padding:12px 16px;"><a href="/usr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ust-Nera Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ust-Nera</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uts/index.html" style="color:var(--blue);text-decoration:none;">UTS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UUYX</td>
+        <td style="padding:12px 16px;"><a href="/uts/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ust-Tsylma Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ust-Tsylma</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uua/index.html" style="color:var(--blue);text-decoration:none;">UUA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UWKB</td>
+        <td style="padding:12px 16px;"><a href="/uua/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bugulma Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bugulma</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vaq/index.html" style="color:var(--blue);text-decoration:none;">VAQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/vaq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vanavara Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vanavara</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/veo/index.html" style="color:var(--blue);text-decoration:none;">VEO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/veo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Severo-Yeniseysk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Severo-Yeniseysk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vgd/index.html" style="color:var(--blue);text-decoration:none;">VGD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ULWW</td>
+        <td style="padding:12px 16px;"><a href="/vgd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vologda Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vologda</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vkt/index.html" style="color:var(--blue);text-decoration:none;">VKT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UUYW</td>
+        <td style="padding:12px 16px;"><a href="/vkt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vorkuta Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vorkuta</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vkv/index.html" style="color:var(--blue);text-decoration:none;">VKV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/vkv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vaskovo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Arkhangelsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vus/index.html" style="color:var(--blue);text-decoration:none;">VUS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ULWU</td>
+        <td style="padding:12px 16px;"><a href="/vus/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Velikiy Ustyug Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Velikiy Ustyug</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vyi/index.html" style="color:var(--blue);text-decoration:none;">VYI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UENW</td>
+        <td style="padding:12px 16px;"><a href="/vyi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vilyuisk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vilyuisk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zix/index.html" style="color:var(--blue);text-decoration:none;">ZIX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UEVV</td>
+        <td style="padding:12px 16px;"><a href="/zix/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zhigansk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zhigansk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zkp/index.html" style="color:var(--blue);text-decoration:none;">ZKP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UESU</td>
+        <td style="padding:12px 16px;"><a href="/zkp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zyryanka Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zyryanka</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/adh/index.html" style="color:var(--blue);text-decoration:none;">ADH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UEEA</td>
+        <td style="padding:12px 16px;"><a href="/adh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Aldan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Aldan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/aem/index.html" style="color:var(--blue);text-decoration:none;">AEM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UHTG</td>
+        <td style="padding:12px 16px;"><a href="/aem/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Amgu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Amgu</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bcx/index.html" style="color:var(--blue);text-decoration:none;">BCX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UWUB</td>
+        <td style="padding:12px 16px;"><a href="/bcx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Beloretsk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Beloretsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bgs/index.html" style="color:var(--blue);text-decoration:none;">BGS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/bgs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Boguchany Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Boguchany</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bqg/index.html" style="color:var(--blue);text-decoration:none;">BQG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UHNB</td>
+        <td style="padding:12px 16px;"><a href="/bqg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bogorodskoye Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bogorodskoye</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bqj/index.html" style="color:var(--blue);text-decoration:none;">BQJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UEBB</td>
+        <td style="padding:12px 16px;"><a href="/bqj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Batagay Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Batagay</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bvv/index.html" style="color:var(--blue);text-decoration:none;">BVV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UHSB</td>
+        <td style="padding:12px 16px;"><a href="/bvv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Burevestnik Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kurilsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/csh/index.html" style="color:var(--blue);text-decoration:none;">CSH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/csh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Solovki Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Solovetsky Islands</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/czr/index.html" style="color:var(--blue);text-decoration:none;">CZR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/czr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Chara Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Chara</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dee/index.html" style="color:var(--blue);text-decoration:none;">DEE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UHSM</td>
+        <td style="padding:12px 16px;"><a href="/dee/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yuzhno-Kurilsk Mendeleyevo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yuzhno-Kurilsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dhg/index.html" style="color:var(--blue);text-decoration:none;">DHG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/dhg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Dalnegorsk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Dalnegorsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dlr/index.html" style="color:var(--blue);text-decoration:none;">DLR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/dlr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Dalnerechensk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Dalnerechensk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dpt/index.html" style="color:var(--blue);text-decoration:none;">DPT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/dpt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Deputatskiy Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Deputatskiy</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/edn/index.html" style="color:var(--blue);text-decoration:none;">EDN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/edn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yedinka Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yedinka</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eks/index.html" style="color:var(--blue);text-decoration:none;">EKS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UHSK</td>
+        <td style="padding:12px 16px;"><a href="/eks/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Shakhtyorsk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Shakhtyorsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/erg/index.html" style="color:var(--blue);text-decoration:none;">ERG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UIKE</td>
+        <td style="padding:12px 16px;"><a href="/erg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yerbogachen Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Erbogachen</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/etl/index.html" style="color:var(--blue);text-decoration:none;">ETL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/etl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Svetlaya Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Svetlaya</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eya/index.html" style="color:var(--blue);text-decoration:none;">EYA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/eya/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zeya Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zeya</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/goy/index.html" style="color:var(--blue);text-decoration:none;">GOY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UNIT</td>
+        <td style="padding:12px 16px;"><a href="/goy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tura Mountain Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tura</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/irm/index.html" style="color:var(--blue);text-decoration:none;">IRM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">USHI</td>
+        <td style="padding:12px 16px;"><a href="/irm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Igrim Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/itu/index.html" style="color:var(--blue);text-decoration:none;">ITU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UHSI</td>
+        <td style="padding:12px 16px;"><a href="/itu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Iturup Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kurilsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kck/index.html" style="color:var(--blue);text-decoration:none;">KCK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UIKK</td>
+        <td style="padding:12px 16px;"><a href="/kck/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kirensk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kirensk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kdy/index.html" style="color:var(--blue);text-decoration:none;">KDY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UEMH</td>
+        <td style="padding:12px 16px;"><a href="/kdy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Typliy Klyuch Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Khandyga</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kkq/index.html" style="color:var(--blue);text-decoration:none;">KKQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">USDP</td>
+        <td style="padding:12px 16px;"><a href="/kkq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Krasnoselkup Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Krasnoselkup</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kny/index.html" style="color:var(--blue);text-decoration:none;">KNY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/kny/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kodinsk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kvk/index.html" style="color:var(--blue);text-decoration:none;">KVK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/kvk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kirovsk-Apatity Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Apatity</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kvm/index.html" style="color:var(--blue);text-decoration:none;">KVM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UHMO</td>
+        <td style="padding:12px 16px;"><a href="/kvm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Markovo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Markovo</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kvr/index.html" style="color:var(--blue);text-decoration:none;">KVR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/kvr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kavalerovo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kavalerovo</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kxd/index.html" style="color:var(--blue);text-decoration:none;">KXD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">USHK</td>
+        <td style="padding:12px 16px;"><a href="/kxd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kondinskoye Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kondinskoye</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ldg/index.html" style="color:var(--blue);text-decoration:none;">LDG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ULAL</td>
+        <td style="padding:12px 16px;"><a href="/ldg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Leshukonskoye Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Leshukonskoye</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mjy/index.html" style="color:var(--blue);text-decoration:none;">MJY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/mjy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Motygino Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Motygino</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nei/index.html" style="color:var(--blue);text-decoration:none;">NEI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/nei/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Terney Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Terney</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ngk/index.html" style="color:var(--blue);text-decoration:none;">NGK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UHSN</td>
+        <td style="padding:12px 16px;"><a href="/ngk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nogliki Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nogliki</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nyr/index.html" style="color:var(--blue);text-decoration:none;">NYR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UENN</td>
+        <td style="padding:12px 16px;"><a href="/nyr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nyurba Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nyurba</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nzg/index.html" style="color:var(--blue);text-decoration:none;">NZG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/nzg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nizhneangarsk International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nizhneangarsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/odo/index.html" style="color:var(--blue);text-decoration:none;">ODO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UIKB</td>
+        <td style="padding:12px 16px;"><a href="/odo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bodaybo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bodaybo</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ohh/index.html" style="color:var(--blue);text-decoration:none;">OHH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UHSH</td>
+        <td style="padding:12px 16px;"><a href="/ohh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Okha Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Okha</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/okt/index.html" style="color:var(--blue);text-decoration:none;">OKT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UWUK</td>
+        <td style="padding:12px 16px;"><a href="/okt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Oktyabrskiy Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kzyl-Yar</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/onk/index.html" style="color:var(--blue);text-decoration:none;">ONK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UERO</td>
+        <td style="padding:12px 16px;"><a href="/onk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Olenyok Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Olenyok</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rzh/index.html" style="color:var(--blue);text-decoration:none;">RZH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/rzh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Preobrazheniye Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Preobrazheniye</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/suk/index.html" style="color:var(--blue);text-decoration:none;">SUK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UEBS</td>
+        <td style="padding:12px 16px;"><a href="/suk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sakkyryr Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Batagay-Alyta</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/suy/index.html" style="color:var(--blue);text-decoration:none;">SUY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UENS</td>
+        <td style="padding:12px 16px;"><a href="/suy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Suntar Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Suntar</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/thx/index.html" style="color:var(--blue);text-decoration:none;">THX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UOTT</td>
+        <td style="padding:12px 16px;"><a href="/thx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Turukhansk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Turukhansk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tkm/index.html" style="color:var(--blue);text-decoration:none;">TKM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/tkm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Taksimo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Taksimo</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tlk/index.html" style="color:var(--blue);text-decoration:none;">TLK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UECT</td>
+        <td style="padding:12px 16px;"><a href="/tlk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Talakan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Talakan Oil Field</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tly/index.html" style="color:var(--blue);text-decoration:none;">TLY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UHWP</td>
+        <td style="padding:12px 16px;"><a href="/tly/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Plastun Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Plastun</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tox/index.html" style="color:var(--blue);text-decoration:none;">TOX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">USTO</td>
+        <td style="padding:12px 16px;"><a href="/tox/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tobolsk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tobolsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tql/index.html" style="color:var(--blue);text-decoration:none;">TQL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">USDS</td>
+        <td style="padding:12px 16px;"><a href="/tql/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tarko-Sale Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tarko-Sale</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tya/index.html" style="color:var(--blue);text-decoration:none;">TYA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/tya/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Klokovo Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tula</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tyd/index.html" style="color:var(--blue);text-decoration:none;">TYD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UHBW</td>
+        <td style="padding:12px 16px;"><a href="/tyd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tynda Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tynda</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uen/index.html" style="color:var(--blue);text-decoration:none;">UEN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">USDU</td>
+        <td style="padding:12px 16px;"><a href="/uen/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Urengoy Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Urengoy</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uhs/index.html" style="color:var(--blue);text-decoration:none;">UHS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/uhs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Aleksandrovsk-Sakhalinskiy Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Aleksandrovsk-Sakhalinskiy</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uik/index.html" style="color:var(--blue);text-decoration:none;">UIK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/uik/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ust-Ilimsk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ust-Ilimsk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ukg/index.html" style="color:var(--blue);text-decoration:none;">UKG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UEBT</td>
+        <td style="padding:12px 16px;"><a href="/ukg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ust-Kuyga Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ust-Kuyga</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ums/index.html" style="color:var(--blue);text-decoration:none;">UMS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UEMU</td>
+        <td style="padding:12px 16px;"><a href="/ums/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ust-Maya Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ust-Maya</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vhv/index.html" style="color:var(--blue);text-decoration:none;">VHV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UENI</td>
+        <td style="padding:12px 16px;"><a href="/vhv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Verkhnevilyuisk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Verkhnevilyuisk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vri/index.html" style="color:var(--blue);text-decoration:none;">VRI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ULDW</td>
+        <td style="padding:12px 16px;"><a href="/vri/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Varandey Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Varandey</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yae/index.html" style="color:var(--blue);text-decoration:none;">YAE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/yae/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yartsevo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yartsevo</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ymk/index.html" style="color:var(--blue);text-decoration:none;">YMK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">USDK</td>
+        <td style="padding:12px 16px;"><a href="/ymk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mys Kamenny Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mys Kamennyi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zzo/index.html" style="color:var(--blue);text-decoration:none;">ZZO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UHSO</td>
+        <td style="padding:12px 16px;"><a href="/zzo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zonalnoye Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tymovskoye</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr></tbody>
+  </table>
+</div>
+<footer>
+  <div style="margin-bottom:10px">
+    <a href="/az.html">A–Z Index</a>
+    <a href="/countries.html">By Country</a>
+    <a href="/about.html">About</a>
+  </div>
+  <div>© 2025 airport-code.com · Data sourced from OurAirports &amp; Open-Meteo · <a href="https://ourairports.com">OurAirports</a></div>
+</footer>
+
+<script>
+(function(){
+  let db = null;
+  const input = document.getElementById('navSearchInput');
+  const results = document.getElementById('search-results');
+  if (!input) return;
+
+  async function loadDB() {
+    if (db) return;
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    const r = await fetch(root + 'airports.json');
+    db = await r.json();
+  }
+
+  input.addEventListener('focus', loadDB);
+  input.addEventListener('input', async function() {
+    const q = this.value.trim().toUpperCase();
+    if (q.length < 2) { results.style.display = 'none'; return; }
+    await loadDB();
+    const matches = db.filter(a =>
+      a.iata.startsWith(q) ||
+      a.name.toUpperCase().includes(q) ||
+      a.city.toUpperCase().includes(q)
+    ).slice(0, 7);
+    if (!matches.length) { results.style.display = 'none'; return; }
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    results.innerHTML = matches.map(a =>
+      `<a href="${root}${a.iata.toLowerCase()}/index.html">
+        <span class="sr-code">${a.iata}</span>
+        <div><div class="sr-name">${a.name}</div><div class="sr-city">${a.city}, ${a.country}</div></div>
+      </a>`
+    ).join('');
+    results.style.display = 'block';
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!input.contains(e.target) && !results.contains(e.target)) results.style.display = 'none';
+  });
+})();
+</script>
+
+</body>
+</html>

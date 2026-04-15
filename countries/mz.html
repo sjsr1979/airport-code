@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="site-root" content="/">
+  <title>Airports in Mozambique | Airport Code</title>
+  <meta name="description" content="All airport codes for airports in Mozambique. Browse IATA and ICAO codes for 37 airports.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0f1f3d;
+      --blue: #1a56db;
+      --blue-light: #e8f0fe;
+      --sky: #38bdf8;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --green: #10b981;
+    }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; zoom: 1.12; }
+    nav { background: var(--navy); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { color: #fff; font-size: 19px; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; display: flex; align-items: center; gap: 6px; line-height: 1; }
+    .nav-logo svg { flex-shrink: 0; }
+    .nav-logo span { color: var(--sky); }
+    .nav-search { display: flex; align-items: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 6px 14px; gap: 8px; width: 280px; position: relative; }
+    .nav-search input { background: none; border: none; outline: none; color: #fff; font-size: 14px; width: 100%; font-family: 'Outfit', sans-serif; }
+    .nav-search input::placeholder { color: rgba(255,255,255,0.4); }
+    #search-results { position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: #fff; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 200; overflow: hidden; display: none; }
+    #search-results a { display: flex; align-items: center; gap: 10px; padding: 10px 14px; text-decoration: none; color: var(--text); font-size: 13px; border-bottom: 1px solid var(--border); transition: background 0.15s; }
+    #search-results a:last-child { border-bottom: none; }
+    #search-results a:hover { background: var(--bg); }
+    #search-results .sr-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 12px; padding: 2px 7px; border-radius: 5px; min-width: 38px; text-align: center; }
+    #search-results .sr-name { font-weight: 600; }
+    #search-results .sr-city { color: var(--muted); font-size: 11px; }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .hero { background: linear-gradient(135deg, var(--navy) 0%, #1a3a6b 100%); color: #fff; padding: 48px 0 56px; position: relative; overflow: hidden; }
+    .hero::before { content: '✈'; position: absolute; right: -20px; top: -20px; font-size: 220px; opacity: 0.04; transform: rotate(25deg); }
+    .hero-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .breadcrumb { font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 20px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .breadcrumb a:hover { color: rgba(255,255,255,0.8); }
+    .breadcrumb span.sep { color: rgba(255,255,255,0.3); }
+    .hero-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .hero-title { display: flex; align-items: flex-start; gap: 24px; }
+    .iata-badge { background: var(--blue); border: 2px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 14px 20px; text-align: center; min-width: 100px; flex-shrink: 0; }
+    .iata-badge .code { font-size: 40px; font-weight: 800; letter-spacing: 2px; color: #fff; line-height: 1; }
+    .iata-badge .label { font-size: 10px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
+    .hero-name { padding-top: 4px; }
+    .hero-name h1 { font-size: 38px; font-weight: 800; line-height: 1.1; color: #fff; }
+    .hero-name .location { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.65); font-size: 15px; margin-top: 6px; }
+    .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+    .badge { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.3px; }
+    .badge-large { background: rgba(16,185,129,0.2); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
+    .badge-medium { background: rgba(56,189,248,0.15); color: #7dd3fc; border: 1px solid rgba(56,189,248,0.3); }
+    .badge-small { background: rgba(245,158,11,0.15); color: #fcd34d; border: 1px solid rgba(245,158,11,0.3); }
+    .hero-stats { display: flex; gap: 32px; margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
+    .hero-stat .value { font-size: 22px; font-weight: 700; color: #fff; }
+    .hero-stat .label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
+    .time-widget { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 16px 20px; text-align: center; min-width: 160px; }
+    .time-widget .time-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+    .time-widget .time-value { font-size: 28px; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+    .time-widget .time-tz { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+    .main { max-width: 1100px; margin: 0 auto; padding: 32px 24px; display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
+    @media (max-width: 768px) { .main { grid-template-columns: 1fr; } .hero-name h1 { font-size: 26px; } .nav-links { display: none; } .nav-search { width: 200px; } }
+    .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .card-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .card-header h2 { font-size: 14px; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.5px; }
+    .card-body { padding: 20px; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .info-item { padding: 14px 16px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+    .info-item:nth-child(even) { border-right: none; }
+    .info-item:nth-last-child(-n+2) { border-bottom: none; }
+    .info-item .key { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px; }
+    .info-item .val { font-size: 15px; font-weight: 600; color: var(--text); }
+    .info-item .val a { color: var(--blue); text-decoration: none; }
+    .info-item .val a:hover { text-decoration: underline; }
+    .weather-widget { display: flex; align-items: center; gap: 20px; padding: 16px; background: linear-gradient(135deg, #e0f2fe, #f0f9ff); border-radius: 10px; margin-bottom: 16px; min-height: 100px; }
+    .weather-icon { font-size: 48px; line-height: 1; }
+    .weather-main .temp { font-size: 32px; font-weight: 700; color: var(--text); }
+    .weather-main .desc { font-size: 14px; color: var(--muted); text-transform: capitalize; }
+    .weather-details { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .weather-detail { font-size: 13px; color: var(--muted); }
+    .weather-detail strong { color: var(--text); font-weight: 600; }
+    .nearby-list { list-style: none; }
+    .nearby-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .nearby-item:last-child { border-bottom: none; }
+    .nearby-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 13px; padding: 3px 8px; border-radius: 6px; min-width: 44px; text-align: center; text-decoration: none; }
+    .nearby-code:hover { background: #ccdcfb; }
+    .nearby-info { flex: 1; margin: 0 12px; }
+    .nearby-info .name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .nearby-info .city { font-size: 11px; color: var(--muted); }
+    .nearby-dist { font-size: 12px; color: var(--muted); white-space: nowrap; }
+    .carbon-form { display: flex; flex-direction: column; gap: 12px; }
+    .carbon-form label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .carbon-form input, .carbon-form select { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-family: 'Outfit', sans-serif; color: var(--text); outline: none; transition: border-color 0.2s; }
+    .carbon-form input:focus, .carbon-form select:focus { border-color: var(--blue); }
+    .carbon-btn { background: var(--blue); color: #fff; border: none; padding: 11px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Outfit', sans-serif; transition: background 0.2s; }
+    .carbon-btn:hover { background: #1447c0; }
+    .carbon-result { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px; text-align: center; display: none; }
+    .carbon-result .co2 { font-size: 24px; font-weight: 800; color: var(--green); }
+    .carbon-result .co2-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .sidebar-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .sidebar-card .card-header { padding: 14px 16px; }
+    .sidebar-card .card-body { padding: 16px; }
+    .codes-display { display: flex; gap: 12px; }
+    .code-box { flex: 1; text-align: center; padding: 16px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; }
+    .code-box .code-val { font-size: 28px; font-weight: 800; color: var(--navy); letter-spacing: 1px; }
+    .code-box .code-type { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; }
+    footer { background: var(--navy); color: rgba(255,255,255,0.5); text-align: center; padding: 24px; font-size: 13px; margin-top: 40px; }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; margin: 0 12px; }
+    footer a:hover { color: #fff; }
+
+    table { width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden; }
+    thead th { padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid var(--border);background:#f8fafc; }
+    tbody tr { border-bottom:1px solid #f5f5f5; }
+    tbody tr:last-child { border-bottom:none; }
+    tbody tr:hover { background:#fafbfc; }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/index.html" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="9" fill="#1a56db"/><path d="M24.5 8.5C25.3 9.3 25.3 10.6 24.5 11.4L19.8 16.1L22 25L19.5 27.5L16 19L11.5 23.5L12 26L10 28L8 24L4 22L6 20L8.5 20.5L13 16L5.5 12.5L8 10L17 12.2L21.6 7.5C22.4 6.7 23.7 6.7 24.5 8.5Z" fill="white"/></svg>
+    Airport<span>Code</span>
+  </a>
+  <div class="nav-search">
+    <svg width="14" height="14" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="navSearchInput" placeholder="Search airport or code…" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <div class="nav-links">
+    <a href="/az.html">A–Z</a>
+    <a href="/countries.html">By Country</a>
+  </div>
+</nav>
+<div style="max-width:1100px;margin:0 auto;padding:32px 24px">
+  <div style="margin-bottom:8px;font-size:12px;color:var(--muted)"><a href="/index.html" style="color:var(--blue);text-decoration:none">Home</a> › <a href="/countries.html" style="color:var(--blue);text-decoration:none">By Country</a> › Mozambique</div>
+  <h1 style="font-size:28px;font-weight:800;color:var(--navy);margin-bottom:4px">🇲🇿 Airports in Mozambique</h1>
+  <p style="color:var(--muted);margin-bottom:24px">37 airports with IATA codes</p>
+  <table>
+    <thead><tr><th>IATA</th><th>ICAO</th><th>Airport Name</th><th>City</th><th>Type</th></tr></thead>
+    <tbody>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/apl/index.html" style="color:var(--blue);text-decoration:none;">APL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FQNP</td>
+        <td style="padding:12px 16px;"><a href="/apl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nampula Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nampula</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bew/index.html" style="color:var(--blue);text-decoration:none;">BEW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FQBR</td>
+        <td style="padding:12px 16px;"><a href="/bew/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Beira International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Beira</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mpm/index.html" style="color:var(--blue);text-decoration:none;">MPM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FQMA</td>
+        <td style="padding:12px 16px;"><a href="/mpm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Maputo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Maputo</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tet/index.html" style="color:var(--blue);text-decoration:none;">TET</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FQTT</td>
+        <td style="padding:12px 16px;"><a href="/tet/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tete Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tete</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bcw/index.html" style="color:var(--blue);text-decoration:none;">BCW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/bcw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Benguera Island Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Benguera Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bzb/index.html" style="color:var(--blue);text-decoration:none;">BZB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/bzb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bazaruto Island Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bazaruto Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ibl/index.html" style="color:var(--blue);text-decoration:none;">IBL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ibl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Indigo Bay Lodge Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bazaruto Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/inh/index.html" style="color:var(--blue);text-decoration:none;">INH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FQIN</td>
+        <td style="padding:12px 16px;"><a href="/inh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Inhambane Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Inhambane</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mnc/index.html" style="color:var(--blue);text-decoration:none;">MNC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FQNC</td>
+        <td style="padding:12px 16px;"><a href="/mnc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nacala International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nacala</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mud/index.html" style="color:var(--blue);text-decoration:none;">MUD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FQMD</td>
+        <td style="padding:12px 16px;"><a href="/mud/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mueda Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mueda</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mzb/index.html" style="color:var(--blue);text-decoration:none;">MZB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FQMP</td>
+        <td style="padding:12px 16px;"><a href="/mzb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mocímboa da Praia Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mocímboa da Praia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pol/index.html" style="color:var(--blue);text-decoration:none;">POL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FQPB</td>
+        <td style="padding:12px 16px;"><a href="/pol/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pemba Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Pemba</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uel/index.html" style="color:var(--blue);text-decoration:none;">UEL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FQQL</td>
+        <td style="padding:12px 16px;"><a href="/uel/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Quelimane Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Quelimane</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vnx/index.html" style="color:var(--blue);text-decoration:none;">VNX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FQVL</td>
+        <td style="padding:12px 16px;"><a href="/vnx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vilankulo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vilanculo</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vpy/index.html" style="color:var(--blue);text-decoration:none;">VPY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FQCH</td>
+        <td style="padding:12px 16px;"><a href="/vpy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Chimoio Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Chimoio</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vxc/index.html" style="color:var(--blue);text-decoration:none;">VXC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FQLC</td>
+        <td style="padding:12px 16px;"><a href="/vxc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Lichinga Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lichinga</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ame/index.html" style="color:var(--blue);text-decoration:none;">AME</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ame/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Alto Molocue Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Alto Molocue</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ano/index.html" style="color:var(--blue);text-decoration:none;">ANO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FQAG</td>
+        <td style="padding:12px 16px;"><a href="/ano/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Angoche Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Angoche</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cmz/index.html" style="color:var(--blue);text-decoration:none;">CMZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/cmz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Caia Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Caia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fxo/index.html" style="color:var(--blue);text-decoration:none;">FXO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FQCB</td>
+        <td style="padding:12px 16px;"><a href="/fxo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Cuamba Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cuamba</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ibo/index.html" style="color:var(--blue);text-decoration:none;">IBO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FQIB</td>
+        <td style="padding:12px 16px;"><a href="/ibo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ibo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ibo</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ihc/index.html" style="color:var(--blue);text-decoration:none;">IHC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FQIA</td>
+        <td style="padding:12px 16px;"><a href="/ihc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Inhaca Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Inhaca</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/img/index.html" style="color:var(--blue);text-decoration:none;">IMG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/img/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Inhaminga Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Inhaminga</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ine/index.html" style="color:var(--blue);text-decoration:none;">INE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ine/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Chinde Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Chinde</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lbm/index.html" style="color:var(--blue);text-decoration:none;">LBM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/lbm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Luabo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Luabo</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lfb/index.html" style="color:var(--blue);text-decoration:none;">LFB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FQLU</td>
+        <td style="padding:12px 16px;"><a href="/lfb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Lumbo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lumbo</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lmz/index.html" style="color:var(--blue);text-decoration:none;">LMZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/lmz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Palma Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Palma</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mjs/index.html" style="color:var(--blue);text-decoration:none;">MJS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/mjs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Maganja da Costa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Maganja</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mtu/index.html" style="color:var(--blue);text-decoration:none;">MTU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/mtu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Montepuez Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Montepuez</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nnd/index.html" style="color:var(--blue);text-decoration:none;">NND</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/nnd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nangade Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nangade</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ntc/index.html" style="color:var(--blue);text-decoration:none;">NTC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ntc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Paradise Island Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Santa Carolina</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pdd/index.html" style="color:var(--blue);text-decoration:none;">PDD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FQPO</td>
+        <td style="padding:12px 16px;"><a href="/pdd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ponta do Ouro Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ponta do Ouro</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/peb/index.html" style="color:var(--blue);text-decoration:none;">PEB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/peb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pebane Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Pebane</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rrm/index.html" style="color:var(--blue);text-decoration:none;">RRM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/rrm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Marromeu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Marromeu</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tgs/index.html" style="color:var(--blue);text-decoration:none;">TGS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/tgs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Chokwé Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Chokwé</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vjb/index.html" style="color:var(--blue);text-decoration:none;">VJB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FQXA</td>
+        <td style="padding:12px 16px;"><a href="/vjb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Xai-Xai Chongoene Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Xai-Xai</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vjq/index.html" style="color:var(--blue);text-decoration:none;">VJQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/vjq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Gurue Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Gurue</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr></tbody>
+  </table>
+</div>
+<footer>
+  <div style="margin-bottom:10px">
+    <a href="/az.html">A–Z Index</a>
+    <a href="/countries.html">By Country</a>
+    <a href="/about.html">About</a>
+  </div>
+  <div>© 2025 airport-code.com · Data sourced from OurAirports &amp; Open-Meteo · <a href="https://ourairports.com">OurAirports</a></div>
+</footer>
+
+<script>
+(function(){
+  let db = null;
+  const input = document.getElementById('navSearchInput');
+  const results = document.getElementById('search-results');
+  if (!input) return;
+
+  async function loadDB() {
+    if (db) return;
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    const r = await fetch(root + 'airports.json');
+    db = await r.json();
+  }
+
+  input.addEventListener('focus', loadDB);
+  input.addEventListener('input', async function() {
+    const q = this.value.trim().toUpperCase();
+    if (q.length < 2) { results.style.display = 'none'; return; }
+    await loadDB();
+    const matches = db.filter(a =>
+      a.iata.startsWith(q) ||
+      a.name.toUpperCase().includes(q) ||
+      a.city.toUpperCase().includes(q)
+    ).slice(0, 7);
+    if (!matches.length) { results.style.display = 'none'; return; }
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    results.innerHTML = matches.map(a =>
+      `<a href="${root}${a.iata.toLowerCase()}/index.html">
+        <span class="sr-code">${a.iata}</span>
+        <div><div class="sr-name">${a.name}</div><div class="sr-city">${a.city}, ${a.country}</div></div>
+      </a>`
+    ).join('');
+    results.style.display = 'block';
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!input.contains(e.target) && !results.contains(e.target)) results.style.display = 'none';
+  });
+})();
+</script>
+
+</body>
+</html>

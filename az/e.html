@@ -1,0 +1,2221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="site-root" content="/">
+  <title>Airports Starting With E | Airport Code</title>
+  <meta name="description" content="All airports with IATA codes starting with the letter E. Browse airport codes, names and locations.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0f1f3d;
+      --blue: #1a56db;
+      --blue-light: #e8f0fe;
+      --sky: #38bdf8;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --green: #10b981;
+    }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; zoom: 1.12; }
+    nav { background: var(--navy); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { color: #fff; font-size: 19px; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; display: flex; align-items: center; gap: 6px; line-height: 1; }
+    .nav-logo svg { flex-shrink: 0; }
+    .nav-logo span { color: var(--sky); }
+    .nav-search { display: flex; align-items: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 6px 14px; gap: 8px; width: 280px; position: relative; }
+    .nav-search input { background: none; border: none; outline: none; color: #fff; font-size: 14px; width: 100%; font-family: 'Outfit', sans-serif; }
+    .nav-search input::placeholder { color: rgba(255,255,255,0.4); }
+    #search-results { position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: #fff; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 200; overflow: hidden; display: none; }
+    #search-results a { display: flex; align-items: center; gap: 10px; padding: 10px 14px; text-decoration: none; color: var(--text); font-size: 13px; border-bottom: 1px solid var(--border); transition: background 0.15s; }
+    #search-results a:last-child { border-bottom: none; }
+    #search-results a:hover { background: var(--bg); }
+    #search-results .sr-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 12px; padding: 2px 7px; border-radius: 5px; min-width: 38px; text-align: center; }
+    #search-results .sr-name { font-weight: 600; }
+    #search-results .sr-city { color: var(--muted); font-size: 11px; }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .hero { background: linear-gradient(135deg, var(--navy) 0%, #1a3a6b 100%); color: #fff; padding: 48px 0 56px; position: relative; overflow: hidden; }
+    .hero::before { content: '✈'; position: absolute; right: -20px; top: -20px; font-size: 220px; opacity: 0.04; transform: rotate(25deg); }
+    .hero-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .breadcrumb { font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 20px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .breadcrumb a:hover { color: rgba(255,255,255,0.8); }
+    .breadcrumb span.sep { color: rgba(255,255,255,0.3); }
+    .hero-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .hero-title { display: flex; align-items: flex-start; gap: 24px; }
+    .iata-badge { background: var(--blue); border: 2px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 14px 20px; text-align: center; min-width: 100px; flex-shrink: 0; }
+    .iata-badge .code { font-size: 40px; font-weight: 800; letter-spacing: 2px; color: #fff; line-height: 1; }
+    .iata-badge .label { font-size: 10px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
+    .hero-name { padding-top: 4px; }
+    .hero-name h1 { font-size: 38px; font-weight: 800; line-height: 1.1; color: #fff; }
+    .hero-name .location { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.65); font-size: 15px; margin-top: 6px; }
+    .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+    .badge { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.3px; }
+    .badge-large { background: rgba(16,185,129,0.2); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
+    .badge-medium { background: rgba(56,189,248,0.15); color: #7dd3fc; border: 1px solid rgba(56,189,248,0.3); }
+    .badge-small { background: rgba(245,158,11,0.15); color: #fcd34d; border: 1px solid rgba(245,158,11,0.3); }
+    .hero-stats { display: flex; gap: 32px; margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
+    .hero-stat .value { font-size: 22px; font-weight: 700; color: #fff; }
+    .hero-stat .label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
+    .time-widget { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 16px 20px; text-align: center; min-width: 160px; }
+    .time-widget .time-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+    .time-widget .time-value { font-size: 28px; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+    .time-widget .time-tz { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+    .main { max-width: 1100px; margin: 0 auto; padding: 32px 24px; display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
+    @media (max-width: 768px) { .main { grid-template-columns: 1fr; } .hero-name h1 { font-size: 26px; } .nav-links { display: none; } .nav-search { width: 200px; } }
+    .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .card-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .card-header h2 { font-size: 14px; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.5px; }
+    .card-body { padding: 20px; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .info-item { padding: 14px 16px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+    .info-item:nth-child(even) { border-right: none; }
+    .info-item:nth-last-child(-n+2) { border-bottom: none; }
+    .info-item .key { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px; }
+    .info-item .val { font-size: 15px; font-weight: 600; color: var(--text); }
+    .info-item .val a { color: var(--blue); text-decoration: none; }
+    .info-item .val a:hover { text-decoration: underline; }
+    .weather-widget { display: flex; align-items: center; gap: 20px; padding: 16px; background: linear-gradient(135deg, #e0f2fe, #f0f9ff); border-radius: 10px; margin-bottom: 16px; min-height: 100px; }
+    .weather-icon { font-size: 48px; line-height: 1; }
+    .weather-main .temp { font-size: 32px; font-weight: 700; color: var(--text); }
+    .weather-main .desc { font-size: 14px; color: var(--muted); text-transform: capitalize; }
+    .weather-details { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .weather-detail { font-size: 13px; color: var(--muted); }
+    .weather-detail strong { color: var(--text); font-weight: 600; }
+    .nearby-list { list-style: none; }
+    .nearby-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .nearby-item:last-child { border-bottom: none; }
+    .nearby-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 13px; padding: 3px 8px; border-radius: 6px; min-width: 44px; text-align: center; text-decoration: none; }
+    .nearby-code:hover { background: #ccdcfb; }
+    .nearby-info { flex: 1; margin: 0 12px; }
+    .nearby-info .name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .nearby-info .city { font-size: 11px; color: var(--muted); }
+    .nearby-dist { font-size: 12px; color: var(--muted); white-space: nowrap; }
+    .carbon-form { display: flex; flex-direction: column; gap: 12px; }
+    .carbon-form label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .carbon-form input, .carbon-form select { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-family: 'Outfit', sans-serif; color: var(--text); outline: none; transition: border-color 0.2s; }
+    .carbon-form input:focus, .carbon-form select:focus { border-color: var(--blue); }
+    .carbon-btn { background: var(--blue); color: #fff; border: none; padding: 11px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Outfit', sans-serif; transition: background 0.2s; }
+    .carbon-btn:hover { background: #1447c0; }
+    .carbon-result { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px; text-align: center; display: none; }
+    .carbon-result .co2 { font-size: 24px; font-weight: 800; color: var(--green); }
+    .carbon-result .co2-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .sidebar-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .sidebar-card .card-header { padding: 14px 16px; }
+    .sidebar-card .card-body { padding: 16px; }
+    .codes-display { display: flex; gap: 12px; }
+    .code-box { flex: 1; text-align: center; padding: 16px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; }
+    .code-box .code-val { font-size: 28px; font-weight: 800; color: var(--navy); letter-spacing: 1px; }
+    .code-box .code-type { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; }
+    footer { background: var(--navy); color: rgba(255,255,255,0.5); text-align: center; padding: 24px; font-size: 13px; margin-top: 40px; }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; margin: 0 12px; }
+    footer a:hover { color: #fff; }
+
+    .az-nav { display:flex; gap:6px; flex-wrap:wrap; padding:20px 0; }
+    .az-nav a { display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:6px;text-decoration:none;font-weight:700;font-size:14px; }
+    .az-nav a.active { background:var(--blue);color:#fff; }
+    .az-nav a:not(.active) { background:#fff;color:var(--blue);border:1px solid var(--border); }
+    .az-nav a:not(.active):hover { background:var(--blue-light); }
+    table { width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden; }
+    thead th { padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid var(--border);background:#f8fafc; }
+    tbody tr { border-bottom:1px solid #f5f5f5; }
+    tbody tr:last-child { border-bottom:none; }
+    tbody tr:hover { background:#fafbfc; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/index.html" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="9" fill="#1a56db"/><path d="M24.5 8.5C25.3 9.3 25.3 10.6 24.5 11.4L19.8 16.1L22 25L19.5 27.5L16 19L11.5 23.5L12 26L10 28L8 24L4 22L6 20L8.5 20.5L13 16L5.5 12.5L8 10L17 12.2L21.6 7.5C22.4 6.7 23.7 6.7 24.5 8.5Z" fill="white"/></svg>
+    Airport<span>Code</span>
+  </a>
+  <div class="nav-search">
+    <svg width="14" height="14" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="navSearchInput" placeholder="Search airport or code…" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <div class="nav-links">
+    <a href="/az.html">A–Z</a>
+    <a href="/countries.html">By Country</a>
+  </div>
+</nav>
+
+<div style="max-width:1100px;margin:0 auto;padding:32px 24px">
+  <div style="margin-bottom:8px;font-size:12px;color:var(--muted)"><a href="/index.html" style="color:var(--blue);text-decoration:none">Home</a> › <a href="/az.html" style="color:var(--blue);text-decoration:none">A–Z Index</a> › E</div>
+  <h1 style="font-size:28px;font-weight:800;color:var(--navy);margin-bottom:4px">Airports: E</h1>
+  <p style="color:var(--muted);margin-bottom:16px">250 airports with IATA codes starting with E</p>
+
+  <div class="az-nav">
+    <a href="/az/a.html" class="">A</a><a href="/az/b.html" class="">B</a><a href="/az/c.html" class="">C</a><a href="/az/d.html" class="">D</a><a href="/az/e.html" class="active">E</a><a href="/az/f.html" class="">F</a><a href="/az/g.html" class="">G</a><a href="/az/h.html" class="">H</a><a href="/az/i.html" class="">I</a><a href="/az/j.html" class="">J</a><a href="/az/k.html" class="">K</a><a href="/az/l.html" class="">L</a><a href="/az/m.html" class="">M</a><a href="/az/n.html" class="">N</a><a href="/az/o.html" class="">O</a><a href="/az/p.html" class="">P</a><a href="/az/q.html" class="">Q</a><a href="/az/r.html" class="">R</a><a href="/az/s.html" class="">S</a><a href="/az/t.html" class="">T</a><a href="/az/u.html" class="">U</a><a href="/az/v.html" class="">V</a><a href="/az/w.html" class="">W</a><a href="/az/x.html" class="">X</a><a href="/az/y.html" class="">Y</a><a href="/az/z.html" class="">Z</a>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>IATA</th><th>ICAO</th><th>Airport Name</th><th>City</th><th>Country</th><th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eaa/index.html" style="color:var(--blue);text-decoration:none;">EAA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">PAEG</td>
+        <td style="padding:12px 16px;"><a href="/eaa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Eagle Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Eagle</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eab/index.html" style="color:var(--blue);text-decoration:none;">EAB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/eab/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Abs Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Abs</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇾🇪 Yaman</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eae/index.html" style="color:var(--blue);text-decoration:none;">EAE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">NVSE</td>
+        <td style="padding:12px 16px;"><a href="/eae/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Siwo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Emae Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇻🇺 Vanuatu</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eal/index.html" style="color:var(--blue);text-decoration:none;">EAL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/eal/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Elenak Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mejato Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇭 Kepulauan Marshall</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eam/index.html" style="color:var(--blue);text-decoration:none;">EAM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">OENG</td>
+        <td style="padding:12px 16px;"><a href="/eam/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Najran Domestic Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Najran</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇦 Arab Saudi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ean/index.html" style="color:var(--blue);text-decoration:none;">EAN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEAN</td>
+        <td style="padding:12px 16px;"><a href="/ean/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Phifer Airfield</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wheatland</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ear/index.html" style="color:var(--blue);text-decoration:none;">EAR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEAR</td>
+        <td style="padding:12px 16px;"><a href="/ear/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kearney Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kearney</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eas/index.html" style="color:var(--blue);text-decoration:none;">EAS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LESO</td>
+        <td style="padding:12px 16px;"><a href="/eas/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">San Sebastián Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Hondarribia</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇸 Sepanyol</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eat/index.html" style="color:var(--blue);text-decoration:none;">EAT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEAT</td>
+        <td style="padding:12px 16px;"><a href="/eat/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pangborn Memorial Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wenatchee</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eau/index.html" style="color:var(--blue);text-decoration:none;">EAU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEAU</td>
+        <td style="padding:12px 16px;"><a href="/eau/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Chippewa Valley Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Eau Claire</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eax/index.html" style="color:var(--blue);text-decoration:none;">EAX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SMEG</td>
+        <td style="padding:12px 16px;"><a href="/eax/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Eduard Alexander Gummels Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kwatta</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇷 Surinam</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eba/index.html" style="color:var(--blue);text-decoration:none;">EBA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LIRJ</td>
+        <td style="padding:12px 16px;"><a href="/eba/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Marina di Campo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Campo nell'Elba (LI)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇹 Itali</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ebb/index.html" style="color:var(--blue);text-decoration:none;">EBB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">HUEN</td>
+        <td style="padding:12px 16px;"><a href="/ebb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Entebbe International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Entebbe</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇬 Uganda</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ebd/index.html" style="color:var(--blue);text-decoration:none;">EBD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">HSOB</td>
+        <td style="padding:12px 16px;"><a href="/ebd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">El-Obeid Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">El-Obeid</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇩 Sudan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ebg/index.html" style="color:var(--blue);text-decoration:none;">EBG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKEB</td>
+        <td style="padding:12px 16px;"><a href="/ebg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">El Bagre Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">El Bagre</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇴 Colombia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ebh/index.html" style="color:var(--blue);text-decoration:none;">EBH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">DAOY</td>
+        <td style="padding:12px 16px;"><a href="/ebh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">El Bayadh Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">El Bayadh</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇿 Algeria</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ebj/index.html" style="color:var(--blue);text-decoration:none;">EBJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EKEB</td>
+        <td style="padding:12px 16px;"><a href="/ebj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Esbjerg Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Esbjerg</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇰 Denmark</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ebl/index.html" style="color:var(--blue);text-decoration:none;">EBL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ORER</td>
+        <td style="padding:12px 16px;"><a href="/ebl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Erbil International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Arbil</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇶 Iraq</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ebm/index.html" style="color:var(--blue);text-decoration:none;">EBM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">DTTR</td>
+        <td style="padding:12px 16px;"><a href="/ebm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">El Borma Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">El Borma</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇳 Tunisia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ebn/index.html" style="color:var(--blue);text-decoration:none;">EBN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ebn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ebadon Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ebadon Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇭 Kepulauan Marshall</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ebo/index.html" style="color:var(--blue);text-decoration:none;">EBO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ebo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ebon Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ebon Atoll</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇭 Kepulauan Marshall</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ebs/index.html" style="color:var(--blue);text-decoration:none;">EBS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEBS</td>
+        <td style="padding:12px 16px;"><a href="/ebs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Webster City Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Webster City</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ebu/index.html" style="color:var(--blue);text-decoration:none;">EBU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFMH</td>
+        <td style="padding:12px 16px;"><a href="/ebu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Saint-Étienne-Bouthéon Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Andrézieux-Bouthéon, Loire</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇷 Perancis</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ebw/index.html" style="color:var(--blue);text-decoration:none;">EBW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FKKW</td>
+        <td style="padding:12px 16px;"><a href="/ebw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ebolowa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ebolowa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇲 Cameroon</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eca/index.html" style="color:var(--blue);text-decoration:none;">ECA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/eca/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Iosco County Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">East Tawas</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ecg/index.html" style="color:var(--blue);text-decoration:none;">ECG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KECG</td>
+        <td style="padding:12px 16px;"><a href="/ecg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Elizabeth City Regional Airport &amp; Coast Guard Air Station</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Elizabeth City</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ech/index.html" style="color:var(--blue);text-decoration:none;">ECH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">YECH</td>
+        <td style="padding:12px 16px;"><a href="/ech/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Echuca Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eci/index.html" style="color:var(--blue);text-decoration:none;">ECI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">MNCE</td>
+        <td style="padding:12px 16px;"><a href="/eci/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Costa Esmeralda Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tola</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇮 Nicaragua</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ecn/index.html" style="color:var(--blue);text-decoration:none;">ECN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LCEN</td>
+        <td style="padding:12px 16px;"><a href="/ecn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ercan International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tymbou (Kirklar)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇾 Cyprus</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eco/index.html" style="color:var(--blue);text-decoration:none;">ECO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/eco/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">El Encanto Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">El Encanto</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇴 Colombia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ecp/index.html" style="color:var(--blue);text-decoration:none;">ECP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KECP</td>
+        <td style="padding:12px 16px;"><a href="/ecp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Northwest Florida Beaches International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Panama City Beach</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ecr/index.html" style="color:var(--blue);text-decoration:none;">ECR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKEH</td>
+        <td style="padding:12px 16px;"><a href="/ecr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">El Charco Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">El Charco</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇴 Colombia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ecs/index.html" style="color:var(--blue);text-decoration:none;">ECS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KECS</td>
+        <td style="padding:12px 16px;"><a href="/ecs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mondell Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Newcastle</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/edb/index.html" style="color:var(--blue);text-decoration:none;">EDB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">HSDB</td>
+        <td style="padding:12px 16px;"><a href="/edb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Al Dabbah Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Al Dabbah</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇩 Sudan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/edd/index.html" style="color:var(--blue);text-decoration:none;">EDD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/edd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Erldunda Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ghan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ede/index.html" style="color:var(--blue);text-decoration:none;">EDE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEDE</td>
+        <td style="padding:12px 16px;"><a href="/ede/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Northeastern Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Edenton</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/edf/index.html" style="color:var(--blue);text-decoration:none;">EDF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">PAED</td>
+        <td style="padding:12px 16px;"><a href="/edf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Elmendorf Air Force Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Anchorage</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/edi/index.html" style="color:var(--blue);text-decoration:none;">EDI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGPH</td>
+        <td style="padding:12px 16px;"><a href="/edi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Edinburgh Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Edinburgh</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇧 UK</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/edk/index.html" style="color:var(--blue);text-decoration:none;">EDK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEQA</td>
+        <td style="padding:12px 16px;"><a href="/edk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Captain Jack Thomas El Dorado Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">El Dorado</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/edl/index.html" style="color:var(--blue);text-decoration:none;">EDL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">HKEL</td>
+        <td style="padding:12px 16px;"><a href="/edl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Eldoret International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Eldoret</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇰🇪 Kenya</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/edm/index.html" style="color:var(--blue);text-decoration:none;">EDM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFRI</td>
+        <td style="padding:12px 16px;"><a href="/edm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">La Roche-sur-Yon Les Ajoncs Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">La Roche-sur-Yon</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇷 Perancis</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/edn/index.html" style="color:var(--blue);text-decoration:none;">EDN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/edn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yedinka Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yedinka</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/edo/index.html" style="color:var(--blue);text-decoration:none;">EDO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTFD</td>
+        <td style="padding:12px 16px;"><a href="/edo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Balıkesir Koca Seyit Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Edremit</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇷 Turkiye</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/edq/index.html" style="color:var(--blue);text-decoration:none;">EDQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/edq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Erandique Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Erandique</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇭🇳 Honduras</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/edr/index.html" style="color:var(--blue);text-decoration:none;">EDR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">YPMP</td>
+        <td style="padding:12px 16px;"><a href="/edr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pormpuraaw Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Pormpuraaw</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/edw/index.html" style="color:var(--blue);text-decoration:none;">EDW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEDW</td>
+        <td style="padding:12px 16px;"><a href="/edw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Edwards Air Force Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Edwards</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eea/index.html" style="color:var(--blue);text-decoration:none;">EEA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SNCP</td>
+        <td style="padding:12px 16px;"><a href="/eea/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Planalto Serrano Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Correia Pinto</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eed/index.html" style="color:var(--blue);text-decoration:none;">EED</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEED</td>
+        <td style="padding:12px 16px;"><a href="/eed/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Needles Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Needles</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eek/index.html" style="color:var(--blue);text-decoration:none;">EEK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">PAEE</td>
+        <td style="padding:12px 16px;"><a href="/eek/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Eek Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Eek</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/een/index.html" style="color:var(--blue);text-decoration:none;">EEN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEEN</td>
+        <td style="padding:12px 16px;"><a href="/een/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Dillant Hopkins Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Keene</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ees/index.html" style="color:var(--blue);text-decoration:none;">EES</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">HEBR</td>
+        <td style="padding:12px 16px;"><a href="/ees/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Berenice International Airport / Banas Cape Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Berenice Troglodytica</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇬 Mesir</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/efd/index.html" style="color:var(--blue);text-decoration:none;">EFD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEFD</td>
+        <td style="padding:12px 16px;"><a href="/efd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ellington Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Houston</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/efg/index.html" style="color:var(--blue);text-decoration:none;">EFG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">AYEF</td>
+        <td style="padding:12px 16px;"><a href="/efg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Efogi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Efogi</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/efk/index.html" style="color:var(--blue);text-decoration:none;">EFK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEFK</td>
+        <td style="padding:12px 16px;"><a href="/efk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Northeast Kingdom International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Newport</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/efl/index.html" style="color:var(--blue);text-decoration:none;">EFL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LGKF</td>
+        <td style="padding:12px 16px;"><a href="/efl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kefallinia Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kefallinia Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇷 Greece</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/efw/index.html" style="color:var(--blue);text-decoration:none;">EFW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEFW</td>
+        <td style="padding:12px 16px;"><a href="/efw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jefferson Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jefferson</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ega/index.html" style="color:var(--blue);text-decoration:none;">EGA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">AYEN</td>
+        <td style="padding:12px 16px;"><a href="/ega/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Engati Airstrip</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Engati</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/egc/index.html" style="color:var(--blue);text-decoration:none;">EGC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFBE</td>
+        <td style="padding:12px 16px;"><a href="/egc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bergerac Dordogne-Périgord airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bergerac</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇷 Perancis</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ege/index.html" style="color:var(--blue);text-decoration:none;">EGE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEGE</td>
+        <td style="padding:12px 16px;"><a href="/ege/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Eagle County Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Eagle</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/egh/index.html" style="color:var(--blue);text-decoration:none;">EGH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">HEGR</td>
+        <td style="padding:12px 16px;"><a href="/egh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">El Jora Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">El Jora</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇬 Mesir</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/egi/index.html" style="color:var(--blue);text-decoration:none;">EGI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEGI</td>
+        <td style="padding:12px 16px;"><a href="/egi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Duke Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Crestview</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/egl/index.html" style="color:var(--blue);text-decoration:none;">EGL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">HANG</td>
+        <td style="padding:12px 16px;"><a href="/egl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Negele Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Negele Borana</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇹 Ethiopia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/egm/index.html" style="color:var(--blue);text-decoration:none;">EGM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">AGGS</td>
+        <td style="padding:12px 16px;"><a href="/egm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sege Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sege</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇧 Kepulauan Solomon</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/egn/index.html" style="color:var(--blue);text-decoration:none;">EGN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">HSGN</td>
+        <td style="padding:12px 16px;"><a href="/egn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Geneina Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Geneina</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇩 Sudan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ego/index.html" style="color:var(--blue);text-decoration:none;">EGO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UUOB</td>
+        <td style="padding:12px 16px;"><a href="/ego/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Belgorod International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Belgorod</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/egp/index.html" style="color:var(--blue);text-decoration:none;">EGP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/egp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Maverick County Memorial International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Eagle Pass</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/egs/index.html" style="color:var(--blue);text-decoration:none;">EGS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">BIEG</td>
+        <td style="padding:12px 16px;"><a href="/egs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Egilsstaðir Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Egilsstaðir</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇸 Iceland</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/egv/index.html" style="color:var(--blue);text-decoration:none;">EGV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEGV</td>
+        <td style="padding:12px 16px;"><a href="/egv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Eagle River Union Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Eagle River</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/egx/index.html" style="color:var(--blue);text-decoration:none;">EGX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">PAII</td>
+        <td style="padding:12px 16px;"><a href="/egx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Egegik Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Egegik</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ehl/index.html" style="color:var(--blue);text-decoration:none;">EHL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SAVB</td>
+        <td style="padding:12px 16px;"><a href="/ehl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">El Bolsón Airfield</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">El Bolsón</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇷 Argentina</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ehm/index.html" style="color:var(--blue);text-decoration:none;">EHM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">PAEH</td>
+        <td style="padding:12px 16px;"><a href="/ehm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Cape Newenham LRRS Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cape Newenham</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ehu/index.html" style="color:var(--blue);text-decoration:none;">EHU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZHEC</td>
+        <td style="padding:12px 16px;"><a href="/ehu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ezhou Huahu International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ezhou</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eib/index.html" style="color:var(--blue);text-decoration:none;">EIB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EDGE</td>
+        <td style="padding:12px 16px;"><a href="/eib/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Eisenach-Kindel Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Hörselberg-Hainich</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇪 Jerman</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eie/index.html" style="color:var(--blue);text-decoration:none;">EIE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UNII</td>
+        <td style="padding:12px 16px;"><a href="/eie/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yeniseysk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yeniseysk</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eih/index.html" style="color:var(--blue);text-decoration:none;">EIH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/eih/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Einasleigh Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Einasleigh</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eik/index.html" style="color:var(--blue);text-decoration:none;">EIK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/eik/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yeysk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yeysk</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eil/index.html" style="color:var(--blue);text-decoration:none;">EIL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">PAEI</td>
+        <td style="padding:12px 16px;"><a href="/eil/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Eielson Air Force Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fairbanks</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ein/index.html" style="color:var(--blue);text-decoration:none;">EIN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EHEH</td>
+        <td style="padding:12px 16px;"><a href="/ein/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Eindhoven Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Eindhoven</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇱 Belanda</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eis/index.html" style="color:var(--blue);text-decoration:none;">EIS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">TUPJ</td>
+        <td style="padding:12px 16px;"><a href="/eis/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Terrance B. Lettsome International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Beef Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇻🇬 Kepulauan Virgin British</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eiy/index.html" style="color:var(--blue);text-decoration:none;">EIY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LLEY</td>
+        <td style="padding:12px 16px;"><a href="/eiy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ein Yahav Airfield</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sapir</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇱 Israel</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eja/index.html" style="color:var(--blue);text-decoration:none;">EJA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKEJ</td>
+        <td style="padding:12px 16px;"><a href="/eja/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yariguíes Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Barrancabermeja</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇴 Colombia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ejh/index.html" style="color:var(--blue);text-decoration:none;">EJH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">OEWJ</td>
+        <td style="padding:12px 16px;"><a href="/ejh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Al Wajh Domestic Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Al Wajh</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇦 Arab Saudi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ejn/index.html" style="color:var(--blue);text-decoration:none;">EJN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZBEN</td>
+        <td style="padding:12px 16px;"><a href="/ejn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ejin Banner Taolai Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ejin Banner</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ejt/index.html" style="color:var(--blue);text-decoration:none;">EJT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ejt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Enejit Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Enejit Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇭 Kepulauan Marshall</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eka/index.html" style="color:var(--blue);text-decoration:none;">EKA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEKA</td>
+        <td style="padding:12px 16px;"><a href="/eka/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Murray Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Eureka</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ekb/index.html" style="color:var(--blue);text-decoration:none;">EKB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UASB</td>
+        <td style="padding:12px 16px;"><a href="/ekb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ekibastuz Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ekibastuz</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇰🇿 Kazakhstan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ekd/index.html" style="color:var(--blue);text-decoration:none;">EKD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ekd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Elkedra Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eki/index.html" style="color:var(--blue);text-decoration:none;">EKI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEKM</td>
+        <td style="padding:12px 16px;"><a href="/eki/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Elkhart Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Elkhart</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ekn/index.html" style="color:var(--blue);text-decoration:none;">EKN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEKN</td>
+        <td style="padding:12px 16px;"><a href="/ekn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Elkins-Randolph County Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Elkins</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eko/index.html" style="color:var(--blue);text-decoration:none;">EKO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEKO</td>
+        <td style="padding:12px 16px;"><a href="/eko/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Elko Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Elko</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eks/index.html" style="color:var(--blue);text-decoration:none;">EKS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UHSK</td>
+        <td style="padding:12px 16px;"><a href="/eks/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Shakhtyorsk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Shakhtyorsk</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ekt/index.html" style="color:var(--blue);text-decoration:none;">EKT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESSU</td>
+        <td style="padding:12px 16px;"><a href="/ekt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Eskilstuna Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Eskilstuna</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇪 Sweden</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ekx/index.html" style="color:var(--blue);text-decoration:none;">EKX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEKX</td>
+        <td style="padding:12px 16px;"><a href="/ekx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Addington Field / Elizabethtown Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Elizabethtown</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ela/index.html" style="color:var(--blue);text-decoration:none;">ELA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KELA</td>
+        <td style="padding:12px 16px;"><a href="/ela/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Eagle Lake Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Eagle Lake</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/elb/index.html" style="color:var(--blue);text-decoration:none;">ELB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKBC</td>
+        <td style="padding:12px 16px;"><a href="/elb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Las Flores Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">El Banco</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇴 Colombia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/elc/index.html" style="color:var(--blue);text-decoration:none;">ELC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">YELD</td>
+        <td style="padding:12px 16px;"><a href="/elc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Elcho Island Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Elcho Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eld/index.html" style="color:var(--blue);text-decoration:none;">ELD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KELD</td>
+        <td style="padding:12px 16px;"><a href="/eld/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">South Arkansas Regional Airport at Goodwin Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">El Dorado</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ele/index.html" style="color:var(--blue);text-decoration:none;">ELE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ele/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">EL Real Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">El Real de Santa María</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇦 Panama</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/elf/index.html" style="color:var(--blue);text-decoration:none;">ELF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">HSFS</td>
+        <td style="padding:12px 16px;"><a href="/elf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">El Fasher Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">El Fasher</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇩 Sudan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/elg/index.html" style="color:var(--blue);text-decoration:none;">ELG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">DAUE</td>
+        <td style="padding:12px 16px;"><a href="/elg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">El Golea Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">El Menia</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇿 Algeria</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/elh/index.html" style="color:var(--blue);text-decoration:none;">ELH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">MYEH</td>
+        <td style="padding:12px 16px;"><a href="/elh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">North Eleuthera Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">North Eleuthera</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇸 Bahamas</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eli/index.html" style="color:var(--blue);text-decoration:none;">ELI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">PFEL</td>
+        <td style="padding:12px 16px;"><a href="/eli/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Elim Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Elim</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/elj/index.html" style="color:var(--blue);text-decoration:none;">ELJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/elj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">El Recreo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ruperto Polania</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇴 Colombia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/elk/index.html" style="color:var(--blue);text-decoration:none;">ELK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KELK</td>
+        <td style="padding:12px 16px;"><a href="/elk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Elk City Regional Business Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Elk City</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ell/index.html" style="color:var(--blue);text-decoration:none;">ELL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FAER</td>
+        <td style="padding:12px 16px;"><a href="/ell/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ellisras Matimba Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ellisras</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇿🇦 Afrika Selatan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/elm/index.html" style="color:var(--blue);text-decoration:none;">ELM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KELM</td>
+        <td style="padding:12px 16px;"><a href="/elm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Elmira Corning Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Elmira/Corning</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eln/index.html" style="color:var(--blue);text-decoration:none;">ELN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KELN</td>
+        <td style="padding:12px 16px;"><a href="/eln/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bowers Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ellensburg</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/elo/index.html" style="color:var(--blue);text-decoration:none;">ELO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SATD</td>
+        <td style="padding:12px 16px;"><a href="/elo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">El Dorado Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">El Dorado</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇷 Argentina</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/elp/index.html" style="color:var(--blue);text-decoration:none;">ELP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KELP</td>
+        <td style="padding:12px 16px;"><a href="/elp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">El Paso International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">El Paso</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/elq/index.html" style="color:var(--blue);text-decoration:none;">ELQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">OEGS</td>
+        <td style="padding:12px 16px;"><a href="/elq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Prince Naif bin Abdulaziz International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Qassim</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇦 Arab Saudi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/elr/index.html" style="color:var(--blue);text-decoration:none;">ELR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/elr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Elelim Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Elelim</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/els/index.html" style="color:var(--blue);text-decoration:none;">ELS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FAEL</td>
+        <td style="padding:12px 16px;"><a href="/els/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">King Phalo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">East London</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇿🇦 Afrika Selatan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/elt/index.html" style="color:var(--blue);text-decoration:none;">ELT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">HETR</td>
+        <td style="padding:12px 16px;"><a href="/elt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">At Tur Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">At Tur</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇬 Mesir</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/elu/index.html" style="color:var(--blue);text-decoration:none;">ELU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">DAUO</td>
+        <td style="padding:12px 16px;"><a href="/elu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Guemar Airport - مطار قمار بالوادي</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Guemar</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇿 Algeria</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/elx/index.html" style="color:var(--blue);text-decoration:none;">ELX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/elx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">El Tigre Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">El Tigre</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇻🇪 Venezuela</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ely/index.html" style="color:var(--blue);text-decoration:none;">ELY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KELY</td>
+        <td style="padding:12px 16px;"><a href="/ely/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ely Airport Yelland Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ely</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/elz/index.html" style="color:var(--blue);text-decoration:none;">ELZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KELZ</td>
+        <td style="padding:12px 16px;"><a href="/elz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wellsville Municipal Airport - Tarantine Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wellsville</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ema/index.html" style="color:var(--blue);text-decoration:none;">EMA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGNX</td>
+        <td style="padding:12px 16px;"><a href="/ema/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">East Midlands Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nottingham, Leicestershire</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇧 UK</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/emd/index.html" style="color:var(--blue);text-decoration:none;">EMD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">YEML</td>
+        <td style="padding:12px 16px;"><a href="/emd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Emerald Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Emerald</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eme/index.html" style="color:var(--blue);text-decoration:none;">EME</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EDWE</td>
+        <td style="padding:12px 16px;"><a href="/eme/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Emden Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Emden</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇪 Jerman</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/emg/index.html" style="color:var(--blue);text-decoration:none;">EMG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FAEM</td>
+        <td style="padding:12px 16px;"><a href="/emg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Empangeni Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Empangeni</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇿🇦 Afrika Selatan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/emi/index.html" style="color:var(--blue);text-decoration:none;">EMI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">AYEE</td>
+        <td style="padding:12px 16px;"><a href="/emi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Emirau Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Emirau Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/emk/index.html" style="color:var(--blue);text-decoration:none;">EMK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">PAEM</td>
+        <td style="padding:12px 16px;"><a href="/emk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Emmonak Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Emmonak</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eml/index.html" style="color:var(--blue);text-decoration:none;">EML</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LSME</td>
+        <td style="padding:12px 16px;"><a href="/eml/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Emmen Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Emmen</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇭 Switzerland</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/emm/index.html" style="color:var(--blue);text-decoration:none;">EMM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEMM</td>
+        <td style="padding:12px 16px;"><a href="/emm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kemmerer Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kemmerer</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/emn/index.html" style="color:var(--blue);text-decoration:none;">EMN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">GQNI</td>
+        <td style="padding:12px 16px;"><a href="/emn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Néma Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Néma</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇷 Mauritania</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/emo/index.html" style="color:var(--blue);text-decoration:none;">EMO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">AYEO</td>
+        <td style="padding:12px 16px;"><a href="/emo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Emo River Airstrip</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Emo Mission</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/emp/index.html" style="color:var(--blue);text-decoration:none;">EMP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEMP</td>
+        <td style="padding:12px 16px;"><a href="/emp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Emporia Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Emporia</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ems/index.html" style="color:var(--blue);text-decoration:none;">EMS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">AYEB</td>
+        <td style="padding:12px 16px;"><a href="/ems/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Embessa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Embessa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/emt/index.html" style="color:var(--blue);text-decoration:none;">EMT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEMT</td>
+        <td style="padding:12px 16px;"><a href="/emt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">San Gabriel Valley Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">El Monte</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/emx/index.html" style="color:var(--blue);text-decoration:none;">EMX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SAVD</td>
+        <td style="padding:12px 16px;"><a href="/emx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">El Maitén Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">El Maitén</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇷 Argentina</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/emy/index.html" style="color:var(--blue);text-decoration:none;">EMY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/emy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">El Minya Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">El Minya</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇬 Mesir</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ena/index.html" style="color:var(--blue);text-decoration:none;">ENA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">PAEN</td>
+        <td style="padding:12px 16px;"><a href="/ena/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kenai Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kenai</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/enb/index.html" style="color:var(--blue);text-decoration:none;">ENB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">YEEB</td>
+        <td style="padding:12px 16px;"><a href="/enb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Eneabba Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Eneabba</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/enc/index.html" style="color:var(--blue);text-decoration:none;">ENC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFSN</td>
+        <td style="padding:12px 16px;"><a href="/enc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nancy-Essey Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tomblaine, Meurthe-et-Moselle</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇷 Perancis</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/end/index.html" style="color:var(--blue);text-decoration:none;">END</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEND</td>
+        <td style="padding:12px 16px;"><a href="/end/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vance Air Force Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Enid</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ene/index.html" style="color:var(--blue);text-decoration:none;">ENE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WATE</td>
+        <td style="padding:12px 16px;"><a href="/ene/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">H. Hasan Aroeboesman (Ende) Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ende</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/enf/index.html" style="color:var(--blue);text-decoration:none;">ENF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EFET</td>
+        <td style="padding:12px 16px;"><a href="/enf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Enontekio Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Enontekio</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇮 Finland</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eng/index.html" style="color:var(--blue);text-decoration:none;">ENG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/eng/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Enggano Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Enggano</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/enh/index.html" style="color:var(--blue);text-decoration:none;">ENH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZHES</td>
+        <td style="padding:12px 16px;"><a href="/enh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Enshi Xujiaping Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Enshi (Enshi)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eni/index.html" style="color:var(--blue);text-decoration:none;">ENI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPEN</td>
+        <td style="padding:12px 16px;"><a href="/eni/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">El Nido Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">El Nido</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇭 Filipina</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/enj/index.html" style="color:var(--blue);text-decoration:none;">ENJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/enj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">El Naranjo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">El Naranjo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇹 Guatemala</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/enk/index.html" style="color:var(--blue);text-decoration:none;">ENK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGAB</td>
+        <td style="padding:12px 16px;"><a href="/enk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Enniskillen/St Angelo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Enniskillen, Fermanagh and Omagh</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇧 UK</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/enl/index.html" style="color:var(--blue);text-decoration:none;">ENL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KENL</td>
+        <td style="padding:12px 16px;"><a href="/enl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Centralia Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Centralia</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/enn/index.html" style="color:var(--blue);text-decoration:none;">ENN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">PANN</td>
+        <td style="padding:12px 16px;"><a href="/enn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nenana Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nenana</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eno/index.html" style="color:var(--blue);text-decoration:none;">ENO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SGEN</td>
+        <td style="padding:12px 16px;"><a href="/eno/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Teniente Ramon A. Ayub Gonzalez International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Encarnación</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇾 Paraguay</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ens/index.html" style="color:var(--blue);text-decoration:none;">ENS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EHTW</td>
+        <td style="padding:12px 16px;"><a href="/ens/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Twente Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Enschede</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇱 Belanda</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ent/index.html" style="color:var(--blue);text-decoration:none;">ENT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">PKMA</td>
+        <td style="padding:12px 16px;"><a href="/ent/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Eniwetok Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Eniwetok Atoll</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇭 Kepulauan Marshall</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/enu/index.html" style="color:var(--blue);text-decoration:none;">ENU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">DNEN</td>
+        <td style="padding:12px 16px;"><a href="/enu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Akanu Ibiam International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Enegu</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇬 Nigeria</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/env/index.html" style="color:var(--blue);text-decoration:none;">ENV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KENV</td>
+        <td style="padding:12px 16px;"><a href="/env/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wendover Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wendover</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/enw/index.html" style="color:var(--blue);text-decoration:none;">ENW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KENW</td>
+        <td style="padding:12px 16px;"><a href="/enw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kenosha Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kenosha</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eny/index.html" style="color:var(--blue);text-decoration:none;">ENY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZLYA</td>
+        <td style="padding:12px 16px;"><a href="/eny/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yan'an Nanniwan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yan'an (Baota)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eoh/index.html" style="color:var(--blue);text-decoration:none;">EOH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKMD</td>
+        <td style="padding:12px 16px;"><a href="/eoh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Enrique Olaya Herrera Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Medellín</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇴 Colombia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eoi/index.html" style="color:var(--blue);text-decoration:none;">EOI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGED</td>
+        <td style="padding:12px 16px;"><a href="/eoi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Eday Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Eday</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇧 UK</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eok/index.html" style="color:var(--blue);text-decoration:none;">EOK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEOK</td>
+        <td style="padding:12px 16px;"><a href="/eok/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Keokuk Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Keokuk</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eor/index.html" style="color:var(--blue);text-decoration:none;">EOR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SVED</td>
+        <td style="padding:12px 16px;"><a href="/eor/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">El Dorado Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bolivar</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇻🇪 Venezuela</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eos/index.html" style="color:var(--blue);text-decoration:none;">EOS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEOS</td>
+        <td style="padding:12px 16px;"><a href="/eos/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Neosho Hugh Robinson Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Neosho</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eoz/index.html" style="color:var(--blue);text-decoration:none;">EOZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SVEZ</td>
+        <td style="padding:12px 16px;"><a href="/eoz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Elorza Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇻🇪 Venezuela</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/epa/index.html" style="color:var(--blue);text-decoration:none;">EPA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SADP</td>
+        <td style="padding:12px 16px;"><a href="/epa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">El Palomar Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">El Palomar</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇷 Argentina</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/epg/index.html" style="color:var(--blue);text-decoration:none;">EPG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/epg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Browns Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Weeping Water</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eph/index.html" style="color:var(--blue);text-decoration:none;">EPH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEPH</td>
+        <td style="padding:12px 16px;"><a href="/eph/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ephrata Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ephrata</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/epl/index.html" style="color:var(--blue);text-decoration:none;">EPL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFSG</td>
+        <td style="padding:12px 16px;"><a href="/epl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Épinal Mirecourt Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Épinal</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇷 Perancis</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/epr/index.html" style="color:var(--blue);text-decoration:none;">EPR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">YESP</td>
+        <td style="padding:12px 16px;"><a href="/epr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Esperance Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Esperance</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ept/index.html" style="color:var(--blue);text-decoration:none;">EPT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">AYEL</td>
+        <td style="padding:12px 16px;"><a href="/ept/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Eliptamin Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Eliptamin</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/epu/index.html" style="color:var(--blue);text-decoration:none;">EPU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EEPU</td>
+        <td style="padding:12px 16px;"><a href="/epu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pärnu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Pärnu</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇪 Estonia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eqs/index.html" style="color:var(--blue);text-decoration:none;">EQS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SAVE</td>
+        <td style="padding:12px 16px;"><a href="/eqs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Esquel Brigadier Antonio Parodi International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Esquel</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇷 Argentina</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/era/index.html" style="color:var(--blue);text-decoration:none;">ERA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">HCMU</td>
+        <td style="padding:12px 16px;"><a href="/era/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Erigavo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Erigavo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇴 Somalia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/erb/index.html" style="color:var(--blue);text-decoration:none;">ERB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">YERN</td>
+        <td style="padding:12px 16px;"><a href="/erb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ernabella Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/erc/index.html" style="color:var(--blue);text-decoration:none;">ERC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTCD</td>
+        <td style="padding:12px 16px;"><a href="/erc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Erzincan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Erzincan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇷 Turkiye</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/erd/index.html" style="color:var(--blue);text-decoration:none;">ERD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UKDB</td>
+        <td style="padding:12px 16px;"><a href="/erd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Berdyansk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Berdyansk</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇦 Ukraine</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ere/index.html" style="color:var(--blue);text-decoration:none;">ERE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">AYEV</td>
+        <td style="padding:12px 16px;"><a href="/ere/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Erave Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Erave</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/erf/index.html" style="color:var(--blue);text-decoration:none;">ERF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EDDE</td>
+        <td style="padding:12px 16px;"><a href="/erf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Erfurt-Weimar Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Erfurt</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇪 Jerman</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/erg/index.html" style="color:var(--blue);text-decoration:none;">ERG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UIKE</td>
+        <td style="padding:12px 16px;"><a href="/erg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yerbogachen Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Erbogachen</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/erh/index.html" style="color:var(--blue);text-decoration:none;">ERH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">GMFK</td>
+        <td style="padding:12px 16px;"><a href="/erh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Moulay Ali Cherif Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Errachidia</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇦 Maghribi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eri/index.html" style="color:var(--blue);text-decoration:none;">ERI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KERI</td>
+        <td style="padding:12px 16px;"><a href="/eri/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Erie International Tom Ridge Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Erie</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/erl/index.html" style="color:var(--blue);text-decoration:none;">ERL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZBER</td>
+        <td style="padding:12px 16px;"><a href="/erl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Erenhot Saiwusu International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Erenhot</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/erm/index.html" style="color:var(--blue);text-decoration:none;">ERM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SSER</td>
+        <td style="padding:12px 16px;"><a href="/erm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Erechim Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Erechim</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ern/index.html" style="color:var(--blue);text-decoration:none;">ERN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SWEI</td>
+        <td style="padding:12px 16px;"><a href="/ern/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Eirunepé Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Eirunepé</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/erq/index.html" style="color:var(--blue);text-decoration:none;">ERQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">YESE</td>
+        <td style="padding:12px 16px;"><a href="/erq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Elrose Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Elrose Mine</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/err/index.html" style="color:var(--blue);text-decoration:none;">ERR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KERR</td>
+        <td style="padding:12px 16px;"><a href="/err/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Errol Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Errol</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ers/index.html" style="color:var(--blue);text-decoration:none;">ERS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FYWE</td>
+        <td style="padding:12px 16px;"><a href="/ers/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Eros Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Windhoek</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇦 Namibia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ert/index.html" style="color:var(--blue);text-decoration:none;">ERT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ert/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Erdenet Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Erdenet</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇳 Mongolia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eru/index.html" style="color:var(--blue);text-decoration:none;">ERU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">AYER</td>
+        <td style="padding:12px 16px;"><a href="/eru/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Erume Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Erume</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/erv/index.html" style="color:var(--blue);text-decoration:none;">ERV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KERV</td>
+        <td style="padding:12px 16px;"><a href="/erv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kerrville / Kerr County Airport at Louis Schreiner Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kerrville</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/erz/index.html" style="color:var(--blue);text-decoration:none;">ERZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTCE</td>
+        <td style="padding:12px 16px;"><a href="/erz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Erzurum International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Erzurum</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇷 Turkiye</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/esa/index.html" style="color:var(--blue);text-decoration:none;">ESA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/esa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Esa'ala Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Esa'ala</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/esb/index.html" style="color:var(--blue);text-decoration:none;">ESB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTAC</td>
+        <td style="padding:12px 16px;"><a href="/esb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Esenboğa International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ankara</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇷 Turkiye</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/esc/index.html" style="color:var(--blue);text-decoration:none;">ESC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KESC</td>
+        <td style="padding:12px 16px;"><a href="/esc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Delta County Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Escanaba</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/esd/index.html" style="color:var(--blue);text-decoration:none;">ESD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KORS</td>
+        <td style="padding:12px 16px;"><a href="/esd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Orcas Island Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Eastsound</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ese/index.html" style="color:var(--blue);text-decoration:none;">ESE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">MMES</td>
+        <td style="padding:12px 16px;"><a href="/ese/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ensenada International Airport / El Ciprés Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ensenada</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇽 Mexico</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/esf/index.html" style="color:var(--blue);text-decoration:none;">ESF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KESF</td>
+        <td style="padding:12px 16px;"><a href="/esf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Esler Army Airfield / Esler Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Alexandria</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/esg/index.html" style="color:var(--blue);text-decoration:none;">ESG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SGME</td>
+        <td style="padding:12px 16px;"><a href="/esg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Dr. Luis María Argaña International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mariscal Estigarribia</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇾 Paraguay</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/esh/index.html" style="color:var(--blue);text-decoration:none;">ESH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGKA</td>
+        <td style="padding:12px 16px;"><a href="/esh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Brighton City Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Brighton, East Sussex</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇧 UK</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/esk/index.html" style="color:var(--blue);text-decoration:none;">ESK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTBI</td>
+        <td style="padding:12px 16px;"><a href="/esk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Eskişehir Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Eskişehir</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇷 Turkiye</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/esl/index.html" style="color:var(--blue);text-decoration:none;">ESL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">URWI</td>
+        <td style="padding:12px 16px;"><a href="/esl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Elista Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Elista</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/esm/index.html" style="color:var(--blue);text-decoration:none;">ESM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SETN</td>
+        <td style="padding:12px 16px;"><a href="/esm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Carlos Concha Torres International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tachina</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇨 Ecuador</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/esn/index.html" style="color:var(--blue);text-decoration:none;">ESN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KESN</td>
+        <td style="padding:12px 16px;"><a href="/esn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Easton Airport / Newnam Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Easton</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eso/index.html" style="color:var(--blue);text-decoration:none;">ESO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/eso/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ohkay Owingeh Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Espanola</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/esr/index.html" style="color:var(--blue);text-decoration:none;">ESR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SCES</td>
+        <td style="padding:12px 16px;"><a href="/esr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ricardo García Posada Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">El Salvador</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇱 Chile</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ess/index.html" style="color:var(--blue);text-decoration:none;">ESS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EDLE</td>
+        <td style="padding:12px 16px;"><a href="/ess/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Essen-Mülheim Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Essen</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇪 Jerman</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/est/index.html" style="color:var(--blue);text-decoration:none;">EST</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEST</td>
+        <td style="padding:12px 16px;"><a href="/est/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Estherville Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Estherville</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/esu/index.html" style="color:var(--blue);text-decoration:none;">ESU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">GMMI</td>
+        <td style="padding:12px 16px;"><a href="/esu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Essaouira-Mogador Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Essaouira</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇦 Maghribi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/esw/index.html" style="color:var(--blue);text-decoration:none;">ESW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KESW</td>
+        <td style="padding:12px 16px;"><a href="/esw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Easton State Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Easton</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/etb/index.html" style="color:var(--blue);text-decoration:none;">ETB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KETB</td>
+        <td style="padding:12px 16px;"><a href="/etb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">West Bend Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">West Bend</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/etd/index.html" style="color:var(--blue);text-decoration:none;">ETD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">YEDA</td>
+        <td style="padding:12px 16px;"><a href="/etd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Etadunna Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Etadunna</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ete/index.html" style="color:var(--blue);text-decoration:none;">ETE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">HAMM</td>
+        <td style="padding:12px 16px;"><a href="/ete/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Metema Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Metema</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇹 Ethiopia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/etl/index.html" style="color:var(--blue);text-decoration:none;">ETL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/etl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Svetlaya Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Svetlaya</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/etm/index.html" style="color:var(--blue);text-decoration:none;">ETM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LLER</td>
+        <td style="padding:12px 16px;"><a href="/etm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ramon International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Eilat</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇱 Israel</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/etn/index.html" style="color:var(--blue);text-decoration:none;">ETN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KETN</td>
+        <td style="padding:12px 16px;"><a href="/etn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Eastland Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Eastland</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/etr/index.html" style="color:var(--blue);text-decoration:none;">ETR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SERO</td>
+        <td style="padding:12px 16px;"><a href="/etr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Santa Rosa - Artillery Colonel Victor Larrea International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Santa Rosa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇨 Ecuador</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ets/index.html" style="color:var(--blue);text-decoration:none;">ETS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEDN</td>
+        <td style="padding:12px 16px;"><a href="/ets/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Enterprise Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Enterprise</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/etz/index.html" style="color:var(--blue);text-decoration:none;">ETZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFJL</td>
+        <td style="padding:12px 16px;"><a href="/etz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Metz-Nancy-Lorraine Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Goin</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇷 Perancis</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eua/index.html" style="color:var(--blue);text-decoration:none;">EUA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">NFTE</td>
+        <td style="padding:12px 16px;"><a href="/eua/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kaufana Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Eua Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇴 Tonga</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/euc/index.html" style="color:var(--blue);text-decoration:none;">EUC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">YECL</td>
+        <td style="padding:12px 16px;"><a href="/euc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Eucla Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eue/index.html" style="color:var(--blue);text-decoration:none;">EUE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/eue/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Eureka Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Eureka</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/euf/index.html" style="color:var(--blue);text-decoration:none;">EUF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEUF</td>
+        <td style="padding:12px 16px;"><a href="/euf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Weedon Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Eufaula</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eug/index.html" style="color:var(--blue);text-decoration:none;">EUG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEUG</td>
+        <td style="padding:12px 16px;"><a href="/eug/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Eugene Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Eugene</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eum/index.html" style="color:var(--blue);text-decoration:none;">EUM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EDHN</td>
+        <td style="padding:12px 16px;"><a href="/eum/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Neumünster Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Neumünster</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇪 Jerman</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eun/index.html" style="color:var(--blue);text-decoration:none;">EUN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">GMML</td>
+        <td style="padding:12px 16px;"><a href="/eun/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Laayoune Hassan I International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">El Aaiún</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇭 Sahara Barat</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/euo/index.html" style="color:var(--blue);text-decoration:none;">EUO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/euo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Paratebueno Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Paratebueno</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇴 Colombia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/euq/index.html" style="color:var(--blue);text-decoration:none;">EUQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPVS</td>
+        <td style="padding:12px 16px;"><a href="/euq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Evelio Javier Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">San Jose</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇭 Filipina</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eux/index.html" style="color:var(--blue);text-decoration:none;">EUX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">TNCE</td>
+        <td style="padding:12px 16px;"><a href="/eux/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">F. D. Roosevelt Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Oranjestad</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇶 Caribbean Netherlands</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/evd/index.html" style="color:var(--blue);text-decoration:none;">EVD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/evd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Eva Downs Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Eva Downs</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eve/index.html" style="color:var(--blue);text-decoration:none;">EVE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ENEV</td>
+        <td style="padding:12px 16px;"><a href="/eve/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Harstad/Narvik Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Evenes</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇴 Norway</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/evg/index.html" style="color:var(--blue);text-decoration:none;">EVG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESND</td>
+        <td style="padding:12px 16px;"><a href="/evg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sveg Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sveg</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇪 Sweden</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/evh/index.html" style="color:var(--blue);text-decoration:none;">EVH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">YEVD</td>
+        <td style="padding:12px 16px;"><a href="/evh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Evans Head Aerodrome</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/evm/index.html" style="color:var(--blue);text-decoration:none;">EVM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEVM</td>
+        <td style="padding:12px 16px;"><a href="/evm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Eveleth–Virginia Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Eveleth</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/evn/index.html" style="color:var(--blue);text-decoration:none;">EVN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UDYZ</td>
+        <td style="padding:12px 16px;"><a href="/evn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zvartnots International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yerevan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇲 Armenia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/evv/index.html" style="color:var(--blue);text-decoration:none;">EVV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEVV</td>
+        <td style="padding:12px 16px;"><a href="/evv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Evansville Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Evansville</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/evw/index.html" style="color:var(--blue);text-decoration:none;">EVW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEVW</td>
+        <td style="padding:12px 16px;"><a href="/evw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Evanston-Uinta County Airport-Burns Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Evanston</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/evx/index.html" style="color:var(--blue);text-decoration:none;">EVX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFOE</td>
+        <td style="padding:12px 16px;"><a href="/evx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Évreux-Fauville (BA 105) Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fauville, Eure</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇷 Perancis</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ewb/index.html" style="color:var(--blue);text-decoration:none;">EWB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEWB</td>
+        <td style="padding:12px 16px;"><a href="/ewb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">New Bedford Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">New Bedford</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ewe/index.html" style="color:var(--blue);text-decoration:none;">EWE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ewe/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ewer Asmat Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Agats</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ewi/index.html" style="color:var(--blue);text-decoration:none;">EWI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAYE</td>
+        <td style="padding:12px 16px;"><a href="/ewi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Enarotali Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Enarotali</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ewk/index.html" style="color:var(--blue);text-decoration:none;">EWK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEWK</td>
+        <td style="padding:12px 16px;"><a href="/ewk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Newton City-County Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Newton</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ewn/index.html" style="color:var(--blue);text-decoration:none;">EWN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEWN</td>
+        <td style="padding:12px 16px;"><a href="/ewn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Coastal Carolina Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">New Bern</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ewo/index.html" style="color:var(--blue);text-decoration:none;">EWO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FCOE</td>
+        <td style="padding:12px 16px;"><a href="/ewo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ewo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ewo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇬 Congo - Brazzaville</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ewr/index.html" style="color:var(--blue);text-decoration:none;">EWR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEWR</td>
+        <td style="padding:12px 16px;"><a href="/ewr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Newark Liberty International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Newark</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/exm/index.html" style="color:var(--blue);text-decoration:none;">EXM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">YEXM</td>
+        <td style="padding:12px 16px;"><a href="/exm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Exmouth Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Exmouth</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ext/index.html" style="color:var(--blue);text-decoration:none;">EXT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGTE</td>
+        <td style="padding:12px 16px;"><a href="/ext/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Exeter International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Exeter, Devon</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇧 UK</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eya/index.html" style="color:var(--blue);text-decoration:none;">EYA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/eya/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zeya Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zeya</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eyk/index.html" style="color:var(--blue);text-decoration:none;">EYK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">USHQ</td>
+        <td style="padding:12px 16px;"><a href="/eyk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Beloyarskiy Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eyl/index.html" style="color:var(--blue);text-decoration:none;">EYL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">GAYE</td>
+        <td style="padding:12px 16px;"><a href="/eyl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yélimané Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yélimané</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇱 Mali</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eyp/index.html" style="color:var(--blue);text-decoration:none;">EYP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKYP</td>
+        <td style="padding:12px 16px;"><a href="/eyp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">El Alcaravan - Yopal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yopal</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇴 Colombia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eyr/index.html" style="color:var(--blue);text-decoration:none;">EYR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/eyr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yerington Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yerington</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eys/index.html" style="color:var(--blue);text-decoration:none;">EYS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">HKES</td>
+        <td style="padding:12px 16px;"><a href="/eys/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Eliye Springs Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Eliye Springs</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇰🇪 Kenya</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eyw/index.html" style="color:var(--blue);text-decoration:none;">EYW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KEYW</td>
+        <td style="padding:12px 16px;"><a href="/eyw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Key West International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Key West</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eze/index.html" style="color:var(--blue);text-decoration:none;">EZE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SAEZ</td>
+        <td style="padding:12px 16px;"><a href="/eze/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ezeiza International Airport - Ministro Pistarini</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Buenos Aires (Ezeiza)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇷 Argentina</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ezs/index.html" style="color:var(--blue);text-decoration:none;">EZS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTCA</td>
+        <td style="padding:12px 16px;"><a href="/ezs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Elazığ Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Elazığ</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇷 Turkiye</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ezv/index.html" style="color:var(--blue);text-decoration:none;">EZV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ezv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Berezovo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<footer>
+  <div style="margin-bottom:10px">
+    <a href="/az.html">A–Z Index</a>
+    <a href="/countries.html">By Country</a>
+    <a href="/about.html">About</a>
+  </div>
+  <div>© 2025 airport-code.com · Data sourced from OurAirports &amp; Open-Meteo · <a href="https://ourairports.com">OurAirports</a></div>
+</footer>
+
+<script>
+(function(){
+  let db = null;
+  const input = document.getElementById('navSearchInput');
+  const results = document.getElementById('search-results');
+  if (!input) return;
+
+  async function loadDB() {
+    if (db) return;
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    const r = await fetch(root + 'airports.json');
+    db = await r.json();
+  }
+
+  input.addEventListener('focus', loadDB);
+  input.addEventListener('input', async function() {
+    const q = this.value.trim().toUpperCase();
+    if (q.length < 2) { results.style.display = 'none'; return; }
+    await loadDB();
+    const matches = db.filter(a =>
+      a.iata.startsWith(q) ||
+      a.name.toUpperCase().includes(q) ||
+      a.city.toUpperCase().includes(q)
+    ).slice(0, 7);
+    if (!matches.length) { results.style.display = 'none'; return; }
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    results.innerHTML = matches.map(a =>
+      `<a href="${root}${a.iata.toLowerCase()}/index.html">
+        <span class="sr-code">${a.iata}</span>
+        <div><div class="sr-name">${a.name}</div><div class="sr-city">${a.city}, ${a.country}</div></div>
+      </a>`
+    ).join('');
+    results.style.display = 'block';
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!input.contains(e.target) && !results.contains(e.target)) results.style.display = 'none';
+  });
+})();
+</script>
+
+</body>
+</html>

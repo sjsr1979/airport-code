@@ -1,0 +1,1805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="site-root" content="/">
+  <title>Airports Starting With U | Airport Code</title>
+  <meta name="description" content="All airports with IATA codes starting with the letter U. Browse airport codes, names and locations.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0f1f3d;
+      --blue: #1a56db;
+      --blue-light: #e8f0fe;
+      --sky: #38bdf8;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --green: #10b981;
+    }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; zoom: 1.12; }
+    nav { background: var(--navy); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { color: #fff; font-size: 19px; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; display: flex; align-items: center; gap: 6px; line-height: 1; }
+    .nav-logo svg { flex-shrink: 0; }
+    .nav-logo span { color: var(--sky); }
+    .nav-search { display: flex; align-items: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 6px 14px; gap: 8px; width: 280px; position: relative; }
+    .nav-search input { background: none; border: none; outline: none; color: #fff; font-size: 14px; width: 100%; font-family: 'Outfit', sans-serif; }
+    .nav-search input::placeholder { color: rgba(255,255,255,0.4); }
+    #search-results { position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: #fff; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 200; overflow: hidden; display: none; }
+    #search-results a { display: flex; align-items: center; gap: 10px; padding: 10px 14px; text-decoration: none; color: var(--text); font-size: 13px; border-bottom: 1px solid var(--border); transition: background 0.15s; }
+    #search-results a:last-child { border-bottom: none; }
+    #search-results a:hover { background: var(--bg); }
+    #search-results .sr-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 12px; padding: 2px 7px; border-radius: 5px; min-width: 38px; text-align: center; }
+    #search-results .sr-name { font-weight: 600; }
+    #search-results .sr-city { color: var(--muted); font-size: 11px; }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .hero { background: linear-gradient(135deg, var(--navy) 0%, #1a3a6b 100%); color: #fff; padding: 48px 0 56px; position: relative; overflow: hidden; }
+    .hero::before { content: '✈'; position: absolute; right: -20px; top: -20px; font-size: 220px; opacity: 0.04; transform: rotate(25deg); }
+    .hero-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .breadcrumb { font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 20px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .breadcrumb a:hover { color: rgba(255,255,255,0.8); }
+    .breadcrumb span.sep { color: rgba(255,255,255,0.3); }
+    .hero-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .hero-title { display: flex; align-items: flex-start; gap: 24px; }
+    .iata-badge { background: var(--blue); border: 2px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 14px 20px; text-align: center; min-width: 100px; flex-shrink: 0; }
+    .iata-badge .code { font-size: 40px; font-weight: 800; letter-spacing: 2px; color: #fff; line-height: 1; }
+    .iata-badge .label { font-size: 10px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
+    .hero-name { padding-top: 4px; }
+    .hero-name h1 { font-size: 38px; font-weight: 800; line-height: 1.1; color: #fff; }
+    .hero-name .location { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.65); font-size: 15px; margin-top: 6px; }
+    .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+    .badge { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.3px; }
+    .badge-large { background: rgba(16,185,129,0.2); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
+    .badge-medium { background: rgba(56,189,248,0.15); color: #7dd3fc; border: 1px solid rgba(56,189,248,0.3); }
+    .badge-small { background: rgba(245,158,11,0.15); color: #fcd34d; border: 1px solid rgba(245,158,11,0.3); }
+    .hero-stats { display: flex; gap: 32px; margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
+    .hero-stat .value { font-size: 22px; font-weight: 700; color: #fff; }
+    .hero-stat .label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
+    .time-widget { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 16px 20px; text-align: center; min-width: 160px; }
+    .time-widget .time-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+    .time-widget .time-value { font-size: 28px; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+    .time-widget .time-tz { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+    .main { max-width: 1100px; margin: 0 auto; padding: 32px 24px; display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
+    @media (max-width: 768px) { .main { grid-template-columns: 1fr; } .hero-name h1 { font-size: 26px; } .nav-links { display: none; } .nav-search { width: 200px; } }
+    .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .card-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .card-header h2 { font-size: 14px; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.5px; }
+    .card-body { padding: 20px; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .info-item { padding: 14px 16px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+    .info-item:nth-child(even) { border-right: none; }
+    .info-item:nth-last-child(-n+2) { border-bottom: none; }
+    .info-item .key { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px; }
+    .info-item .val { font-size: 15px; font-weight: 600; color: var(--text); }
+    .info-item .val a { color: var(--blue); text-decoration: none; }
+    .info-item .val a:hover { text-decoration: underline; }
+    .weather-widget { display: flex; align-items: center; gap: 20px; padding: 16px; background: linear-gradient(135deg, #e0f2fe, #f0f9ff); border-radius: 10px; margin-bottom: 16px; min-height: 100px; }
+    .weather-icon { font-size: 48px; line-height: 1; }
+    .weather-main .temp { font-size: 32px; font-weight: 700; color: var(--text); }
+    .weather-main .desc { font-size: 14px; color: var(--muted); text-transform: capitalize; }
+    .weather-details { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .weather-detail { font-size: 13px; color: var(--muted); }
+    .weather-detail strong { color: var(--text); font-weight: 600; }
+    .nearby-list { list-style: none; }
+    .nearby-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .nearby-item:last-child { border-bottom: none; }
+    .nearby-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 13px; padding: 3px 8px; border-radius: 6px; min-width: 44px; text-align: center; text-decoration: none; }
+    .nearby-code:hover { background: #ccdcfb; }
+    .nearby-info { flex: 1; margin: 0 12px; }
+    .nearby-info .name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .nearby-info .city { font-size: 11px; color: var(--muted); }
+    .nearby-dist { font-size: 12px; color: var(--muted); white-space: nowrap; }
+    .carbon-form { display: flex; flex-direction: column; gap: 12px; }
+    .carbon-form label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .carbon-form input, .carbon-form select { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-family: 'Outfit', sans-serif; color: var(--text); outline: none; transition: border-color 0.2s; }
+    .carbon-form input:focus, .carbon-form select:focus { border-color: var(--blue); }
+    .carbon-btn { background: var(--blue); color: #fff; border: none; padding: 11px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Outfit', sans-serif; transition: background 0.2s; }
+    .carbon-btn:hover { background: #1447c0; }
+    .carbon-result { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px; text-align: center; display: none; }
+    .carbon-result .co2 { font-size: 24px; font-weight: 800; color: var(--green); }
+    .carbon-result .co2-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .sidebar-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .sidebar-card .card-header { padding: 14px 16px; }
+    .sidebar-card .card-body { padding: 16px; }
+    .codes-display { display: flex; gap: 12px; }
+    .code-box { flex: 1; text-align: center; padding: 16px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; }
+    .code-box .code-val { font-size: 28px; font-weight: 800; color: var(--navy); letter-spacing: 1px; }
+    .code-box .code-type { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; }
+    footer { background: var(--navy); color: rgba(255,255,255,0.5); text-align: center; padding: 24px; font-size: 13px; margin-top: 40px; }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; margin: 0 12px; }
+    footer a:hover { color: #fff; }
+
+    .az-nav { display:flex; gap:6px; flex-wrap:wrap; padding:20px 0; }
+    .az-nav a { display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:6px;text-decoration:none;font-weight:700;font-size:14px; }
+    .az-nav a.active { background:var(--blue);color:#fff; }
+    .az-nav a:not(.active) { background:#fff;color:var(--blue);border:1px solid var(--border); }
+    .az-nav a:not(.active):hover { background:var(--blue-light); }
+    table { width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden; }
+    thead th { padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid var(--border);background:#f8fafc; }
+    tbody tr { border-bottom:1px solid #f5f5f5; }
+    tbody tr:last-child { border-bottom:none; }
+    tbody tr:hover { background:#fafbfc; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/index.html" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="9" fill="#1a56db"/><path d="M24.5 8.5C25.3 9.3 25.3 10.6 24.5 11.4L19.8 16.1L22 25L19.5 27.5L16 19L11.5 23.5L12 26L10 28L8 24L4 22L6 20L8.5 20.5L13 16L5.5 12.5L8 10L17 12.2L21.6 7.5C22.4 6.7 23.7 6.7 24.5 8.5Z" fill="white"/></svg>
+    Airport<span>Code</span>
+  </a>
+  <div class="nav-search">
+    <svg width="14" height="14" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="navSearchInput" placeholder="Search airport or code…" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <div class="nav-links">
+    <a href="/az.html">A–Z</a>
+    <a href="/countries.html">By Country</a>
+  </div>
+</nav>
+
+<div style="max-width:1100px;margin:0 auto;padding:32px 24px">
+  <div style="margin-bottom:8px;font-size:12px;color:var(--muted)"><a href="/index.html" style="color:var(--blue);text-decoration:none">Home</a> › <a href="/az.html" style="color:var(--blue);text-decoration:none">A–Z Index</a> › U</div>
+  <h1 style="font-size:28px;font-weight:800;color:var(--navy);margin-bottom:4px">Airports: U</h1>
+  <p style="color:var(--muted);margin-bottom:16px">198 airports with IATA codes starting with U</p>
+
+  <div class="az-nav">
+    <a href="/az/a.html" class="">A</a><a href="/az/b.html" class="">B</a><a href="/az/c.html" class="">C</a><a href="/az/d.html" class="">D</a><a href="/az/e.html" class="">E</a><a href="/az/f.html" class="">F</a><a href="/az/g.html" class="">G</a><a href="/az/h.html" class="">H</a><a href="/az/i.html" class="">I</a><a href="/az/j.html" class="">J</a><a href="/az/k.html" class="">K</a><a href="/az/l.html" class="">L</a><a href="/az/m.html" class="">M</a><a href="/az/n.html" class="">N</a><a href="/az/o.html" class="">O</a><a href="/az/p.html" class="">P</a><a href="/az/q.html" class="">Q</a><a href="/az/r.html" class="">R</a><a href="/az/s.html" class="">S</a><a href="/az/t.html" class="">T</a><a href="/az/u.html" class="active">U</a><a href="/az/v.html" class="">V</a><a href="/az/w.html" class="">W</a><a href="/az/x.html" class="">X</a><a href="/az/y.html" class="">Y</a><a href="/az/z.html" class="">Z</a>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>IATA</th><th>ICAO</th><th>Airport Name</th><th>City</th><th>Country</th><th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uab/index.html" style="color:var(--blue);text-decoration:none;">UAB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTAG</td>
+        <td style="padding:12px 16px;"><a href="/uab/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">İncirlik Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sarıçam</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇷 Turkiye</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uac/index.html" style="color:var(--blue);text-decoration:none;">UAC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/uac/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">San Luis Río Colorado Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">San Luis Río Colorado</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇽 Mexico</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uae/index.html" style="color:var(--blue);text-decoration:none;">UAE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">AYAE</td>
+        <td style="padding:12px 16px;"><a href="/uae/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mount Aue Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Aue</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uah/index.html" style="color:var(--blue);text-decoration:none;">UAH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">NTMU</td>
+        <td style="padding:12px 16px;"><a href="/uah/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ua Huka Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ua Huka</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇫 French Polynesia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uai/index.html" style="color:var(--blue);text-decoration:none;">UAI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WPDB</td>
+        <td style="padding:12px 16px;"><a href="/uai/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Commander in Chief of FALINTIL, Kay Rala Xanana Gusmão, International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Suai</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇱 Timor-Leste</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uak/index.html" style="color:var(--blue);text-decoration:none;">UAK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">BGBW</td>
+        <td style="padding:12px 16px;"><a href="/uak/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Narsarsuaq Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Narsarsuaq</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇱 Greenland</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ual/index.html" style="color:var(--blue);text-decoration:none;">UAL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FNUA</td>
+        <td style="padding:12px 16px;"><a href="/ual/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Luau Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Luau</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇴 Angola</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uam/index.html" style="color:var(--blue);text-decoration:none;">UAM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">PGUA</td>
+        <td style="padding:12px 16px;"><a href="/uam/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Andersen Air Force Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yigo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇺 Guam</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uap/index.html" style="color:var(--blue);text-decoration:none;">UAP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">NTMP</td>
+        <td style="padding:12px 16px;"><a href="/uap/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ua Pou Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ua Pou</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇫 French Polynesia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uaq/index.html" style="color:var(--blue);text-decoration:none;">UAQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SANU</td>
+        <td style="padding:12px 16px;"><a href="/uaq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Domingo Faustino Sarmiento Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">San Juan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇷 Argentina</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uar/index.html" style="color:var(--blue);text-decoration:none;">UAR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">GMFB</td>
+        <td style="padding:12px 16px;"><a href="/uar/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bouarfa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bouarfa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇦 Maghribi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uas/index.html" style="color:var(--blue);text-decoration:none;">UAS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">HKSB</td>
+        <td style="padding:12px 16px;"><a href="/uas/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Samburu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Isiolo West</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇰🇪 Kenya</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uax/index.html" style="color:var(--blue);text-decoration:none;">UAX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/uax/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Uaxactun Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Uaxactun</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇹 Guatemala</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uba/index.html" style="color:var(--blue);text-decoration:none;">UBA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SBUR</td>
+        <td style="padding:12px 16px;"><a href="/uba/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mário de Almeida Franco Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Uberaba</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ubb/index.html" style="color:var(--blue);text-decoration:none;">UBB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">YMAA</td>
+        <td style="padding:12px 16px;"><a href="/ubb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mabuiag Island Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mabuiag Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ubi/index.html" style="color:var(--blue);text-decoration:none;">UBI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">AYUI</td>
+        <td style="padding:12px 16px;"><a href="/ubi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Buin Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Buin</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ubj/index.html" style="color:var(--blue);text-decoration:none;">UBJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJDC</td>
+        <td style="padding:12px 16px;"><a href="/ubj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yamaguchi Ube Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ube</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇯🇵 Jepun</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ubn/index.html" style="color:var(--blue);text-decoration:none;">UBN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZMCK</td>
+        <td style="padding:12px 16px;"><a href="/ubn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ulaanbaatar Chinggis Khaan International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ulaanbaatar (Sergelen)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇳 Mongolia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ubp/index.html" style="color:var(--blue);text-decoration:none;">UBP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTUU</td>
+        <td style="padding:12px 16px;"><a href="/ubp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ubon Ratchathani Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ubon Ratchathani</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇭 Thailand</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ubs/index.html" style="color:var(--blue);text-decoration:none;">UBS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KUBS</td>
+        <td style="padding:12px 16px;"><a href="/ubs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Columbus Lowndes County Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Columbus</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ubt/index.html" style="color:var(--blue);text-decoration:none;">UBT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SDUB</td>
+        <td style="padding:12px 16px;"><a href="/ubt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ubatuba Gastão Madeira State Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ubatuba</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ubu/index.html" style="color:var(--blue);text-decoration:none;">UBU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">YKAL</td>
+        <td style="padding:12px 16px;"><a href="/ubu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kalumburu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kalumburu</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ucb/index.html" style="color:var(--blue);text-decoration:none;">UCB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ucb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ulanqab Jining Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ulanqab</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ucc/index.html" style="color:var(--blue);text-decoration:none;">UCC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ucc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yucca Airstrip</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mercury</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uce/index.html" style="color:var(--blue);text-decoration:none;">UCE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/uce/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Eunice Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Eunice</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uck/index.html" style="color:var(--blue);text-decoration:none;">UCK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UKLC</td>
+        <td style="padding:12px 16px;"><a href="/uck/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Lutsk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lutsk</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇦 Ukraine</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ucn/index.html" style="color:var(--blue);text-decoration:none;">UCN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">GLBU</td>
+        <td style="padding:12px 16px;"><a href="/ucn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Buchanan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Buchanan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇱🇷 Liberia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uct/index.html" style="color:var(--blue);text-decoration:none;">UCT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UUYH</td>
+        <td style="padding:12px 16px;"><a href="/uct/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ukhta Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ukhta</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ucy/index.html" style="color:var(--blue);text-decoration:none;">UCY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KUCY</td>
+        <td style="padding:12px 16px;"><a href="/ucy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Everett-Stewart Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Union City</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ucz/index.html" style="color:var(--blue);text-decoration:none;">UCZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ucz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Uchiza Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Uchiza</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇪 Peru</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uda/index.html" style="color:var(--blue);text-decoration:none;">UDA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">YUDA</td>
+        <td style="padding:12px 16px;"><a href="/uda/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Undara Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Undara</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/udd/index.html" style="color:var(--blue);text-decoration:none;">UDD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KUDD</td>
+        <td style="padding:12px 16px;"><a href="/udd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bermuda Dunes Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bermuda Dunes</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ude/index.html" style="color:var(--blue);text-decoration:none;">UDE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EHVK</td>
+        <td style="padding:12px 16px;"><a href="/ude/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Volkel Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Uden</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇱 Belanda</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/udi/index.html" style="color:var(--blue);text-decoration:none;">UDI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SBUL</td>
+        <td style="padding:12px 16px;"><a href="/udi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ten. Cel. Aviador César Bombonato Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Uberlândia</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/udj/index.html" style="color:var(--blue);text-decoration:none;">UDJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UKLU</td>
+        <td style="padding:12px 16px;"><a href="/udj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Uzhhorod International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Uzhhorod</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇦 Ukraine</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/udr/index.html" style="color:var(--blue);text-decoration:none;">UDR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VAUD</td>
+        <td style="padding:12px 16px;"><a href="/udr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Maharana Pratap Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Udaipur</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uee/index.html" style="color:var(--blue);text-decoration:none;">UEE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">YQNS</td>
+        <td style="padding:12px 16px;"><a href="/uee/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Queenstown Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uel/index.html" style="color:var(--blue);text-decoration:none;">UEL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FQQL</td>
+        <td style="padding:12px 16px;"><a href="/uel/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Quelimane Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Quelimane</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇿 Mozambique</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uen/index.html" style="color:var(--blue);text-decoration:none;">UEN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">USDU</td>
+        <td style="padding:12px 16px;"><a href="/uen/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Urengoy Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Urengoy</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ueo/index.html" style="color:var(--blue);text-decoration:none;">UEO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ROKJ</td>
+        <td style="padding:12px 16px;"><a href="/ueo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kumejima Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kumejima</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇯🇵 Jepun</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ues/index.html" style="color:var(--blue);text-decoration:none;">UES</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KUES</td>
+        <td style="padding:12px 16px;"><a href="/ues/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Waukesha County Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Waukesha</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uet/index.html" style="color:var(--blue);text-decoration:none;">UET</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">OPQT</td>
+        <td style="padding:12px 16px;"><a href="/uet/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Quetta International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Quetta</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇰 Pakistan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ufa/index.html" style="color:var(--blue);text-decoration:none;">UFA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UWUU</td>
+        <td style="padding:12px 16px;"><a href="/ufa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ufa International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ufa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uga/index.html" style="color:var(--blue);text-decoration:none;">UGA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZMBN</td>
+        <td style="padding:12px 16px;"><a href="/uga/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bulgan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bulgan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇳 Mongolia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ugb/index.html" style="color:var(--blue);text-decoration:none;">UGB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ugb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ugashik Bay Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Pilot Point</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ugc/index.html" style="color:var(--blue);text-decoration:none;">UGC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UZNU</td>
+        <td style="padding:12px 16px;"><a href="/ugc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Urgench International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Urgench</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇿 Uzbekistan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ugl/index.html" style="color:var(--blue);text-decoration:none;">UGL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SCGC</td>
+        <td style="padding:12px 16px;"><a href="/ugl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Union Glacier Blue-Ice Runway</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Union Glacier</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇶 Antartika</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ugn/index.html" style="color:var(--blue);text-decoration:none;">UGN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KUGN</td>
+        <td style="padding:12px 16px;"><a href="/ugn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Waukegan National Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Chicago/Waukegan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ugo/index.html" style="color:var(--blue);text-decoration:none;">UGO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FNUG</td>
+        <td style="padding:12px 16px;"><a href="/ugo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Uige Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Uige</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇴 Angola</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ugs/index.html" style="color:var(--blue);text-decoration:none;">UGS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ugs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ugashik Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ugashik</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ugt/index.html" style="color:var(--blue);text-decoration:none;">UGT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZMBR</td>
+        <td style="padding:12px 16px;"><a href="/ugt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bulagtai Resort Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Khankhongor</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇳 Mongolia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ugu/index.html" style="color:var(--blue);text-decoration:none;">UGU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ugu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bilorai Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bilogai</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uhe/index.html" style="color:var(--blue);text-decoration:none;">UHE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LKKU</td>
+        <td style="padding:12px 16px;"><a href="/uhe/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kunovice Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Uherské Hradiště</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇿 Czechia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uhs/index.html" style="color:var(--blue);text-decoration:none;">UHS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/uhs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Aleksandrovsk-Sakhalinskiy Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Aleksandrovsk-Sakhalinskiy</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uib/index.html" style="color:var(--blue);text-decoration:none;">UIB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKUI</td>
+        <td style="padding:12px 16px;"><a href="/uib/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">El Caraño Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Quibdó</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇴 Colombia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uih/index.html" style="color:var(--blue);text-decoration:none;">UIH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VVPC</td>
+        <td style="padding:12px 16px;"><a href="/uih/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Phu Cat Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Quy Nohn</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇻🇳 Vietnam</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uii/index.html" style="color:var(--blue);text-decoration:none;">UII</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">MHUT</td>
+        <td style="padding:12px 16px;"><a href="/uii/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Utila Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Utila Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇭🇳 Honduras</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uik/index.html" style="color:var(--blue);text-decoration:none;">UIK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/uik/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ust-Ilimsk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ust-Ilimsk</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uil/index.html" style="color:var(--blue);text-decoration:none;">UIL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KUIL</td>
+        <td style="padding:12px 16px;"><a href="/uil/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Quillayute Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Quillayute</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uin/index.html" style="color:var(--blue);text-decoration:none;">UIN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KUIN</td>
+        <td style="padding:12px 16px;"><a href="/uin/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Quincy Regional Airport Baldwin Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Quincy</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uio/index.html" style="color:var(--blue);text-decoration:none;">UIO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SEQM</td>
+        <td style="padding:12px 16px;"><a href="/uio/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mariscal Sucre International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Quito</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇨 Ecuador</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uip/index.html" style="color:var(--blue);text-decoration:none;">UIP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFRQ</td>
+        <td style="padding:12px 16px;"><a href="/uip/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Quimper-Cornouaille Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Quimper/Pluguffan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇷 Perancis</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uir/index.html" style="color:var(--blue);text-decoration:none;">UIR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">YQDI</td>
+        <td style="padding:12px 16px;"><a href="/uir/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Quirindi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uit/index.html" style="color:var(--blue);text-decoration:none;">UIT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/uit/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jaluit Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jabor Jaluit Atoll</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇭 Kepulauan Marshall</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uje/index.html" style="color:var(--blue);text-decoration:none;">UJE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/uje/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ujae Atoll Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ujae Atoll</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇭 Kepulauan Marshall</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ujn/index.html" style="color:var(--blue);text-decoration:none;">UJN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RKTL</td>
+        <td style="padding:12px 16px;"><a href="/ujn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Uljin Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bongsan-ri, Uljin</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇰🇷 Korea Selatan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uju/index.html" style="color:var(--blue);text-decoration:none;">UJU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZKUJ</td>
+        <td style="padding:12px 16px;"><a href="/uju/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Uiju Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Uiju</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇰🇵 Korea Utara</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uka/index.html" style="color:var(--blue);text-decoration:none;">UKA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">HKUK</td>
+        <td style="padding:12px 16px;"><a href="/uka/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ukunda Airstrip</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ukunda</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇰🇪 Kenya</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ukb/index.html" style="color:var(--blue);text-decoration:none;">UKB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJBE</td>
+        <td style="padding:12px 16px;"><a href="/ukb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kobe Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kobe</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇯🇵 Jepun</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uke/index.html" style="color:var(--blue);text-decoration:none;">UKE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/uke/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Utkela Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bhawanipatna</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ukg/index.html" style="color:var(--blue);text-decoration:none;">UKG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UEBT</td>
+        <td style="padding:12px 16px;"><a href="/ukg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ust-Kuyga Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ust-Kuyga</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ukh/index.html" style="color:var(--blue);text-decoration:none;">UKH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ukh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mukhaizna Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mukhaizna Oil Field</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇴🇲 Oman</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uki/index.html" style="color:var(--blue);text-decoration:none;">UKI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KUKI</td>
+        <td style="padding:12px 16px;"><a href="/uki/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ukiah Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ukiah</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ukk/index.html" style="color:var(--blue);text-decoration:none;">UKK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UASK</td>
+        <td style="padding:12px 16px;"><a href="/ukk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Oskemen International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ust-Kamenogorsk (Oskemen)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇰🇿 Kazakhstan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ukn/index.html" style="color:var(--blue);text-decoration:none;">UKN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ukn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Waukon Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Waukon</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ukr/index.html" style="color:var(--blue);text-decoration:none;">UKR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">OYMS</td>
+        <td style="padding:12px 16px;"><a href="/ukr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mukeiras Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mukayras</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇾🇪 Yaman</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uks/index.html" style="color:var(--blue);text-decoration:none;">UKS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UKFB</td>
+        <td style="padding:12px 16px;"><a href="/uks/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sevastopol International Airport / Belbek Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sevastopol</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇦 Ukraine</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ukt/index.html" style="color:var(--blue);text-decoration:none;">UKT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KUKT</td>
+        <td style="padding:12px 16px;"><a href="/ukt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Quakertown Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Quakertown</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uku/index.html" style="color:var(--blue);text-decoration:none;">UKU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">AYNU</td>
+        <td style="padding:12px 16px;"><a href="/uku/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nuku Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nuku</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ukx/index.html" style="color:var(--blue);text-decoration:none;">UKX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UITT</td>
+        <td style="padding:12px 16px;"><a href="/ukx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ust-Kut Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ust-Kut</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ula/index.html" style="color:var(--blue);text-decoration:none;">ULA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SAWJ</td>
+        <td style="padding:12px 16px;"><a href="/ula/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Capitan D Daniel Vazquez Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">San Julian</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇷 Argentina</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ulb/index.html" style="color:var(--blue);text-decoration:none;">ULB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">NVSU</td>
+        <td style="padding:12px 16px;"><a href="/ulb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Uléi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ambrym Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇻🇺 Vanuatu</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uld/index.html" style="color:var(--blue);text-decoration:none;">ULD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FAUL</td>
+        <td style="padding:12px 16px;"><a href="/uld/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Prince Mangosuthu Buthelezi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ulundi</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇿🇦 Afrika Selatan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ule/index.html" style="color:var(--blue);text-decoration:none;">ULE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ule/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sule Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sule</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ulg/index.html" style="color:var(--blue);text-decoration:none;">ULG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZMUL</td>
+        <td style="padding:12px 16px;"><a href="/ulg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ölgii Mongolei International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ölgii</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇳 Mongolia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ulh/index.html" style="color:var(--blue);text-decoration:none;">ULH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">OEAO</td>
+        <td style="padding:12px 16px;"><a href="/ulh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Al-Ula International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Al-Ula</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇦 Arab Saudi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uli/index.html" style="color:var(--blue);text-decoration:none;">ULI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/uli/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ulithi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Falalop Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇲 Micronesia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ulk/index.html" style="color:var(--blue);text-decoration:none;">ULK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UERL</td>
+        <td style="padding:12px 16px;"><a href="/ulk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Lensk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lensk</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ulm/index.html" style="color:var(--blue);text-decoration:none;">ULM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KULM</td>
+        <td style="padding:12px 16px;"><a href="/ulm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">New Ulm Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">New Ulm</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uln/index.html" style="color:var(--blue);text-decoration:none;">ULN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZMUB</td>
+        <td style="padding:12px 16px;"><a href="/uln/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Buyant-Ukhaa International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ulaanbaatar</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇳 Mongolia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ulo/index.html" style="color:var(--blue);text-decoration:none;">ULO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZMUG</td>
+        <td style="padding:12px 16px;"><a href="/ulo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ulaangom Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ulaangom</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇳 Mongolia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ulp/index.html" style="color:var(--blue);text-decoration:none;">ULP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">YQLP</td>
+        <td style="padding:12px 16px;"><a href="/ulp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Quilpie Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ulq/index.html" style="color:var(--blue);text-decoration:none;">ULQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKUL</td>
+        <td style="padding:12px 16px;"><a href="/ulq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Heriberto Gíl Martínez Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tuluá</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇴 Colombia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uls/index.html" style="color:var(--blue);text-decoration:none;">ULS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/uls/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mulatos Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mulatos</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇴 Colombia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ulu/index.html" style="color:var(--blue);text-decoration:none;">ULU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">HUGU</td>
+        <td style="padding:12px 16px;"><a href="/ulu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Gulu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Gulu</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇬 Uganda</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ulv/index.html" style="color:var(--blue);text-decoration:none;">ULV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UWLL</td>
+        <td style="padding:12px 16px;"><a href="/ulv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ulyanovsk Baratayevka Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ulyanovsk</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ulx/index.html" style="color:var(--blue);text-decoration:none;">ULX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FAUS</td>
+        <td style="padding:12px 16px;"><a href="/ulx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ulusaba Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ulusaba</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇿🇦 Afrika Selatan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uly/index.html" style="color:var(--blue);text-decoration:none;">ULY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UWLW</td>
+        <td style="padding:12px 16px;"><a href="/uly/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ulyanovsk Vostochny Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cherdakly</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ulz/index.html" style="color:var(--blue);text-decoration:none;">ULZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZMDN</td>
+        <td style="padding:12px 16px;"><a href="/ulz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Donoi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Uliastai</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇳 Mongolia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uma/index.html" style="color:var(--blue);text-decoration:none;">UMA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/uma/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Alfredo Noa Díaz Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Maisí</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇺 Cuba</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/umb/index.html" style="color:var(--blue);text-decoration:none;">UMB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/umb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kalumbila Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kalumbila</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇿🇲 Zambia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/umc/index.html" style="color:var(--blue);text-decoration:none;">UMC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">AYUC</td>
+        <td style="padding:12px 16px;"><a href="/umc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Umba Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Umba</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ume/index.html" style="color:var(--blue);text-decoration:none;">UME</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ESNU</td>
+        <td style="padding:12px 16px;"><a href="/ume/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Umeå Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Umeå</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇪 Sweden</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/umi/index.html" style="color:var(--blue);text-decoration:none;">UMI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SPIL</td>
+        <td style="padding:12px 16px;"><a href="/umi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Quincemil Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Quince Mil</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇪 Peru</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/umm/index.html" style="color:var(--blue);text-decoration:none;">UMM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">PAST</td>
+        <td style="padding:12px 16px;"><a href="/umm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Summit Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cantwell</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/umr/index.html" style="color:var(--blue);text-decoration:none;">UMR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">YPWR</td>
+        <td style="padding:12px 16px;"><a href="/umr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Woomera Airfield</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Woomera</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ums/index.html" style="color:var(--blue);text-decoration:none;">UMS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UEMU</td>
+        <td style="padding:12px 16px;"><a href="/ums/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ust-Maya Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ust-Maya</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/umt/index.html" style="color:var(--blue);text-decoration:none;">UMT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">PAUM</td>
+        <td style="padding:12px 16px;"><a href="/umt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Umiat Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Umiat</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/umu/index.html" style="color:var(--blue);text-decoration:none;">UMU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SSUM</td>
+        <td style="padding:12px 16px;"><a href="/umu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Orlando de Carvalho Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Umuarama</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/umy/index.html" style="color:var(--blue);text-decoration:none;">UMY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UKHS</td>
+        <td style="padding:12px 16px;"><a href="/umy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sumy Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sumy</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇦 Ukraine</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/umz/index.html" style="color:var(--blue);text-decoration:none;">UMZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/umz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mena Intermountain Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mena</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/una/index.html" style="color:var(--blue);text-decoration:none;">UNA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SBTC</td>
+        <td style="padding:12px 16px;"><a href="/una/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Una-Comandatuba Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Una</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/unc/index.html" style="color:var(--blue);text-decoration:none;">UNC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/unc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Unguía Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Unguía</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇴 Colombia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/und/index.html" style="color:var(--blue);text-decoration:none;">UND</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">OAUZ</td>
+        <td style="padding:12px 16px;"><a href="/und/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kunduz Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kunduz</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇫 Afghanistan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/une/index.html" style="color:var(--blue);text-decoration:none;">UNE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FXQN</td>
+        <td style="padding:12px 16px;"><a href="/une/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Qacha's Nek Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Qacha's Nek</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇱🇸 Lesotho</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ung/index.html" style="color:var(--blue);text-decoration:none;">UNG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">AYKI</td>
+        <td style="padding:12px 16px;"><a href="/ung/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kiunga Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kiunga</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uni/index.html" style="color:var(--blue);text-decoration:none;">UNI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">TVSU</td>
+        <td style="padding:12px 16px;"><a href="/uni/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Union Island International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Union Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇻🇨 Saint Vincent dan Grenadines</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/unk/index.html" style="color:var(--blue);text-decoration:none;">UNK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">PAUN</td>
+        <td style="padding:12px 16px;"><a href="/unk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Unalakleet Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Unalakleet</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/unn/index.html" style="color:var(--blue);text-decoration:none;">UNN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTSR</td>
+        <td style="padding:12px 16px;"><a href="/unn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ranong Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ranong</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇭 Thailand</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/unr/index.html" style="color:var(--blue);text-decoration:none;">UNR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZMUH</td>
+        <td style="padding:12px 16px;"><a href="/unr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Öndörkhaan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Öndörkhaan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇳 Mongolia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/unu/index.html" style="color:var(--blue);text-decoration:none;">UNU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KUNU</td>
+        <td style="padding:12px 16px;"><a href="/unu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Dodge County Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Juneau</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uoa/index.html" style="color:var(--blue);text-decoration:none;">UOA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">NTTX</td>
+        <td style="padding:12px 16px;"><a href="/uoa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Moruroa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Moruroa Atoll</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇫 French Polynesia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uol/index.html" style="color:var(--blue);text-decoration:none;">UOL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAFY</td>
+        <td style="padding:12px 16px;"><a href="/uol/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Buol - Pogogul Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Buol</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uos/index.html" style="color:var(--blue);text-decoration:none;">UOS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KUOS</td>
+        <td style="padding:12px 16px;"><a href="/uos/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Franklin County Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sewanee</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uox/index.html" style="color:var(--blue);text-decoration:none;">UOX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KUOX</td>
+        <td style="padding:12px 16px;"><a href="/uox/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">University Oxford Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Oxford</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/upb/index.html" style="color:var(--blue);text-decoration:none;">UPB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">MUPB</td>
+        <td style="padding:12px 16px;"><a href="/upb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Playa Baracoa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Havana</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇺 Cuba</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/upg/index.html" style="color:var(--blue);text-decoration:none;">UPG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAAA</td>
+        <td style="padding:12px 16px;"><a href="/upg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sultan Hasanuddin International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Makassar</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/upl/index.html" style="color:var(--blue);text-decoration:none;">UPL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">MRUP</td>
+        <td style="padding:12px 16px;"><a href="/upl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Upala Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Upala</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇷 Costa Rica</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/upn/index.html" style="color:var(--blue);text-decoration:none;">UPN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">MMPN</td>
+        <td style="padding:12px 16px;"><a href="/upn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Uruapan - Licenciado y General Ignacio Lopez Rayon International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Uruapan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇽 Mexico</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/upp/index.html" style="color:var(--blue);text-decoration:none;">UPP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">PHUP</td>
+        <td style="padding:12px 16px;"><a href="/upp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Upolu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Hawi</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/upr/index.html" style="color:var(--blue);text-decoration:none;">UPR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">AYUR</td>
+        <td style="padding:12px 16px;"><a href="/upr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Upiara Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Upiara</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/upv/index.html" style="color:var(--blue);text-decoration:none;">UPV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EGDJ</td>
+        <td style="padding:12px 16px;"><a href="/upv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Upavon Aerodrome</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Pewsey, Wiltshire</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇧 UK</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ura/index.html" style="color:var(--blue);text-decoration:none;">URA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UARR</td>
+        <td style="padding:12px 16px;"><a href="/ura/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Manshuk Mametova International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Uralsk</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇰🇿 Kazakhstan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/urc/index.html" style="color:var(--blue);text-decoration:none;">URC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZWWW</td>
+        <td style="padding:12px 16px;"><a href="/urc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ürümqi Tianshan International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ürümqi</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/urd/index.html" style="color:var(--blue);text-decoration:none;">URD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EDQE</td>
+        <td style="padding:12px 16px;"><a href="/urd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Burg Feuerstein Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ebermannstadt</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇪 Jerman</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ure/index.html" style="color:var(--blue);text-decoration:none;">URE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EEKE</td>
+        <td style="padding:12px 16px;"><a href="/ure/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kuressaare Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kuressaare</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇪 Estonia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/urg/index.html" style="color:var(--blue);text-decoration:none;">URG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SBUG</td>
+        <td style="padding:12px 16px;"><a href="/urg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rubem Berta Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Uruguaiana</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uri/index.html" style="color:var(--blue);text-decoration:none;">URI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKUB</td>
+        <td style="padding:12px 16px;"><a href="/uri/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Uribe Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">La Uribe</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇴 Colombia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/urj/index.html" style="color:var(--blue);text-decoration:none;">URJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">USHU</td>
+        <td style="padding:12px 16px;"><a href="/urj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Uray Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Uray</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/urm/index.html" style="color:var(--blue);text-decoration:none;">URM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SVUM</td>
+        <td style="padding:12px 16px;"><a href="/urm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Uriman Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Urimán</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇻🇪 Venezuela</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/urn/index.html" style="color:var(--blue);text-decoration:none;">URN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">OAOG</td>
+        <td style="padding:12px 16px;"><a href="/urn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Urgun Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Urgun</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇫 Afghanistan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uro/index.html" style="color:var(--blue);text-decoration:none;">URO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFOP</td>
+        <td style="padding:12px 16px;"><a href="/uro/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rouen Vallée de Seine Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Boos</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇷 Perancis</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/urr/index.html" style="color:var(--blue);text-decoration:none;">URR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKUR</td>
+        <td style="padding:12px 16px;"><a href="/urr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Urrao Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Urrao</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇴 Colombia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/urs/index.html" style="color:var(--blue);text-decoration:none;">URS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UUOK</td>
+        <td style="padding:12px 16px;"><a href="/urs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kursk East Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kursk</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/urt/index.html" style="color:var(--blue);text-decoration:none;">URT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTSB</td>
+        <td style="padding:12px 16px;"><a href="/urt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Surat Thani Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Surat Thani</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇭 Thailand</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uru/index.html" style="color:var(--blue);text-decoration:none;">URU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">AYUE</td>
+        <td style="padding:12px 16px;"><a href="/uru/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Uroubi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Uroubi</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ury/index.html" style="color:var(--blue);text-decoration:none;">URY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">OEGT</td>
+        <td style="padding:12px 16px;"><a href="/ury/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Gurayat Domestic Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Gurayat</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇦 Arab Saudi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/urz/index.html" style="color:var(--blue);text-decoration:none;">URZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">OARG</td>
+        <td style="padding:12px 16px;"><a href="/urz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Orūzgān Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Orūzgān</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇫 Afghanistan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/usa/index.html" style="color:var(--blue);text-decoration:none;">USA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KJQF</td>
+        <td style="padding:12px 16px;"><a href="/usa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Concord-Padgett Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Concord</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/usc/index.html" style="color:var(--blue);text-decoration:none;">USC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/usc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Union County, Troy Shelton Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Union</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ush/index.html" style="color:var(--blue);text-decoration:none;">USH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SAWH</td>
+        <td style="padding:12px 16px;"><a href="/ush/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ushuaia - Malvinas Argentinas International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ushuaia</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇷 Argentina</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/usi/index.html" style="color:var(--blue);text-decoration:none;">USI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SYMB</td>
+        <td style="padding:12px 16px;"><a href="/usi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mabaruma Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mabaruma</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇾 Guyana</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/usj/index.html" style="color:var(--blue);text-decoration:none;">USJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UAAL</td>
+        <td style="padding:12px 16px;"><a href="/usj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Usharal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Usharal</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇰🇿 Kazakhstan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/usk/index.html" style="color:var(--blue);text-decoration:none;">USK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UUYS</td>
+        <td style="padding:12px 16px;"><a href="/usk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Usinsk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Usinsk</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/usl/index.html" style="color:var(--blue);text-decoration:none;">USL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">YUSL</td>
+        <td style="padding:12px 16px;"><a href="/usl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Useless Loop Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Useless Loop</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/usm/index.html" style="color:var(--blue);text-decoration:none;">USM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTSM</td>
+        <td style="padding:12px 16px;"><a href="/usm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Samui International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Na Thon (Ko Samui Island)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇭 Thailand</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/usn/index.html" style="color:var(--blue);text-decoration:none;">USN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RKPU</td>
+        <td style="padding:12px 16px;"><a href="/usn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ulsan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ulsan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇰🇷 Korea Selatan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/usq/index.html" style="color:var(--blue);text-decoration:none;">USQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LTBO</td>
+        <td style="padding:12px 16px;"><a href="/usq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Uşak Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Uşak</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇷 Turkiye</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/usr/index.html" style="color:var(--blue);text-decoration:none;">USR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UEMT</td>
+        <td style="padding:12px 16px;"><a href="/usr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ust-Nera Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ust-Nera</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uss/index.html" style="color:var(--blue);text-decoration:none;">USS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">MUSS</td>
+        <td style="padding:12px 16px;"><a href="/uss/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sancti Spiritus Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sancti Spiritus</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇺 Cuba</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ust/index.html" style="color:var(--blue);text-decoration:none;">UST</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KSGJ</td>
+        <td style="padding:12px 16px;"><a href="/ust/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Northeast Florida Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">St Augustine</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/usu/index.html" style="color:var(--blue);text-decoration:none;">USU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPVV</td>
+        <td style="padding:12px 16px;"><a href="/usu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Francisco B. Reyes (Busuanga) Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Coron</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇭 Filipina</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uta/index.html" style="color:var(--blue);text-decoration:none;">UTA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FVMU</td>
+        <td style="padding:12px 16px;"><a href="/uta/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mutare Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mutare</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇿🇼 Zimbabwe</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/utb/index.html" style="color:var(--blue);text-decoration:none;">UTB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">YMTB</td>
+        <td style="padding:12px 16px;"><a href="/utb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Muttaburra Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/utd/index.html" style="color:var(--blue);text-decoration:none;">UTD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/utd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nutwood Downs Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nutwood Downs</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ute/index.html" style="color:var(--blue);text-decoration:none;">UTE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FABU</td>
+        <td style="padding:12px 16px;"><a href="/ute/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bultfontein Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bultfontein</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇿🇦 Afrika Selatan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/utg/index.html" style="color:var(--blue);text-decoration:none;">UTG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FXQG</td>
+        <td style="padding:12px 16px;"><a href="/utg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Quthing Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Quthing</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇱🇸 Lesotho</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uth/index.html" style="color:var(--blue);text-decoration:none;">UTH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTUD</td>
+        <td style="padding:12px 16px;"><a href="/uth/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Udon Thani International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Udon Thani</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇭 Thailand</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uti/index.html" style="color:var(--blue);text-decoration:none;">UTI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EFUT</td>
+        <td style="padding:12px 16px;"><a href="/uti/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Utti Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Utti / Valkeala</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇮 Finland</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/utk/index.html" style="color:var(--blue);text-decoration:none;">UTK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/utk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Utirik Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Utirik Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇭 Kepulauan Marshall</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/utm/index.html" style="color:var(--blue);text-decoration:none;">UTM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KUTA</td>
+        <td style="padding:12px 16px;"><a href="/utm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tunica Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tunica</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/utn/index.html" style="color:var(--blue);text-decoration:none;">UTN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FAUP</td>
+        <td style="padding:12px 16px;"><a href="/utn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Upington Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Upington</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇿🇦 Afrika Selatan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uto/index.html" style="color:var(--blue);text-decoration:none;">UTO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">PAIM</td>
+        <td style="padding:12px 16px;"><a href="/uto/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Indian Mountain LRRS Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Utopia Creek</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/utp/index.html" style="color:var(--blue);text-decoration:none;">UTP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTBU</td>
+        <td style="padding:12px 16px;"><a href="/utp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">U-Tapao–Rayong–Pattaya International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rayong</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇭 Thailand</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uts/index.html" style="color:var(--blue);text-decoration:none;">UTS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UUYX</td>
+        <td style="padding:12px 16px;"><a href="/uts/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ust-Tsylma Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ust-Tsylma</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/utt/index.html" style="color:var(--blue);text-decoration:none;">UTT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FAUT</td>
+        <td style="padding:12px 16px;"><a href="/utt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">K. D. Matanzima Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mthatha</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇿🇦 Afrika Selatan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/utu/index.html" style="color:var(--blue);text-decoration:none;">UTU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/utu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ustupu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ustupu</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇦 Panama</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/utw/index.html" style="color:var(--blue);text-decoration:none;">UTW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FAQT</td>
+        <td style="padding:12px 16px;"><a href="/utw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Queenstown Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Queenstown</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇿🇦 Afrika Selatan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uua/index.html" style="color:var(--blue);text-decoration:none;">UUA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UWKB</td>
+        <td style="padding:12px 16px;"><a href="/uua/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bugulma Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bugulma</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uud/index.html" style="color:var(--blue);text-decoration:none;">UUD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UIUU</td>
+        <td style="padding:12px 16px;"><a href="/uud/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Baikal International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ulan Ude</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uuk/index.html" style="color:var(--blue);text-decoration:none;">UUK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">PAKU</td>
+        <td style="padding:12px 16px;"><a href="/uuk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ugnu-Kuparuk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kuparuk</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uun/index.html" style="color:var(--blue);text-decoration:none;">UUN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZMBU</td>
+        <td style="padding:12px 16px;"><a href="/uun/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Baruun Urt Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇳 Mongolia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uus/index.html" style="color:var(--blue);text-decoration:none;">UUS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UHSS</td>
+        <td style="padding:12px 16px;"><a href="/uus/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yuzhno-Sakhalinsk International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yuzhno-Sakhalinsk</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uuu/index.html" style="color:var(--blue);text-decoration:none;">UUU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/uuu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Manumu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Manumu</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uva/index.html" style="color:var(--blue);text-decoration:none;">UVA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KUVA</td>
+        <td style="padding:12px 16px;"><a href="/uva/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Garner Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Uvalde</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uve/index.html" style="color:var(--blue);text-decoration:none;">UVE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">NWWV</td>
+        <td style="padding:12px 16px;"><a href="/uve/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ouvéa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ouvéa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇨 New Caledonia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uvf/index.html" style="color:var(--blue);text-decoration:none;">UVF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">TLPL</td>
+        <td style="padding:12px 16px;"><a href="/uvf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Hewanorra International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vieux Fort</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇱🇨 Saint Lucia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uvi/index.html" style="color:var(--blue);text-decoration:none;">UVI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SSUV</td>
+        <td style="padding:12px 16px;"><a href="/uvi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">José Cleto Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">União da Vitória</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uvl/index.html" style="color:var(--blue);text-decoration:none;">UVL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">HEKG</td>
+        <td style="padding:12px 16px;"><a href="/uvl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">El Kharja Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kharja Oases</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇬 Mesir</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uvo/index.html" style="color:var(--blue);text-decoration:none;">UVO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">AYUZ</td>
+        <td style="padding:12px 16px;"><a href="/uvo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Uvol Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Uvol</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uwa/index.html" style="color:var(--blue);text-decoration:none;">UWA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/uwa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ware Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ware</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uyl/index.html" style="color:var(--blue);text-decoration:none;">UYL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">HSNN</td>
+        <td style="padding:12px 16px;"><a href="/uyl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nyala Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nyala</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇩 Sudan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uyn/index.html" style="color:var(--blue);text-decoration:none;">UYN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZLYL</td>
+        <td style="padding:12px 16px;"><a href="/uyn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yulin Yuyang Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yulin</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uyu/index.html" style="color:var(--blue);text-decoration:none;">UYU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SLUY</td>
+        <td style="padding:12px 16px;"><a href="/uyu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Joya Andina International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Quijarro</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇴 Bolivia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uzc/index.html" style="color:var(--blue);text-decoration:none;">UZC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LYUZ</td>
+        <td style="padding:12px 16px;"><a href="/uzc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ponikve Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Stapari</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇸 Serbia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uzm/index.html" style="color:var(--blue);text-decoration:none;">UZM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/uzm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Hope Bay Aerodrome</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Hope Bay</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uzr/index.html" style="color:var(--blue);text-decoration:none;">UZR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UASU</td>
+        <td style="padding:12px 16px;"><a href="/uzr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Urzhar Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Urzhar</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇰🇿 Kazakhstan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uzu/index.html" style="color:var(--blue);text-decoration:none;">UZU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SATU</td>
+        <td style="padding:12px 16px;"><a href="/uzu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Curuzu Cuatia Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Curuzu Cuatia</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇷 Argentina</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<footer>
+  <div style="margin-bottom:10px">
+    <a href="/az.html">A–Z Index</a>
+    <a href="/countries.html">By Country</a>
+    <a href="/about.html">About</a>
+  </div>
+  <div>© 2025 airport-code.com · Data sourced from OurAirports &amp; Open-Meteo · <a href="https://ourairports.com">OurAirports</a></div>
+</footer>
+
+<script>
+(function(){
+  let db = null;
+  const input = document.getElementById('navSearchInput');
+  const results = document.getElementById('search-results');
+  if (!input) return;
+
+  async function loadDB() {
+    if (db) return;
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    const r = await fetch(root + 'airports.json');
+    db = await r.json();
+  }
+
+  input.addEventListener('focus', loadDB);
+  input.addEventListener('input', async function() {
+    const q = this.value.trim().toUpperCase();
+    if (q.length < 2) { results.style.display = 'none'; return; }
+    await loadDB();
+    const matches = db.filter(a =>
+      a.iata.startsWith(q) ||
+      a.name.toUpperCase().includes(q) ||
+      a.city.toUpperCase().includes(q)
+    ).slice(0, 7);
+    if (!matches.length) { results.style.display = 'none'; return; }
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    results.innerHTML = matches.map(a =>
+      `<a href="${root}${a.iata.toLowerCase()}/index.html">
+        <span class="sr-code">${a.iata}</span>
+        <div><div class="sr-name">${a.name}</div><div class="sr-city">${a.city}, ${a.country}</div></div>
+      </a>`
+    ).join('');
+    results.style.display = 'block';
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!input.contains(e.target) && !results.contains(e.target)) results.style.display = 'none';
+  });
+})();
+</script>
+
+</body>
+</html>

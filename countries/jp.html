@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="site-root" content="/">
+  <title>Airports in Jepun | Airport Code</title>
+  <meta name="description" content="All airport codes for airports in Jepun. Browse IATA and ICAO codes for 96 airports.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0f1f3d;
+      --blue: #1a56db;
+      --blue-light: #e8f0fe;
+      --sky: #38bdf8;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --green: #10b981;
+    }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; zoom: 1.12; }
+    nav { background: var(--navy); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { color: #fff; font-size: 19px; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; display: flex; align-items: center; gap: 6px; line-height: 1; }
+    .nav-logo svg { flex-shrink: 0; }
+    .nav-logo span { color: var(--sky); }
+    .nav-search { display: flex; align-items: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 6px 14px; gap: 8px; width: 280px; position: relative; }
+    .nav-search input { background: none; border: none; outline: none; color: #fff; font-size: 14px; width: 100%; font-family: 'Outfit', sans-serif; }
+    .nav-search input::placeholder { color: rgba(255,255,255,0.4); }
+    #search-results { position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: #fff; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 200; overflow: hidden; display: none; }
+    #search-results a { display: flex; align-items: center; gap: 10px; padding: 10px 14px; text-decoration: none; color: var(--text); font-size: 13px; border-bottom: 1px solid var(--border); transition: background 0.15s; }
+    #search-results a:last-child { border-bottom: none; }
+    #search-results a:hover { background: var(--bg); }
+    #search-results .sr-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 12px; padding: 2px 7px; border-radius: 5px; min-width: 38px; text-align: center; }
+    #search-results .sr-name { font-weight: 600; }
+    #search-results .sr-city { color: var(--muted); font-size: 11px; }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .hero { background: linear-gradient(135deg, var(--navy) 0%, #1a3a6b 100%); color: #fff; padding: 48px 0 56px; position: relative; overflow: hidden; }
+    .hero::before { content: '✈'; position: absolute; right: -20px; top: -20px; font-size: 220px; opacity: 0.04; transform: rotate(25deg); }
+    .hero-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .breadcrumb { font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 20px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .breadcrumb a:hover { color: rgba(255,255,255,0.8); }
+    .breadcrumb span.sep { color: rgba(255,255,255,0.3); }
+    .hero-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .hero-title { display: flex; align-items: flex-start; gap: 24px; }
+    .iata-badge { background: var(--blue); border: 2px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 14px 20px; text-align: center; min-width: 100px; flex-shrink: 0; }
+    .iata-badge .code { font-size: 40px; font-weight: 800; letter-spacing: 2px; color: #fff; line-height: 1; }
+    .iata-badge .label { font-size: 10px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
+    .hero-name { padding-top: 4px; }
+    .hero-name h1 { font-size: 38px; font-weight: 800; line-height: 1.1; color: #fff; }
+    .hero-name .location { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.65); font-size: 15px; margin-top: 6px; }
+    .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+    .badge { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.3px; }
+    .badge-large { background: rgba(16,185,129,0.2); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
+    .badge-medium { background: rgba(56,189,248,0.15); color: #7dd3fc; border: 1px solid rgba(56,189,248,0.3); }
+    .badge-small { background: rgba(245,158,11,0.15); color: #fcd34d; border: 1px solid rgba(245,158,11,0.3); }
+    .hero-stats { display: flex; gap: 32px; margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
+    .hero-stat .value { font-size: 22px; font-weight: 700; color: #fff; }
+    .hero-stat .label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
+    .time-widget { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 16px 20px; text-align: center; min-width: 160px; }
+    .time-widget .time-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+    .time-widget .time-value { font-size: 28px; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+    .time-widget .time-tz { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+    .main { max-width: 1100px; margin: 0 auto; padding: 32px 24px; display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
+    @media (max-width: 768px) { .main { grid-template-columns: 1fr; } .hero-name h1 { font-size: 26px; } .nav-links { display: none; } .nav-search { width: 200px; } }
+    .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .card-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .card-header h2 { font-size: 14px; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.5px; }
+    .card-body { padding: 20px; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .info-item { padding: 14px 16px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+    .info-item:nth-child(even) { border-right: none; }
+    .info-item:nth-last-child(-n+2) { border-bottom: none; }
+    .info-item .key { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px; }
+    .info-item .val { font-size: 15px; font-weight: 600; color: var(--text); }
+    .info-item .val a { color: var(--blue); text-decoration: none; }
+    .info-item .val a:hover { text-decoration: underline; }
+    .weather-widget { display: flex; align-items: center; gap: 20px; padding: 16px; background: linear-gradient(135deg, #e0f2fe, #f0f9ff); border-radius: 10px; margin-bottom: 16px; min-height: 100px; }
+    .weather-icon { font-size: 48px; line-height: 1; }
+    .weather-main .temp { font-size: 32px; font-weight: 700; color: var(--text); }
+    .weather-main .desc { font-size: 14px; color: var(--muted); text-transform: capitalize; }
+    .weather-details { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .weather-detail { font-size: 13px; color: var(--muted); }
+    .weather-detail strong { color: var(--text); font-weight: 600; }
+    .nearby-list { list-style: none; }
+    .nearby-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .nearby-item:last-child { border-bottom: none; }
+    .nearby-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 13px; padding: 3px 8px; border-radius: 6px; min-width: 44px; text-align: center; text-decoration: none; }
+    .nearby-code:hover { background: #ccdcfb; }
+    .nearby-info { flex: 1; margin: 0 12px; }
+    .nearby-info .name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .nearby-info .city { font-size: 11px; color: var(--muted); }
+    .nearby-dist { font-size: 12px; color: var(--muted); white-space: nowrap; }
+    .carbon-form { display: flex; flex-direction: column; gap: 12px; }
+    .carbon-form label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .carbon-form input, .carbon-form select { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-family: 'Outfit', sans-serif; color: var(--text); outline: none; transition: border-color 0.2s; }
+    .carbon-form input:focus, .carbon-form select:focus { border-color: var(--blue); }
+    .carbon-btn { background: var(--blue); color: #fff; border: none; padding: 11px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Outfit', sans-serif; transition: background 0.2s; }
+    .carbon-btn:hover { background: #1447c0; }
+    .carbon-result { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px; text-align: center; display: none; }
+    .carbon-result .co2 { font-size: 24px; font-weight: 800; color: var(--green); }
+    .carbon-result .co2-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .sidebar-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .sidebar-card .card-header { padding: 14px 16px; }
+    .sidebar-card .card-body { padding: 16px; }
+    .codes-display { display: flex; gap: 12px; }
+    .code-box { flex: 1; text-align: center; padding: 16px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; }
+    .code-box .code-val { font-size: 28px; font-weight: 800; color: var(--navy); letter-spacing: 1px; }
+    .code-box .code-type { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; }
+    footer { background: var(--navy); color: rgba(255,255,255,0.5); text-align: center; padding: 24px; font-size: 13px; margin-top: 40px; }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; margin: 0 12px; }
+    footer a:hover { color: #fff; }
+
+    table { width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden; }
+    thead th { padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid var(--border);background:#f8fafc; }
+    tbody tr { border-bottom:1px solid #f5f5f5; }
+    tbody tr:last-child { border-bottom:none; }
+    tbody tr:hover { background:#fafbfc; }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/index.html" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="9" fill="#1a56db"/><path d="M24.5 8.5C25.3 9.3 25.3 10.6 24.5 11.4L19.8 16.1L22 25L19.5 27.5L16 19L11.5 23.5L12 26L10 28L8 24L4 22L6 20L8.5 20.5L13 16L5.5 12.5L8 10L17 12.2L21.6 7.5C22.4 6.7 23.7 6.7 24.5 8.5Z" fill="white"/></svg>
+    Airport<span>Code</span>
+  </a>
+  <div class="nav-search">
+    <svg width="14" height="14" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="navSearchInput" placeholder="Search airport or code…" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <div class="nav-links">
+    <a href="/az.html">A–Z</a>
+    <a href="/countries.html">By Country</a>
+  </div>
+</nav>
+<div style="max-width:1100px;margin:0 auto;padding:32px 24px">
+  <div style="margin-bottom:8px;font-size:12px;color:var(--muted)"><a href="/index.html" style="color:var(--blue);text-decoration:none">Home</a> › <a href="/countries.html" style="color:var(--blue);text-decoration:none">By Country</a> › Jepun</div>
+  <h1 style="font-size:28px;font-weight:800;color:var(--navy);margin-bottom:4px">🇯🇵 Airports in Jepun</h1>
+  <p style="color:var(--muted);margin-bottom:24px">96 airports with IATA codes</p>
+  <table>
+    <thead><tr><th>IATA</th><th>ICAO</th><th>Airport Name</th><th>City</th><th>Type</th></tr></thead>
+    <tbody>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/aoj/index.html" style="color:var(--blue);text-decoration:none;">AOJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJSA</td>
+        <td style="padding:12px 16px;"><a href="/aoj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Aomori Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Aomori</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cts/index.html" style="color:var(--blue);text-decoration:none;">CTS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJCC</td>
+        <td style="padding:12px 16px;"><a href="/cts/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">New Chitose Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sapporo</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dna/index.html" style="color:var(--blue);text-decoration:none;">DNA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RODN</td>
+        <td style="padding:12px 16px;"><a href="/dna/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kadena Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Okinawa</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fsz/index.html" style="color:var(--blue);text-decoration:none;">FSZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJNS</td>
+        <td style="padding:12px 16px;"><a href="/fsz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mount Fuji Shizuoka Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Makinohara / Shimada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fuk/index.html" style="color:var(--blue);text-decoration:none;">FUK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJFF</td>
+        <td style="padding:12px 16px;"><a href="/fuk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fukuoka Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fukuoka</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hij/index.html" style="color:var(--blue);text-decoration:none;">HIJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJOA</td>
+        <td style="padding:12px 16px;"><a href="/hij/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Hiroshima Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Hiroshima</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hkd/index.html" style="color:var(--blue);text-decoration:none;">HKD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJCH</td>
+        <td style="padding:12px 16px;"><a href="/hkd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Hakodate Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Hakodate</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hnd/index.html" style="color:var(--blue);text-decoration:none;">HND</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJTT</td>
+        <td style="padding:12px 16px;"><a href="/hnd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tokyo Haneda International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tokyo</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hsg/index.html" style="color:var(--blue);text-decoration:none;">HSG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJFS</td>
+        <td style="padding:12px 16px;"><a href="/hsg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kyushu Saga International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Saga</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ibr/index.html" style="color:var(--blue);text-decoration:none;">IBR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJAH</td>
+        <td style="padding:12px 16px;"><a href="/ibr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ibaraki Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Omitama</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/itm/index.html" style="color:var(--blue);text-decoration:none;">ITM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJOO</td>
+        <td style="padding:12px 16px;"><a href="/itm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Osaka Itami International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Osaka</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kcz/index.html" style="color:var(--blue);text-decoration:none;">KCZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJOK</td>
+        <td style="padding:12px 16px;"><a href="/kcz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kochi Ryoma Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nankoku</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kij/index.html" style="color:var(--blue);text-decoration:none;">KIJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJSN</td>
+        <td style="padding:12px 16px;"><a href="/kij/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Niigata Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Niigata</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kix/index.html" style="color:var(--blue);text-decoration:none;">KIX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJBB</td>
+        <td style="padding:12px 16px;"><a href="/kix/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kansai International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Osaka</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kkj/index.html" style="color:var(--blue);text-decoration:none;">KKJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJFR</td>
+        <td style="padding:12px 16px;"><a href="/kkj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kitakyushu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kitakyushu</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kmi/index.html" style="color:var(--blue);text-decoration:none;">KMI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJFM</td>
+        <td style="padding:12px 16px;"><a href="/kmi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Miyazaki Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Miyazaki</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kmj/index.html" style="color:var(--blue);text-decoration:none;">KMJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJFT</td>
+        <td style="padding:12px 16px;"><a href="/kmj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kumamoto Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kumamoto</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kmq/index.html" style="color:var(--blue);text-decoration:none;">KMQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJNK</td>
+        <td style="padding:12px 16px;"><a href="/kmq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Komatsu Airport / JASDF Komatsu Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kanazawa</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/koj/index.html" style="color:var(--blue);text-decoration:none;">KOJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJFK</td>
+        <td style="padding:12px 16px;"><a href="/koj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kagoshima Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kagoshima</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/myj/index.html" style="color:var(--blue);text-decoration:none;">MYJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJOM</td>
+        <td style="padding:12px 16px;"><a href="/myj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Matsuyama Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Matsuyama</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ngo/index.html" style="color:var(--blue);text-decoration:none;">NGO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJGG</td>
+        <td style="padding:12px 16px;"><a href="/ngo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Chubu Centrair International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tokoname</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ngs/index.html" style="color:var(--blue);text-decoration:none;">NGS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJFU</td>
+        <td style="padding:12px 16px;"><a href="/ngs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nagasaki Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nagasaki</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nrt/index.html" style="color:var(--blue);text-decoration:none;">NRT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJAA</td>
+        <td style="padding:12px 16px;"><a href="/nrt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Narita International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Narita</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/oka/index.html" style="color:var(--blue);text-decoration:none;">OKA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ROAH</td>
+        <td style="padding:12px 16px;"><a href="/oka/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Naha International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Naha</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/okj/index.html" style="color:var(--blue);text-decoration:none;">OKJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJOB</td>
+        <td style="padding:12px 16px;"><a href="/okj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Okayama Momotaro Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Okayama</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sdj/index.html" style="color:var(--blue);text-decoration:none;">SDJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJSS</td>
+        <td style="padding:12px 16px;"><a href="/sdj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sendai Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Natori</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tak/index.html" style="color:var(--blue);text-decoration:none;">TAK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJOT</td>
+        <td style="padding:12px 16px;"><a href="/tak/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Takamatsu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Takamatsu</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tks/index.html" style="color:var(--blue);text-decoration:none;">TKS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJOS</td>
+        <td style="padding:12px 16px;"><a href="/tks/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tokushima Awaodori Airport / JMSDF Tokushima Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tokushima</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ukb/index.html" style="color:var(--blue);text-decoration:none;">UKB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJBE</td>
+        <td style="padding:12px 16px;"><a href="/ukb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kobe Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kobe</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/akj/index.html" style="color:var(--blue);text-decoration:none;">AKJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJEC</td>
+        <td style="padding:12px 16px;"><a href="/akj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Asahikawa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Higashikagura</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/asj/index.html" style="color:var(--blue);text-decoration:none;">ASJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJKA</td>
+        <td style="padding:12px 16px;"><a href="/asj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Amami Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Amami</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/axj/index.html" style="color:var(--blue);text-decoration:none;">AXJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJDA</td>
+        <td style="padding:12px 16px;"><a href="/axj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Amakusa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Amakusa</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/axt/index.html" style="color:var(--blue);text-decoration:none;">AXT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJSK</td>
+        <td style="padding:12px 16px;"><a href="/axt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Akita Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Akita</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fkj/index.html" style="color:var(--blue);text-decoration:none;">FKJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJNF</td>
+        <td style="padding:12px 16px;"><a href="/fkj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fukui Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fukui</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fks/index.html" style="color:var(--blue);text-decoration:none;">FKS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJSF</td>
+        <td style="padding:12px 16px;"><a href="/fks/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fukushima Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sukagawa</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fuj/index.html" style="color:var(--blue);text-decoration:none;">FUJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJFE</td>
+        <td style="padding:12px 16px;"><a href="/fuj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fukue Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Goto</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gaj/index.html" style="color:var(--blue);text-decoration:none;">GAJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJSC</td>
+        <td style="padding:12px 16px;"><a href="/gaj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yamagata Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Higashine</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hac/index.html" style="color:var(--blue);text-decoration:none;">HAC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJTH</td>
+        <td style="padding:12px 16px;"><a href="/hac/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Hachijojima Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Hachijojima</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hhe/index.html" style="color:var(--blue);text-decoration:none;">HHE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJSH</td>
+        <td style="padding:12px 16px;"><a href="/hhe/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">JMSDF Hachinohe Air Base / Hachinohe Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Hachinohe</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hna/index.html" style="color:var(--blue);text-decoration:none;">HNA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJSI</td>
+        <td style="padding:12px 16px;"><a href="/hna/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Iwate Hanamaki Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Hanamaki</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iej/index.html" style="color:var(--blue);text-decoration:none;">IEJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RORE</td>
+        <td style="padding:12px 16px;"><a href="/iej/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Iejima Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ie</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iki/index.html" style="color:var(--blue);text-decoration:none;">IKI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJDB</td>
+        <td style="padding:12px 16px;"><a href="/iki/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Iki Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Iki</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/isg/index.html" style="color:var(--blue);text-decoration:none;">ISG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ROIG</td>
+        <td style="padding:12px 16px;"><a href="/isg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">New Ishigaki Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ishigaki</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iwj/index.html" style="color:var(--blue);text-decoration:none;">IWJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJOW</td>
+        <td style="padding:12px 16px;"><a href="/iwj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Iwami Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Masuda</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iwk/index.html" style="color:var(--blue);text-decoration:none;">IWK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJOI</td>
+        <td style="padding:12px 16px;"><a href="/iwk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Iwakuni Kintaikyo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Iwakuni</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iwo/index.html" style="color:var(--blue);text-decoration:none;">IWO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJAW</td>
+        <td style="padding:12px 16px;"><a href="/iwo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ioto (Iwo Jima) Airbase</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ogasawara</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/izo/index.html" style="color:var(--blue);text-decoration:none;">IZO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJOC</td>
+        <td style="padding:12px 16px;"><a href="/izo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Izumo Enmusubi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Izumo</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kkx/index.html" style="color:var(--blue);text-decoration:none;">KKX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJKI</td>
+        <td style="padding:12px 16px;"><a href="/kkx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kikai Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kikai</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ktd/index.html" style="color:var(--blue);text-decoration:none;">KTD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RORK</td>
+        <td style="padding:12px 16px;"><a href="/ktd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kitadaito Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kitadaitōjima</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kuh/index.html" style="color:var(--blue);text-decoration:none;">KUH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJCK</td>
+        <td style="padding:12px 16px;"><a href="/kuh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kushiro Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kushiro</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kum/index.html" style="color:var(--blue);text-decoration:none;">KUM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJFC</td>
+        <td style="padding:12px 16px;"><a href="/kum/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yakushima Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yakushima</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mbe/index.html" style="color:var(--blue);text-decoration:none;">MBE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJEB</td>
+        <td style="padding:12px 16px;"><a href="/mbe/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Monbetsu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Monbetsu</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mmb/index.html" style="color:var(--blue);text-decoration:none;">MMB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJCM</td>
+        <td style="padding:12px 16px;"><a href="/mmb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Memanbetsu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ōzora</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mmd/index.html" style="color:var(--blue);text-decoration:none;">MMD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ROMD</td>
+        <td style="padding:12px 16px;"><a href="/mmd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Minamidaito Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Minamidaito</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mmj/index.html" style="color:var(--blue);text-decoration:none;">MMJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJAF</td>
+        <td style="padding:12px 16px;"><a href="/mmj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Shinshu-Matsumoto Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Matsumoto</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mmy/index.html" style="color:var(--blue);text-decoration:none;">MMY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ROMY</td>
+        <td style="padding:12px 16px;"><a href="/mmy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Miyako Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Miyakojima</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/msj/index.html" style="color:var(--blue);text-decoration:none;">MSJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJSM</td>
+        <td style="padding:12px 16px;"><a href="/msj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Misawa Airport / Misawa Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Misawa</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mye/index.html" style="color:var(--blue);text-decoration:none;">MYE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJTQ</td>
+        <td style="padding:12px 16px;"><a href="/mye/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Miyakejima Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Miyakejima</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nja/index.html" style="color:var(--blue);text-decoration:none;">NJA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJTA</td>
+        <td style="padding:12px 16px;"><a href="/nja/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">JMSDF Atsugi Air Base / Naval Air Facility Atsugi</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ayase / Yamato</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nkm/index.html" style="color:var(--blue);text-decoration:none;">NKM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJNA</td>
+        <td style="padding:12px 16px;"><a href="/nkm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nagoya Airport / JASDF Komaki Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nagoya</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ntq/index.html" style="color:var(--blue);text-decoration:none;">NTQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJNW</td>
+        <td style="padding:12px 16px;"><a href="/ntq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Noto Satoyama Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wajima</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/obo/index.html" style="color:var(--blue);text-decoration:none;">OBO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJCB</td>
+        <td style="padding:12px 16px;"><a href="/obo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tokachi-Obihiro Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Obihiro</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ogn/index.html" style="color:var(--blue);text-decoration:none;">OGN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ROYN</td>
+        <td style="padding:12px 16px;"><a href="/ogn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yonaguni Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yonaguni</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/oim/index.html" style="color:var(--blue);text-decoration:none;">OIM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJTO</td>
+        <td style="padding:12px 16px;"><a href="/oim/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Oshima Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Izu Oshima</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/oir/index.html" style="color:var(--blue);text-decoration:none;">OIR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJEO</td>
+        <td style="padding:12px 16px;"><a href="/oir/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Okushiri Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Okushiri Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/oit/index.html" style="color:var(--blue);text-decoration:none;">OIT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJFO</td>
+        <td style="padding:12px 16px;"><a href="/oit/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Oita Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Oita</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/okd/index.html" style="color:var(--blue);text-decoration:none;">OKD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJCO</td>
+        <td style="padding:12px 16px;"><a href="/okd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sapporo Okadama Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sapporo</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/oke/index.html" style="color:var(--blue);text-decoration:none;">OKE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJKB</td>
+        <td style="padding:12px 16px;"><a href="/oke/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Okinoerabu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wadomari</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/oki/index.html" style="color:var(--blue);text-decoration:none;">OKI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJNO</td>
+        <td style="padding:12px 16px;"><a href="/oki/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Oki Global Geopark Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Okinoshima</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/oko/index.html" style="color:var(--blue);text-decoration:none;">OKO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJTY</td>
+        <td style="padding:12px 16px;"><a href="/oko/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yokota Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fussa</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/onj/index.html" style="color:var(--blue);text-decoration:none;">ONJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJSR</td>
+        <td style="padding:12px 16px;"><a href="/onj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Odate Noshiro Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kitaakita</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/qgu/index.html" style="color:var(--blue);text-decoration:none;">QGU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/qgu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Gifu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Gifu</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ris/index.html" style="color:var(--blue);text-decoration:none;">RIS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJER</td>
+        <td style="padding:12px 16px;"><a href="/ris/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rishiri Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rishiri</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rnj/index.html" style="color:var(--blue);text-decoration:none;">RNJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RORY</td>
+        <td style="padding:12px 16px;"><a href="/rnj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yoron Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yoron</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sds/index.html" style="color:var(--blue);text-decoration:none;">SDS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJSD</td>
+        <td style="padding:12px 16px;"><a href="/sds/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sado Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sado</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/shb/index.html" style="color:var(--blue);text-decoration:none;">SHB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJCN</td>
+        <td style="padding:12px 16px;"><a href="/shb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nakashibetsu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nakashibetsu</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/shi/index.html" style="color:var(--blue);text-decoration:none;">SHI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RORS</td>
+        <td style="padding:12px 16px;"><a href="/shi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Shimojishima Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Miyakojima</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/shm/index.html" style="color:var(--blue);text-decoration:none;">SHM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJBD</td>
+        <td style="padding:12px 16px;"><a href="/shm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nanki Shirahama Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Shirahama</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/syo/index.html" style="color:var(--blue);text-decoration:none;">SYO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJSY</td>
+        <td style="padding:12px 16px;"><a href="/syo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Shonai Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Shonai</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tjh/index.html" style="color:var(--blue);text-decoration:none;">TJH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJBT</td>
+        <td style="padding:12px 16px;"><a href="/tjh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Konotori Tajima Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Toyooka</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tkn/index.html" style="color:var(--blue);text-decoration:none;">TKN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJKN</td>
+        <td style="padding:12px 16px;"><a href="/tkn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tokunoshima Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Amagi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tne/index.html" style="color:var(--blue);text-decoration:none;">TNE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJFG</td>
+        <td style="padding:12px 16px;"><a href="/tne/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">New Tanegashima Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tanegashima</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/toy/index.html" style="color:var(--blue);text-decoration:none;">TOY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJNT</td>
+        <td style="padding:12px 16px;"><a href="/toy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Toyama Kitokito Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Toyama</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tra/index.html" style="color:var(--blue);text-decoration:none;">TRA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RORT</td>
+        <td style="padding:12px 16px;"><a href="/tra/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tarama Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tarama</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tsj/index.html" style="color:var(--blue);text-decoration:none;">TSJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJDT</td>
+        <td style="padding:12px 16px;"><a href="/tsj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tsushima Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tsushima</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ttj/index.html" style="color:var(--blue);text-decoration:none;">TTJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJOR</td>
+        <td style="padding:12px 16px;"><a href="/ttj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tottori Sand Dunes Conan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tottori</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ubj/index.html" style="color:var(--blue);text-decoration:none;">UBJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJDC</td>
+        <td style="padding:12px 16px;"><a href="/ubj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yamaguchi Ube Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ube</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ueo/index.html" style="color:var(--blue);text-decoration:none;">UEO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ROKJ</td>
+        <td style="padding:12px 16px;"><a href="/ueo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kumejima Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kumejima</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wkj/index.html" style="color:var(--blue);text-decoration:none;">WKJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJCW</td>
+        <td style="padding:12px 16px;"><a href="/wkj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wakkanai Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wakkanai</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ygj/index.html" style="color:var(--blue);text-decoration:none;">YGJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJOH</td>
+        <td style="padding:12px 16px;"><a href="/ygj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yonago Kitaro Airport / JASDF Miho Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yonago</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/agj/index.html" style="color:var(--blue);text-decoration:none;">AGJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RORA</td>
+        <td style="padding:12px 16px;"><a href="/agj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Aguni Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Aguni</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/htr/index.html" style="color:var(--blue);text-decoration:none;">HTR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RORH</td>
+        <td style="padding:12px 16px;"><a href="/htr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Hateruma Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Taketomi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kjp/index.html" style="color:var(--blue);text-decoration:none;">KJP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ROKR</td>
+        <td style="padding:12px 16px;"><a href="/kjp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kerama Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zamami</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mus/index.html" style="color:var(--blue);text-decoration:none;">MUS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJAM</td>
+        <td style="padding:12px 16px;"><a href="/mus/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">JMSDF Minami Torishima Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ogasawara</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/omj/index.html" style="color:var(--blue);text-decoration:none;">OMJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJDU</td>
+        <td style="padding:12px 16px;"><a href="/omj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">JMSDF Omura Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nagasaki</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rbj/index.html" style="color:var(--blue);text-decoration:none;">RBJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RJCR</td>
+        <td style="padding:12px 16px;"><a href="/rbj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rebun Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rebun</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr></tbody>
+  </table>
+</div>
+<footer>
+  <div style="margin-bottom:10px">
+    <a href="/az.html">A–Z Index</a>
+    <a href="/countries.html">By Country</a>
+    <a href="/about.html">About</a>
+  </div>
+  <div>© 2025 airport-code.com · Data sourced from OurAirports &amp; Open-Meteo · <a href="https://ourairports.com">OurAirports</a></div>
+</footer>
+
+<script>
+(function(){
+  let db = null;
+  const input = document.getElementById('navSearchInput');
+  const results = document.getElementById('search-results');
+  if (!input) return;
+
+  async function loadDB() {
+    if (db) return;
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    const r = await fetch(root + 'airports.json');
+    db = await r.json();
+  }
+
+  input.addEventListener('focus', loadDB);
+  input.addEventListener('input', async function() {
+    const q = this.value.trim().toUpperCase();
+    if (q.length < 2) { results.style.display = 'none'; return; }
+    await loadDB();
+    const matches = db.filter(a =>
+      a.iata.startsWith(q) ||
+      a.name.toUpperCase().includes(q) ||
+      a.city.toUpperCase().includes(q)
+    ).slice(0, 7);
+    if (!matches.length) { results.style.display = 'none'; return; }
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    results.innerHTML = matches.map(a =>
+      `<a href="${root}${a.iata.toLowerCase()}/index.html">
+        <span class="sr-code">${a.iata}</span>
+        <div><div class="sr-name">${a.name}</div><div class="sr-city">${a.city}, ${a.country}</div></div>
+      </a>`
+    ).join('');
+    results.style.display = 'block';
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!input.contains(e.target) && !results.contains(e.target)) results.style.display = 'none';
+  });
+})();
+</script>
+
+</body>
+</html>

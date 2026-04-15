@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="site-root" content="/">
+  <title>Airports in Filipina | Airport Code</title>
+  <meta name="description" content="All airport codes for airports in Filipina. Browse IATA and ICAO codes for 73 airports.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0f1f3d;
+      --blue: #1a56db;
+      --blue-light: #e8f0fe;
+      --sky: #38bdf8;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --green: #10b981;
+    }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; zoom: 1.12; }
+    nav { background: var(--navy); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { color: #fff; font-size: 19px; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; display: flex; align-items: center; gap: 6px; line-height: 1; }
+    .nav-logo svg { flex-shrink: 0; }
+    .nav-logo span { color: var(--sky); }
+    .nav-search { display: flex; align-items: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 6px 14px; gap: 8px; width: 280px; position: relative; }
+    .nav-search input { background: none; border: none; outline: none; color: #fff; font-size: 14px; width: 100%; font-family: 'Outfit', sans-serif; }
+    .nav-search input::placeholder { color: rgba(255,255,255,0.4); }
+    #search-results { position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: #fff; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 200; overflow: hidden; display: none; }
+    #search-results a { display: flex; align-items: center; gap: 10px; padding: 10px 14px; text-decoration: none; color: var(--text); font-size: 13px; border-bottom: 1px solid var(--border); transition: background 0.15s; }
+    #search-results a:last-child { border-bottom: none; }
+    #search-results a:hover { background: var(--bg); }
+    #search-results .sr-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 12px; padding: 2px 7px; border-radius: 5px; min-width: 38px; text-align: center; }
+    #search-results .sr-name { font-weight: 600; }
+    #search-results .sr-city { color: var(--muted); font-size: 11px; }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .hero { background: linear-gradient(135deg, var(--navy) 0%, #1a3a6b 100%); color: #fff; padding: 48px 0 56px; position: relative; overflow: hidden; }
+    .hero::before { content: '✈'; position: absolute; right: -20px; top: -20px; font-size: 220px; opacity: 0.04; transform: rotate(25deg); }
+    .hero-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .breadcrumb { font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 20px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .breadcrumb a:hover { color: rgba(255,255,255,0.8); }
+    .breadcrumb span.sep { color: rgba(255,255,255,0.3); }
+    .hero-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .hero-title { display: flex; align-items: flex-start; gap: 24px; }
+    .iata-badge { background: var(--blue); border: 2px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 14px 20px; text-align: center; min-width: 100px; flex-shrink: 0; }
+    .iata-badge .code { font-size: 40px; font-weight: 800; letter-spacing: 2px; color: #fff; line-height: 1; }
+    .iata-badge .label { font-size: 10px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
+    .hero-name { padding-top: 4px; }
+    .hero-name h1 { font-size: 38px; font-weight: 800; line-height: 1.1; color: #fff; }
+    .hero-name .location { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.65); font-size: 15px; margin-top: 6px; }
+    .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+    .badge { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.3px; }
+    .badge-large { background: rgba(16,185,129,0.2); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
+    .badge-medium { background: rgba(56,189,248,0.15); color: #7dd3fc; border: 1px solid rgba(56,189,248,0.3); }
+    .badge-small { background: rgba(245,158,11,0.15); color: #fcd34d; border: 1px solid rgba(245,158,11,0.3); }
+    .hero-stats { display: flex; gap: 32px; margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
+    .hero-stat .value { font-size: 22px; font-weight: 700; color: #fff; }
+    .hero-stat .label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
+    .time-widget { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 16px 20px; text-align: center; min-width: 160px; }
+    .time-widget .time-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+    .time-widget .time-value { font-size: 28px; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+    .time-widget .time-tz { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+    .main { max-width: 1100px; margin: 0 auto; padding: 32px 24px; display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
+    @media (max-width: 768px) { .main { grid-template-columns: 1fr; } .hero-name h1 { font-size: 26px; } .nav-links { display: none; } .nav-search { width: 200px; } }
+    .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .card-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .card-header h2 { font-size: 14px; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.5px; }
+    .card-body { padding: 20px; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .info-item { padding: 14px 16px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+    .info-item:nth-child(even) { border-right: none; }
+    .info-item:nth-last-child(-n+2) { border-bottom: none; }
+    .info-item .key { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px; }
+    .info-item .val { font-size: 15px; font-weight: 600; color: var(--text); }
+    .info-item .val a { color: var(--blue); text-decoration: none; }
+    .info-item .val a:hover { text-decoration: underline; }
+    .weather-widget { display: flex; align-items: center; gap: 20px; padding: 16px; background: linear-gradient(135deg, #e0f2fe, #f0f9ff); border-radius: 10px; margin-bottom: 16px; min-height: 100px; }
+    .weather-icon { font-size: 48px; line-height: 1; }
+    .weather-main .temp { font-size: 32px; font-weight: 700; color: var(--text); }
+    .weather-main .desc { font-size: 14px; color: var(--muted); text-transform: capitalize; }
+    .weather-details { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .weather-detail { font-size: 13px; color: var(--muted); }
+    .weather-detail strong { color: var(--text); font-weight: 600; }
+    .nearby-list { list-style: none; }
+    .nearby-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .nearby-item:last-child { border-bottom: none; }
+    .nearby-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 13px; padding: 3px 8px; border-radius: 6px; min-width: 44px; text-align: center; text-decoration: none; }
+    .nearby-code:hover { background: #ccdcfb; }
+    .nearby-info { flex: 1; margin: 0 12px; }
+    .nearby-info .name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .nearby-info .city { font-size: 11px; color: var(--muted); }
+    .nearby-dist { font-size: 12px; color: var(--muted); white-space: nowrap; }
+    .carbon-form { display: flex; flex-direction: column; gap: 12px; }
+    .carbon-form label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .carbon-form input, .carbon-form select { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-family: 'Outfit', sans-serif; color: var(--text); outline: none; transition: border-color 0.2s; }
+    .carbon-form input:focus, .carbon-form select:focus { border-color: var(--blue); }
+    .carbon-btn { background: var(--blue); color: #fff; border: none; padding: 11px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Outfit', sans-serif; transition: background 0.2s; }
+    .carbon-btn:hover { background: #1447c0; }
+    .carbon-result { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px; text-align: center; display: none; }
+    .carbon-result .co2 { font-size: 24px; font-weight: 800; color: var(--green); }
+    .carbon-result .co2-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .sidebar-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .sidebar-card .card-header { padding: 14px 16px; }
+    .sidebar-card .card-body { padding: 16px; }
+    .codes-display { display: flex; gap: 12px; }
+    .code-box { flex: 1; text-align: center; padding: 16px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; }
+    .code-box .code-val { font-size: 28px; font-weight: 800; color: var(--navy); letter-spacing: 1px; }
+    .code-box .code-type { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; }
+    footer { background: var(--navy); color: rgba(255,255,255,0.5); text-align: center; padding: 24px; font-size: 13px; margin-top: 40px; }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; margin: 0 12px; }
+    footer a:hover { color: #fff; }
+
+    table { width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden; }
+    thead th { padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid var(--border);background:#f8fafc; }
+    tbody tr { border-bottom:1px solid #f5f5f5; }
+    tbody tr:last-child { border-bottom:none; }
+    tbody tr:hover { background:#fafbfc; }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/index.html" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="9" fill="#1a56db"/><path d="M24.5 8.5C25.3 9.3 25.3 10.6 24.5 11.4L19.8 16.1L22 25L19.5 27.5L16 19L11.5 23.5L12 26L10 28L8 24L4 22L6 20L8.5 20.5L13 16L5.5 12.5L8 10L17 12.2L21.6 7.5C22.4 6.7 23.7 6.7 24.5 8.5Z" fill="white"/></svg>
+    Airport<span>Code</span>
+  </a>
+  <div class="nav-search">
+    <svg width="14" height="14" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="navSearchInput" placeholder="Search airport or code…" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <div class="nav-links">
+    <a href="/az.html">A–Z</a>
+    <a href="/countries.html">By Country</a>
+  </div>
+</nav>
+<div style="max-width:1100px;margin:0 auto;padding:32px 24px">
+  <div style="margin-bottom:8px;font-size:12px;color:var(--muted)"><a href="/index.html" style="color:var(--blue);text-decoration:none">Home</a> › <a href="/countries.html" style="color:var(--blue);text-decoration:none">By Country</a> › Filipina</div>
+  <h1 style="font-size:28px;font-weight:800;color:var(--navy);margin-bottom:4px">🇵🇭 Airports in Filipina</h1>
+  <p style="color:var(--muted);margin-bottom:24px">73 airports with IATA codes</p>
+  <table>
+    <thead><tr><th>IATA</th><th>ICAO</th><th>Airport Name</th><th>City</th><th>Type</th></tr></thead>
+    <tbody>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bcd/index.html" style="color:var(--blue);text-decoration:none;">BCD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPVB</td>
+        <td style="padding:12px 16px;"><a href="/bcd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bacolod-Silay International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bacolod City</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ceb/index.html" style="color:var(--blue);text-decoration:none;">CEB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPVM</td>
+        <td style="padding:12px 16px;"><a href="/ceb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mactan Cebu International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cebu City/Lapu-Lapu City</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cgy/index.html" style="color:var(--blue);text-decoration:none;">CGY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPMY</td>
+        <td style="padding:12px 16px;"><a href="/cgy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Laguindingan International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Laguindingan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/crk/index.html" style="color:var(--blue);text-decoration:none;">CRK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPLC</td>
+        <td style="padding:12px 16px;"><a href="/crk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Clark International Airport / Clark Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mabalacat</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/drp/index.html" style="color:var(--blue);text-decoration:none;">DRP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPLK</td>
+        <td style="padding:12px 16px;"><a href="/drp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bicol International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Legazpi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dvo/index.html" style="color:var(--blue);text-decoration:none;">DVO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPMD</td>
+        <td style="padding:12px 16px;"><a href="/dvo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Francisco Bangoy International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Davao</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ges/index.html" style="color:var(--blue);text-decoration:none;">GES</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPMR</td>
+        <td style="padding:12px 16px;"><a href="/ges/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">General Santos International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">General Santos</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ilo/index.html" style="color:var(--blue);text-decoration:none;">ILO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPVI</td>
+        <td style="padding:12px 16px;"><a href="/ilo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Iloilo International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cabatuan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/klo/index.html" style="color:var(--blue);text-decoration:none;">KLO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPVK</td>
+        <td style="padding:12px 16px;"><a href="/klo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kalibo International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kalibo</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lao/index.html" style="color:var(--blue);text-decoration:none;">LAO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPLI</td>
+        <td style="padding:12px 16px;"><a href="/lao/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Laoag International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Laoag City</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mnl/index.html" style="color:var(--blue);text-decoration:none;">MNL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPLL</td>
+        <td style="padding:12px 16px;"><a href="/mnl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ninoy Aquino International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Manila (Pasay)</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pps/index.html" style="color:var(--blue);text-decoration:none;">PPS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPVP</td>
+        <td style="padding:12px 16px;"><a href="/pps/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Puerto Princesa International Airport / PAF Antonio Bautista Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Puerto Princesa</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sfs/index.html" style="color:var(--blue);text-decoration:none;">SFS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPLB</td>
+        <td style="padding:12px 16px;"><a href="/sfs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Subic Bay International Airport / Naval Air Station Cubi Point</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Olongapo</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zam/index.html" style="color:var(--blue);text-decoration:none;">ZAM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPMZ</td>
+        <td style="padding:12px 16px;"><a href="/zam/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zamboanga International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zamboanga</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/aav/index.html" style="color:var(--blue);text-decoration:none;">AAV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPMA</td>
+        <td style="padding:12px 16px;"><a href="/aav/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Allah Valley Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Surallah</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bag/index.html" style="color:var(--blue);text-decoration:none;">BAG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPUB</td>
+        <td style="padding:12px 16px;"><a href="/bag/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Loakan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Baguio</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bph/index.html" style="color:var(--blue);text-decoration:none;">BPH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPMF</td>
+        <td style="padding:12px 16px;"><a href="/bph/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bislig Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bislig</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bqa/index.html" style="color:var(--blue);text-decoration:none;">BQA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPUR</td>
+        <td style="padding:12px 16px;"><a href="/bqa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Dr. Juan C. Angara Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Baler</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bso/index.html" style="color:var(--blue);text-decoration:none;">BSO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPUO</td>
+        <td style="padding:12px 16px;"><a href="/bso/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Basco Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Basco</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bxu/index.html" style="color:var(--blue);text-decoration:none;">BXU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPME</td>
+        <td style="padding:12px 16px;"><a href="/bxu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bancasi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Butuan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cbo/index.html" style="color:var(--blue);text-decoration:none;">CBO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPMC</td>
+        <td style="padding:12px 16px;"><a href="/cbo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Cotabato (Awang) Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Datu Odin Sinsuat</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cgm/index.html" style="color:var(--blue);text-decoration:none;">CGM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPMH</td>
+        <td style="padding:12px 16px;"><a href="/cgm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Camiguin Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mambajao</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/crm/index.html" style="color:var(--blue);text-decoration:none;">CRM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPVF</td>
+        <td style="padding:12px 16px;"><a href="/crm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Catarman National Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Catarman</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cyp/index.html" style="color:var(--blue);text-decoration:none;">CYP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPVC</td>
+        <td style="padding:12px 16px;"><a href="/cyp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Calbayog Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Calbayog City</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cyz/index.html" style="color:var(--blue);text-decoration:none;">CYZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPUY</td>
+        <td style="padding:12px 16px;"><a href="/cyz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Cauayan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cauayan City</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dgt/index.html" style="color:var(--blue);text-decoration:none;">DGT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPVD</td>
+        <td style="padding:12px 16px;"><a href="/dgt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sibulan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Dumaguete City</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dpl/index.html" style="color:var(--blue);text-decoration:none;">DPL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPMG</td>
+        <td style="padding:12px 16px;"><a href="/dpl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Dipolog Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Dipolog</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dte/index.html" style="color:var(--blue);text-decoration:none;">DTE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPUD</td>
+        <td style="padding:12px 16px;"><a href="/dte/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Daet Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Daet</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/euq/index.html" style="color:var(--blue);text-decoration:none;">EUQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPVS</td>
+        <td style="padding:12px 16px;"><a href="/euq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Evelio Javier Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">San Jose</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jol/index.html" style="color:var(--blue);text-decoration:none;">JOL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPMJ</td>
+        <td style="padding:12px 16px;"><a href="/jol/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jolo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jolo</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lbx/index.html" style="color:var(--blue);text-decoration:none;">LBX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPLU</td>
+        <td style="padding:12px 16px;"><a href="/lbx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Lubang Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lubang</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/llc/index.html" style="color:var(--blue);text-decoration:none;">LLC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPLH</td>
+        <td style="padding:12px 16px;"><a href="/llc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Cagayan North International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lal-lo</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mbo/index.html" style="color:var(--blue);text-decoration:none;">MBO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPUM</td>
+        <td style="padding:12px 16px;"><a href="/mbo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mamburao Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mamburao</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mbt/index.html" style="color:var(--blue);text-decoration:none;">MBT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPVJ</td>
+        <td style="padding:12px 16px;"><a href="/mbt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Moises R. Espinosa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Masbate</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mph/index.html" style="color:var(--blue);text-decoration:none;">MPH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPVE</td>
+        <td style="padding:12px 16px;"><a href="/mph/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Godofredo P. Ramos Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Caticlan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mrq/index.html" style="color:var(--blue);text-decoration:none;">MRQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPUW</td>
+        <td style="padding:12px 16px;"><a href="/mrq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Marinduque Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Gasan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mxi/index.html" style="color:var(--blue);text-decoration:none;">MXI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPMQ</td>
+        <td style="padding:12px 16px;"><a href="/mxi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mati National Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mati</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/omc/index.html" style="color:var(--blue);text-decoration:none;">OMC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPVO</td>
+        <td style="padding:12px 16px;"><a href="/omc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ormoc Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ormoc City</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ozc/index.html" style="color:var(--blue);text-decoration:none;">OZC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPMO</td>
+        <td style="padding:12px 16px;"><a href="/ozc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Labo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ozamiz</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pag/index.html" style="color:var(--blue);text-decoration:none;">PAG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPMP</td>
+        <td style="padding:12px 16px;"><a href="/pag/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pagadian Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Pagadian</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rxs/index.html" style="color:var(--blue);text-decoration:none;">RXS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPVR</td>
+        <td style="padding:12px 16px;"><a href="/rxs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Roxas Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Roxas City</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sfe/index.html" style="color:var(--blue);text-decoration:none;">SFE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPUS</td>
+        <td style="padding:12px 16px;"><a href="/sfe/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">San Fernando Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">San Fernando</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sgl/index.html" style="color:var(--blue);text-decoration:none;">SGL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPLS</td>
+        <td style="padding:12px 16px;"><a href="/sgl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Danilo Atienza Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cavite</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sji/index.html" style="color:var(--blue);text-decoration:none;">SJI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPUH</td>
+        <td style="padding:12px 16px;"><a href="/sji/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">San Jose Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">San Jose</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sug/index.html" style="color:var(--blue);text-decoration:none;">SUG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPMS</td>
+        <td style="padding:12px 16px;"><a href="/sug/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Surigao Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Surigao City</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tac/index.html" style="color:var(--blue);text-decoration:none;">TAC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPVA</td>
+        <td style="padding:12px 16px;"><a href="/tac/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Daniel Z. Romualdez Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tacloban City</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tag/index.html" style="color:var(--blue);text-decoration:none;">TAG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPSP</td>
+        <td style="padding:12px 16px;"><a href="/tag/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bohol-Panglao International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Panglao</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tbh/index.html" style="color:var(--blue);text-decoration:none;">TBH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPVU</td>
+        <td style="padding:12px 16px;"><a href="/tbh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tugdan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tablas Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tdg/index.html" style="color:var(--blue);text-decoration:none;">TDG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPMW</td>
+        <td style="padding:12px 16px;"><a href="/tdg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tandag Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tandag</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tug/index.html" style="color:var(--blue);text-decoration:none;">TUG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPUT</td>
+        <td style="padding:12px 16px;"><a href="/tug/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tuguegarao Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tuguegarao City</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/twt/index.html" style="color:var(--blue);text-decoration:none;">TWT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPMN</td>
+        <td style="padding:12px 16px;"><a href="/twt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sanga Sanga Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bongao</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/usu/index.html" style="color:var(--blue);text-decoration:none;">USU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPVV</td>
+        <td style="padding:12px 16px;"><a href="/usu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Francisco B. Reyes (Busuanga) Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Coron</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vrc/index.html" style="color:var(--blue);text-decoration:none;">VRC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPUV</td>
+        <td style="padding:12px 16px;"><a href="/vrc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Virac Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Virac</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wnp/index.html" style="color:var(--blue);text-decoration:none;">WNP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPUN</td>
+        <td style="padding:12px 16px;"><a href="/wnp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Naga Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Naga</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bpa/index.html" style="color:var(--blue);text-decoration:none;">BPA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/bpa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Borongan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Borongan City</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bsi/index.html" style="color:var(--blue);text-decoration:none;">BSI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPLE</td>
+        <td style="padding:12px 16px;"><a href="/bsi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Balesin Island Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Balesin</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cdy/index.html" style="color:var(--blue);text-decoration:none;">CDY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPMU</td>
+        <td style="padding:12px 16px;"><a href="/cdy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Cagayan de Sulu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mapun</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cgg/index.html" style="color:var(--blue);text-decoration:none;">CGG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/cgg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Casiguran Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Casiguran</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cuj/index.html" style="color:var(--blue);text-decoration:none;">CUJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/cuj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Culion Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Culion</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cyu/index.html" style="color:var(--blue);text-decoration:none;">CYU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPLO</td>
+        <td style="padding:12px 16px;"><a href="/cyu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Cuyo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cuyo</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dsg/index.html" style="color:var(--blue);text-decoration:none;">DSG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/dsg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Dilasag Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Dilasag</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eni/index.html" style="color:var(--blue);text-decoration:none;">ENI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPEN</td>
+        <td style="padding:12px 16px;"><a href="/eni/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">El Nido Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">El Nido</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iao/index.html" style="color:var(--blue);text-decoration:none;">IAO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPNS</td>
+        <td style="padding:12px 16px;"><a href="/iao/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Siargao Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Del Carmen</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ico/index.html" style="color:var(--blue);text-decoration:none;">ICO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ico/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sicogon Airstrip</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Carles</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ign/index.html" style="color:var(--blue);text-decoration:none;">IGN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPMI</td>
+        <td style="padding:12px 16px;"><a href="/ign/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Maria Cristina (Iligan) Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Balo-i</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ipe/index.html" style="color:var(--blue);text-decoration:none;">IPE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPMV</td>
+        <td style="padding:12px 16px;"><a href="/ipe/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ipil Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ipil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lwa/index.html" style="color:var(--blue);text-decoration:none;">LWA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/lwa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Lebak Rural Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lebak</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mlp/index.html" style="color:var(--blue);text-decoration:none;">MLP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPMM</td>
+        <td style="padding:12px 16px;"><a href="/mlp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Malabang Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Malabang</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rzp/index.html" style="color:var(--blue);text-decoration:none;">RZP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPSD</td>
+        <td style="padding:12px 16px;"><a href="/rzp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Cesar Lim Rodriguez (Taytay-Sandoval) Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Taytay</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/swl/index.html" style="color:var(--blue);text-decoration:none;">SWL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPSV</td>
+        <td style="padding:12px 16px;"><a href="/swl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">San Vicente Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">San Vicente</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tgb/index.html" style="color:var(--blue);text-decoration:none;">TGB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/tgb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tagbita Airstrip</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rizal</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/xma/index.html" style="color:var(--blue);text-decoration:none;">XMA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/xma/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Maramag Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Maramag</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/xso/index.html" style="color:var(--blue);text-decoration:none;">XSO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/xso/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Siocon Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Siocon</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr></tbody>
+  </table>
+</div>
+<footer>
+  <div style="margin-bottom:10px">
+    <a href="/az.html">A–Z Index</a>
+    <a href="/countries.html">By Country</a>
+    <a href="/about.html">About</a>
+  </div>
+  <div>© 2025 airport-code.com · Data sourced from OurAirports &amp; Open-Meteo · <a href="https://ourairports.com">OurAirports</a></div>
+</footer>
+
+<script>
+(function(){
+  let db = null;
+  const input = document.getElementById('navSearchInput');
+  const results = document.getElementById('search-results');
+  if (!input) return;
+
+  async function loadDB() {
+    if (db) return;
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    const r = await fetch(root + 'airports.json');
+    db = await r.json();
+  }
+
+  input.addEventListener('focus', loadDB);
+  input.addEventListener('input', async function() {
+    const q = this.value.trim().toUpperCase();
+    if (q.length < 2) { results.style.display = 'none'; return; }
+    await loadDB();
+    const matches = db.filter(a =>
+      a.iata.startsWith(q) ||
+      a.name.toUpperCase().includes(q) ||
+      a.city.toUpperCase().includes(q)
+    ).slice(0, 7);
+    if (!matches.length) { results.style.display = 'none'; return; }
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    results.innerHTML = matches.map(a =>
+      `<a href="${root}${a.iata.toLowerCase()}/index.html">
+        <span class="sr-code">${a.iata}</span>
+        <div><div class="sr-name">${a.name}</div><div class="sr-city">${a.city}, ${a.country}</div></div>
+      </a>`
+    ).join('');
+    results.style.display = 'block';
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!input.contains(e.target) && !results.contains(e.target)) results.style.display = 'none';
+  });
+})();
+</script>
+
+</body>
+</html>

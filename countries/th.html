@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="site-root" content="/">
+  <title>Airports in Thailand | Airport Code</title>
+  <meta name="description" content="All airport codes for airports in Thailand. Browse IATA and ICAO codes for 43 airports.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0f1f3d;
+      --blue: #1a56db;
+      --blue-light: #e8f0fe;
+      --sky: #38bdf8;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --green: #10b981;
+    }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; zoom: 1.12; }
+    nav { background: var(--navy); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { color: #fff; font-size: 19px; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; display: flex; align-items: center; gap: 6px; line-height: 1; }
+    .nav-logo svg { flex-shrink: 0; }
+    .nav-logo span { color: var(--sky); }
+    .nav-search { display: flex; align-items: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 6px 14px; gap: 8px; width: 280px; position: relative; }
+    .nav-search input { background: none; border: none; outline: none; color: #fff; font-size: 14px; width: 100%; font-family: 'Outfit', sans-serif; }
+    .nav-search input::placeholder { color: rgba(255,255,255,0.4); }
+    #search-results { position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: #fff; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 200; overflow: hidden; display: none; }
+    #search-results a { display: flex; align-items: center; gap: 10px; padding: 10px 14px; text-decoration: none; color: var(--text); font-size: 13px; border-bottom: 1px solid var(--border); transition: background 0.15s; }
+    #search-results a:last-child { border-bottom: none; }
+    #search-results a:hover { background: var(--bg); }
+    #search-results .sr-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 12px; padding: 2px 7px; border-radius: 5px; min-width: 38px; text-align: center; }
+    #search-results .sr-name { font-weight: 600; }
+    #search-results .sr-city { color: var(--muted); font-size: 11px; }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .hero { background: linear-gradient(135deg, var(--navy) 0%, #1a3a6b 100%); color: #fff; padding: 48px 0 56px; position: relative; overflow: hidden; }
+    .hero::before { content: '✈'; position: absolute; right: -20px; top: -20px; font-size: 220px; opacity: 0.04; transform: rotate(25deg); }
+    .hero-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .breadcrumb { font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 20px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .breadcrumb a:hover { color: rgba(255,255,255,0.8); }
+    .breadcrumb span.sep { color: rgba(255,255,255,0.3); }
+    .hero-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .hero-title { display: flex; align-items: flex-start; gap: 24px; }
+    .iata-badge { background: var(--blue); border: 2px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 14px 20px; text-align: center; min-width: 100px; flex-shrink: 0; }
+    .iata-badge .code { font-size: 40px; font-weight: 800; letter-spacing: 2px; color: #fff; line-height: 1; }
+    .iata-badge .label { font-size: 10px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
+    .hero-name { padding-top: 4px; }
+    .hero-name h1 { font-size: 38px; font-weight: 800; line-height: 1.1; color: #fff; }
+    .hero-name .location { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.65); font-size: 15px; margin-top: 6px; }
+    .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+    .badge { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.3px; }
+    .badge-large { background: rgba(16,185,129,0.2); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
+    .badge-medium { background: rgba(56,189,248,0.15); color: #7dd3fc; border: 1px solid rgba(56,189,248,0.3); }
+    .badge-small { background: rgba(245,158,11,0.15); color: #fcd34d; border: 1px solid rgba(245,158,11,0.3); }
+    .hero-stats { display: flex; gap: 32px; margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
+    .hero-stat .value { font-size: 22px; font-weight: 700; color: #fff; }
+    .hero-stat .label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
+    .time-widget { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 16px 20px; text-align: center; min-width: 160px; }
+    .time-widget .time-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+    .time-widget .time-value { font-size: 28px; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+    .time-widget .time-tz { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+    .main { max-width: 1100px; margin: 0 auto; padding: 32px 24px; display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
+    @media (max-width: 768px) { .main { grid-template-columns: 1fr; } .hero-name h1 { font-size: 26px; } .nav-links { display: none; } .nav-search { width: 200px; } }
+    .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .card-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .card-header h2 { font-size: 14px; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.5px; }
+    .card-body { padding: 20px; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .info-item { padding: 14px 16px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+    .info-item:nth-child(even) { border-right: none; }
+    .info-item:nth-last-child(-n+2) { border-bottom: none; }
+    .info-item .key { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px; }
+    .info-item .val { font-size: 15px; font-weight: 600; color: var(--text); }
+    .info-item .val a { color: var(--blue); text-decoration: none; }
+    .info-item .val a:hover { text-decoration: underline; }
+    .weather-widget { display: flex; align-items: center; gap: 20px; padding: 16px; background: linear-gradient(135deg, #e0f2fe, #f0f9ff); border-radius: 10px; margin-bottom: 16px; min-height: 100px; }
+    .weather-icon { font-size: 48px; line-height: 1; }
+    .weather-main .temp { font-size: 32px; font-weight: 700; color: var(--text); }
+    .weather-main .desc { font-size: 14px; color: var(--muted); text-transform: capitalize; }
+    .weather-details { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .weather-detail { font-size: 13px; color: var(--muted); }
+    .weather-detail strong { color: var(--text); font-weight: 600; }
+    .nearby-list { list-style: none; }
+    .nearby-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .nearby-item:last-child { border-bottom: none; }
+    .nearby-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 13px; padding: 3px 8px; border-radius: 6px; min-width: 44px; text-align: center; text-decoration: none; }
+    .nearby-code:hover { background: #ccdcfb; }
+    .nearby-info { flex: 1; margin: 0 12px; }
+    .nearby-info .name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .nearby-info .city { font-size: 11px; color: var(--muted); }
+    .nearby-dist { font-size: 12px; color: var(--muted); white-space: nowrap; }
+    .carbon-form { display: flex; flex-direction: column; gap: 12px; }
+    .carbon-form label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .carbon-form input, .carbon-form select { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-family: 'Outfit', sans-serif; color: var(--text); outline: none; transition: border-color 0.2s; }
+    .carbon-form input:focus, .carbon-form select:focus { border-color: var(--blue); }
+    .carbon-btn { background: var(--blue); color: #fff; border: none; padding: 11px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Outfit', sans-serif; transition: background 0.2s; }
+    .carbon-btn:hover { background: #1447c0; }
+    .carbon-result { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px; text-align: center; display: none; }
+    .carbon-result .co2 { font-size: 24px; font-weight: 800; color: var(--green); }
+    .carbon-result .co2-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .sidebar-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .sidebar-card .card-header { padding: 14px 16px; }
+    .sidebar-card .card-body { padding: 16px; }
+    .codes-display { display: flex; gap: 12px; }
+    .code-box { flex: 1; text-align: center; padding: 16px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; }
+    .code-box .code-val { font-size: 28px; font-weight: 800; color: var(--navy); letter-spacing: 1px; }
+    .code-box .code-type { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; }
+    footer { background: var(--navy); color: rgba(255,255,255,0.5); text-align: center; padding: 24px; font-size: 13px; margin-top: 40px; }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; margin: 0 12px; }
+    footer a:hover { color: #fff; }
+
+    table { width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden; }
+    thead th { padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid var(--border);background:#f8fafc; }
+    tbody tr { border-bottom:1px solid #f5f5f5; }
+    tbody tr:last-child { border-bottom:none; }
+    tbody tr:hover { background:#fafbfc; }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/index.html" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="9" fill="#1a56db"/><path d="M24.5 8.5C25.3 9.3 25.3 10.6 24.5 11.4L19.8 16.1L22 25L19.5 27.5L16 19L11.5 23.5L12 26L10 28L8 24L4 22L6 20L8.5 20.5L13 16L5.5 12.5L8 10L17 12.2L21.6 7.5C22.4 6.7 23.7 6.7 24.5 8.5Z" fill="white"/></svg>
+    Airport<span>Code</span>
+  </a>
+  <div class="nav-search">
+    <svg width="14" height="14" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="navSearchInput" placeholder="Search airport or code…" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <div class="nav-links">
+    <a href="/az.html">A–Z</a>
+    <a href="/countries.html">By Country</a>
+  </div>
+</nav>
+<div style="max-width:1100px;margin:0 auto;padding:32px 24px">
+  <div style="margin-bottom:8px;font-size:12px;color:var(--muted)"><a href="/index.html" style="color:var(--blue);text-decoration:none">Home</a> › <a href="/countries.html" style="color:var(--blue);text-decoration:none">By Country</a> › Thailand</div>
+  <h1 style="font-size:28px;font-weight:800;color:var(--navy);margin-bottom:4px">🇹🇭 Airports in Thailand</h1>
+  <p style="color:var(--muted);margin-bottom:24px">43 airports with IATA codes</p>
+  <table>
+    <thead><tr><th>IATA</th><th>ICAO</th><th>Airport Name</th><th>City</th><th>Type</th></tr></thead>
+    <tbody>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bkk/index.html" style="color:var(--blue);text-decoration:none;">BKK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTBS</td>
+        <td style="padding:12px 16px;"><a href="/bkk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Suvarnabhumi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bangkok</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cei/index.html" style="color:var(--blue);text-decoration:none;">CEI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTCT</td>
+        <td style="padding:12px 16px;"><a href="/cei/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mae Fah Luang - Chiang Rai International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Chiang Rai</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cnx/index.html" style="color:var(--blue);text-decoration:none;">CNX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTCC</td>
+        <td style="padding:12px 16px;"><a href="/cnx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Chiang Mai International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Chiang Mai</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dmk/index.html" style="color:var(--blue);text-decoration:none;">DMK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTBD</td>
+        <td style="padding:12px 16px;"><a href="/dmk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Don Mueang International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bangkok</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hdy/index.html" style="color:var(--blue);text-decoration:none;">HDY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTSS</td>
+        <td style="padding:12px 16px;"><a href="/hdy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Hat Yai International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Hat Yai</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hkt/index.html" style="color:var(--blue);text-decoration:none;">HKT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTSP</td>
+        <td style="padding:12px 16px;"><a href="/hkt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Phuket International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Phuket</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kbv/index.html" style="color:var(--blue);text-decoration:none;">KBV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTSG</td>
+        <td style="padding:12px 16px;"><a href="/kbv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Krabi International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Krabi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/usm/index.html" style="color:var(--blue);text-decoration:none;">USM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTSM</td>
+        <td style="padding:12px 16px;"><a href="/usm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Samui International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Na Thon (Ko Samui Island)</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uth/index.html" style="color:var(--blue);text-decoration:none;">UTH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTUD</td>
+        <td style="padding:12px 16px;"><a href="/uth/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Udon Thani International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Udon Thani</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/utp/index.html" style="color:var(--blue);text-decoration:none;">UTP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTBU</td>
+        <td style="padding:12px 16px;"><a href="/utp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">U-Tapao–Rayong–Pattaya International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rayong</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bfv/index.html" style="color:var(--blue);text-decoration:none;">BFV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTUO</td>
+        <td style="padding:12px 16px;"><a href="/bfv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Buri Ram Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Buriram</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/btz/index.html" style="color:var(--blue);text-decoration:none;">BTZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTSY</td>
+        <td style="padding:12px 16px;"><a href="/btz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Betong International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Betong</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cjm/index.html" style="color:var(--blue);text-decoration:none;">CJM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTSE</td>
+        <td style="padding:12px 16px;"><a href="/cjm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Chumphon Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Chumphon</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hgn/index.html" style="color:var(--blue);text-decoration:none;">HGN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTCH</td>
+        <td style="padding:12px 16px;"><a href="/hgn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mae Hong Son Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mae Hong Son</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hhq/index.html" style="color:var(--blue);text-decoration:none;">HHQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTPH</td>
+        <td style="padding:12px 16px;"><a href="/hhq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Hua Hin Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Hua Hin</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kdt/index.html" style="color:var(--blue);text-decoration:none;">KDT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTBK</td>
+        <td style="padding:12px 16px;"><a href="/kdt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kamphaeng Saen Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nakhon Pathom</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kkc/index.html" style="color:var(--blue);text-decoration:none;">KKC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTUK</td>
+        <td style="padding:12px 16px;"><a href="/kkc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Khon Kaen Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Khon Kaen</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kkm/index.html" style="color:var(--blue);text-decoration:none;">KKM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTBL</td>
+        <td style="padding:12px 16px;"><a href="/kkm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Khok Kathiam Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lop Buri</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kop/index.html" style="color:var(--blue);text-decoration:none;">KOP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTUW</td>
+        <td style="padding:12px 16px;"><a href="/kop/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nakhon Phanom Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nakhon Phanom</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/loe/index.html" style="color:var(--blue);text-decoration:none;">LOE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTUL</td>
+        <td style="padding:12px 16px;"><a href="/loe/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Loei Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lpt/index.html" style="color:var(--blue);text-decoration:none;">LPT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTCL</td>
+        <td style="padding:12px 16px;"><a href="/lpt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Lampang Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/maq/index.html" style="color:var(--blue);text-decoration:none;">MAQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTPM</td>
+        <td style="padding:12px 16px;"><a href="/maq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mae Sot Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nak/index.html" style="color:var(--blue);text-decoration:none;">NAK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTUQ</td>
+        <td style="padding:12px 16px;"><a href="/nak/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nakhon Ratchasima Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Chaloem Phra Kiat</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/naw/index.html" style="color:var(--blue);text-decoration:none;">NAW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTSC</td>
+        <td style="padding:12px 16px;"><a href="/naw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Narathiwat Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nnt/index.html" style="color:var(--blue);text-decoration:none;">NNT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTCN</td>
+        <td style="padding:12px 16px;"><a href="/nnt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nst/index.html" style="color:var(--blue);text-decoration:none;">NST</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTSF</td>
+        <td style="padding:12px 16px;"><a href="/nst/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nakhon Si Thammarat Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nakhon Si Thammarat</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pan/index.html" style="color:var(--blue);text-decoration:none;">PAN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTSK</td>
+        <td style="padding:12px 16px;"><a href="/pan/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pattani Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/phs/index.html" style="color:var(--blue);text-decoration:none;">PHS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTPP</td>
+        <td style="padding:12px 16px;"><a href="/phs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Phitsanulok Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Phitsanulok</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/phy/index.html" style="color:var(--blue);text-decoration:none;">PHY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTPB</td>
+        <td style="padding:12px 16px;"><a href="/phy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Phetchabun Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/prh/index.html" style="color:var(--blue);text-decoration:none;">PRH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTCP</td>
+        <td style="padding:12px 16px;"><a href="/prh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Phrae Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pxr/index.html" style="color:var(--blue);text-decoration:none;">PXR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTUJ</td>
+        <td style="padding:12px 16px;"><a href="/pxr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Surin Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Surin</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/roi/index.html" style="color:var(--blue);text-decoration:none;">ROI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTUV</td>
+        <td style="padding:12px 16px;"><a href="/roi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Roi Et Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Roi Et</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sgz/index.html" style="color:var(--blue);text-decoration:none;">SGZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTSH</td>
+        <td style="padding:12px 16px;"><a href="/sgz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Songkhla Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sno/index.html" style="color:var(--blue);text-decoration:none;">SNO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTUI</td>
+        <td style="padding:12px 16px;"><a href="/sno/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sakon Nakhon Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tdx/index.html" style="color:var(--blue);text-decoration:none;">TDX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTBO</td>
+        <td style="padding:12px 16px;"><a href="/tdx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Trat Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Laem Ngop</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ths/index.html" style="color:var(--blue);text-decoration:none;">THS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTPO</td>
+        <td style="padding:12px 16px;"><a href="/ths/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sukhothai Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tkh/index.html" style="color:var(--blue);text-decoration:none;">TKH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTPI</td>
+        <td style="padding:12px 16px;"><a href="/tkh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Takhli Royal Thai Air Force Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Takhli</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tkt/index.html" style="color:var(--blue);text-decoration:none;">TKT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTPT</td>
+        <td style="padding:12px 16px;"><a href="/tkt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tak Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tst/index.html" style="color:var(--blue);text-decoration:none;">TST</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTST</td>
+        <td style="padding:12px 16px;"><a href="/tst/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Trang Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Trang</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ubp/index.html" style="color:var(--blue);text-decoration:none;">UBP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTUU</td>
+        <td style="padding:12px 16px;"><a href="/ubp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ubon Ratchathani Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ubon Ratchathani</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/unn/index.html" style="color:var(--blue);text-decoration:none;">UNN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTSR</td>
+        <td style="padding:12px 16px;"><a href="/unn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ranong Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ranong</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/urt/index.html" style="color:var(--blue);text-decoration:none;">URT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VTSB</td>
+        <td style="padding:12px 16px;"><a href="/urt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Surat Thani Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Surat Thani</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pyy/index.html" style="color:var(--blue);text-decoration:none;">PYY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/pyy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pai Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Pai</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr></tbody>
+  </table>
+</div>
+<footer>
+  <div style="margin-bottom:10px">
+    <a href="/az.html">A–Z Index</a>
+    <a href="/countries.html">By Country</a>
+    <a href="/about.html">About</a>
+  </div>
+  <div>© 2025 airport-code.com · Data sourced from OurAirports &amp; Open-Meteo · <a href="https://ourairports.com">OurAirports</a></div>
+</footer>
+
+<script>
+(function(){
+  let db = null;
+  const input = document.getElementById('navSearchInput');
+  const results = document.getElementById('search-results');
+  if (!input) return;
+
+  async function loadDB() {
+    if (db) return;
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    const r = await fetch(root + 'airports.json');
+    db = await r.json();
+  }
+
+  input.addEventListener('focus', loadDB);
+  input.addEventListener('input', async function() {
+    const q = this.value.trim().toUpperCase();
+    if (q.length < 2) { results.style.display = 'none'; return; }
+    await loadDB();
+    const matches = db.filter(a =>
+      a.iata.startsWith(q) ||
+      a.name.toUpperCase().includes(q) ||
+      a.city.toUpperCase().includes(q)
+    ).slice(0, 7);
+    if (!matches.length) { results.style.display = 'none'; return; }
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    results.innerHTML = matches.map(a =>
+      `<a href="${root}${a.iata.toLowerCase()}/index.html">
+        <span class="sr-code">${a.iata}</span>
+        <div><div class="sr-name">${a.name}</div><div class="sr-city">${a.city}, ${a.country}</div></div>
+      </a>`
+    ).join('');
+    results.style.display = 'block';
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!input.contains(e.target) && !results.contains(e.target)) results.style.display = 'none';
+  });
+})();
+</script>
+
+</body>
+</html>

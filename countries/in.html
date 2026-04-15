@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="site-root" content="/">
+  <title>Airports in India | Airport Code</title>
+  <meta name="description" content="All airport codes for airports in India. Browse IATA and ICAO codes for 163 airports.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0f1f3d;
+      --blue: #1a56db;
+      --blue-light: #e8f0fe;
+      --sky: #38bdf8;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --green: #10b981;
+    }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; zoom: 1.12; }
+    nav { background: var(--navy); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { color: #fff; font-size: 19px; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; display: flex; align-items: center; gap: 6px; line-height: 1; }
+    .nav-logo svg { flex-shrink: 0; }
+    .nav-logo span { color: var(--sky); }
+    .nav-search { display: flex; align-items: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 6px 14px; gap: 8px; width: 280px; position: relative; }
+    .nav-search input { background: none; border: none; outline: none; color: #fff; font-size: 14px; width: 100%; font-family: 'Outfit', sans-serif; }
+    .nav-search input::placeholder { color: rgba(255,255,255,0.4); }
+    #search-results { position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: #fff; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 200; overflow: hidden; display: none; }
+    #search-results a { display: flex; align-items: center; gap: 10px; padding: 10px 14px; text-decoration: none; color: var(--text); font-size: 13px; border-bottom: 1px solid var(--border); transition: background 0.15s; }
+    #search-results a:last-child { border-bottom: none; }
+    #search-results a:hover { background: var(--bg); }
+    #search-results .sr-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 12px; padding: 2px 7px; border-radius: 5px; min-width: 38px; text-align: center; }
+    #search-results .sr-name { font-weight: 600; }
+    #search-results .sr-city { color: var(--muted); font-size: 11px; }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .hero { background: linear-gradient(135deg, var(--navy) 0%, #1a3a6b 100%); color: #fff; padding: 48px 0 56px; position: relative; overflow: hidden; }
+    .hero::before { content: '✈'; position: absolute; right: -20px; top: -20px; font-size: 220px; opacity: 0.04; transform: rotate(25deg); }
+    .hero-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .breadcrumb { font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 20px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .breadcrumb a:hover { color: rgba(255,255,255,0.8); }
+    .breadcrumb span.sep { color: rgba(255,255,255,0.3); }
+    .hero-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .hero-title { display: flex; align-items: flex-start; gap: 24px; }
+    .iata-badge { background: var(--blue); border: 2px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 14px 20px; text-align: center; min-width: 100px; flex-shrink: 0; }
+    .iata-badge .code { font-size: 40px; font-weight: 800; letter-spacing: 2px; color: #fff; line-height: 1; }
+    .iata-badge .label { font-size: 10px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
+    .hero-name { padding-top: 4px; }
+    .hero-name h1 { font-size: 38px; font-weight: 800; line-height: 1.1; color: #fff; }
+    .hero-name .location { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.65); font-size: 15px; margin-top: 6px; }
+    .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+    .badge { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.3px; }
+    .badge-large { background: rgba(16,185,129,0.2); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
+    .badge-medium { background: rgba(56,189,248,0.15); color: #7dd3fc; border: 1px solid rgba(56,189,248,0.3); }
+    .badge-small { background: rgba(245,158,11,0.15); color: #fcd34d; border: 1px solid rgba(245,158,11,0.3); }
+    .hero-stats { display: flex; gap: 32px; margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
+    .hero-stat .value { font-size: 22px; font-weight: 700; color: #fff; }
+    .hero-stat .label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
+    .time-widget { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 16px 20px; text-align: center; min-width: 160px; }
+    .time-widget .time-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+    .time-widget .time-value { font-size: 28px; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+    .time-widget .time-tz { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+    .main { max-width: 1100px; margin: 0 auto; padding: 32px 24px; display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
+    @media (max-width: 768px) { .main { grid-template-columns: 1fr; } .hero-name h1 { font-size: 26px; } .nav-links { display: none; } .nav-search { width: 200px; } }
+    .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .card-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .card-header h2 { font-size: 14px; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.5px; }
+    .card-body { padding: 20px; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .info-item { padding: 14px 16px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+    .info-item:nth-child(even) { border-right: none; }
+    .info-item:nth-last-child(-n+2) { border-bottom: none; }
+    .info-item .key { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px; }
+    .info-item .val { font-size: 15px; font-weight: 600; color: var(--text); }
+    .info-item .val a { color: var(--blue); text-decoration: none; }
+    .info-item .val a:hover { text-decoration: underline; }
+    .weather-widget { display: flex; align-items: center; gap: 20px; padding: 16px; background: linear-gradient(135deg, #e0f2fe, #f0f9ff); border-radius: 10px; margin-bottom: 16px; min-height: 100px; }
+    .weather-icon { font-size: 48px; line-height: 1; }
+    .weather-main .temp { font-size: 32px; font-weight: 700; color: var(--text); }
+    .weather-main .desc { font-size: 14px; color: var(--muted); text-transform: capitalize; }
+    .weather-details { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .weather-detail { font-size: 13px; color: var(--muted); }
+    .weather-detail strong { color: var(--text); font-weight: 600; }
+    .nearby-list { list-style: none; }
+    .nearby-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .nearby-item:last-child { border-bottom: none; }
+    .nearby-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 13px; padding: 3px 8px; border-radius: 6px; min-width: 44px; text-align: center; text-decoration: none; }
+    .nearby-code:hover { background: #ccdcfb; }
+    .nearby-info { flex: 1; margin: 0 12px; }
+    .nearby-info .name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .nearby-info .city { font-size: 11px; color: var(--muted); }
+    .nearby-dist { font-size: 12px; color: var(--muted); white-space: nowrap; }
+    .carbon-form { display: flex; flex-direction: column; gap: 12px; }
+    .carbon-form label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .carbon-form input, .carbon-form select { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-family: 'Outfit', sans-serif; color: var(--text); outline: none; transition: border-color 0.2s; }
+    .carbon-form input:focus, .carbon-form select:focus { border-color: var(--blue); }
+    .carbon-btn { background: var(--blue); color: #fff; border: none; padding: 11px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Outfit', sans-serif; transition: background 0.2s; }
+    .carbon-btn:hover { background: #1447c0; }
+    .carbon-result { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px; text-align: center; display: none; }
+    .carbon-result .co2 { font-size: 24px; font-weight: 800; color: var(--green); }
+    .carbon-result .co2-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .sidebar-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .sidebar-card .card-header { padding: 14px 16px; }
+    .sidebar-card .card-body { padding: 16px; }
+    .codes-display { display: flex; gap: 12px; }
+    .code-box { flex: 1; text-align: center; padding: 16px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; }
+    .code-box .code-val { font-size: 28px; font-weight: 800; color: var(--navy); letter-spacing: 1px; }
+    .code-box .code-type { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; }
+    footer { background: var(--navy); color: rgba(255,255,255,0.5); text-align: center; padding: 24px; font-size: 13px; margin-top: 40px; }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; margin: 0 12px; }
+    footer a:hover { color: #fff; }
+
+    table { width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden; }
+    thead th { padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid var(--border);background:#f8fafc; }
+    tbody tr { border-bottom:1px solid #f5f5f5; }
+    tbody tr:last-child { border-bottom:none; }
+    tbody tr:hover { background:#fafbfc; }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/index.html" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="9" fill="#1a56db"/><path d="M24.5 8.5C25.3 9.3 25.3 10.6 24.5 11.4L19.8 16.1L22 25L19.5 27.5L16 19L11.5 23.5L12 26L10 28L8 24L4 22L6 20L8.5 20.5L13 16L5.5 12.5L8 10L17 12.2L21.6 7.5C22.4 6.7 23.7 6.7 24.5 8.5Z" fill="white"/></svg>
+    Airport<span>Code</span>
+  </a>
+  <div class="nav-search">
+    <svg width="14" height="14" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="navSearchInput" placeholder="Search airport or code…" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <div class="nav-links">
+    <a href="/az.html">A–Z</a>
+    <a href="/countries.html">By Country</a>
+  </div>
+</nav>
+<div style="max-width:1100px;margin:0 auto;padding:32px 24px">
+  <div style="margin-bottom:8px;font-size:12px;color:var(--muted)"><a href="/index.html" style="color:var(--blue);text-decoration:none">Home</a> › <a href="/countries.html" style="color:var(--blue);text-decoration:none">By Country</a> › India</div>
+  <h1 style="font-size:28px;font-weight:800;color:var(--navy);margin-bottom:4px">🇮🇳 Airports in India</h1>
+  <p style="color:var(--muted);margin-bottom:24px">163 airports with IATA codes</p>
+  <table>
+    <thead><tr><th>IATA</th><th>ICAO</th><th>Airport Name</th><th>City</th><th>Type</th></tr></thead>
+    <tbody>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/amd/index.html" style="color:var(--blue);text-decoration:none;">AMD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VAAH</td>
+        <td style="padding:12px 16px;"><a href="/amd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sardar Vallabh Patel International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ahmedabad</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/atq/index.html" style="color:var(--blue);text-decoration:none;">ATQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VIAR</td>
+        <td style="padding:12px 16px;"><a href="/atq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sri Guru Ram Das Ji International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Amritsar</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bbi/index.html" style="color:var(--blue);text-decoration:none;">BBI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEBS</td>
+        <td style="padding:12px 16px;"><a href="/bbi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Biju Patnaik International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bhubaneswar</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bdq/index.html" style="color:var(--blue);text-decoration:none;">BDQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VABO</td>
+        <td style="padding:12px 16px;"><a href="/bdq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vadodara International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vadodara</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bho/index.html" style="color:var(--blue);text-decoration:none;">BHO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VABP</td>
+        <td style="padding:12px 16px;"><a href="/bho/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Raja Bhoj International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bhopal</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/blr/index.html" style="color:var(--blue);text-decoration:none;">BLR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VOBL</td>
+        <td style="padding:12px 16px;"><a href="/blr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kempegowda International Airport Bengaluru</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bengaluru</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bom/index.html" style="color:var(--blue);text-decoration:none;">BOM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VABB</td>
+        <td style="padding:12px 16px;"><a href="/bom/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Chhatrapati Shivaji Maharaj International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mumbai</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ccj/index.html" style="color:var(--blue);text-decoration:none;">CCJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VOCL</td>
+        <td style="padding:12px 16px;"><a href="/ccj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Calicut International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Calicut</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ccu/index.html" style="color:var(--blue);text-decoration:none;">CCU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VECC</td>
+        <td style="padding:12px 16px;"><a href="/ccu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Netaji Subhash Chandra Bose International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kolkata</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cjb/index.html" style="color:var(--blue);text-decoration:none;">CJB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VOCB</td>
+        <td style="padding:12px 16px;"><a href="/cjb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Coimbatore International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Coimbatore</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cnn/index.html" style="color:var(--blue);text-decoration:none;">CNN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VOKN</td>
+        <td style="padding:12px 16px;"><a href="/cnn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kannur International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kannur</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cok/index.html" style="color:var(--blue);text-decoration:none;">COK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VOCI</td>
+        <td style="padding:12px 16px;"><a href="/cok/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Cochin International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kochi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/del/index.html" style="color:var(--blue);text-decoration:none;">DEL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VIDP</td>
+        <td style="padding:12px 16px;"><a href="/del/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Indira Gandhi International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">New Delhi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dxn/index.html" style="color:var(--blue);text-decoration:none;">DXN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VIND</td>
+        <td style="padding:12px 16px;"><a href="/dxn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Noida International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Gautam Buddha Nagar</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gau/index.html" style="color:var(--blue);text-decoration:none;">GAU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEGT</td>
+        <td style="padding:12px 16px;"><a href="/gau/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Lokpriya Gopinath Bordoloi International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Guwahati</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/goi/index.html" style="color:var(--blue);text-decoration:none;">GOI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VOGO</td>
+        <td style="padding:12px 16px;"><a href="/goi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Goa Dabolim International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vasco da Gama</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gox/index.html" style="color:var(--blue);text-decoration:none;">GOX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VOGA</td>
+        <td style="padding:12px 16px;"><a href="/gox/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Manohar International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mopa</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hsr/index.html" style="color:var(--blue);text-decoration:none;">HSR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VAHS</td>
+        <td style="padding:12px 16px;"><a href="/hsr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rajkot International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rajkot</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hss/index.html" style="color:var(--blue);text-decoration:none;">HSS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VIHR</td>
+        <td style="padding:12px 16px;"><a href="/hss/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Maharaja Agrasen International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Hisar</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hwr/index.html" style="color:var(--blue);text-decoration:none;">HWR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VIHX</td>
+        <td style="padding:12px 16px;"><a href="/hwr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Halwara International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Halwara</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hyd/index.html" style="color:var(--blue);text-decoration:none;">HYD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VOHS</td>
+        <td style="padding:12px 16px;"><a href="/hyd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rajiv Gandhi International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Hyderabad</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/idr/index.html" style="color:var(--blue);text-decoration:none;">IDR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VAID</td>
+        <td style="padding:12px 16px;"><a href="/idr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Devi Ahilya Bai Holkar International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Indore</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/imf/index.html" style="color:var(--blue);text-decoration:none;">IMF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEIM</td>
+        <td style="padding:12px 16px;"><a href="/imf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bir Tikendrajit International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Imphal</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/isk/index.html" style="color:var(--blue);text-decoration:none;">ISK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VAOZ</td>
+        <td style="padding:12px 16px;"><a href="/isk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nashik International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nashik</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ixb/index.html" style="color:var(--blue);text-decoration:none;">IXB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEBD</td>
+        <td style="padding:12px 16px;"><a href="/ixb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bagdogra Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Siliguri</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ixc/index.html" style="color:var(--blue);text-decoration:none;">IXC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VICG</td>
+        <td style="padding:12px 16px;"><a href="/ixc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Shaheed Bhagat Singh International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Chandigarh</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ixe/index.html" style="color:var(--blue);text-decoration:none;">IXE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VOML</td>
+        <td style="padding:12px 16px;"><a href="/ixe/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mangaluru International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mangaluru</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ixz/index.html" style="color:var(--blue);text-decoration:none;">IXZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VOPB</td>
+        <td style="padding:12px 16px;"><a href="/ixz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Veer Savarkar International Airport / INS Utkrosh</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Port Blair</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jai/index.html" style="color:var(--blue);text-decoration:none;">JAI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VIJP</td>
+        <td style="padding:12px 16px;"><a href="/jai/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jaipur International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jaipur</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lko/index.html" style="color:var(--blue);text-decoration:none;">LKO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VILK</td>
+        <td style="padding:12px 16px;"><a href="/lko/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Chaudhary Charan Singh International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lucknow</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/maa/index.html" style="color:var(--blue);text-decoration:none;">MAA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VOMM</td>
+        <td style="padding:12px 16px;"><a href="/maa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Chennai International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Chennai</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nag/index.html" style="color:var(--blue);text-decoration:none;">NAG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VANP</td>
+        <td style="padding:12px 16px;"><a href="/nag/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Dr. Babasaheb Ambedkar International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nagpur</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nmi/index.html" style="color:var(--blue);text-decoration:none;">NMI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VANM</td>
+        <td style="padding:12px 16px;"><a href="/nmi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Navi Mumbai International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Navi Mumbai</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pnq/index.html" style="color:var(--blue);text-decoration:none;">PNQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VAPO</td>
+        <td style="padding:12px 16px;"><a href="/pnq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pune International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Pune</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sag/index.html" style="color:var(--blue);text-decoration:none;">SAG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VASD</td>
+        <td style="padding:12px 16px;"><a href="/sag/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Shirdi International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kakadi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/stv/index.html" style="color:var(--blue);text-decoration:none;">STV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VASU</td>
+        <td style="padding:12px 16px;"><a href="/stv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Surat International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Surat</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sxr/index.html" style="color:var(--blue);text-decoration:none;">SXR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VISR</td>
+        <td style="padding:12px 16px;"><a href="/sxr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sheikh ul Alam International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Srinagar</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tir/index.html" style="color:var(--blue);text-decoration:none;">TIR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VOTP</td>
+        <td style="padding:12px 16px;"><a href="/tir/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tirupati International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tirupati</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/trv/index.html" style="color:var(--blue);text-decoration:none;">TRV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VOTV</td>
+        <td style="padding:12px 16px;"><a href="/trv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Thiruvananthapuram International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Thiruvananthapuram</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/trz/index.html" style="color:var(--blue);text-decoration:none;">TRZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VOTR</td>
+        <td style="padding:12px 16px;"><a href="/trz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tiruchirappalli International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tiruchirappalli</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vga/index.html" style="color:var(--blue);text-decoration:none;">VGA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VOBZ</td>
+        <td style="padding:12px 16px;"><a href="/vga/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vijayawada International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vijayawada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vns/index.html" style="color:var(--blue);text-decoration:none;">VNS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEBN</td>
+        <td style="padding:12px 16px;"><a href="/vns/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Lal Bahadur Shastri International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Varanasi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vtz/index.html" style="color:var(--blue);text-decoration:none;">VTZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VOVZ</td>
+        <td style="padding:12px 16px;"><a href="/vtz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Visakhapatnam International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Visakhapatnam</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/agr/index.html" style="color:var(--blue);text-decoration:none;">AGR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VIAG</td>
+        <td style="padding:12px 16px;"><a href="/agr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Agra Airport / Agra Air Force Station</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Agra</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/agx/index.html" style="color:var(--blue);text-decoration:none;">AGX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VOAT</td>
+        <td style="padding:12px 16px;"><a href="/agx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Agatti Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Agatti</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/aha/index.html" style="color:var(--blue);text-decoration:none;">AHA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEAP</td>
+        <td style="padding:12px 16px;"><a href="/aha/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Maa Mahamaya Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ambikapur</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ajl/index.html" style="color:var(--blue);text-decoration:none;">AJL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VELP</td>
+        <td style="padding:12px 16px;"><a href="/ajl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Lengpui Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Aizawl (Lengpui)</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/akd/index.html" style="color:var(--blue);text-decoration:none;">AKD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VAAK</td>
+        <td style="padding:12px 16px;"><a href="/akd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Akola Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Akola</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ayj/index.html" style="color:var(--blue);text-decoration:none;">AYJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEAY</td>
+        <td style="padding:12px 16px;"><a href="/ayj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Maharshi Valmiki International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Faizabad</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bek/index.html" style="color:var(--blue);text-decoration:none;">BEK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VIBY</td>
+        <td style="padding:12px 16px;"><a href="/bek/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bareilly Air Force Station</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bareilly</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bep/index.html" style="color:var(--blue);text-decoration:none;">BEP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VOBI</td>
+        <td style="padding:12px 16px;"><a href="/bep/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bellary Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bellary</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bhj/index.html" style="color:var(--blue);text-decoration:none;">BHJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VABJ</td>
+        <td style="padding:12px 16px;"><a href="/bhj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bhuj Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bhuj</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bhu/index.html" style="color:var(--blue);text-decoration:none;">BHU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VABV</td>
+        <td style="padding:12px 16px;"><a href="/bhu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bhavnagar Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bhavnagar</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bkb/index.html" style="color:var(--blue);text-decoration:none;">BKB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VIBK</td>
+        <td style="padding:12px 16px;"><a href="/bkb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bikaner</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bpm/index.html" style="color:var(--blue);text-decoration:none;">BPM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VOHY</td>
+        <td style="padding:12px 16px;"><a href="/bpm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Begumpet Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Hyderabad</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bup/index.html" style="color:var(--blue);text-decoration:none;">BUP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VIBT</td>
+        <td style="padding:12px 16px;"><a href="/bup/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bhatinda Air Force Station</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cbd/index.html" style="color:var(--blue);text-decoration:none;">CBD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VOCX</td>
+        <td style="padding:12px 16px;"><a href="/cbd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Car Nicobar Air Force Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">IAF Camp</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cdp/index.html" style="color:var(--blue);text-decoration:none;">CDP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VOCP</td>
+        <td style="padding:12px 16px;"><a href="/cdp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kadapa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kadapa</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dbd/index.html" style="color:var(--blue);text-decoration:none;">DBD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEDB</td>
+        <td style="padding:12px 16px;"><a href="/dbd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Dhanbad Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dbr/index.html" style="color:var(--blue);text-decoration:none;">DBR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEDH</td>
+        <td style="padding:12px 16px;"><a href="/dbr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Darbhanga Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Darbhanga</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ded/index.html" style="color:var(--blue);text-decoration:none;">DED</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VIDN</td>
+        <td style="padding:12px 16px;"><a href="/ded/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Dehradun Jolly Grant Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Dehradun (Jauligrant)</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dhm/index.html" style="color:var(--blue);text-decoration:none;">DHM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VIGG</td>
+        <td style="padding:12px 16px;"><a href="/dhm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kangra Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kangra</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dib/index.html" style="color:var(--blue);text-decoration:none;">DIB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEMN</td>
+        <td style="padding:12px 16px;"><a href="/dib/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Dibrugarh Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Dibrugarh</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dmu/index.html" style="color:var(--blue);text-decoration:none;">DMU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEMR</td>
+        <td style="padding:12px 16px;"><a href="/dmu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Dimapur Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Dimapur</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gay/index.html" style="color:var(--blue);text-decoration:none;">GAY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEGY</td>
+        <td style="padding:12px 16px;"><a href="/gay/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Gaya Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Gaya</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gdb/index.html" style="color:var(--blue);text-decoration:none;">GDB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VAGD</td>
+        <td style="padding:12px 16px;"><a href="/gdb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Gondia Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Gondia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gop/index.html" style="color:var(--blue);text-decoration:none;">GOP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEGK</td>
+        <td style="padding:12px 16px;"><a href="/gop/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Gorakhpur Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Gorakhpur</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gwl/index.html" style="color:var(--blue);text-decoration:none;">GWL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VIGR</td>
+        <td style="padding:12px 16px;"><a href="/gwl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Gwalior Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Gwalior</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hbx/index.html" style="color:var(--blue);text-decoration:none;">HBX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VOHB</td>
+        <td style="padding:12px 16px;"><a href="/hbx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Hubballi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Hubballi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hgi/index.html" style="color:var(--blue);text-decoration:none;">HGI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/hgi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Itanagar Donyi Polo Hollongi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Hollongi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hjr/index.html" style="color:var(--blue);text-decoration:none;">HJR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/hjr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Khajuraho Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Khajuraho</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ixa/index.html" style="color:var(--blue);text-decoration:none;">IXA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEAT</td>
+        <td style="padding:12px 16px;"><a href="/ixa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Agartala - Maharaja Bir Bikram Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Agartala</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ixd/index.html" style="color:var(--blue);text-decoration:none;">IXD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEAB</td>
+        <td style="padding:12px 16px;"><a href="/ixd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Prayagraj Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Allahabad</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ixg/index.html" style="color:var(--blue);text-decoration:none;">IXG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VOBM</td>
+        <td style="padding:12px 16px;"><a href="/ixg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Belagavi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Belgaum</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ixh/index.html" style="color:var(--blue);text-decoration:none;">IXH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEKR</td>
+        <td style="padding:12px 16px;"><a href="/ixh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kailashahar Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kailashahar</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ixi/index.html" style="color:var(--blue);text-decoration:none;">IXI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VELR</td>
+        <td style="padding:12px 16px;"><a href="/ixi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Lilabari North Lakhimpur Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lilabari</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ixj/index.html" style="color:var(--blue);text-decoration:none;">IXJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VIJU</td>
+        <td style="padding:12px 16px;"><a href="/ixj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jammu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jammu</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ixk/index.html" style="color:var(--blue);text-decoration:none;">IXK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VAKS</td>
+        <td style="padding:12px 16px;"><a href="/ixk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Keshod Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Keshod</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ixl/index.html" style="color:var(--blue);text-decoration:none;">IXL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VILH</td>
+        <td style="padding:12px 16px;"><a href="/ixl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Leh Kushok Bakula Rimpochee Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Leh</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ixm/index.html" style="color:var(--blue);text-decoration:none;">IXM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VOMD</td>
+        <td style="padding:12px 16px;"><a href="/ixm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Madurai Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Madurai</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ixp/index.html" style="color:var(--blue);text-decoration:none;">IXP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VIPK</td>
+        <td style="padding:12px 16px;"><a href="/ixp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pathankot Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Pathankot</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ixr/index.html" style="color:var(--blue);text-decoration:none;">IXR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VERC</td>
+        <td style="padding:12px 16px;"><a href="/ixr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Birsa Munda Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ranchi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ixs/index.html" style="color:var(--blue);text-decoration:none;">IXS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEKU</td>
+        <td style="padding:12px 16px;"><a href="/ixs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Silchar Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Silchar</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ixu/index.html" style="color:var(--blue);text-decoration:none;">IXU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VAAU</td>
+        <td style="padding:12px 16px;"><a href="/ixu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Aurangabad Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Aurangabad</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ixv/index.html" style="color:var(--blue);text-decoration:none;">IXV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEAN</td>
+        <td style="padding:12px 16px;"><a href="/ixv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Along Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ixw/index.html" style="color:var(--blue);text-decoration:none;">IXW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEJS</td>
+        <td style="padding:12px 16px;"><a href="/ixw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sonari Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jamshedpur</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ixx/index.html" style="color:var(--blue);text-decoration:none;">IXX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VOBR</td>
+        <td style="padding:12px 16px;"><a href="/ixx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bidar Airport / Bidar Air Force Station</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bidar</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ixy/index.html" style="color:var(--blue);text-decoration:none;">IXY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VAKE</td>
+        <td style="padding:12px 16px;"><a href="/ixy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kandla Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kandla</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jdh/index.html" style="color:var(--blue);text-decoration:none;">JDH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VIJO</td>
+        <td style="padding:12px 16px;"><a href="/jdh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jodhpur Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jodhpur</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jga/index.html" style="color:var(--blue);text-decoration:none;">JGA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VAJM</td>
+        <td style="padding:12px 16px;"><a href="/jga/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jamnagar Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jamnagar</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jlr/index.html" style="color:var(--blue);text-decoration:none;">JLR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VAJB</td>
+        <td style="padding:12px 16px;"><a href="/jlr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jabalpur Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jabalpur</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jrh/index.html" style="color:var(--blue);text-decoration:none;">JRH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEJT</td>
+        <td style="padding:12px 16px;"><a href="/jrh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jorhat Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jorhat</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jsa/index.html" style="color:var(--blue);text-decoration:none;">JSA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VIJR</td>
+        <td style="padding:12px 16px;"><a href="/jsa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jaisalmer Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kbk/index.html" style="color:var(--blue);text-decoration:none;">KBK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEKI</td>
+        <td style="padding:12px 16px;"><a href="/kbk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kushinagar International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kushinagar</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kjb/index.html" style="color:var(--blue);text-decoration:none;">KJB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VOKU</td>
+        <td style="padding:12px 16px;"><a href="/kjb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kurnool Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Orvakal</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/klh/index.html" style="color:var(--blue);text-decoration:none;">KLH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VAKP</td>
+        <td style="padding:12px 16px;"><a href="/klh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kolhapur Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kolhapur</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/knu/index.html" style="color:var(--blue);text-decoration:none;">KNU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/knu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kanpur Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kanpur</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kqh/index.html" style="color:var(--blue);text-decoration:none;">KQH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VIKG</td>
+        <td style="padding:12px 16px;"><a href="/kqh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kishangarh Airport Ajmer</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ajmer (Kishangarh)</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ktu/index.html" style="color:var(--blue);text-decoration:none;">KTU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VIKO</td>
+        <td style="padding:12px 16px;"><a href="/ktu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kota Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kota</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kuu/index.html" style="color:var(--blue);text-decoration:none;">KUU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VIBR</td>
+        <td style="padding:12px 16px;"><a href="/kuu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kullu Manali Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bhuntar</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ltu/index.html" style="color:var(--blue);text-decoration:none;">LTU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VALT</td>
+        <td style="padding:12px 16px;"><a href="/ltu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Murod Kond Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Latur</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/luh/index.html" style="color:var(--blue);text-decoration:none;">LUH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VILD</td>
+        <td style="padding:12px 16px;"><a href="/luh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ludhiana Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/myq/index.html" style="color:var(--blue);text-decoration:none;">MYQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VOMY</td>
+        <td style="padding:12px 16px;"><a href="/myq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mysore Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mysore</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mzs/index.html" style="color:var(--blue);text-decoration:none;">MZS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/mzs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Moradabad Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Moradabad</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mzu/index.html" style="color:var(--blue);text-decoration:none;">MZU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEMZ</td>
+        <td style="padding:12px 16px;"><a href="/mzu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Muzaffarpur Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Muzaffarpur</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ndc/index.html" style="color:var(--blue);text-decoration:none;">NDC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ndc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nanded Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nanded</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nmb/index.html" style="color:var(--blue);text-decoration:none;">NMB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VADN</td>
+        <td style="padding:12px 16px;"><a href="/nmb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Daman Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Daman</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pab/index.html" style="color:var(--blue);text-decoration:none;">PAB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEBU</td>
+        <td style="padding:12px 16px;"><a href="/pab/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bilaspur Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bilaspur</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pat/index.html" style="color:var(--blue);text-decoration:none;">PAT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEPT</td>
+        <td style="padding:12px 16px;"><a href="/pat/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jay Prakash Narayan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Patna</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pbd/index.html" style="color:var(--blue);text-decoration:none;">PBD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VAPR</td>
+        <td style="padding:12px 16px;"><a href="/pbd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Porbandar Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Porbandar</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pgh/index.html" style="color:var(--blue);text-decoration:none;">PGH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VIPT</td>
+        <td style="padding:12px 16px;"><a href="/pgh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pantnagar Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Pantnagar</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pny/index.html" style="color:var(--blue);text-decoration:none;">PNY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VOPC</td>
+        <td style="padding:12px 16px;"><a href="/pny/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pondicherry Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Puducherry (Pondicherry)</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/put/index.html" style="color:var(--blue);text-decoration:none;">PUT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VOPN</td>
+        <td style="padding:12px 16px;"><a href="/put/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sri Sathya Sai Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Puttaparthi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/raj/index.html" style="color:var(--blue);text-decoration:none;">RAJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VARK</td>
+        <td style="padding:12px 16px;"><a href="/raj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rajkot Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rajkot</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rdp/index.html" style="color:var(--blue);text-decoration:none;">RDP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEDG</td>
+        <td style="padding:12px 16px;"><a href="/rdp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kazi Nazrul Islam Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Durgapur</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rew/index.html" style="color:var(--blue);text-decoration:none;">REW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/rew/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rewa Airport, Chorhata, REWA</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rewa</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rja/index.html" style="color:var(--blue);text-decoration:none;">RJA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VORY</td>
+        <td style="padding:12px 16px;"><a href="/rja/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rajahmundry Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Madhurapudi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rpr/index.html" style="color:var(--blue);text-decoration:none;">RPR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/rpr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Swami Vivekananda Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Raipur</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rqy/index.html" style="color:var(--blue);text-decoration:none;">RQY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VOSH</td>
+        <td style="padding:12px 16px;"><a href="/rqy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rashtrakavi Kuvempu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Shimoga</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rrk/index.html" style="color:var(--blue);text-decoration:none;">RRK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VERK</td>
+        <td style="padding:12px 16px;"><a href="/rrk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rourkela Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rourkela</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rtc/index.html" style="color:var(--blue);text-decoration:none;">RTC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VARG</td>
+        <td style="padding:12px 16px;"><a href="/rtc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ratnagiri Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sdw/index.html" style="color:var(--blue);text-decoration:none;">SDW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VOSR</td>
+        <td style="padding:12px 16px;"><a href="/sdw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sindhudurg Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Chipi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/shl/index.html" style="color:var(--blue);text-decoration:none;">SHL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEBI</td>
+        <td style="padding:12px 16px;"><a href="/shl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Shillong Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Shillong</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sse/index.html" style="color:var(--blue);text-decoration:none;">SSE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VASL</td>
+        <td style="padding:12px 16px;"><a href="/sse/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Solapur Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Solapur</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sxv/index.html" style="color:var(--blue);text-decoration:none;">SXV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VOSM</td>
+        <td style="padding:12px 16px;"><a href="/sxv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Salem Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Salem</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tez/index.html" style="color:var(--blue);text-decoration:none;">TEZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VETZ</td>
+        <td style="padding:12px 16px;"><a href="/tez/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tezpur Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/udr/index.html" style="color:var(--blue);text-decoration:none;">UDR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VAUD</td>
+        <td style="padding:12px 16px;"><a href="/udr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Maharana Pratap Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Udaipur</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zer/index.html" style="color:var(--blue);text-decoration:none;">ZER</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEZO</td>
+        <td style="padding:12px 16px;"><a href="/zer/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ziro Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ziro</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/aip/index.html" style="color:var(--blue);text-decoration:none;">AIP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VIAX</td>
+        <td style="padding:12px 16px;"><a href="/aip/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Adampur Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Adampur</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/azh/index.html" style="color:var(--blue);text-decoration:none;">AZH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/azh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Azamgarh Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Azamgarh</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/coh/index.html" style="color:var(--blue);text-decoration:none;">COH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VECO</td>
+        <td style="padding:12px 16px;"><a href="/coh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Cooch Behar Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cooch Behar</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cwk/index.html" style="color:var(--blue);text-decoration:none;">CWK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/cwk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Chitrakoot Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Chitrakoot</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dep/index.html" style="color:var(--blue);text-decoration:none;">DEP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEDZ</td>
+        <td style="padding:12px 16px;"><a href="/dep/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Daporijo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Daporijo</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dgh/index.html" style="color:var(--blue);text-decoration:none;">DGH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEDO</td>
+        <td style="padding:12px 16px;"><a href="/dgh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Deoghar Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Deoghar</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/diu/index.html" style="color:var(--blue);text-decoration:none;">DIU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VADU</td>
+        <td style="padding:12px 16px;"><a href="/diu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Diu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Diu</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gbi/index.html" style="color:var(--blue);text-decoration:none;">GBI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VOGB</td>
+        <td style="padding:12px 16px;"><a href="/gbi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kalaburagi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kalaburagi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gux/index.html" style="color:var(--blue);text-decoration:none;">GUX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VAGN</td>
+        <td style="padding:12px 16px;"><a href="/gux/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Guna Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hdo/index.html" style="color:var(--blue);text-decoration:none;">HDO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VIDX</td>
+        <td style="padding:12px 16px;"><a href="/hdo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Hindon Airport / Hindon Air Force Station</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ghaziabad</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hrh/index.html" style="color:var(--blue);text-decoration:none;">HRH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/hrh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Aligarh Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Aligarh</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ixn/index.html" style="color:var(--blue);text-decoration:none;">IXN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEKW</td>
+        <td style="padding:12px 16px;"><a href="/ixn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Khowai Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Khowai</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ixq/index.html" style="color:var(--blue);text-decoration:none;">IXQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEKM</td>
+        <td style="padding:12px 16px;"><a href="/ixq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kamalpur Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Manik Bhandar</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ixt/index.html" style="color:var(--blue);text-decoration:none;">IXT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEPG</td>
+        <td style="padding:12px 16px;"><a href="/ixt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pasighat Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Pasighat</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jgb/index.html" style="color:var(--blue);text-decoration:none;">JGB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEJR</td>
+        <td style="padding:12px 16px;"><a href="/jgb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jagdalpur Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jagdalpur</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jlg/index.html" style="color:var(--blue);text-decoration:none;">JLG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VAJL</td>
+        <td style="padding:12px 16px;"><a href="/jlg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jalgaon Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jalgaon</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jrg/index.html" style="color:var(--blue);text-decoration:none;">JRG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEJH</td>
+        <td style="padding:12px 16px;"><a href="/jrg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jharsuguda Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lda/index.html" style="color:var(--blue);text-decoration:none;">LDA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEMH</td>
+        <td style="padding:12px 16px;"><a href="/lda/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Malda Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Malda</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nvy/index.html" style="color:var(--blue);text-decoration:none;">NVY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VONV</td>
+        <td style="padding:12px 16px;"><a href="/nvy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Neyveli Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Neyveli</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pyb/index.html" style="color:var(--blue);text-decoration:none;">PYB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEJP</td>
+        <td style="padding:12px 16px;"><a href="/pyb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jeypore Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jeypore</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pyg/index.html" style="color:var(--blue);text-decoration:none;">PYG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEPY</td>
+        <td style="padding:12px 16px;"><a href="/pyg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pakyong Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Pakyong</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rgh/index.html" style="color:var(--blue);text-decoration:none;">RGH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEBG</td>
+        <td style="padding:12px 16px;"><a href="/rgh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Balurghat Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Balurghat</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rji/index.html" style="color:var(--blue);text-decoration:none;">RJI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/rji/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rajouri Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rajouri</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rmd/index.html" style="color:var(--blue);text-decoration:none;">RMD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VORG</td>
+        <td style="padding:12px 16px;"><a href="/rmd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Basanth Nagar Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ramagundam</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rup/index.html" style="color:var(--blue);text-decoration:none;">RUP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VERU</td>
+        <td style="padding:12px 16px;"><a href="/rup/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rupsi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rupsi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/slv/index.html" style="color:var(--blue);text-decoration:none;">SLV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VISM</td>
+        <td style="padding:12px 16px;"><a href="/slv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Shimla Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jubbarhatti</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/swn/index.html" style="color:var(--blue);text-decoration:none;">SWN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/swn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sarsawa Air Force Station</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sherpur Naqeebpur</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tcr/index.html" style="color:var(--blue);text-decoration:none;">TCR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VOTK</td>
+        <td style="padding:12px 16px;"><a href="/tcr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tuticorin Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vagaikulam</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tei/index.html" style="color:var(--blue);text-decoration:none;">TEI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VETJ</td>
+        <td style="padding:12px 16px;"><a href="/tei/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tezu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tezu</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tjv/index.html" style="color:var(--blue);text-decoration:none;">TJV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VOTJ</td>
+        <td style="padding:12px 16px;"><a href="/tjv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Thanjavur Air Force Station</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Thanjavur</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tni/index.html" style="color:var(--blue);text-decoration:none;">TNI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/tni/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Satna Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uke/index.html" style="color:var(--blue);text-decoration:none;">UKE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/uke/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Utkela Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bhawanipatna</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vdy/index.html" style="color:var(--blue);text-decoration:none;">VDY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VOJV</td>
+        <td style="padding:12px 16px;"><a href="/vdy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jindal Vijaynagar Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Toranagallu</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vsv/index.html" style="color:var(--blue);text-decoration:none;">VSV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/vsv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Shravasti Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Shravasti</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wgc/index.html" style="color:var(--blue);text-decoration:none;">WGC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VOWA</td>
+        <td style="padding:12px 16px;"><a href="/wgc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Warangal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Warangal</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr></tbody>
+  </table>
+</div>
+<footer>
+  <div style="margin-bottom:10px">
+    <a href="/az.html">A–Z Index</a>
+    <a href="/countries.html">By Country</a>
+    <a href="/about.html">About</a>
+  </div>
+  <div>© 2025 airport-code.com · Data sourced from OurAirports &amp; Open-Meteo · <a href="https://ourairports.com">OurAirports</a></div>
+</footer>
+
+<script>
+(function(){
+  let db = null;
+  const input = document.getElementById('navSearchInput');
+  const results = document.getElementById('search-results');
+  if (!input) return;
+
+  async function loadDB() {
+    if (db) return;
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    const r = await fetch(root + 'airports.json');
+    db = await r.json();
+  }
+
+  input.addEventListener('focus', loadDB);
+  input.addEventListener('input', async function() {
+    const q = this.value.trim().toUpperCase();
+    if (q.length < 2) { results.style.display = 'none'; return; }
+    await loadDB();
+    const matches = db.filter(a =>
+      a.iata.startsWith(q) ||
+      a.name.toUpperCase().includes(q) ||
+      a.city.toUpperCase().includes(q)
+    ).slice(0, 7);
+    if (!matches.length) { results.style.display = 'none'; return; }
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    results.innerHTML = matches.map(a =>
+      `<a href="${root}${a.iata.toLowerCase()}/index.html">
+        <span class="sr-code">${a.iata}</span>
+        <div><div class="sr-name">${a.name}</div><div class="sr-city">${a.city}, ${a.country}</div></div>
+      </a>`
+    ).join('');
+    results.style.display = 'block';
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!input.contains(e.target) && !results.contains(e.target)) results.style.display = 'none';
+  });
+})();
+</script>
+
+</body>
+</html>

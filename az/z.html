@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="site-root" content="/">
+  <title>Airports Starting With Z | Airport Code</title>
+  <meta name="description" content="All airports with IATA codes starting with the letter Z. Browse airport codes, names and locations.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0f1f3d;
+      --blue: #1a56db;
+      --blue-light: #e8f0fe;
+      --sky: #38bdf8;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --green: #10b981;
+    }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; zoom: 1.12; }
+    nav { background: var(--navy); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { color: #fff; font-size: 19px; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; display: flex; align-items: center; gap: 6px; line-height: 1; }
+    .nav-logo svg { flex-shrink: 0; }
+    .nav-logo span { color: var(--sky); }
+    .nav-search { display: flex; align-items: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 6px 14px; gap: 8px; width: 280px; position: relative; }
+    .nav-search input { background: none; border: none; outline: none; color: #fff; font-size: 14px; width: 100%; font-family: 'Outfit', sans-serif; }
+    .nav-search input::placeholder { color: rgba(255,255,255,0.4); }
+    #search-results { position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: #fff; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 200; overflow: hidden; display: none; }
+    #search-results a { display: flex; align-items: center; gap: 10px; padding: 10px 14px; text-decoration: none; color: var(--text); font-size: 13px; border-bottom: 1px solid var(--border); transition: background 0.15s; }
+    #search-results a:last-child { border-bottom: none; }
+    #search-results a:hover { background: var(--bg); }
+    #search-results .sr-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 12px; padding: 2px 7px; border-radius: 5px; min-width: 38px; text-align: center; }
+    #search-results .sr-name { font-weight: 600; }
+    #search-results .sr-city { color: var(--muted); font-size: 11px; }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .hero { background: linear-gradient(135deg, var(--navy) 0%, #1a3a6b 100%); color: #fff; padding: 48px 0 56px; position: relative; overflow: hidden; }
+    .hero::before { content: '✈'; position: absolute; right: -20px; top: -20px; font-size: 220px; opacity: 0.04; transform: rotate(25deg); }
+    .hero-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .breadcrumb { font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 20px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .breadcrumb a:hover { color: rgba(255,255,255,0.8); }
+    .breadcrumb span.sep { color: rgba(255,255,255,0.3); }
+    .hero-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .hero-title { display: flex; align-items: flex-start; gap: 24px; }
+    .iata-badge { background: var(--blue); border: 2px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 14px 20px; text-align: center; min-width: 100px; flex-shrink: 0; }
+    .iata-badge .code { font-size: 40px; font-weight: 800; letter-spacing: 2px; color: #fff; line-height: 1; }
+    .iata-badge .label { font-size: 10px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
+    .hero-name { padding-top: 4px; }
+    .hero-name h1 { font-size: 38px; font-weight: 800; line-height: 1.1; color: #fff; }
+    .hero-name .location { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.65); font-size: 15px; margin-top: 6px; }
+    .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+    .badge { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.3px; }
+    .badge-large { background: rgba(16,185,129,0.2); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
+    .badge-medium { background: rgba(56,189,248,0.15); color: #7dd3fc; border: 1px solid rgba(56,189,248,0.3); }
+    .badge-small { background: rgba(245,158,11,0.15); color: #fcd34d; border: 1px solid rgba(245,158,11,0.3); }
+    .hero-stats { display: flex; gap: 32px; margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
+    .hero-stat .value { font-size: 22px; font-weight: 700; color: #fff; }
+    .hero-stat .label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
+    .time-widget { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 16px 20px; text-align: center; min-width: 160px; }
+    .time-widget .time-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+    .time-widget .time-value { font-size: 28px; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+    .time-widget .time-tz { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+    .main { max-width: 1100px; margin: 0 auto; padding: 32px 24px; display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
+    @media (max-width: 768px) { .main { grid-template-columns: 1fr; } .hero-name h1 { font-size: 26px; } .nav-links { display: none; } .nav-search { width: 200px; } }
+    .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .card-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .card-header h2 { font-size: 14px; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.5px; }
+    .card-body { padding: 20px; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .info-item { padding: 14px 16px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+    .info-item:nth-child(even) { border-right: none; }
+    .info-item:nth-last-child(-n+2) { border-bottom: none; }
+    .info-item .key { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px; }
+    .info-item .val { font-size: 15px; font-weight: 600; color: var(--text); }
+    .info-item .val a { color: var(--blue); text-decoration: none; }
+    .info-item .val a:hover { text-decoration: underline; }
+    .weather-widget { display: flex; align-items: center; gap: 20px; padding: 16px; background: linear-gradient(135deg, #e0f2fe, #f0f9ff); border-radius: 10px; margin-bottom: 16px; min-height: 100px; }
+    .weather-icon { font-size: 48px; line-height: 1; }
+    .weather-main .temp { font-size: 32px; font-weight: 700; color: var(--text); }
+    .weather-main .desc { font-size: 14px; color: var(--muted); text-transform: capitalize; }
+    .weather-details { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .weather-detail { font-size: 13px; color: var(--muted); }
+    .weather-detail strong { color: var(--text); font-weight: 600; }
+    .nearby-list { list-style: none; }
+    .nearby-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .nearby-item:last-child { border-bottom: none; }
+    .nearby-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 13px; padding: 3px 8px; border-radius: 6px; min-width: 44px; text-align: center; text-decoration: none; }
+    .nearby-code:hover { background: #ccdcfb; }
+    .nearby-info { flex: 1; margin: 0 12px; }
+    .nearby-info .name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .nearby-info .city { font-size: 11px; color: var(--muted); }
+    .nearby-dist { font-size: 12px; color: var(--muted); white-space: nowrap; }
+    .carbon-form { display: flex; flex-direction: column; gap: 12px; }
+    .carbon-form label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .carbon-form input, .carbon-form select { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-family: 'Outfit', sans-serif; color: var(--text); outline: none; transition: border-color 0.2s; }
+    .carbon-form input:focus, .carbon-form select:focus { border-color: var(--blue); }
+    .carbon-btn { background: var(--blue); color: #fff; border: none; padding: 11px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Outfit', sans-serif; transition: background 0.2s; }
+    .carbon-btn:hover { background: #1447c0; }
+    .carbon-result { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px; text-align: center; display: none; }
+    .carbon-result .co2 { font-size: 24px; font-weight: 800; color: var(--green); }
+    .carbon-result .co2-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .sidebar-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .sidebar-card .card-header { padding: 14px 16px; }
+    .sidebar-card .card-body { padding: 16px; }
+    .codes-display { display: flex; gap: 12px; }
+    .code-box { flex: 1; text-align: center; padding: 16px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; }
+    .code-box .code-val { font-size: 28px; font-weight: 800; color: var(--navy); letter-spacing: 1px; }
+    .code-box .code-type { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; }
+    footer { background: var(--navy); color: rgba(255,255,255,0.5); text-align: center; padding: 24px; font-size: 13px; margin-top: 40px; }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; margin: 0 12px; }
+    footer a:hover { color: #fff; }
+
+    .az-nav { display:flex; gap:6px; flex-wrap:wrap; padding:20px 0; }
+    .az-nav a { display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:6px;text-decoration:none;font-weight:700;font-size:14px; }
+    .az-nav a.active { background:var(--blue);color:#fff; }
+    .az-nav a:not(.active) { background:#fff;color:var(--blue);border:1px solid var(--border); }
+    .az-nav a:not(.active):hover { background:var(--blue-light); }
+    table { width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden; }
+    thead th { padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid var(--border);background:#f8fafc; }
+    tbody tr { border-bottom:1px solid #f5f5f5; }
+    tbody tr:last-child { border-bottom:none; }
+    tbody tr:hover { background:#fafbfc; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/index.html" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="9" fill="#1a56db"/><path d="M24.5 8.5C25.3 9.3 25.3 10.6 24.5 11.4L19.8 16.1L22 25L19.5 27.5L16 19L11.5 23.5L12 26L10 28L8 24L4 22L6 20L8.5 20.5L13 16L5.5 12.5L8 10L17 12.2L21.6 7.5C22.4 6.7 23.7 6.7 24.5 8.5Z" fill="white"/></svg>
+    Airport<span>Code</span>
+  </a>
+  <div class="nav-search">
+    <svg width="14" height="14" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="navSearchInput" placeholder="Search airport or code…" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <div class="nav-links">
+    <a href="/az.html">A–Z</a>
+    <a href="/countries.html">By Country</a>
+  </div>
+</nav>
+
+<div style="max-width:1100px;margin:0 auto;padding:32px 24px">
+  <div style="margin-bottom:8px;font-size:12px;color:var(--muted)"><a href="/index.html" style="color:var(--blue);text-decoration:none">Home</a> › <a href="/az.html" style="color:var(--blue);text-decoration:none">A–Z Index</a> › Z</div>
+  <h1 style="font-size:28px;font-weight:800;color:var(--navy);margin-bottom:4px">Airports: Z</h1>
+  <p style="color:var(--muted);margin-bottom:16px">108 airports with IATA codes starting with Z</p>
+
+  <div class="az-nav">
+    <a href="/az/a.html" class="">A</a><a href="/az/b.html" class="">B</a><a href="/az/c.html" class="">C</a><a href="/az/d.html" class="">D</a><a href="/az/e.html" class="">E</a><a href="/az/f.html" class="">F</a><a href="/az/g.html" class="">G</a><a href="/az/h.html" class="">H</a><a href="/az/i.html" class="">I</a><a href="/az/j.html" class="">J</a><a href="/az/k.html" class="">K</a><a href="/az/l.html" class="">L</a><a href="/az/m.html" class="">M</a><a href="/az/n.html" class="">N</a><a href="/az/o.html" class="">O</a><a href="/az/p.html" class="">P</a><a href="/az/q.html" class="">Q</a><a href="/az/r.html" class="">R</a><a href="/az/s.html" class="">S</a><a href="/az/t.html" class="">T</a><a href="/az/u.html" class="">U</a><a href="/az/v.html" class="">V</a><a href="/az/w.html" class="">W</a><a href="/az/x.html" class="">X</a><a href="/az/y.html" class="">Y</a><a href="/az/z.html" class="active">Z</a>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>IATA</th><th>ICAO</th><th>Airport Name</th><th>City</th><th>Country</th><th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zac/index.html" style="color:var(--blue);text-decoration:none;">ZAC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">CZAC</td>
+        <td style="padding:12px 16px;"><a href="/zac/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">York Landing Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">York Landing</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zad/index.html" style="color:var(--blue);text-decoration:none;">ZAD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LDZD</td>
+        <td style="padding:12px 16px;"><a href="/zad/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zadar Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zadar</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇭🇷 Croatia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zag/index.html" style="color:var(--blue);text-decoration:none;">ZAG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LDZA</td>
+        <td style="padding:12px 16px;"><a href="/zag/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zagreb Franjo Tuđman International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Velika Gorica</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇭🇷 Croatia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zah/index.html" style="color:var(--blue);text-decoration:none;">ZAH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">OIZH</td>
+        <td style="padding:12px 16px;"><a href="/zah/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zahedan International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zahedan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇷 Iran</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zal/index.html" style="color:var(--blue);text-decoration:none;">ZAL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SCVD</td>
+        <td style="padding:12px 16px;"><a href="/zal/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pichoy Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Valdivia</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇱 Chile</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zam/index.html" style="color:var(--blue);text-decoration:none;">ZAM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">RPMZ</td>
+        <td style="padding:12px 16px;"><a href="/zam/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zamboanga International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zamboanga</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇭 Filipina</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zao/index.html" style="color:var(--blue);text-decoration:none;">ZAO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LFCC</td>
+        <td style="padding:12px 16px;"><a href="/zao/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Cahors Lalbenque airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cahors</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇷 Perancis</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zar/index.html" style="color:var(--blue);text-decoration:none;">ZAR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">DNZA</td>
+        <td style="padding:12px 16px;"><a href="/zar/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zaria Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zaria</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇬 Nigeria</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zat/index.html" style="color:var(--blue);text-decoration:none;">ZAT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZPZT</td>
+        <td style="padding:12px 16px;"><a href="/zat/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zhaotong Zhaoyang Airport （Not fully opened)</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zhaotong</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zaz/index.html" style="color:var(--blue);text-decoration:none;">ZAZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LEZG</td>
+        <td style="padding:12px 16px;"><a href="/zaz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zaragoza Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zaragoza</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇸 Sepanyol</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zbe/index.html" style="color:var(--blue);text-decoration:none;">ZBE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LKZA</td>
+        <td style="padding:12px 16px;"><a href="/zbe/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zábřeh Dolní Benešov Airfield</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Dolní Benešov</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇿 Czechia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zbf/index.html" style="color:var(--blue);text-decoration:none;">ZBF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">CZBF</td>
+        <td style="padding:12px 16px;"><a href="/zbf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bathurst Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">South Tetagouche</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zbl/index.html" style="color:var(--blue);text-decoration:none;">ZBL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/zbl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Biloela Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Biloela</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zbm/index.html" style="color:var(--blue);text-decoration:none;">ZBM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">CZBM</td>
+        <td style="padding:12px 16px;"><a href="/zbm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bromont (Roland Désourdy) Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bromont</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zbo/index.html" style="color:var(--blue);text-decoration:none;">ZBO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">YBWN</td>
+        <td style="padding:12px 16px;"><a href="/zbo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bowen Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bowen</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zbr/index.html" style="color:var(--blue);text-decoration:none;">ZBR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">OIZC</td>
+        <td style="padding:12px 16px;"><a href="/zbr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Chabahar Konarak International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Konarak</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇷 Iran</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zby/index.html" style="color:var(--blue);text-decoration:none;">ZBY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VLSB</td>
+        <td style="padding:12px 16px;"><a href="/zby/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sayaboury Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sainyabuli</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇱🇦 Laos</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zcl/index.html" style="color:var(--blue);text-decoration:none;">ZCL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">MMZC</td>
+        <td style="padding:12px 16px;"><a href="/zcl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">General Leobardo C. Ruiz International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zacatecas</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇽 Mexico</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zco/index.html" style="color:var(--blue);text-decoration:none;">ZCO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SCQP</td>
+        <td style="padding:12px 16px;"><a href="/zco/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">La Araucanía International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Temuco</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇱 Chile</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zdy/index.html" style="color:var(--blue);text-decoration:none;">ZDY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">OMDL</td>
+        <td style="padding:12px 16px;"><a href="/zdy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Delma Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Delma Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇪 Emiriah Arab Bersatu</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zec/index.html" style="color:var(--blue);text-decoration:none;">ZEC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FASC</td>
+        <td style="padding:12px 16px;"><a href="/zec/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Secunda Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Secunda</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇿🇦 Afrika Selatan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zeg/index.html" style="color:var(--blue);text-decoration:none;">ZEG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAKQ</td>
+        <td style="padding:12px 16px;"><a href="/zeg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Senggo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Senggo-Papua Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zel/index.html" style="color:var(--blue);text-decoration:none;">ZEL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">CBBC</td>
+        <td style="padding:12px 16px;"><a href="/zel/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bella Bella (Campbell Island) Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bella Bella</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zem/index.html" style="color:var(--blue);text-decoration:none;">ZEM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">CZEM</td>
+        <td style="padding:12px 16px;"><a href="/zem/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Eastmain River Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Eastmain River</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zen/index.html" style="color:var(--blue);text-decoration:none;">ZEN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">AYZA</td>
+        <td style="padding:12px 16px;"><a href="/zen/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zenag Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zenag</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zer/index.html" style="color:var(--blue);text-decoration:none;">ZER</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VEZO</td>
+        <td style="padding:12px 16px;"><a href="/zer/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ziro Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ziro</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zfa/index.html" style="color:var(--blue);text-decoration:none;">ZFA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">CZFA</td>
+        <td style="padding:12px 16px;"><a href="/zfa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Faro Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Faro</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zfd/index.html" style="color:var(--blue);text-decoration:none;">ZFD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">CZFD</td>
+        <td style="padding:12px 16px;"><a href="/zfd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fond-du-Lac Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fond-du-Lac</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zfl/index.html" style="color:var(--blue);text-decoration:none;">ZFL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZWZS</td>
+        <td style="padding:12px 16px;"><a href="/zfl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zhaosu Tianma Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zhaosu</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zfm/index.html" style="color:var(--blue);text-decoration:none;">ZFM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">CZFM</td>
+        <td style="padding:12px 16px;"><a href="/zfm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fort Mcpherson Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fort Mcpherson</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zfn/index.html" style="color:var(--blue);text-decoration:none;">ZFN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">CZFN</td>
+        <td style="padding:12px 16px;"><a href="/zfn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tulita Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tulita</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zfw/index.html" style="color:var(--blue);text-decoration:none;">ZFW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/zfw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fairview Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fairview</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zgf/index.html" style="color:var(--blue);text-decoration:none;">ZGF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">CZGF</td>
+        <td style="padding:12px 16px;"><a href="/zgf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Grand Forks Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Grand Forks</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zgi/index.html" style="color:var(--blue);text-decoration:none;">ZGI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">CZGI</td>
+        <td style="padding:12px 16px;"><a href="/zgi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Gods River Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Gods River</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zgl/index.html" style="color:var(--blue);text-decoration:none;">ZGL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">YSGW</td>
+        <td style="padding:12px 16px;"><a href="/zgl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">South Galway Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zgm/index.html" style="color:var(--blue);text-decoration:none;">ZGM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FLNA</td>
+        <td style="padding:12px 16px;"><a href="/zgm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ngoma Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ngoma</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇿🇲 Zambia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zgr/index.html" style="color:var(--blue);text-decoration:none;">ZGR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">CZGR</td>
+        <td style="padding:12px 16px;"><a href="/zgr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Little Grand Rapids Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Little Grand Rapids</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zgs/index.html" style="color:var(--blue);text-decoration:none;">ZGS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/zgs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">La Romaine Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Le Golfe-du-Saint-Laurent</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zgu/index.html" style="color:var(--blue);text-decoration:none;">ZGU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">NVSQ</td>
+        <td style="padding:12px 16px;"><a href="/zgu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Gaua Island Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Gaua Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇻🇺 Vanuatu</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zha/index.html" style="color:var(--blue);text-decoration:none;">ZHA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZGZJ</td>
+        <td style="padding:12px 16px;"><a href="/zha/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zhanjiang Wuchuan International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zhanjiang</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zhm/index.html" style="color:var(--blue);text-decoration:none;">ZHM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VGSH</td>
+        <td style="padding:12px 16px;"><a href="/zhm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Shamshernagar Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Shamshernagar</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇩 Bangladesh</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zhp/index.html" style="color:var(--blue);text-decoration:none;">ZHP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">CZHP</td>
+        <td style="padding:12px 16px;"><a href="/zhp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">High Prairie Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">High Prairie</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zhy/index.html" style="color:var(--blue);text-decoration:none;">ZHY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZLZW</td>
+        <td style="padding:12px 16px;"><a href="/zhy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zhongwei Shapotou Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zhongwei (Shapotou)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zia/index.html" style="color:var(--blue);text-decoration:none;">ZIA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UUBW</td>
+        <td style="padding:12px 16px;"><a href="/zia/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zhukovsky International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Moscow</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zic/index.html" style="color:var(--blue);text-decoration:none;">ZIC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SCTO</td>
+        <td style="padding:12px 16px;"><a href="/zic/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Victoria Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Victoria</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇱 Chile</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zig/index.html" style="color:var(--blue);text-decoration:none;">ZIG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">GOGG</td>
+        <td style="padding:12px 16px;"><a href="/zig/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ziguinchor Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ziguinchor</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇳 Senegal</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zih/index.html" style="color:var(--blue);text-decoration:none;">ZIH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">MMZH</td>
+        <td style="padding:12px 16px;"><a href="/zih/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ixtapa-Zihuatanejo International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ixtapa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇽 Mexico</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zis/index.html" style="color:var(--blue);text-decoration:none;">ZIS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">HLZN</td>
+        <td style="padding:12px 16px;"><a href="/zis/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Alzintan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zintan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇱🇾 Libya</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zix/index.html" style="color:var(--blue);text-decoration:none;">ZIX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UEVV</td>
+        <td style="padding:12px 16px;"><a href="/zix/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zhigansk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zhigansk</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zjg/index.html" style="color:var(--blue);text-decoration:none;">ZJG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">CZJG</td>
+        <td style="padding:12px 16px;"><a href="/zjg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jenpeg Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jenpeg</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zjn/index.html" style="color:var(--blue);text-decoration:none;">ZJN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">CZJN</td>
+        <td style="padding:12px 16px;"><a href="/zjn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Swan River Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Swan River</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zkb/index.html" style="color:var(--blue);text-decoration:none;">ZKB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FLKY</td>
+        <td style="padding:12px 16px;"><a href="/zkb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kasaba Bay Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kasaba Bay</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇿🇲 Zambia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zke/index.html" style="color:var(--blue);text-decoration:none;">ZKE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">CZKE</td>
+        <td style="padding:12px 16px;"><a href="/zke/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kashechewan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kashechewan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zkg/index.html" style="color:var(--blue);text-decoration:none;">ZKG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/zkg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kégashka Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Côte-Nord-du-Golfe-du-Saint-Laurent</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zkl/index.html" style="color:var(--blue);text-decoration:none;">ZKL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/zkl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zigong Fengming Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zigong (Gongjing)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zkp/index.html" style="color:var(--blue);text-decoration:none;">ZKP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UESU</td>
+        <td style="padding:12px 16px;"><a href="/zkp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zyryanka Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zyryanka</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zlo/index.html" style="color:var(--blue);text-decoration:none;">ZLO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">MMZO</td>
+        <td style="padding:12px 16px;"><a href="/zlo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Playa de Oro International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Manzanillo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇽 Mexico</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zlr/index.html" style="color:var(--blue);text-decoration:none;">ZLR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/zlr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Municipal de Linares Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Linares</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇱 Chile</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zlt/index.html" style="color:var(--blue);text-decoration:none;">ZLT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/zlt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">La Tabatière Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">La Tabatière</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zlx/index.html" style="color:var(--blue);text-decoration:none;">ZLX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">HSZA</td>
+        <td style="padding:12px 16px;"><a href="/zlx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zalingei Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zalingei</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇩 Sudan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zmd/index.html" style="color:var(--blue);text-decoration:none;">ZMD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/zmd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sena Madureira Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sena Madureira</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zmh/index.html" style="color:var(--blue);text-decoration:none;">ZMH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">CZML</td>
+        <td style="padding:12px 16px;"><a href="/zmh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">South Cariboo Region / 108 Mile Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">108 Mile</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zmm/index.html" style="color:var(--blue);text-decoration:none;">ZMM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">MMZM</td>
+        <td style="padding:12px 16px;"><a href="/zmm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zamora Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zamora</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇽 Mexico</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zmt/index.html" style="color:var(--blue);text-decoration:none;">ZMT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">CZMT</td>
+        <td style="padding:12px 16px;"><a href="/zmt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Masset Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Masset</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/znc/index.html" style="color:var(--blue);text-decoration:none;">ZNC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/znc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nyac Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nyac</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/znd/index.html" style="color:var(--blue);text-decoration:none;">ZND</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">DRZR</td>
+        <td style="padding:12px 16px;"><a href="/znd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zinder Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zinder</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇪 Niger</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zne/index.html" style="color:var(--blue);text-decoration:none;">ZNE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">YNWN</td>
+        <td style="padding:12px 16px;"><a href="/zne/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Newman Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Newman</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/znz/index.html" style="color:var(--blue);text-decoration:none;">ZNZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">HTZA</td>
+        <td style="padding:12px 16px;"><a href="/znz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Abeid Amani Karume International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zanzibar</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇿 Tanzania</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zos/index.html" style="color:var(--blue);text-decoration:none;">ZOS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SCJO</td>
+        <td style="padding:12px 16px;"><a href="/zos/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Cañal Bajo Carlos Hott Siebert Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Osorno</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇱 Chile</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zpb/index.html" style="color:var(--blue);text-decoration:none;">ZPB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">CZPB</td>
+        <td style="padding:12px 16px;"><a href="/zpb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sachigo Lake Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sachigo Lake</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zpc/index.html" style="color:var(--blue);text-decoration:none;">ZPC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SCPC</td>
+        <td style="padding:12px 16px;"><a href="/zpc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pucón Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Pucon</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇱 Chile</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zph/index.html" style="color:var(--blue);text-decoration:none;">ZPH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KZPH</td>
+        <td style="padding:12px 16px;"><a href="/zph/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zephyrhills Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zephyrhills</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zpo/index.html" style="color:var(--blue);text-decoration:none;">ZPO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">CZPO</td>
+        <td style="padding:12px 16px;"><a href="/zpo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pinehouse Lake Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Pinehouse Lake</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zqn/index.html" style="color:var(--blue);text-decoration:none;">ZQN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">NZQN</td>
+        <td style="padding:12px 16px;"><a href="/zqn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Queenstown Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Queenstown</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇿 New Zealand</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zqw/index.html" style="color:var(--blue);text-decoration:none;">ZQW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">EDRZ</td>
+        <td style="padding:12px 16px;"><a href="/zqw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zweibrücken Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zweibrücken</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇪 Jerman</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zqz/index.html" style="color:var(--blue);text-decoration:none;">ZQZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZBZJ</td>
+        <td style="padding:12px 16px;"><a href="/zqz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zhangjiakou Ningyuan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zhangjiakou</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zrh/index.html" style="color:var(--blue);text-decoration:none;">ZRH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LSZH</td>
+        <td style="padding:12px 16px;"><a href="/zrh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zürich Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zurich</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇭 Switzerland</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zri/index.html" style="color:var(--blue);text-decoration:none;">ZRI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WABO</td>
+        <td style="padding:12px 16px;"><a href="/zri/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Stevanus Rumbewas Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Serui</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zrj/index.html" style="color:var(--blue);text-decoration:none;">ZRJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">CZRJ</td>
+        <td style="padding:12px 16px;"><a href="/zrj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Round Lake (Weagamow Lake) Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Round Lake</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zrm/index.html" style="color:var(--blue);text-decoration:none;">ZRM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAJI</td>
+        <td style="padding:12px 16px;"><a href="/zrm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mararena Sarmi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sarmi</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zsa/index.html" style="color:var(--blue);text-decoration:none;">ZSA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">MYSM</td>
+        <td style="padding:12px 16px;"><a href="/zsa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">San Salvador International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">San Salvador</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇸 Bahamas</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zse/index.html" style="color:var(--blue);text-decoration:none;">ZSE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FMEP</td>
+        <td style="padding:12px 16px;"><a href="/zse/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Saint-Pierre Pierrefonds Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Saint-Pierre</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇪 Reunion</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zsj/index.html" style="color:var(--blue);text-decoration:none;">ZSJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">CZSJ</td>
+        <td style="padding:12px 16px;"><a href="/zsj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sandy Lake Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sandy Lake</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zss/index.html" style="color:var(--blue);text-decoration:none;">ZSS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">DISS</td>
+        <td style="padding:12px 16px;"><a href="/zss/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sassandra Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sassandra</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇮 Cote d’Ivoire</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zst/index.html" style="color:var(--blue);text-decoration:none;">ZST</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">CZST</td>
+        <td style="padding:12px 16px;"><a href="/zst/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Stewart Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Stewart</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zta/index.html" style="color:var(--blue);text-decoration:none;">ZTA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">NTGY</td>
+        <td style="padding:12px 16px;"><a href="/zta/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tureia Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tureia</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇫 French Polynesia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ztb/index.html" style="color:var(--blue);text-decoration:none;">ZTB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ztb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tête-à-la-Baleine Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tête-à-la-Baleine</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zth/index.html" style="color:var(--blue);text-decoration:none;">ZTH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">LGZA</td>
+        <td style="padding:12px 16px;"><a href="/zth/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zakynthos International Airport Dionysios Solomos</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zakynthos</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇷 Greece</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ztm/index.html" style="color:var(--blue);text-decoration:none;">ZTM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">CZTM</td>
+        <td style="padding:12px 16px;"><a href="/ztm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Shamattawa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Shamattawa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ztr/index.html" style="color:var(--blue);text-decoration:none;">ZTR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UKKV</td>
+        <td style="padding:12px 16px;"><a href="/ztr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zhytomyr Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zhytomyr</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇦 Ukraine</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ztu/index.html" style="color:var(--blue);text-decoration:none;">ZTU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UBBY</td>
+        <td style="padding:12px 16px;"><a href="/ztu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zaqatala International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zaqatala</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇿 Azerbaijan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zuc/index.html" style="color:var(--blue);text-decoration:none;">ZUC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">CZUC</td>
+        <td style="padding:12px 16px;"><a href="/zuc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ignace Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ignace</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zud/index.html" style="color:var(--blue);text-decoration:none;">ZUD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SCAC</td>
+        <td style="padding:12px 16px;"><a href="/zud/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pupelde Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ancud</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇱 Chile</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zuh/index.html" style="color:var(--blue);text-decoration:none;">ZUH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZGSD</td>
+        <td style="padding:12px 16px;"><a href="/zuh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zhuhai Jinwan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zhuhai (Jinwan)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zul/index.html" style="color:var(--blue);text-decoration:none;">ZUL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">OEZL</td>
+        <td style="padding:12px 16px;"><a href="/zul/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zilfi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zilfi</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇦 Arab Saudi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zum/index.html" style="color:var(--blue);text-decoration:none;">ZUM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">CZUM</td>
+        <td style="padding:12px 16px;"><a href="/zum/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Churchill Falls Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Churchill Falls</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zva/index.html" style="color:var(--blue);text-decoration:none;">ZVA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FMMN</td>
+        <td style="padding:12px 16px;"><a href="/zva/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Miandrivazo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Miandrivazo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇬 Madagaskar</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zvg/index.html" style="color:var(--blue);text-decoration:none;">ZVG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/zvg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Springvale Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Springvale</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zvk/index.html" style="color:var(--blue);text-decoration:none;">ZVK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VLSK</td>
+        <td style="padding:12px 16px;"><a href="/zvk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Savannakhet Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇱🇦 Laos</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zwa/index.html" style="color:var(--blue);text-decoration:none;">ZWA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FMND</td>
+        <td style="padding:12px 16px;"><a href="/zwa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Andapa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇬 Madagaskar</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zwl/index.html" style="color:var(--blue);text-decoration:none;">ZWL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">CZWL</td>
+        <td style="padding:12px 16px;"><a href="/zwl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wollaston Lake Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wollaston Lake</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zxt/index.html" style="color:var(--blue);text-decoration:none;">ZXT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UBTT</td>
+        <td style="padding:12px 16px;"><a href="/zxt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zabrat Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zabrat</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇿 Azerbaijan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zyi/index.html" style="color:var(--blue);text-decoration:none;">ZYI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">ZUZY</td>
+        <td style="padding:12px 16px;"><a href="/zyi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zunyi Xinzhou Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zunyi</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zyl/index.html" style="color:var(--blue);text-decoration:none;">ZYL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">VGSY</td>
+        <td style="padding:12px 16px;"><a href="/zyl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Osmany International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sylhet</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇩 Bangladesh</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zze/index.html" style="color:var(--blue);text-decoration:none;">ZZE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/zze/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zangilan International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zangilan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇿 Azerbaijan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zzo/index.html" style="color:var(--blue);text-decoration:none;">ZZO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">UHSO</td>
+        <td style="padding:12px 16px;"><a href="/zzo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zonalnoye Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tymovskoye</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zzu/index.html" style="color:var(--blue);text-decoration:none;">ZZU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">FWUU</td>
+        <td style="padding:12px 16px;"><a href="/zzu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mzuzu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mzuzu</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇼 Malawi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zzv/index.html" style="color:var(--blue);text-decoration:none;">ZZV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">KZZV</td>
+        <td style="padding:12px 16px;"><a href="/zzv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zanesville Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zanesville</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<footer>
+  <div style="margin-bottom:10px">
+    <a href="/az.html">A–Z Index</a>
+    <a href="/countries.html">By Country</a>
+    <a href="/about.html">About</a>
+  </div>
+  <div>© 2025 airport-code.com · Data sourced from OurAirports &amp; Open-Meteo · <a href="https://ourairports.com">OurAirports</a></div>
+</footer>
+
+<script>
+(function(){
+  let db = null;
+  const input = document.getElementById('navSearchInput');
+  const results = document.getElementById('search-results');
+  if (!input) return;
+
+  async function loadDB() {
+    if (db) return;
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    const r = await fetch(root + 'airports.json');
+    db = await r.json();
+  }
+
+  input.addEventListener('focus', loadDB);
+  input.addEventListener('input', async function() {
+    const q = this.value.trim().toUpperCase();
+    if (q.length < 2) { results.style.display = 'none'; return; }
+    await loadDB();
+    const matches = db.filter(a =>
+      a.iata.startsWith(q) ||
+      a.name.toUpperCase().includes(q) ||
+      a.city.toUpperCase().includes(q)
+    ).slice(0, 7);
+    if (!matches.length) { results.style.display = 'none'; return; }
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    results.innerHTML = matches.map(a =>
+      `<a href="${root}${a.iata.toLowerCase()}/index.html">
+        <span class="sr-code">${a.iata}</span>
+        <div><div class="sr-name">${a.name}</div><div class="sr-city">${a.city}, ${a.country}</div></div>
+      </a>`
+    ).join('');
+    results.style.display = 'block';
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!input.contains(e.target) && !results.contains(e.target)) results.style.display = 'none';
+  });
+})();
+</script>
+
+</body>
+</html>

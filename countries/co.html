@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="site-root" content="/">
+  <title>Airports in Colombia | Airport Code</title>
+  <meta name="description" content="All airport codes for airports in Colombia. Browse IATA and ICAO codes for 161 airports.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0f1f3d;
+      --blue: #1a56db;
+      --blue-light: #e8f0fe;
+      --sky: #38bdf8;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --green: #10b981;
+    }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; zoom: 1.12; }
+    nav { background: var(--navy); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { color: #fff; font-size: 19px; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; display: flex; align-items: center; gap: 6px; line-height: 1; }
+    .nav-logo svg { flex-shrink: 0; }
+    .nav-logo span { color: var(--sky); }
+    .nav-search { display: flex; align-items: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 6px 14px; gap: 8px; width: 280px; position: relative; }
+    .nav-search input { background: none; border: none; outline: none; color: #fff; font-size: 14px; width: 100%; font-family: 'Outfit', sans-serif; }
+    .nav-search input::placeholder { color: rgba(255,255,255,0.4); }
+    #search-results { position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: #fff; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 200; overflow: hidden; display: none; }
+    #search-results a { display: flex; align-items: center; gap: 10px; padding: 10px 14px; text-decoration: none; color: var(--text); font-size: 13px; border-bottom: 1px solid var(--border); transition: background 0.15s; }
+    #search-results a:last-child { border-bottom: none; }
+    #search-results a:hover { background: var(--bg); }
+    #search-results .sr-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 12px; padding: 2px 7px; border-radius: 5px; min-width: 38px; text-align: center; }
+    #search-results .sr-name { font-weight: 600; }
+    #search-results .sr-city { color: var(--muted); font-size: 11px; }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .hero { background: linear-gradient(135deg, var(--navy) 0%, #1a3a6b 100%); color: #fff; padding: 48px 0 56px; position: relative; overflow: hidden; }
+    .hero::before { content: '✈'; position: absolute; right: -20px; top: -20px; font-size: 220px; opacity: 0.04; transform: rotate(25deg); }
+    .hero-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .breadcrumb { font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 20px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .breadcrumb a:hover { color: rgba(255,255,255,0.8); }
+    .breadcrumb span.sep { color: rgba(255,255,255,0.3); }
+    .hero-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .hero-title { display: flex; align-items: flex-start; gap: 24px; }
+    .iata-badge { background: var(--blue); border: 2px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 14px 20px; text-align: center; min-width: 100px; flex-shrink: 0; }
+    .iata-badge .code { font-size: 40px; font-weight: 800; letter-spacing: 2px; color: #fff; line-height: 1; }
+    .iata-badge .label { font-size: 10px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
+    .hero-name { padding-top: 4px; }
+    .hero-name h1 { font-size: 38px; font-weight: 800; line-height: 1.1; color: #fff; }
+    .hero-name .location { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.65); font-size: 15px; margin-top: 6px; }
+    .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+    .badge { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.3px; }
+    .badge-large { background: rgba(16,185,129,0.2); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
+    .badge-medium { background: rgba(56,189,248,0.15); color: #7dd3fc; border: 1px solid rgba(56,189,248,0.3); }
+    .badge-small { background: rgba(245,158,11,0.15); color: #fcd34d; border: 1px solid rgba(245,158,11,0.3); }
+    .hero-stats { display: flex; gap: 32px; margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
+    .hero-stat .value { font-size: 22px; font-weight: 700; color: #fff; }
+    .hero-stat .label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
+    .time-widget { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 16px 20px; text-align: center; min-width: 160px; }
+    .time-widget .time-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+    .time-widget .time-value { font-size: 28px; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+    .time-widget .time-tz { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+    .main { max-width: 1100px; margin: 0 auto; padding: 32px 24px; display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
+    @media (max-width: 768px) { .main { grid-template-columns: 1fr; } .hero-name h1 { font-size: 26px; } .nav-links { display: none; } .nav-search { width: 200px; } }
+    .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .card-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .card-header h2 { font-size: 14px; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.5px; }
+    .card-body { padding: 20px; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .info-item { padding: 14px 16px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+    .info-item:nth-child(even) { border-right: none; }
+    .info-item:nth-last-child(-n+2) { border-bottom: none; }
+    .info-item .key { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px; }
+    .info-item .val { font-size: 15px; font-weight: 600; color: var(--text); }
+    .info-item .val a { color: var(--blue); text-decoration: none; }
+    .info-item .val a:hover { text-decoration: underline; }
+    .weather-widget { display: flex; align-items: center; gap: 20px; padding: 16px; background: linear-gradient(135deg, #e0f2fe, #f0f9ff); border-radius: 10px; margin-bottom: 16px; min-height: 100px; }
+    .weather-icon { font-size: 48px; line-height: 1; }
+    .weather-main .temp { font-size: 32px; font-weight: 700; color: var(--text); }
+    .weather-main .desc { font-size: 14px; color: var(--muted); text-transform: capitalize; }
+    .weather-details { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .weather-detail { font-size: 13px; color: var(--muted); }
+    .weather-detail strong { color: var(--text); font-weight: 600; }
+    .nearby-list { list-style: none; }
+    .nearby-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .nearby-item:last-child { border-bottom: none; }
+    .nearby-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 13px; padding: 3px 8px; border-radius: 6px; min-width: 44px; text-align: center; text-decoration: none; }
+    .nearby-code:hover { background: #ccdcfb; }
+    .nearby-info { flex: 1; margin: 0 12px; }
+    .nearby-info .name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .nearby-info .city { font-size: 11px; color: var(--muted); }
+    .nearby-dist { font-size: 12px; color: var(--muted); white-space: nowrap; }
+    .carbon-form { display: flex; flex-direction: column; gap: 12px; }
+    .carbon-form label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .carbon-form input, .carbon-form select { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-family: 'Outfit', sans-serif; color: var(--text); outline: none; transition: border-color 0.2s; }
+    .carbon-form input:focus, .carbon-form select:focus { border-color: var(--blue); }
+    .carbon-btn { background: var(--blue); color: #fff; border: none; padding: 11px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Outfit', sans-serif; transition: background 0.2s; }
+    .carbon-btn:hover { background: #1447c0; }
+    .carbon-result { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px; text-align: center; display: none; }
+    .carbon-result .co2 { font-size: 24px; font-weight: 800; color: var(--green); }
+    .carbon-result .co2-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .sidebar-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .sidebar-card .card-header { padding: 14px 16px; }
+    .sidebar-card .card-body { padding: 16px; }
+    .codes-display { display: flex; gap: 12px; }
+    .code-box { flex: 1; text-align: center; padding: 16px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; }
+    .code-box .code-val { font-size: 28px; font-weight: 800; color: var(--navy); letter-spacing: 1px; }
+    .code-box .code-type { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; }
+    footer { background: var(--navy); color: rgba(255,255,255,0.5); text-align: center; padding: 24px; font-size: 13px; margin-top: 40px; }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; margin: 0 12px; }
+    footer a:hover { color: #fff; }
+
+    table { width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden; }
+    thead th { padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid var(--border);background:#f8fafc; }
+    tbody tr { border-bottom:1px solid #f5f5f5; }
+    tbody tr:last-child { border-bottom:none; }
+    tbody tr:hover { background:#fafbfc; }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/index.html" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="9" fill="#1a56db"/><path d="M24.5 8.5C25.3 9.3 25.3 10.6 24.5 11.4L19.8 16.1L22 25L19.5 27.5L16 19L11.5 23.5L12 26L10 28L8 24L4 22L6 20L8.5 20.5L13 16L5.5 12.5L8 10L17 12.2L21.6 7.5C22.4 6.7 23.7 6.7 24.5 8.5Z" fill="white"/></svg>
+    Airport<span>Code</span>
+  </a>
+  <div class="nav-search">
+    <svg width="14" height="14" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="navSearchInput" placeholder="Search airport or code…" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <div class="nav-links">
+    <a href="/az.html">A–Z</a>
+    <a href="/countries.html">By Country</a>
+  </div>
+</nav>
+<div style="max-width:1100px;margin:0 auto;padding:32px 24px">
+  <div style="margin-bottom:8px;font-size:12px;color:var(--muted)"><a href="/index.html" style="color:var(--blue);text-decoration:none">Home</a> › <a href="/countries.html" style="color:var(--blue);text-decoration:none">By Country</a> › Colombia</div>
+  <h1 style="font-size:28px;font-weight:800;color:var(--navy);margin-bottom:4px">🇨🇴 Airports in Colombia</h1>
+  <p style="color:var(--muted);margin-bottom:24px">161 airports with IATA codes</p>
+  <table>
+    <thead><tr><th>IATA</th><th>ICAO</th><th>Airport Name</th><th>City</th><th>Type</th></tr></thead>
+    <tbody>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/adz/index.html" style="color:var(--blue);text-decoration:none;">ADZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKSP</td>
+        <td style="padding:12px 16px;"><a href="/adz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Gustavo Rojas Pinilla International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">San Andrés</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/baq/index.html" style="color:var(--blue);text-decoration:none;">BAQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKBQ</td>
+        <td style="padding:12px 16px;"><a href="/baq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ernesto Cortissoz International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Barranquilla</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bog/index.html" style="color:var(--blue);text-decoration:none;">BOG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKBO</td>
+        <td style="padding:12px 16px;"><a href="/bog/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">El Dorado International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bogota</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/clo/index.html" style="color:var(--blue);text-decoration:none;">CLO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKCL</td>
+        <td style="padding:12px 16px;"><a href="/clo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Alfonso Bonilla Aragon International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cali</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ctg/index.html" style="color:var(--blue);text-decoration:none;">CTG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKCG</td>
+        <td style="padding:12px 16px;"><a href="/ctg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rafael Nuñez International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cartagena</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mde/index.html" style="color:var(--blue);text-decoration:none;">MDE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKRG</td>
+        <td style="padding:12px 16px;"><a href="/mde/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jose Maria Córdova International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Medellín</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/api/index.html" style="color:var(--blue);text-decoration:none;">API</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKAP</td>
+        <td style="padding:12px 16px;"><a href="/api/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Gomez Nino Apiay Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Apiay</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/apo/index.html" style="color:var(--blue);text-decoration:none;">APO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKLC</td>
+        <td style="padding:12px 16px;"><a href="/apo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Antonio Roldán Betancur Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Carepa</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/auc/index.html" style="color:var(--blue);text-decoration:none;">AUC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKUC</td>
+        <td style="padding:12px 16px;"><a href="/auc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Santiago Perez Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Arauca</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/axm/index.html" style="color:var(--blue);text-decoration:none;">AXM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKAR</td>
+        <td style="padding:12px 16px;"><a href="/axm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">El Eden Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Armenia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bga/index.html" style="color:var(--blue);text-decoration:none;">BGA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKBG</td>
+        <td style="padding:12px 16px;"><a href="/bga/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Palonegro Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bucaramanga</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bsc/index.html" style="color:var(--blue);text-decoration:none;">BSC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKBS</td>
+        <td style="padding:12px 16px;"><a href="/bsc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">José Celestino Mutis Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bahía Solano</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bun/index.html" style="color:var(--blue);text-decoration:none;">BUN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKBU</td>
+        <td style="padding:12px 16px;"><a href="/bun/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Gerardo Tobar López Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Buenaventura</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/caq/index.html" style="color:var(--blue);text-decoration:none;">CAQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKCU</td>
+        <td style="padding:12px 16px;"><a href="/caq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Juan H White Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Caucasia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/crc/index.html" style="color:var(--blue);text-decoration:none;">CRC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKGO</td>
+        <td style="padding:12px 16px;"><a href="/crc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Santa Ana Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cartago</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cuc/index.html" style="color:var(--blue);text-decoration:none;">CUC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKCC</td>
+        <td style="padding:12px 16px;"><a href="/cuc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Camilo Daza International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cúcuta</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cve/index.html" style="color:var(--blue);text-decoration:none;">CVE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKCV</td>
+        <td style="padding:12px 16px;"><a href="/cve/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Coveñas Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Coveñas</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/czu/index.html" style="color:var(--blue);text-decoration:none;">CZU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKCZ</td>
+        <td style="padding:12px 16px;"><a href="/czu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Las Brujas Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Corozal</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ebg/index.html" style="color:var(--blue);text-decoration:none;">EBG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKEB</td>
+        <td style="padding:12px 16px;"><a href="/ebg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">El Bagre Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">El Bagre</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eja/index.html" style="color:var(--blue);text-decoration:none;">EJA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKEJ</td>
+        <td style="padding:12px 16px;"><a href="/eja/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yariguíes Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Barrancabermeja</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/elb/index.html" style="color:var(--blue);text-decoration:none;">ELB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKBC</td>
+        <td style="padding:12px 16px;"><a href="/elb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Las Flores Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">El Banco</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eoh/index.html" style="color:var(--blue);text-decoration:none;">EOH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKMD</td>
+        <td style="padding:12px 16px;"><a href="/eoh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Enrique Olaya Herrera Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Medellín</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eyp/index.html" style="color:var(--blue);text-decoration:none;">EYP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKYP</td>
+        <td style="padding:12px 16px;"><a href="/eyp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">El Alcaravan - Yopal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yopal</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fla/index.html" style="color:var(--blue);text-decoration:none;">FLA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKFL</td>
+        <td style="padding:12px 16px;"><a href="/fla/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Gustavo Artunduaga Paredes Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Florencia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gir/index.html" style="color:var(--blue);text-decoration:none;">GIR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKGI</td>
+        <td style="padding:12px 16px;"><a href="/gir/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Santiago Vila Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Girardot</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gpi/index.html" style="color:var(--blue);text-decoration:none;">GPI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKGP</td>
+        <td style="padding:12px 16px;"><a href="/gpi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Guapi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Guapi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ibe/index.html" style="color:var(--blue);text-decoration:none;">IBE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKIB</td>
+        <td style="padding:12px 16px;"><a href="/ibe/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Perales Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ibagué</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ipi/index.html" style="color:var(--blue);text-decoration:none;">IPI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKIP</td>
+        <td style="padding:12px 16px;"><a href="/ipi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">San Luis Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ipiales</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/let/index.html" style="color:var(--blue);text-decoration:none;">LET</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKLT</td>
+        <td style="padding:12px 16px;"><a href="/let/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Alfredo Vásquez Cobo International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Leticia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mcj/index.html" style="color:var(--blue);text-decoration:none;">MCJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKLM</td>
+        <td style="padding:12px 16px;"><a href="/mcj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jorge Isaac Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">La Mina-Maicao</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mgn/index.html" style="color:var(--blue);text-decoration:none;">MGN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKMG</td>
+        <td style="padding:12px 16px;"><a href="/mgn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Baracoa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Magangué</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mqu/index.html" style="color:var(--blue);text-decoration:none;">MQU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKQU</td>
+        <td style="padding:12px 16px;"><a href="/mqu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mariquita Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mariquita</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mtr/index.html" style="color:var(--blue);text-decoration:none;">MTR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKMR</td>
+        <td style="padding:12px 16px;"><a href="/mtr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Los Garzones Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Montería</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mvp/index.html" style="color:var(--blue);text-decoration:none;">MVP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKMU</td>
+        <td style="padding:12px 16px;"><a href="/mvp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fabio Alberto Leon Bentley Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mitú</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mzl/index.html" style="color:var(--blue);text-decoration:none;">MZL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKMZ</td>
+        <td style="padding:12px 16px;"><a href="/mzl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">La Nubia Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Manizales</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nva/index.html" style="color:var(--blue);text-decoration:none;">NVA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKNV</td>
+        <td style="padding:12px 16px;"><a href="/nva/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Benito Salas Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Neiva</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ocv/index.html" style="color:var(--blue);text-decoration:none;">OCV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKOC</td>
+        <td style="padding:12px 16px;"><a href="/ocv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Aguas Claras Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ocaña</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pal/index.html" style="color:var(--blue);text-decoration:none;">PAL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKPQ</td>
+        <td style="padding:12px 16px;"><a href="/pal/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">German Olano Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">La Dorada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pcr/index.html" style="color:var(--blue);text-decoration:none;">PCR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKPC</td>
+        <td style="padding:12px 16px;"><a href="/pcr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">German Olano Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Puerto Carreño</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pda/index.html" style="color:var(--blue);text-decoration:none;">PDA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKPD</td>
+        <td style="padding:12px 16px;"><a href="/pda/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Obando Cesar Gaviria Trujillo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Puerto Inírida</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pei/index.html" style="color:var(--blue);text-decoration:none;">PEI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKPE</td>
+        <td style="padding:12px 16px;"><a href="/pei/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Matecaña International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Pereira</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ppn/index.html" style="color:var(--blue);text-decoration:none;">PPN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKPP</td>
+        <td style="padding:12px 16px;"><a href="/ppn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Guillermo León Valencia Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Popayán</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pso/index.html" style="color:var(--blue);text-decoration:none;">PSO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKPS</td>
+        <td style="padding:12px 16px;"><a href="/pso/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Antonio Nariño Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Chachagüí</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ptx/index.html" style="color:var(--blue);text-decoration:none;">PTX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKPI</td>
+        <td style="padding:12px 16px;"><a href="/ptx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pitalito Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Pitalito</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/puu/index.html" style="color:var(--blue);text-decoration:none;">PUU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKAS</td>
+        <td style="padding:12px 16px;"><a href="/puu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tres De Mayo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Puerto Asís</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pva/index.html" style="color:var(--blue);text-decoration:none;">PVA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKPV</td>
+        <td style="padding:12px 16px;"><a href="/pva/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">El Embrujo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Providencia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pza/index.html" style="color:var(--blue);text-decoration:none;">PZA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKPZ</td>
+        <td style="padding:12px 16px;"><a href="/pza/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Paz de Ariporo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Paz de Ariporo</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rch/index.html" style="color:var(--blue);text-decoration:none;">RCH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKRH</td>
+        <td style="padding:12px 16px;"><a href="/rch/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Almirante Padilla Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Riohacha</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sje/index.html" style="color:var(--blue);text-decoration:none;">SJE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKSJ</td>
+        <td style="padding:12px 16px;"><a href="/sje/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jorge E. Gonzalez Torres Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">San José Del Guaviare</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/smr/index.html" style="color:var(--blue);text-decoration:none;">SMR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKSM</td>
+        <td style="padding:12px 16px;"><a href="/smr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Simón Bolívar International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Santa Marta</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/svi/index.html" style="color:var(--blue);text-decoration:none;">SVI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKSV</td>
+        <td style="padding:12px 16px;"><a href="/svi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Eduardo Falla Solano Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">San Vicente Del Caguán</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tco/index.html" style="color:var(--blue);text-decoration:none;">TCO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKCO</td>
+        <td style="padding:12px 16px;"><a href="/tco/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">La Florida Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tumaco</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tme/index.html" style="color:var(--blue);text-decoration:none;">TME</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKTM</td>
+        <td style="padding:12px 16px;"><a href="/tme/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Gustavo Vargas Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tame</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tqs/index.html" style="color:var(--blue);text-decoration:none;">TQS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKTQ</td>
+        <td style="padding:12px 16px;"><a href="/tqs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Captain Ernesto Esguerra Cubides Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tres Esquinas</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uib/index.html" style="color:var(--blue);text-decoration:none;">UIB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKUI</td>
+        <td style="padding:12px 16px;"><a href="/uib/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">El Caraño Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Quibdó</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ulq/index.html" style="color:var(--blue);text-decoration:none;">ULQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKUL</td>
+        <td style="padding:12px 16px;"><a href="/ulq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Heriberto Gíl Martínez Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tuluá</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vup/index.html" style="color:var(--blue);text-decoration:none;">VUP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKVP</td>
+        <td style="padding:12px 16px;"><a href="/vup/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Alfonso López Pumarejo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Valledupar</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vvc/index.html" style="color:var(--blue);text-decoration:none;">VVC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKVV</td>
+        <td style="padding:12px 16px;"><a href="/vvc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vanguardia Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Villavicencio</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/acd/index.html" style="color:var(--blue);text-decoration:none;">ACD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKAD</td>
+        <td style="padding:12px 16px;"><a href="/acd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Alcides Fernández Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Acandí</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/acm/index.html" style="color:var(--blue);text-decoration:none;">ACM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/acm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Arica Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Arica</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/acr/index.html" style="color:var(--blue);text-decoration:none;">ACR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKAC</td>
+        <td style="padding:12px 16px;"><a href="/acr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Araracuara Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Araracuara</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/afi/index.html" style="color:var(--blue);text-decoration:none;">AFI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKAM</td>
+        <td style="padding:12px 16px;"><a href="/afi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Amalfi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Amalfi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/arf/index.html" style="color:var(--blue);text-decoration:none;">ARF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/arf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Acaricuara Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Acaricuara</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/aro/index.html" style="color:var(--blue);text-decoration:none;">ARO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/aro/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Arboletes Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Arboletes</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/arq/index.html" style="color:var(--blue);text-decoration:none;">ARQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKAT</td>
+        <td style="padding:12px 16px;"><a href="/arq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">El Troncal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Arauquita</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/aya/index.html" style="color:var(--blue);text-decoration:none;">AYA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/aya/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ayapel Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ayapel</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ayc/index.html" style="color:var(--blue);text-decoration:none;">AYC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ayc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ayacucho Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ayacucho</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ayg/index.html" style="color:var(--blue);text-decoration:none;">AYG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKYA</td>
+        <td style="padding:12px 16px;"><a href="/ayg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yaguara Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">San Vicente Del Caguán</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ayi/index.html" style="color:var(--blue);text-decoration:none;">AYI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ayi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yari Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yari</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/azt/index.html" style="color:var(--blue);text-decoration:none;">AZT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/azt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zapatoca Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Zapatoca</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bac/index.html" style="color:var(--blue);text-decoration:none;">BAC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/bac/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Barranca De Upia Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Barranca De Upia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bhf/index.html" style="color:var(--blue);text-decoration:none;">BHF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKCP</td>
+        <td style="padding:12px 16px;"><a href="/bhf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Cupica Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bahía Solano</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cco/index.html" style="color:var(--blue);text-decoration:none;">CCO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKCI</td>
+        <td style="padding:12px 16px;"><a href="/cco/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Carimagua Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Puerto López</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cim/index.html" style="color:var(--blue);text-decoration:none;">CIM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKCM</td>
+        <td style="padding:12px 16px;"><a href="/cim/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Cimitarra Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cimitarra</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cjd/index.html" style="color:var(--blue);text-decoration:none;">CJD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/cjd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Candilejas Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Candilejas</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cog/index.html" style="color:var(--blue);text-decoration:none;">COG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKCD</td>
+        <td style="padding:12px 16px;"><a href="/cog/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mandinga Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Condoto</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cpb/index.html" style="color:var(--blue);text-decoration:none;">CPB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKCA</td>
+        <td style="padding:12px 16px;"><a href="/cpb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Capurganá Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Acandí</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cpl/index.html" style="color:var(--blue);text-decoration:none;">CPL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKHA</td>
+        <td style="padding:12px 16px;"><a href="/cpl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">General Navas Pardo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Chaparral</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cqt/index.html" style="color:var(--blue);text-decoration:none;">CQT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/cqt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Caquetania Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Caquetania</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/csr/index.html" style="color:var(--blue);text-decoration:none;">CSR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/csr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Casuarito Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Casuarito</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cui/index.html" style="color:var(--blue);text-decoration:none;">CUI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/cui/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Currillo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Currillo</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cuo/index.html" style="color:var(--blue);text-decoration:none;">CUO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKCR</td>
+        <td style="padding:12px 16px;"><a href="/cuo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Carurú Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Carurú</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dzi/index.html" style="color:var(--blue);text-decoration:none;">DZI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/dzi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Las Flores Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Codazzi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eco/index.html" style="color:var(--blue);text-decoration:none;">ECO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/eco/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">El Encanto Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">El Encanto</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ecr/index.html" style="color:var(--blue);text-decoration:none;">ECR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKEH</td>
+        <td style="padding:12px 16px;"><a href="/ecr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">El Charco Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">El Charco</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/elj/index.html" style="color:var(--blue);text-decoration:none;">ELJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/elj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">El Recreo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ruperto Polania</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/euo/index.html" style="color:var(--blue);text-decoration:none;">EUO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/euo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Paratebueno Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Paratebueno</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fda/index.html" style="color:var(--blue);text-decoration:none;">FDA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/fda/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fundación Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fundación</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gaa/index.html" style="color:var(--blue);text-decoration:none;">GAA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/gaa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Guamal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Guamal</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gca/index.html" style="color:var(--blue);text-decoration:none;">GCA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/gca/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Guacamayas Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Guacamayas</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gmc/index.html" style="color:var(--blue);text-decoration:none;">GMC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/gmc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Guerima Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Puerto Carreño</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gra/index.html" style="color:var(--blue);text-decoration:none;">GRA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/gra/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Gamarra Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Puerto Mosquito</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hay/index.html" style="color:var(--blue);text-decoration:none;">HAY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKAG</td>
+        <td style="padding:12px 16px;"><a href="/hay/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Hacaritama Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Aguachica</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hrr/index.html" style="color:var(--blue);text-decoration:none;">HRR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/hrr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Herrera Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Campiña</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/htz/index.html" style="color:var(--blue);text-decoration:none;">HTZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKHC</td>
+        <td style="padding:12px 16px;"><a href="/htz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Hato Corozal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Hato Corozal</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/igo/index.html" style="color:var(--blue);text-decoration:none;">IGO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKIG</td>
+        <td style="padding:12px 16px;"><a href="/igo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jaime Ortiz Betancourt Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Chigorodó</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/isd/index.html" style="color:var(--blue);text-decoration:none;">ISD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/isd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Santa Bárbara Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Iscuandé</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ivo/index.html" style="color:var(--blue);text-decoration:none;">IVO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ivo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Chivolo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Chivolo</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/juo/index.html" style="color:var(--blue);text-decoration:none;">JUO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKJU</td>
+        <td style="padding:12px 16px;"><a href="/juo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Juradó Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Juradó</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lcr/index.html" style="color:var(--blue);text-decoration:none;">LCR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/lcr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Virgilio Barco Vargas (La Chorrera) Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">La Chorrera</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lgt/index.html" style="color:var(--blue);text-decoration:none;">LGT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKGA</td>
+        <td style="padding:12px 16px;"><a href="/lgt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">La Gaviota Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lmc/index.html" style="color:var(--blue);text-decoration:none;">LMC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKNA</td>
+        <td style="padding:12px 16px;"><a href="/lmc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">La Macarena Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">La Macarena</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lmx/index.html" style="color:var(--blue);text-decoration:none;">LMX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/lmx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Lopez de Micay Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Micay</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lpd/index.html" style="color:var(--blue);text-decoration:none;">LPD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKLP</td>
+        <td style="padding:12px 16px;"><a href="/lpd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">La Pedrera Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">La Pedrera</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lpe/index.html" style="color:var(--blue);text-decoration:none;">LPE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKIM</td>
+        <td style="padding:12px 16px;"><a href="/lpe/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">La Primavera Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">La Primavera</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lqm/index.html" style="color:var(--blue);text-decoration:none;">LQM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKLG</td>
+        <td style="padding:12px 16px;"><a href="/lqm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Caucaya Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Puerto Leguízamo</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mfb/index.html" style="color:var(--blue);text-decoration:none;">MFB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/mfb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Monfort Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Monfort</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mfs/index.html" style="color:var(--blue);text-decoration:none;">MFS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKMF</td>
+        <td style="padding:12px 16px;"><a href="/mfs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Miraflores Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Miraflores</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mhf/index.html" style="color:var(--blue);text-decoration:none;">MHF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/mhf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Morichal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Morichal</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mix/index.html" style="color:var(--blue);text-decoration:none;">MIX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/mix/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Miriti Parana Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mirití-Paraná</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mmp/index.html" style="color:var(--blue);text-decoration:none;">MMP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKMP</td>
+        <td style="padding:12px 16px;"><a href="/mmp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">San Bernardo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Santa Cruz de Mompóx</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mnd/index.html" style="color:var(--blue);text-decoration:none;">MND</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/mnd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Medina Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Medina</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/moy/index.html" style="color:var(--blue);text-decoration:none;">MOY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/moy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Monterrey Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Monterrey</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mqr/index.html" style="color:var(--blue);text-decoration:none;">MQR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/mqr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mosquera Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mosquera</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/msk/index.html" style="color:var(--blue);text-decoration:none;">MSK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/msk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Morelia Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Puerto Gaitán</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mtb/index.html" style="color:var(--blue);text-decoration:none;">MTB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKML</td>
+        <td style="padding:12px 16px;"><a href="/mtb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Montelibano Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Montelíbano</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nad/index.html" style="color:var(--blue);text-decoration:none;">NAD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/nad/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Macanal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Macanal</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nar/index.html" style="color:var(--blue);text-decoration:none;">NAR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKPN</td>
+        <td style="padding:12px 16px;"><a href="/nar/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Puerto Nare Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Armenia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nbb/index.html" style="color:var(--blue);text-decoration:none;">NBB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKBM</td>
+        <td style="padding:12px 16px;"><a href="/nbb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Barranco Minas Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Barranco Minas</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nci/index.html" style="color:var(--blue);text-decoration:none;">NCI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKNC</td>
+        <td style="padding:12px 16px;"><a href="/nci/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Necocli Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Necocli</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/npu/index.html" style="color:var(--blue);text-decoration:none;">NPU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/npu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">San Pedro Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">San Pedro de Urabá</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nqu/index.html" style="color:var(--blue);text-decoration:none;">NQU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKNQ</td>
+        <td style="padding:12px 16px;"><a href="/nqu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Reyes Murillo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nuquí</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nuh/index.html" style="color:var(--blue);text-decoration:none;">NUH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/nuh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nunchia Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nunchia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/orc/index.html" style="color:var(--blue);text-decoration:none;">ORC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKOE</td>
+        <td style="padding:12px 16px;"><a href="/orc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Orocue Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Orocue</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/otu/index.html" style="color:var(--blue);text-decoration:none;">OTU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKOT</td>
+        <td style="padding:12px 16px;"><a href="/otu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Otu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Remedios</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pbe/index.html" style="color:var(--blue);text-decoration:none;">PBE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKPR</td>
+        <td style="padding:12px 16px;"><a href="/pbe/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Puerto Berrio Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Puerto Berrio</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pcc/index.html" style="color:var(--blue);text-decoration:none;">PCC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/pcc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Puerto Rico Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Puerto Rico</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pla/index.html" style="color:var(--blue);text-decoration:none;">PLA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/pla/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Planadas Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Planadas</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/plt/index.html" style="color:var(--blue);text-decoration:none;">PLT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKPL</td>
+        <td style="padding:12px 16px;"><a href="/plt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Plato Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Plato</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pre/index.html" style="color:var(--blue);text-decoration:none;">PRE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/pre/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pore Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Pore</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pya/index.html" style="color:var(--blue);text-decoration:none;">PYA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKVL</td>
+        <td style="padding:12px 16px;"><a href="/pya/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Velásquez Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Puerto Boyacá</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pyn/index.html" style="color:var(--blue);text-decoration:none;">PYN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/pyn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Payán Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Payán</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pzr/index.html" style="color:var(--blue);text-decoration:none;">PZR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/pzr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pizarro Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bajo Baudó</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rav/index.html" style="color:var(--blue);text-decoration:none;">RAV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKCN</td>
+        <td style="padding:12px 16px;"><a href="/rav/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Cravo Norte Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cravo Norte</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ron/index.html" style="color:var(--blue);text-decoration:none;">RON</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKPA</td>
+        <td style="padding:12px 16px;"><a href="/ron/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Juan Jose Rondon Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Paipa</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rve/index.html" style="color:var(--blue);text-decoration:none;">RVE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKSA</td>
+        <td style="padding:12px 16px;"><a href="/rve/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Los Colonizadores Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Saravena</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sca/index.html" style="color:var(--blue);text-decoration:none;">SCA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/sca/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Santa Catalina Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Santa Catalina</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sjh/index.html" style="color:var(--blue);text-decoration:none;">SJH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/sjh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">San Juan Del César Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">San Juan Del César</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sjr/index.html" style="color:var(--blue);text-decoration:none;">SJR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/sjr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">San Juan De Uraba Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">San Juan De Uraba</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/snt/index.html" style="color:var(--blue);text-decoration:none;">SNT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKRU</td>
+        <td style="padding:12px 16px;"><a href="/snt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Las Cruces Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sabana de Torres</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/soh/index.html" style="color:var(--blue);text-decoration:none;">SOH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/soh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Solita Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Solita</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sox/index.html" style="color:var(--blue);text-decoration:none;">SOX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKSO</td>
+        <td style="padding:12px 16px;"><a href="/sox/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Alberto Lleras Camargo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sogamoso</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sqb/index.html" style="color:var(--blue);text-decoration:none;">SQB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/sqb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Santa Ana Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Piedras</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sqe/index.html" style="color:var(--blue);text-decoration:none;">SQE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/sqe/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">San Luis De Palenque Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">San Luis De Palenque</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sqf/index.html" style="color:var(--blue);text-decoration:none;">SQF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/sqf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Solano Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Solano</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sro/index.html" style="color:var(--blue);text-decoration:none;">SRO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/sro/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Santana Ramos Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Santana Ramos</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/srs/index.html" style="color:var(--blue);text-decoration:none;">SRS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/srs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">San Marcos Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">San Marcos</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ssl/index.html" style="color:var(--blue);text-decoration:none;">SSL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKSL</td>
+        <td style="padding:12px 16px;"><a href="/ssl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Santa Rosalia Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Santa Rosalia</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tau/index.html" style="color:var(--blue);text-decoration:none;">TAU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKTA</td>
+        <td style="padding:12px 16px;"><a href="/tau/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tauramena Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tauramena</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tbd/index.html" style="color:var(--blue);text-decoration:none;">TBD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKMB</td>
+        <td style="padding:12px 16px;"><a href="/tbd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Timbiqui Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Timbiqui</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tcd/index.html" style="color:var(--blue);text-decoration:none;">TCD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKRA</td>
+        <td style="padding:12px 16px;"><a href="/tcd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tarapacá Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tarapacá</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tda/index.html" style="color:var(--blue);text-decoration:none;">TDA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKTD</td>
+        <td style="padding:12px 16px;"><a href="/tda/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Trinidad Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Trinidad</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tib/index.html" style="color:var(--blue);text-decoration:none;">TIB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKTB</td>
+        <td style="padding:12px 16px;"><a href="/tib/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tibú Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tibú</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tlu/index.html" style="color:var(--blue);text-decoration:none;">TLU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKTL</td>
+        <td style="padding:12px 16px;"><a href="/tlu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Golfo de Morrosquillo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Santiago de Tolú</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ttm/index.html" style="color:var(--blue);text-decoration:none;">TTM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ttm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tablón De Tamara Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tablón De Tamara</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uls/index.html" style="color:var(--blue);text-decoration:none;">ULS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/uls/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mulatos Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mulatos</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/unc/index.html" style="color:var(--blue);text-decoration:none;">UNC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/unc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Unguía Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Unguía</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uri/index.html" style="color:var(--blue);text-decoration:none;">URI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKUB</td>
+        <td style="padding:12px 16px;"><a href="/uri/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Uribe Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">La Uribe</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/urr/index.html" style="color:var(--blue);text-decoration:none;">URR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKUR</td>
+        <td style="padding:12px 16px;"><a href="/urr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Urrao Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Urrao</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vab/index.html" style="color:var(--blue);text-decoration:none;">VAB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/vab/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yavarate Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yavarate</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vgz/index.html" style="color:var(--blue);text-decoration:none;">VGZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">SKVG</td>
+        <td style="padding:12px 16px;"><a href="/vgz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Villa Garzón Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Villa Garzón</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr></tbody>
+  </table>
+</div>
+<footer>
+  <div style="margin-bottom:10px">
+    <a href="/az.html">A–Z Index</a>
+    <a href="/countries.html">By Country</a>
+    <a href="/about.html">About</a>
+  </div>
+  <div>© 2025 airport-code.com · Data sourced from OurAirports &amp; Open-Meteo · <a href="https://ourairports.com">OurAirports</a></div>
+</footer>
+
+<script>
+(function(){
+  let db = null;
+  const input = document.getElementById('navSearchInput');
+  const results = document.getElementById('search-results');
+  if (!input) return;
+
+  async function loadDB() {
+    if (db) return;
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    const r = await fetch(root + 'airports.json');
+    db = await r.json();
+  }
+
+  input.addEventListener('focus', loadDB);
+  input.addEventListener('input', async function() {
+    const q = this.value.trim().toUpperCase();
+    if (q.length < 2) { results.style.display = 'none'; return; }
+    await loadDB();
+    const matches = db.filter(a =>
+      a.iata.startsWith(q) ||
+      a.name.toUpperCase().includes(q) ||
+      a.city.toUpperCase().includes(q)
+    ).slice(0, 7);
+    if (!matches.length) { results.style.display = 'none'; return; }
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    results.innerHTML = matches.map(a =>
+      `<a href="${root}${a.iata.toLowerCase()}/index.html">
+        <span class="sr-code">${a.iata}</span>
+        <div><div class="sr-name">${a.name}</div><div class="sr-city">${a.city}, ${a.country}</div></div>
+      </a>`
+    ).join('');
+    results.style.display = 'block';
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!input.contains(e.target) && !results.contains(e.target)) results.style.display = 'none';
+  });
+})();
+</script>
+
+</body>
+</html>

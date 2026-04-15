@@ -1,0 +1,1890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="site-root" content="/">
+  <title>Airports in Indonesia | Airport Code</title>
+  <meta name="description" content="All airport codes for airports in Indonesia. Browse IATA and ICAO codes for 241 airports.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0f1f3d;
+      --blue: #1a56db;
+      --blue-light: #e8f0fe;
+      --sky: #38bdf8;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --green: #10b981;
+    }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; zoom: 1.12; }
+    nav { background: var(--navy); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { color: #fff; font-size: 19px; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; display: flex; align-items: center; gap: 6px; line-height: 1; }
+    .nav-logo svg { flex-shrink: 0; }
+    .nav-logo span { color: var(--sky); }
+    .nav-search { display: flex; align-items: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 6px 14px; gap: 8px; width: 280px; position: relative; }
+    .nav-search input { background: none; border: none; outline: none; color: #fff; font-size: 14px; width: 100%; font-family: 'Outfit', sans-serif; }
+    .nav-search input::placeholder { color: rgba(255,255,255,0.4); }
+    #search-results { position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: #fff; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 200; overflow: hidden; display: none; }
+    #search-results a { display: flex; align-items: center; gap: 10px; padding: 10px 14px; text-decoration: none; color: var(--text); font-size: 13px; border-bottom: 1px solid var(--border); transition: background 0.15s; }
+    #search-results a:last-child { border-bottom: none; }
+    #search-results a:hover { background: var(--bg); }
+    #search-results .sr-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 12px; padding: 2px 7px; border-radius: 5px; min-width: 38px; text-align: center; }
+    #search-results .sr-name { font-weight: 600; }
+    #search-results .sr-city { color: var(--muted); font-size: 11px; }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .hero { background: linear-gradient(135deg, var(--navy) 0%, #1a3a6b 100%); color: #fff; padding: 48px 0 56px; position: relative; overflow: hidden; }
+    .hero::before { content: '✈'; position: absolute; right: -20px; top: -20px; font-size: 220px; opacity: 0.04; transform: rotate(25deg); }
+    .hero-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .breadcrumb { font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 20px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .breadcrumb a:hover { color: rgba(255,255,255,0.8); }
+    .breadcrumb span.sep { color: rgba(255,255,255,0.3); }
+    .hero-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .hero-title { display: flex; align-items: flex-start; gap: 24px; }
+    .iata-badge { background: var(--blue); border: 2px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 14px 20px; text-align: center; min-width: 100px; flex-shrink: 0; }
+    .iata-badge .code { font-size: 40px; font-weight: 800; letter-spacing: 2px; color: #fff; line-height: 1; }
+    .iata-badge .label { font-size: 10px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
+    .hero-name { padding-top: 4px; }
+    .hero-name h1 { font-size: 38px; font-weight: 800; line-height: 1.1; color: #fff; }
+    .hero-name .location { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.65); font-size: 15px; margin-top: 6px; }
+    .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+    .badge { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.3px; }
+    .badge-large { background: rgba(16,185,129,0.2); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
+    .badge-medium { background: rgba(56,189,248,0.15); color: #7dd3fc; border: 1px solid rgba(56,189,248,0.3); }
+    .badge-small { background: rgba(245,158,11,0.15); color: #fcd34d; border: 1px solid rgba(245,158,11,0.3); }
+    .hero-stats { display: flex; gap: 32px; margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
+    .hero-stat .value { font-size: 22px; font-weight: 700; color: #fff; }
+    .hero-stat .label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
+    .time-widget { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 16px 20px; text-align: center; min-width: 160px; }
+    .time-widget .time-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+    .time-widget .time-value { font-size: 28px; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+    .time-widget .time-tz { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+    .main { max-width: 1100px; margin: 0 auto; padding: 32px 24px; display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
+    @media (max-width: 768px) { .main { grid-template-columns: 1fr; } .hero-name h1 { font-size: 26px; } .nav-links { display: none; } .nav-search { width: 200px; } }
+    .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .card-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .card-header h2 { font-size: 14px; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.5px; }
+    .card-body { padding: 20px; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .info-item { padding: 14px 16px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+    .info-item:nth-child(even) { border-right: none; }
+    .info-item:nth-last-child(-n+2) { border-bottom: none; }
+    .info-item .key { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px; }
+    .info-item .val { font-size: 15px; font-weight: 600; color: var(--text); }
+    .info-item .val a { color: var(--blue); text-decoration: none; }
+    .info-item .val a:hover { text-decoration: underline; }
+    .weather-widget { display: flex; align-items: center; gap: 20px; padding: 16px; background: linear-gradient(135deg, #e0f2fe, #f0f9ff); border-radius: 10px; margin-bottom: 16px; min-height: 100px; }
+    .weather-icon { font-size: 48px; line-height: 1; }
+    .weather-main .temp { font-size: 32px; font-weight: 700; color: var(--text); }
+    .weather-main .desc { font-size: 14px; color: var(--muted); text-transform: capitalize; }
+    .weather-details { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .weather-detail { font-size: 13px; color: var(--muted); }
+    .weather-detail strong { color: var(--text); font-weight: 600; }
+    .nearby-list { list-style: none; }
+    .nearby-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .nearby-item:last-child { border-bottom: none; }
+    .nearby-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 13px; padding: 3px 8px; border-radius: 6px; min-width: 44px; text-align: center; text-decoration: none; }
+    .nearby-code:hover { background: #ccdcfb; }
+    .nearby-info { flex: 1; margin: 0 12px; }
+    .nearby-info .name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .nearby-info .city { font-size: 11px; color: var(--muted); }
+    .nearby-dist { font-size: 12px; color: var(--muted); white-space: nowrap; }
+    .carbon-form { display: flex; flex-direction: column; gap: 12px; }
+    .carbon-form label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .carbon-form input, .carbon-form select { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-family: 'Outfit', sans-serif; color: var(--text); outline: none; transition: border-color 0.2s; }
+    .carbon-form input:focus, .carbon-form select:focus { border-color: var(--blue); }
+    .carbon-btn { background: var(--blue); color: #fff; border: none; padding: 11px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Outfit', sans-serif; transition: background 0.2s; }
+    .carbon-btn:hover { background: #1447c0; }
+    .carbon-result { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px; text-align: center; display: none; }
+    .carbon-result .co2 { font-size: 24px; font-weight: 800; color: var(--green); }
+    .carbon-result .co2-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .sidebar-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .sidebar-card .card-header { padding: 14px 16px; }
+    .sidebar-card .card-body { padding: 16px; }
+    .codes-display { display: flex; gap: 12px; }
+    .code-box { flex: 1; text-align: center; padding: 16px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; }
+    .code-box .code-val { font-size: 28px; font-weight: 800; color: var(--navy); letter-spacing: 1px; }
+    .code-box .code-type { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; }
+    footer { background: var(--navy); color: rgba(255,255,255,0.5); text-align: center; padding: 24px; font-size: 13px; margin-top: 40px; }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; margin: 0 12px; }
+    footer a:hover { color: #fff; }
+
+    table { width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden; }
+    thead th { padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid var(--border);background:#f8fafc; }
+    tbody tr { border-bottom:1px solid #f5f5f5; }
+    tbody tr:last-child { border-bottom:none; }
+    tbody tr:hover { background:#fafbfc; }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/index.html" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="9" fill="#1a56db"/><path d="M24.5 8.5C25.3 9.3 25.3 10.6 24.5 11.4L19.8 16.1L22 25L19.5 27.5L16 19L11.5 23.5L12 26L10 28L8 24L4 22L6 20L8.5 20.5L13 16L5.5 12.5L8 10L17 12.2L21.6 7.5C22.4 6.7 23.7 6.7 24.5 8.5Z" fill="white"/></svg>
+    Airport<span>Code</span>
+  </a>
+  <div class="nav-search">
+    <svg width="14" height="14" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="navSearchInput" placeholder="Search airport or code…" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <div class="nav-links">
+    <a href="/az.html">A–Z</a>
+    <a href="/countries.html">By Country</a>
+  </div>
+</nav>
+<div style="max-width:1100px;margin:0 auto;padding:32px 24px">
+  <div style="margin-bottom:8px;font-size:12px;color:var(--muted)"><a href="/index.html" style="color:var(--blue);text-decoration:none">Home</a> › <a href="/countries.html" style="color:var(--blue);text-decoration:none">By Country</a> › Indonesia</div>
+  <h1 style="font-size:28px;font-weight:800;color:var(--navy);margin-bottom:4px">🇮🇩 Airports in Indonesia</h1>
+  <p style="color:var(--muted);margin-bottom:24px">241 airports with IATA codes</p>
+  <table>
+    <thead><tr><th>IATA</th><th>ICAO</th><th>Airport Name</th><th>City</th><th>Type</th></tr></thead>
+    <tbody>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/amq/index.html" style="color:var(--blue);text-decoration:none;">AMQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAPP</td>
+        <td style="padding:12px 16px;"><a href="/amq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pattimura International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ambon</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bdj/index.html" style="color:var(--blue);text-decoration:none;">BDJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAOO</td>
+        <td style="padding:12px 16px;"><a href="/bdj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Syamsudin Noor International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Banjarbaru</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bpn/index.html" style="color:var(--blue);text-decoration:none;">BPN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WALL</td>
+        <td style="padding:12px 16px;"><a href="/bpn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sultan Aji Muhammad Sulaiman Sepinggan International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Balikpapan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bth/index.html" style="color:var(--blue);text-decoration:none;">BTH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIDD</td>
+        <td style="padding:12px 16px;"><a href="/bth/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Hang Nadim International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Batam</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/btj/index.html" style="color:var(--blue);text-decoration:none;">BTJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WITT</td>
+        <td style="padding:12px 16px;"><a href="/btj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sultan Iskandar Muda International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Banda Aceh</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cgk/index.html" style="color:var(--blue);text-decoration:none;">CGK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIII</td>
+        <td style="padding:12px 16px;"><a href="/cgk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Soekarno-Hatta International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jakarta</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/djj/index.html" style="color:var(--blue);text-decoration:none;">DJJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAJJ</td>
+        <td style="padding:12px 16px;"><a href="/djj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Dortheys Hiyo Eluay International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sentani</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dps/index.html" style="color:var(--blue);text-decoration:none;">DPS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WADD</td>
+        <td style="padding:12px 16px;"><a href="/dps/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Denpasar I Gusti Ngurah Rai International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kuta, Badung</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hlp/index.html" style="color:var(--blue);text-decoration:none;">HLP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIHH</td>
+        <td style="padding:12px 16px;"><a href="/hlp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Halim Perdanakusuma International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jakarta</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kno/index.html" style="color:var(--blue);text-decoration:none;">KNO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIMM</td>
+        <td style="padding:12px 16px;"><a href="/kno/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kualanamu International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Beringin</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lop/index.html" style="color:var(--blue);text-decoration:none;">LOP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WADL</td>
+        <td style="padding:12px 16px;"><a href="/lop/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Lombok International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mataram (Pujut, Lombok Tengah)</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mdc/index.html" style="color:var(--blue);text-decoration:none;">MDC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAMM</td>
+        <td style="padding:12px 16px;"><a href="/mdc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sam Ratulangi International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Manado</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pnk/index.html" style="color:var(--blue);text-decoration:none;">PNK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIOO</td>
+        <td style="padding:12px 16px;"><a href="/pnk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Supadio International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Pontianak</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/soc/index.html" style="color:var(--blue);text-decoration:none;">SOC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAHQ</td>
+        <td style="padding:12px 16px;"><a href="/soc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Adisoemarmo International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Surakarta</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/srg/index.html" style="color:var(--blue);text-decoration:none;">SRG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAHS</td>
+        <td style="padding:12px 16px;"><a href="/srg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jenderal Ahmad Yani Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Semarang</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sub/index.html" style="color:var(--blue);text-decoration:none;">SUB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WARR</td>
+        <td style="padding:12px 16px;"><a href="/sub/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Juanda International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Surabaya</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/upg/index.html" style="color:var(--blue);text-decoration:none;">UPG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAAA</td>
+        <td style="padding:12px 16px;"><a href="/upg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sultan Hasanuddin International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Makassar</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yia/index.html" style="color:var(--blue);text-decoration:none;">YIA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAHI</td>
+        <td style="padding:12px 16px;"><a href="/yia/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yogyakarta International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yogyakarta</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Large Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/aap/index.html" style="color:var(--blue);text-decoration:none;">AAP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WALS</td>
+        <td style="padding:12px 16px;"><a href="/aap/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Aji Pangeran Tumenggung Pranoto International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Samarinda</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/aeg/index.html" style="color:var(--blue);text-decoration:none;">AEG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIME</td>
+        <td style="padding:12px 16px;"><a href="/aeg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Aek Godang Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Padang Sidempuan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bdo/index.html" style="color:var(--blue);text-decoration:none;">BDO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WICC</td>
+        <td style="padding:12px 16px;"><a href="/bdo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Husein Sastranegara International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bandung</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bej/index.html" style="color:var(--blue);text-decoration:none;">BEJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAQT</td>
+        <td style="padding:12px 16px;"><a href="/bej/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kalimarau Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tanjung Redeb - Borneo Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bik/index.html" style="color:var(--blue);text-decoration:none;">BIK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WABB</td>
+        <td style="padding:12px 16px;"><a href="/bik/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Frans Kaisiepo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Biak</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bks/index.html" style="color:var(--blue);text-decoration:none;">BKS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIGG</td>
+        <td style="padding:12px 16px;"><a href="/bks/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fatmawati Soekarno Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bengkulu</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bmu/index.html" style="color:var(--blue);text-decoration:none;">BMU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WADB</td>
+        <td style="padding:12px 16px;"><a href="/bmu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sultan Muhammad Salahuddin Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bima</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bxb/index.html" style="color:var(--blue);text-decoration:none;">BXB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WASO</td>
+        <td style="padding:12px 16px;"><a href="/bxb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Babo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Babo</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cxp/index.html" style="color:var(--blue);text-decoration:none;">CXP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAHL</td>
+        <td style="padding:12px 16px;"><a href="/cxp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tunggul Wulung Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cilacap</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dhx/index.html" style="color:var(--blue);text-decoration:none;">DHX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WARD</td>
+        <td style="padding:12px 16px;"><a href="/dhx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Dhoho International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kediri</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dum/index.html" style="color:var(--blue);text-decoration:none;">DUM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIBD</td>
+        <td style="padding:12px 16px;"><a href="/dum/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pinang Kampai Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Dumai</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fkq/index.html" style="color:var(--blue);text-decoration:none;">FKQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WASF</td>
+        <td style="padding:12px 16px;"><a href="/fkq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fakfak Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fakfak</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/flz/index.html" style="color:var(--blue);text-decoration:none;">FLZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIMS</td>
+        <td style="padding:12px 16px;"><a href="/flz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Dr. Ferdinand Lumban Tobing Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sibolga (Pinangsori)</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gns/index.html" style="color:var(--blue);text-decoration:none;">GNS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIMB</td>
+        <td style="padding:12px 16px;"><a href="/gns/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Binaka Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Gunungsitoli</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jog/index.html" style="color:var(--blue);text-decoration:none;">JOG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAHH</td>
+        <td style="padding:12px 16px;"><a href="/jog/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Adisutjipto International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yogyakarta</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kjt/index.html" style="color:var(--blue);text-decoration:none;">KJT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WICA</td>
+        <td style="padding:12px 16px;"><a href="/kjt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kertajati International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kertajati</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kng/index.html" style="color:var(--blue);text-decoration:none;">KNG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WASK</td>
+        <td style="padding:12px 16px;"><a href="/kng/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Utarom Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kaimana</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/koe/index.html" style="color:var(--blue);text-decoration:none;">KOE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WATT</td>
+        <td style="padding:12px 16px;"><a href="/koe/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">El Tari Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kupang</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ktg/index.html" style="color:var(--blue);text-decoration:none;">KTG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIOK</td>
+        <td style="padding:12px 16px;"><a href="/ktg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rahadi Osman Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ketapang</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kxb/index.html" style="color:var(--blue);text-decoration:none;">KXB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAWP</td>
+        <td style="padding:12px 16px;"><a href="/kxb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sangia Nibandera Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kolaka</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lsr/index.html" style="color:var(--blue);text-decoration:none;">LSR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/lsr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Alas Leuser Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kutacane</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lsx/index.html" style="color:var(--blue);text-decoration:none;">LSX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WITL</td>
+        <td style="padding:12px 16px;"><a href="/lsx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Lhok Sukon Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lhok Sukon-Sumatra Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/luv/index.html" style="color:var(--blue);text-decoration:none;">LUV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAPF</td>
+        <td style="padding:12px 16px;"><a href="/luv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Karel Sadsuitubun Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Langgur</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/luw/index.html" style="color:var(--blue);text-decoration:none;">LUW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAFW</td>
+        <td style="padding:12px 16px;"><a href="/luw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Syukuran Aminuddin Amir Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Luwok</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/meq/index.html" style="color:var(--blue);text-decoration:none;">MEQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WITC</td>
+        <td style="padding:12px 16px;"><a href="/meq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Cut Nyak Dhien Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kuala Pesisir</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mes/index.html" style="color:var(--blue);text-decoration:none;">MES</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIMK</td>
+        <td style="padding:12px 16px;"><a href="/mes/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Soewondo Air Force Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Medan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mkq/index.html" style="color:var(--blue);text-decoration:none;">MKQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAKK</td>
+        <td style="padding:12px 16px;"><a href="/mkq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mopah International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Merauke</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mkw/index.html" style="color:var(--blue);text-decoration:none;">MKW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAUU</td>
+        <td style="padding:12px 16px;"><a href="/mkw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rendani Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Manokwari</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mlg/index.html" style="color:var(--blue);text-decoration:none;">MLG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WARA</td>
+        <td style="padding:12px 16px;"><a href="/mlg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Abdul Rachman Saleh Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Malang</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nah/index.html" style="color:var(--blue);text-decoration:none;">NAH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAMH</td>
+        <td style="padding:12px 16px;"><a href="/nah/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Naha Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tabukan Utara, Sangihe Islands</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nam/index.html" style="color:var(--blue);text-decoration:none;">NAM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAPN</td>
+        <td style="padding:12px 16px;"><a href="/nam/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Namniwel Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Namniwel</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nbx/index.html" style="color:var(--blue);text-decoration:none;">NBX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WABI</td>
+        <td style="padding:12px 16px;"><a href="/nbx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Douw Aturure Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nabire</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/npo/index.html" style="color:var(--blue);text-decoration:none;">NPO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIOG</td>
+        <td style="padding:12px 16px;"><a href="/npo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nanga Pinoh Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nanga Pinoh-Borneo Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ntx/index.html" style="color:var(--blue);text-decoration:none;">NTX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ntx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ranai Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ranai-Natuna Besar Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/okl/index.html" style="color:var(--blue);text-decoration:none;">OKL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAJO</td>
+        <td style="padding:12px 16px;"><a href="/okl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Oksibil Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Oksibil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/oti/index.html" style="color:var(--blue);text-decoration:none;">OTI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/oti/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pitu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Gotalalamo-Morotai Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pdg/index.html" style="color:var(--blue);text-decoration:none;">PDG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIEE</td>
+        <td style="padding:12px 16px;"><a href="/pdg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Minangkabau International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Padang (Katapiang)</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pdo/index.html" style="color:var(--blue);text-decoration:none;">PDO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIPQ</td>
+        <td style="padding:12px 16px;"><a href="/pdo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pendopo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Talang Gudang-Sumatra Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pgk/index.html" style="color:var(--blue);text-decoration:none;">PGK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIKK</td>
+        <td style="padding:12px 16px;"><a href="/pgk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Depati Amir Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Pangkal Pinang</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pku/index.html" style="color:var(--blue);text-decoration:none;">PKU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIBB</td>
+        <td style="padding:12px 16px;"><a href="/pku/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sultan Syarif Kasim II International Airport / Roesmin Nurjadin AFB</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Pekanbaru</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pky/index.html" style="color:var(--blue);text-decoration:none;">PKY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAGG</td>
+        <td style="padding:12px 16px;"><a href="/pky/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tjilik Riwut Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Palangkaraya</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/plm/index.html" style="color:var(--blue);text-decoration:none;">PLM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIPP</td>
+        <td style="padding:12px 16px;"><a href="/plm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sultan Mahmud Badaruddin II Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Palembang</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/plw/index.html" style="color:var(--blue);text-decoration:none;">PLW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAFF</td>
+        <td style="padding:12px 16px;"><a href="/plw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mutiara - SIS Al-Jufrie Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Palu</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/psj/index.html" style="color:var(--blue);text-decoration:none;">PSJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/psj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kasiguncu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Poso-Celebes Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/psu/index.html" style="color:var(--blue);text-decoration:none;">PSU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIOP</td>
+        <td style="padding:12px 16px;"><a href="/psu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pangsuma Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Putussibau-Borneo Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rgt/index.html" style="color:var(--blue);text-decoration:none;">RGT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIBJ</td>
+        <td style="padding:12px 16px;"><a href="/rgt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Japura Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rengat-Sumatra Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/soq/index.html" style="color:var(--blue);text-decoration:none;">SOQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WASS</td>
+        <td style="padding:12px 16px;"><a href="/soq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Domine Eduard Osok Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sorong</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sqg/index.html" style="color:var(--blue);text-decoration:none;">SQG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIOS</td>
+        <td style="padding:12px 16px;"><a href="/sqg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tebelian Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sintang</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tim/index.html" style="color:var(--blue);text-decoration:none;">TIM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/tim/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mozes Kilangin Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Timika</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tjg/index.html" style="color:var(--blue);text-decoration:none;">TJG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAON</td>
+        <td style="padding:12px 16px;"><a href="/tjg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Warukin Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tanta-Tabalong</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tkg/index.html" style="color:var(--blue);text-decoration:none;">TKG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WILL</td>
+        <td style="padding:12px 16px;"><a href="/tkg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Radin Inten II International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bandar Lampung</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tmh/index.html" style="color:var(--blue);text-decoration:none;">TMH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAKT</td>
+        <td style="padding:12px 16px;"><a href="/tmh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tanah Merah Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tanah Merah</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tnj/index.html" style="color:var(--blue);text-decoration:none;">TNJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIDN</td>
+        <td style="padding:12px 16px;"><a href="/tnj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Raja Haji Fisabilillah International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tanjung Pinang-Bintan Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/trk/index.html" style="color:var(--blue);text-decoration:none;">TRK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAQQ</td>
+        <td style="padding:12px 16px;"><a href="/trk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Juwata International Airport / Suharnoko Harbani AFB</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tarakan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/trt/index.html" style="color:var(--blue);text-decoration:none;">TRT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAFB</td>
+        <td style="padding:12px 16px;"><a href="/trt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Toraja Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Toraja</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tte/index.html" style="color:var(--blue);text-decoration:none;">TTE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAEE</td>
+        <td style="padding:12px 16px;"><a href="/tte/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sultan Babullah Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ternate</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/txe/index.html" style="color:var(--blue);text-decoration:none;">TXE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WITK</td>
+        <td style="padding:12px 16px;"><a href="/txe/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rembele Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Takengon</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ugu/index.html" style="color:var(--blue);text-decoration:none;">UGU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ugu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bilorai Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bilogai</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wmx/index.html" style="color:var(--blue);text-decoration:none;">WMX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAVV</td>
+        <td style="padding:12px 16px;"><a href="/wmx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wamena Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wamena</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wni/index.html" style="color:var(--blue);text-decoration:none;">WNI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAWD</td>
+        <td style="padding:12px 16px;"><a href="/wni/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Matahora Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wangi-wangi Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zri/index.html" style="color:var(--blue);text-decoration:none;">ZRI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WABO</td>
+        <td style="padding:12px 16px;"><a href="/zri/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Stevanus Rumbewas Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Serui</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Medium Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/aas/index.html" style="color:var(--blue);text-decoration:none;">AAS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/aas/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Apalapsili Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Apalapsili</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/abu/index.html" style="color:var(--blue);text-decoration:none;">ABU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WATA</td>
+        <td style="padding:12px 16px;"><a href="/abu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">AA Bere Tallo (Haliwen) Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Atambua</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/agd/index.html" style="color:var(--blue);text-decoration:none;">AGD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/agd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Anggi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Anggi-Papua Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ahi/index.html" style="color:var(--blue);text-decoration:none;">AHI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAPA</td>
+        <td style="padding:12px 16px;"><a href="/ahi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Amahai Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Amahai</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/akq/index.html" style="color:var(--blue);text-decoration:none;">AKQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/akq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Astra Ksetra Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Menggala</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/apd/index.html" style="color:var(--blue);text-decoration:none;">APD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/apd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Arung Palakka Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bone</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ard/index.html" style="color:var(--blue);text-decoration:none;">ARD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WATM</td>
+        <td style="padding:12px 16px;"><a href="/ard/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Alor Island - Mali Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kabola</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/axo/index.html" style="color:var(--blue);text-decoration:none;">AXO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/axo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pantar Kabir Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kabir</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ayw/index.html" style="color:var(--blue);text-decoration:none;">AYW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WASA</td>
+        <td style="padding:12px 16px;"><a href="/ayw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ayawasi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ayawasi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bjk/index.html" style="color:var(--blue);text-decoration:none;">BJK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAPK</td>
+        <td style="padding:12px 16px;"><a href="/bjk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Benjina Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Maikoor Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bjw/index.html" style="color:var(--blue);text-decoration:none;">BJW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/bjw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bajawa Soa (Turelelo) Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Soa, Ngada</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bqr/index.html" style="color:var(--blue);text-decoration:none;">BQR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAFQ</td>
+        <td style="padding:12px 16px;"><a href="/bqr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Maulana Prins Mandapar Airstrip</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kendek</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/brg/index.html" style="color:var(--blue);text-decoration:none;">BRG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/brg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Siau/Sitaro Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Balirangen</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/btw/index.html" style="color:var(--blue);text-decoration:none;">BTW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAOC</td>
+        <td style="padding:12px 16px;"><a href="/btw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bersujud Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Batu Licin</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bui/index.html" style="color:var(--blue);text-decoration:none;">BUI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/bui/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bokondini Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bokondini</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/buu/index.html" style="color:var(--blue);text-decoration:none;">BUU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/buu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Muara Bungo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Muara Bungo</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/buw/index.html" style="color:var(--blue);text-decoration:none;">BUW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAWB</td>
+        <td style="padding:12px 16px;"><a href="/buw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Betoambari Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bau Bau</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bwx/index.html" style="color:var(--blue);text-decoration:none;">BWX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WADY</td>
+        <td style="padding:12px 16px;"><a href="/bwx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Banyuwangi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rogojampi, Banyuwangi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bxd/index.html" style="color:var(--blue);text-decoration:none;">BXD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAKE</td>
+        <td style="padding:12px 16px;"><a href="/bxd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bade Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bade</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bxm/index.html" style="color:var(--blue);text-decoration:none;">BXM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/bxm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Batom Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Batom</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bxt/index.html" style="color:var(--blue);text-decoration:none;">BXT</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WALC</td>
+        <td style="padding:12px 16px;"><a href="/bxt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">LNG Badak Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bontang-Borneo Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bxw/index.html" style="color:var(--blue);text-decoration:none;">BXW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WARW</td>
+        <td style="padding:12px 16px;"><a href="/bxw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Harun Thohir Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bawean</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cbn/index.html" style="color:var(--blue);text-decoration:none;">CBN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WICD</td>
+        <td style="padding:12px 16px;"><a href="/cbn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Cakrabhuwana  Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cirebon-Java Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cjn/index.html" style="color:var(--blue);text-decoration:none;">CJN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WICN</td>
+        <td style="padding:12px 16px;"><a href="/cjn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nusawiru Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cijulang</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cpf/index.html" style="color:var(--blue);text-decoration:none;">CPF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WARC</td>
+        <td style="padding:12px 16px;"><a href="/cpf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ngloram Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Blora</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dex/index.html" style="color:var(--blue);text-decoration:none;">DEX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAVD</td>
+        <td style="padding:12px 16px;"><a href="/dex/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nop Goliat Dekai Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Dekai</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/djb/index.html" style="color:var(--blue);text-decoration:none;">DJB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIJJ</td>
+        <td style="padding:12px 16px;"><a href="/djb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sultan Thaha Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jambi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dob/index.html" style="color:var(--blue);text-decoration:none;">DOB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAPD</td>
+        <td style="padding:12px 16px;"><a href="/dob/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rar Gwamar Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Dobo-Warmar Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/drh/index.html" style="color:var(--blue);text-decoration:none;">DRH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAJC</td>
+        <td style="padding:12px 16px;"><a href="/drh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Dabra Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Dabra</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dtb/index.html" style="color:var(--blue);text-decoration:none;">DTB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIMN</td>
+        <td style="padding:12px 16px;"><a href="/dtb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Silangit Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Siborong-Borong</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dtd/index.html" style="color:var(--blue);text-decoration:none;">DTD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WALJ</td>
+        <td style="padding:12px 16px;"><a href="/dtd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Datadawai Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Datadawai-Borneo Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/elr/index.html" style="color:var(--blue);text-decoration:none;">ELR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/elr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Elelim Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Elelim</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ene/index.html" style="color:var(--blue);text-decoration:none;">ENE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WATE</td>
+        <td style="padding:12px 16px;"><a href="/ene/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">H. Hasan Aroeboesman (Ende) Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ende</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eng/index.html" style="color:var(--blue);text-decoration:none;">ENG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/eng/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Enggano Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Enggano</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ewe/index.html" style="color:var(--blue);text-decoration:none;">EWE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ewe/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ewer Asmat Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Agats</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ewi/index.html" style="color:var(--blue);text-decoration:none;">EWI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAYE</td>
+        <td style="padding:12px 16px;"><a href="/ewi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Enarotali Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Enarotali</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/foo/index.html" style="color:var(--blue);text-decoration:none;">FOO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/foo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kornasoren Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nomfor</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fsh/index.html" style="color:var(--blue);text-decoration:none;">FSH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIMI</td>
+        <td style="padding:12px 16px;"><a href="/fsh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Syekh Hamzah Fansyuri Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Singkil</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gav/index.html" style="color:var(--blue);text-decoration:none;">GAV</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/gav/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Gag Island Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Gag Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/geb/index.html" style="color:var(--blue);text-decoration:none;">GEB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAEJ</td>
+        <td style="padding:12px 16px;"><a href="/geb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Gebe Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Gebe Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ghs/index.html" style="color:var(--blue);text-decoration:none;">GHS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WALE</td>
+        <td style="padding:12px 16px;"><a href="/ghs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Melalan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Melak-Borneo Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/glx/index.html" style="color:var(--blue);text-decoration:none;">GLX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAEG</td>
+        <td style="padding:12px 16px;"><a href="/glx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Gamarmalamo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Galela</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gto/index.html" style="color:var(--blue);text-decoration:none;">GTO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAMG</td>
+        <td style="padding:12px 16px;"><a href="/gto/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jalaluddin Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Gorontalo</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gxm/index.html" style="color:var(--blue);text-decoration:none;">GXM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/gxm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kuala Kurun Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kuala Kurun</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gyo/index.html" style="color:var(--blue);text-decoration:none;">GYO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/gyo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Blangkejeren Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kabupaten Gayo Lues</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hms/index.html" style="color:var(--blue);text-decoration:none;">HMS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAGB</td>
+        <td style="padding:12px 16px;"><a href="/hms/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Haji Muhammad Sidik Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Muara Teweh</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iax/index.html" style="color:var(--blue);text-decoration:none;">IAX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAMS</td>
+        <td style="padding:12px 16px;"><a href="/iax/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Miangas Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Miangas</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ila/index.html" style="color:var(--blue);text-decoration:none;">ILA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ila/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ilaga Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ilaga</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/inx/index.html" style="color:var(--blue);text-decoration:none;">INX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WASI</td>
+        <td style="padding:12px 16px;"><a href="/inx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Inanwatan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Inanwatan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iul/index.html" style="color:var(--blue);text-decoration:none;">IUL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/iul/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ilu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ilu</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jbb/index.html" style="color:var(--blue);text-decoration:none;">JBB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WARE</td>
+        <td style="padding:12px 16px;"><a href="/jbb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Notohadinegoro Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jember</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jhn/index.html" style="color:var(--blue);text-decoration:none;">JHN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIMF</td>
+        <td style="padding:12px 16px;"><a href="/jhn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jenderal Besar Abdul Haris Nasution Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mandailing</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jio/index.html" style="color:var(--blue);text-decoration:none;">JIO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAPM</td>
+        <td style="padding:12px 16px;"><a href="/jio/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jos Orno Imsula Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tiakur</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kaz/index.html" style="color:var(--blue);text-decoration:none;">KAZ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAEK</td>
+        <td style="padding:12px 16px;"><a href="/kaz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kuabang Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kao</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kbf/index.html" style="color:var(--blue);text-decoration:none;">KBF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/kbf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Karubaga Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Karubaga</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kbu/index.html" style="color:var(--blue);text-decoration:none;">KBU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAOK</td>
+        <td style="padding:12px 16px;"><a href="/kbu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Gusti Syamsir Alam Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Stagen</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kbx/index.html" style="color:var(--blue);text-decoration:none;">KBX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WASU</td>
+        <td style="padding:12px 16px;"><a href="/kbx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kambuaya Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kambuaya-Papua Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kcd/index.html" style="color:var(--blue);text-decoration:none;">KCD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAKM</td>
+        <td style="padding:12px 16px;"><a href="/kcd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kamur Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kamur</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kdi/index.html" style="color:var(--blue);text-decoration:none;">KDI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAWW</td>
+        <td style="padding:12px 16px;"><a href="/kdi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Haluoleo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kendari</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kei/index.html" style="color:var(--blue);text-decoration:none;">KEI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAKP</td>
+        <td style="padding:12px 16px;"><a href="/kei/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kepi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kepi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/keq/index.html" style="color:var(--blue);text-decoration:none;">KEQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/keq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kebar Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kebar</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kjx/index.html" style="color:var(--blue);text-decoration:none;">KJX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WITO</td>
+        <td style="padding:12px 16px;"><a href="/kjx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kuala Batu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Blangpidie</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/klp/index.html" style="color:var(--blue);text-decoration:none;">KLP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAGF</td>
+        <td style="padding:12px 16px;"><a href="/klp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Seruyan Kuala Pembuang Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Seruyan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kmm/index.html" style="color:var(--blue);text-decoration:none;">KMM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/kmm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kimaam Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kimaam</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kod/index.html" style="color:var(--blue);text-decoration:none;">KOD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/kod/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kotabangun Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kotabangun-Borneo Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kox/index.html" style="color:var(--blue);text-decoration:none;">KOX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/kox/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kokonao Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kokonao</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/krc/index.html" style="color:var(--blue);text-decoration:none;">KRC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/krc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Departi Parbo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sungai Penuh</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ksr/index.html" style="color:var(--blue);text-decoration:none;">KSR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAWH</td>
+        <td style="padding:12px 16px;"><a href="/ksr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Selayar - Haji Aroeppala Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Benteng</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kwb/index.html" style="color:var(--blue);text-decoration:none;">KWB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAHU</td>
+        <td style="padding:12px 16px;"><a href="/kwb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Dewadaru Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Karimunjawa</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lah/index.html" style="color:var(--blue);text-decoration:none;">LAH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAEL</td>
+        <td style="padding:12px 16px;"><a href="/lah/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Oesman Sadik Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Labuha-Halmahera Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lbj/index.html" style="color:var(--blue);text-decoration:none;">LBJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WATO</td>
+        <td style="padding:12px 16px;"><a href="/lbj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Komodo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Labuan Bajo, Manggarai Barat</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lbw/index.html" style="color:var(--blue);text-decoration:none;">LBW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAQJ</td>
+        <td style="padding:12px 16px;"><a href="/lbw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yuvai Semaring Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Long Bawan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lhi/index.html" style="color:var(--blue);text-decoration:none;">LHI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAJL</td>
+        <td style="padding:12px 16px;"><a href="/lhi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Lereh Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lereh-Papua Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lii/index.html" style="color:var(--blue);text-decoration:none;">LII</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAVA</td>
+        <td style="padding:12px 16px;"><a href="/lii/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mulia Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mulia-Papua Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lka/index.html" style="color:var(--blue);text-decoration:none;">LKA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WATL</td>
+        <td style="padding:12px 16px;"><a href="/lka/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Larantuka Gewayentana Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tiwatobi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lki/index.html" style="color:var(--blue);text-decoration:none;">LKI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/lki/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Lasikin Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lubang</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lkm/index.html" style="color:var(--blue);text-decoration:none;">LKM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAMI</td>
+        <td style="padding:12px 16px;"><a href="/lkm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bolaang Mongondow Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lolak</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/llj/index.html" style="color:var(--blue);text-decoration:none;">LLJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIPB</td>
+        <td style="padding:12px 16px;"><a href="/llj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Silampari Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lubuk Linggau</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lln/index.html" style="color:var(--blue);text-decoration:none;">LLN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/lln/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kelila Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kelila</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/llo/index.html" style="color:var(--blue);text-decoration:none;">LLO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAFD</td>
+        <td style="padding:12px 16px;"><a href="/llo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bua - Palopo Lagaligo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Palopo</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lmu/index.html" style="color:var(--blue);text-decoration:none;">LMU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIDL</td>
+        <td style="padding:12px 16px;"><a href="/lmu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Letung Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bukit Padi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lnu/index.html" style="color:var(--blue);text-decoration:none;">LNU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/lnu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Robert Atty Bessing</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Malinau</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lpu/index.html" style="color:var(--blue);text-decoration:none;">LPU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAQL</td>
+        <td style="padding:12px 16px;"><a href="/lpu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Long Apung Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Long Apung-Borneo Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lsw/index.html" style="color:var(--blue);text-decoration:none;">LSW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIMA</td>
+        <td style="padding:12px 16px;"><a href="/lsw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Malikus Saleh Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lhok Seumawe-Sumatra Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lwe/index.html" style="color:var(--blue);text-decoration:none;">LWE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WATW</td>
+        <td style="padding:12px 16px;"><a href="/lwe/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wonopito Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lewoleba</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lyk/index.html" style="color:var(--blue);text-decoration:none;">LYK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WADU</td>
+        <td style="padding:12px 16px;"><a href="/lyk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Lunyuk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lunyuk</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mal/index.html" style="color:var(--blue);text-decoration:none;">MAL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/mal/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mangole Airport, Falabisahaya</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mangole Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mdp/index.html" style="color:var(--blue);text-decoration:none;">MDP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAKD</td>
+        <td style="padding:12px 16px;"><a href="/mdp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mindiptana Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mindiptana-Papua Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mju/index.html" style="color:var(--blue);text-decoration:none;">MJU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAFJ</td>
+        <td style="padding:12px 16px;"><a href="/mju/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tampa Padang Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mamuju</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mna/index.html" style="color:var(--blue);text-decoration:none;">MNA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAMN</td>
+        <td style="padding:12px 16px;"><a href="/mna/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Melangguane Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Karakelong Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mof/index.html" style="color:var(--blue);text-decoration:none;">MOF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WATC</td>
+        <td style="padding:12px 16px;"><a href="/mof/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Frans Xavier Seda Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Waioti</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/moh/index.html" style="color:var(--blue);text-decoration:none;">MOH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAFO</td>
+        <td style="padding:12px 16px;"><a href="/moh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Maleo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Morowali</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mpc/index.html" style="color:var(--blue);text-decoration:none;">MPC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/mpc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Muko Muko Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Muko Muko</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/msi/index.html" style="color:var(--blue);text-decoration:none;">MSI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/msi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Masalembo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Masalembo Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mwk/index.html" style="color:var(--blue);text-decoration:none;">MWK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/mwk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Matak Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Palmatak</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mws/index.html" style="color:var(--blue);text-decoration:none;">MWS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAMP</td>
+        <td style="padding:12px 16px;"><a href="/mws/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Indonesia Morowali Industrial Park (IMIP) Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Morowali</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mxb/index.html" style="color:var(--blue);text-decoration:none;">MXB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/mxb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Andi Jemma Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Masamba</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/naf/index.html" style="color:var(--blue);text-decoration:none;">NAF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/naf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Banaina Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Banaina-Borneo Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nda/index.html" style="color:var(--blue);text-decoration:none;">NDA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAPC</td>
+        <td style="padding:12px 16px;"><a href="/nda/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bandanaira Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bandanaira</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nkd/index.html" style="color:var(--blue);text-decoration:none;">NKD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WABS</td>
+        <td style="padding:12px 16px;"><a href="/nkd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sinak Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sinak</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nnx/index.html" style="color:var(--blue);text-decoration:none;">NNX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAQA</td>
+        <td style="padding:12px 16px;"><a href="/nnx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nunukan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nunukan-Nunukan Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nre/index.html" style="color:var(--blue);text-decoration:none;">NRE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAPG</td>
+        <td style="padding:12px 16px;"><a href="/nre/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Namrole Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Namrole</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nti/index.html" style="color:var(--blue);text-decoration:none;">NTI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/nti/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Stenkol Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bintuni</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/obd/index.html" style="color:var(--blue);text-decoration:none;">OBD</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/obd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Obano Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Obano</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/oju/index.html" style="color:var(--blue);text-decoration:none;">OJU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAFU</td>
+        <td style="padding:12px 16px;"><a href="/oju/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tanjung Api Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tojo Una-Una</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/okq/index.html" style="color:var(--blue);text-decoration:none;">OKQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAKO</td>
+        <td style="padding:12px 16px;"><a href="/okq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Okaba Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Okaba</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/oni/index.html" style="color:var(--blue);text-decoration:none;">ONI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WABD</td>
+        <td style="padding:12px 16px;"><a href="/oni/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Moanamani Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Moanamani</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pcb/index.html" style="color:var(--blue);text-decoration:none;">PCB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIHP</td>
+        <td style="padding:12px 16px;"><a href="/pcb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pondok Cabe Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jakarta</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pgq/index.html" style="color:var(--blue);text-decoration:none;">PGQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAEM</td>
+        <td style="padding:12px 16px;"><a href="/pgq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Buli Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Pekaulang</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pkn/index.html" style="color:var(--blue);text-decoration:none;">PKN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAGI</td>
+        <td style="padding:12px 16px;"><a href="/pkn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Iskandar Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Pangkalanbun</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ppj/index.html" style="color:var(--blue);text-decoration:none;">PPJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ppj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pulau Panjang Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jakarta</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ppr/index.html" style="color:var(--blue);text-decoration:none;">PPR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ppr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tuanku Tambusai Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Pasir Pengarayan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pwl/index.html" style="color:var(--blue);text-decoration:none;">PWL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAHP</td>
+        <td style="padding:12px 16px;"><a href="/pwl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Jenderal Besar Soedirman Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Purwokerto-Java Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pxa/index.html" style="color:var(--blue);text-decoration:none;">PXA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIPY</td>
+        <td style="padding:12px 16px;"><a href="/pxa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Atung Bungsu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bentayan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/raq/index.html" style="color:var(--blue);text-decoration:none;">RAQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAWR</td>
+        <td style="padding:12px 16px;"><a href="/raq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sugimanuru Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Raha</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rde/index.html" style="color:var(--blue);text-decoration:none;">RDE</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/rde/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Merdey Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Merdei-Papua Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rjm/index.html" style="color:var(--blue);text-decoration:none;">RJM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WASN</td>
+        <td style="padding:12px 16px;"><a href="/rjm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Marinda Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Waisai</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rki/index.html" style="color:var(--blue);text-decoration:none;">RKI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/rki/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mentawai Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sipura Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rsk/index.html" style="color:var(--blue);text-decoration:none;">RSK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WASC</td>
+        <td style="padding:12px 16px;"><a href="/rsk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Abresso Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ransiki-Papua Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rtg/index.html" style="color:var(--blue);text-decoration:none;">RTG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WATG</td>
+        <td style="padding:12px 16px;"><a href="/rtg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Frans Sales Lega Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Satar Tacik, Manggarai</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rti/index.html" style="color:var(--blue);text-decoration:none;">RTI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WATR</td>
+        <td style="padding:12px 16px;"><a href="/rti/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">David Constantijn Saudale Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ba'a - Rote Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rto/index.html" style="color:var(--blue);text-decoration:none;">RTO</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIRR</td>
+        <td style="padding:12px 16px;"><a href="/rto/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Budiarto Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tangerang-Java Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rtu/index.html" style="color:var(--blue);text-decoration:none;">RTU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAQC</td>
+        <td style="padding:12px 16px;"><a href="/rtu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Maratua Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Maratua</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ruf/index.html" style="color:var(--blue);text-decoration:none;">RUF</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ruf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yuruf Airport [UNUSABLE]</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Amgotro</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sau/index.html" style="color:var(--blue);text-decoration:none;">SAU</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WATS</td>
+        <td style="padding:12px 16px;"><a href="/sau/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sabu-Tardanu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sabu-Sawu Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sbg/index.html" style="color:var(--blue);text-decoration:none;">SBG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WITN</td>
+        <td style="padding:12px 16px;"><a href="/sbg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Maimun Saleh Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sabang</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/seh/index.html" style="color:var(--blue);text-decoration:none;">SEH</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAJS</td>
+        <td style="padding:12px 16px;"><a href="/seh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Senggeh Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Senggeh</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/seq/index.html" style="color:var(--blue);text-decoration:none;">SEQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIBS</td>
+        <td style="padding:12px 16px;"><a href="/seq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sungai Pakning Bengkalis Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bengkalis-Sumatra Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sgq/index.html" style="color:var(--blue);text-decoration:none;">SGQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WALA</td>
+        <td style="padding:12px 16px;"><a href="/sgq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sangkimah Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sanggata</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/siq/index.html" style="color:var(--blue);text-decoration:none;">SIQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIDS</td>
+        <td style="padding:12px 16px;"><a href="/siq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Dabo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Pasirkuning-Singkep Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/siw/index.html" style="color:var(--blue);text-decoration:none;">SIW</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIMP</td>
+        <td style="padding:12px 16px;"><a href="/siw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sibisa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Parapat-Sumatra Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/skj/index.html" style="color:var(--blue);text-decoration:none;">SKJ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIOD</td>
+        <td style="padding:12px 16px;"><a href="/skj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Singkawang Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Singkawang</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/smq/index.html" style="color:var(--blue);text-decoration:none;">SMQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAGS</td>
+        <td style="padding:12px 16px;"><a href="/smq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sampit (H.Asan) Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sampit</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sqn/index.html" style="color:var(--blue);text-decoration:none;">SQN</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAES</td>
+        <td style="padding:12px 16px;"><a href="/sqn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Emalamo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sanana</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sqr/index.html" style="color:var(--blue);text-decoration:none;">SQR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAWS</td>
+        <td style="padding:12px 16px;"><a href="/sqr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Soroako Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Soroako</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sup/index.html" style="color:var(--blue);text-decoration:none;">SUP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WART</td>
+        <td style="padding:12px 16px;"><a href="/sup/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Trunojoyo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sumenep</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/swq/index.html" style="color:var(--blue);text-decoration:none;">SWQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WADS</td>
+        <td style="padding:12px 16px;"><a href="/swq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sultan Muhammad Kaharuddin III Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sumbawa Besar</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sxk/index.html" style="color:var(--blue);text-decoration:none;">SXK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAPS</td>
+        <td style="padding:12px 16px;"><a href="/sxk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mathilda Batlayeri Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Saumlaki-Yamdena Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tax/index.html" style="color:var(--blue);text-decoration:none;">TAX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAPT</td>
+        <td style="padding:12px 16px;"><a href="/tax/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Taliabu Island Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tikong-Taliabu Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tbm/index.html" style="color:var(--blue);text-decoration:none;">TBM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/tbm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tumbang Samba Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tumbang Samba-Borneo Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tbx/index.html" style="color:var(--blue);text-decoration:none;">TBX</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/tbx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tambelan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tambelan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tfy/index.html" style="color:var(--blue);text-decoration:none;">TFY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WILP</td>
+        <td style="padding:12px 16px;"><a href="/tfy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Muhammad Taufiq Kiemas Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Krui</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tjb/index.html" style="color:var(--blue);text-decoration:none;">TJB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/tjb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Raja Haji Abdullah Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tanjung Balai-Karinmunbesar Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tjq/index.html" style="color:var(--blue);text-decoration:none;">TJQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WIKT</td>
+        <td style="padding:12px 16px;"><a href="/tjq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">H A S Hanandjoeddin International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tanjung Pandan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tjs/index.html" style="color:var(--blue);text-decoration:none;">TJS</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/tjs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tanjung Harapan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tanjung Selor-Borneo Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tli/index.html" style="color:var(--blue);text-decoration:none;">TLI</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/tli/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sultan Bantilan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Toli Toli-Celebes Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tmc/index.html" style="color:var(--blue);text-decoration:none;">TMC</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WATK</td>
+        <td style="padding:12px 16px;"><a href="/tmc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tambolaka Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Radamata</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tmy/index.html" style="color:var(--blue);text-decoration:none;">TMY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/tmy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tiom Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tiom-Papua Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tnb/index.html" style="color:var(--blue);text-decoration:none;">TNB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WRLH</td>
+        <td style="padding:12px 16px;"><a href="/tnb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tanah Grogot Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tanah Grogot</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tpk/index.html" style="color:var(--blue);text-decoration:none;">TPK</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/tpk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Teuku Cut Ali Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tapaktuan</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tqq/index.html" style="color:var(--blue);text-decoration:none;">TQQ</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAWC</td>
+        <td style="padding:12px 16px;"><a href="/tqq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Maranggo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Waha-Tomea Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tsy/index.html" style="color:var(--blue);text-decoration:none;">TSY</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WICM</td>
+        <td style="padding:12px 16px;"><a href="/tsy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Cibeureum Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tasikmalaya-Java Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ttr/index.html" style="color:var(--blue);text-decoration:none;">TTR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/ttr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pongtiku Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Makale</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/txm/index.html" style="color:var(--blue);text-decoration:none;">TXM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAST</td>
+        <td style="padding:12px 16px;"><a href="/txm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Teminabuan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Atinjoe</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uol/index.html" style="color:var(--blue);text-decoration:none;">UOL</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAFY</td>
+        <td style="padding:12px 16px;"><a href="/uol/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Buol - Pogogul Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Buol</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wba/index.html" style="color:var(--blue);text-decoration:none;">WBA</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAPV</td>
+        <td style="padding:12px 16px;"><a href="/wba/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wahai Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wahai</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wdb/index.html" style="color:var(--blue);text-decoration:none;">WDB</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAEH</td>
+        <td style="padding:12px 16px;"><a href="/wdb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Weda Bay Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Weda</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wet/index.html" style="color:var(--blue);text-decoration:none;">WET</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/wet/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Deiyai / Waghete Baru Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tigi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wgp/index.html" style="color:var(--blue);text-decoration:none;">WGP</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WATU</td>
+        <td style="padding:12px 16px;"><a href="/wgp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Umbu Mehang Kunda Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Waingapu-Sumba Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wsr/index.html" style="color:var(--blue);text-decoration:none;">WSR</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);"></td>
+        <td style="padding:12px 16px;"><a href="/wsr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wasior Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wasior</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zeg/index.html" style="color:var(--blue);text-decoration:none;">ZEG</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAKQ</td>
+        <td style="padding:12px 16px;"><a href="/zeg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Senggo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Senggo-Papua Island</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zrm/index.html" style="color:var(--blue);text-decoration:none;">ZRM</a></td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">WAJI</td>
+        <td style="padding:12px 16px;"><a href="/zrm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mararena Sarmi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sarmi</td>
+        <td style="padding:12px 16px;font-size:12px;color:var(--muted);">Small Airport</td>
+      </tr></tbody>
+  </table>
+</div>
+<footer>
+  <div style="margin-bottom:10px">
+    <a href="/az.html">A–Z Index</a>
+    <a href="/countries.html">By Country</a>
+    <a href="/about.html">About</a>
+  </div>
+  <div>© 2025 airport-code.com · Data sourced from OurAirports &amp; Open-Meteo · <a href="https://ourairports.com">OurAirports</a></div>
+</footer>
+
+<script>
+(function(){
+  let db = null;
+  const input = document.getElementById('navSearchInput');
+  const results = document.getElementById('search-results');
+  if (!input) return;
+
+  async function loadDB() {
+    if (db) return;
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    const r = await fetch(root + 'airports.json');
+    db = await r.json();
+  }
+
+  input.addEventListener('focus', loadDB);
+  input.addEventListener('input', async function() {
+    const q = this.value.trim().toUpperCase();
+    if (q.length < 2) { results.style.display = 'none'; return; }
+    await loadDB();
+    const matches = db.filter(a =>
+      a.iata.startsWith(q) ||
+      a.name.toUpperCase().includes(q) ||
+      a.city.toUpperCase().includes(q)
+    ).slice(0, 7);
+    if (!matches.length) { results.style.display = 'none'; return; }
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    results.innerHTML = matches.map(a =>
+      `<a href="${root}${a.iata.toLowerCase()}/index.html">
+        <span class="sr-code">${a.iata}</span>
+        <div><div class="sr-name">${a.name}</div><div class="sr-city">${a.city}, ${a.country}</div></div>
+      </a>`
+    ).join('');
+    results.style.display = 'block';
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!input.contains(e.target) && !results.contains(e.target)) results.style.display = 'none';
+  });
+})();
+</script>
+
+</body>
+</html>
