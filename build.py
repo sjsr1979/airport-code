@@ -559,8 +559,10 @@ def airport_page(a):
         dist_str = f"{int(dist_km)} km"
         nearby_html += f'''
           <li class="nearby-item">
-            <a href="/{n_iata.lower()}/index.html" class="nearby-code">{n_iata}</a>
-            <div class="nearby-info"><div class="name">{n_name_e}</div><div class="city">{n_city_e}</div></div>
+            <a href="/{n_iata.lower()}/index.html" style="display:flex;align-items:center;flex:1;gap:12px;text-decoration:none;color:inherit;">
+              <span class="nearby-code">{n_iata}</span>
+              <div class="nearby-info"><div class="name">{n_name_e}</div><div class="city">{n_city_e}</div></div>
+            </a>
             <span class="nearby-dist">{dist_str}</span>
           </li>'''
 
