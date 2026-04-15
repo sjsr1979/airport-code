@@ -12,6 +12,7 @@ import re
 import time
 
 CSV_PATH = '/Users/simon/Desktop/airports_refined.csv'
+RUNWAY_CSV = '/Users/simon/Desktop/runways.csv'
 OUT_DIR = '/Users/simon/airport-site'
 
 def haversine(lat1, lon1, lat2, lon2):
@@ -79,6 +80,38 @@ with open(CSV_PATH, newline='', encoding='utf-8') as f:
         })
 
 print(f"  Loaded {len(airports)} airports")
+
+# ─── Load runways ─────────────────────────────────────────────────────────────
+
+print("Loading runways...")
+runways_by_icao = {}
+with open(RUNWAY_CSV, newline='', encoding='utf-8') as f:
+    reader = csv.DictReader(f)
+    for row in reader:
+        icao = row['airport_ident'].strip().upper()
+        if row.get('closed', '0') == '1':
+            continue
+        try:
+            length = int(row['length_ft']) if row['length_ft'] else 0
+        except:
+            length = 0
+        le = row['le_ident'].strip()
+        he = row['he_ident'].strip()
+        name = f"{le}/{he}" if le and he else (le or he or 'Runway')
+        surface = row['surface'].strip().split('-')[0].title() if row['surface'] else 'Unknown'
+        width = row['width_ft'].strip()
+        runways_by_icao.setdefault(icao, []).append({
+            'name': name,
+            'length_ft': length,
+            'surface': surface,
+            'width_ft': width,
+        })
+
+# Sort runways by length desc
+for icao in runways_by_icao:
+    runways_by_icao[icao].sort(key=lambda r: r['length_ft'], reverse=True)
+
+print(f"  Loaded runways for {len(runways_by_icao)} airports")
 
 # Index by IATA
 by_iata = {a['iata']: a for a in airports}
@@ -469,6 +502,27 @@ def airport_page(a):
     wiki = a['wikipedia']
     wiki_link = f'<a href="{wiki}" target="_blank" rel="noopener">Wikipedia ↗</a>' if wiki else 'N/A'
 
+    # Runways
+    runways = runways_by_icao.get(a['icao'], [])
+    max_len = max((r['length_ft'] for r in runways), default=1) or 1
+    runway_html = ''
+    for r in runways[:6]:
+        pct = round(r['length_ft'] / max_len * 100)
+        length_m = round(r['length_ft'] * 0.3048)
+        runway_html += f'''
+        <div style="margin-bottom:16px">
+          <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px">
+            <span style="font-weight:600">{escape_html(r["name"])}</span>
+            <span style="color:#64748b">{r["length_ft"]:,} ft ({length_m:,} m) · {escape_html(r["surface"])}</span>
+          </div>
+          <div style="height:10px;background:#e2e8f0;border-radius:5px;overflow:hidden">
+            <div style="width:{pct}%;height:100%;background:linear-gradient(90deg,#1a56db,#38bdf8);border-radius:5px"></div>
+          </div>
+        </div>'''
+
+    if not runway_html:
+        runway_html = '<p style="color:#94a3b8;font-size:13px">No runway data available.</p>'
+
     nearby_html = ''
     for dist_km, n_iata, n_name, n_city in a['nearby']:
         n_name_e = escape_html(n_name)
@@ -582,6 +636,12 @@ def airport_page(a):
           </div>
         </div>
         <p style="font-size:12px;color:#94a3b8;text-align:center;">Live weather via Open-Meteo · Updates on page load</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span>🛬</span><h2>Runways</h2></div>
+      <div class="card-body">{runway_html}
       </div>
     </div>
 
