@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="site-root" content="/">
+  <title>Airports with Airport Name Starting With V | Airport Code</title>
+  <meta name="description" content="All airports with airport name starting with V. Browse 142 airports.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0f1f3d;
+      --blue: #1a56db;
+      --blue-light: #e8f0fe;
+      --sky: #38bdf8;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --green: #10b981;
+    }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; zoom: 1.12; }
+    nav { background: var(--navy); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { color: #fff; font-size: 19px; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; display: flex; align-items: center; gap: 10px; line-height: 1; }
+    .nav-logo svg { flex-shrink: 0; }
+    .nav-logo span { color: var(--sky); }
+    .nav-search { display: flex; align-items: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 6px 14px; gap: 8px; width: 280px; position: relative; }
+    .nav-search input { background: none; border: none; outline: none; color: #fff; font-size: 14px; width: 100%; font-family: 'Outfit', sans-serif; }
+    .nav-search input::placeholder { color: rgba(255,255,255,0.4); }
+    #search-results { position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: #fff; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 200; overflow: hidden; display: none; }
+    #search-results a { display: flex; align-items: center; gap: 10px; padding: 10px 14px; text-decoration: none; color: var(--text); font-size: 13px; border-bottom: 1px solid var(--border); transition: background 0.15s; }
+    #search-results a:last-child { border-bottom: none; }
+    #search-results a:hover { background: var(--bg); }
+    #search-results .sr-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 12px; padding: 2px 7px; border-radius: 5px; min-width: 38px; text-align: center; }
+    #search-results .sr-name { font-weight: 600; }
+    #search-results .sr-city { color: var(--muted); font-size: 11px; }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .hero { background: linear-gradient(135deg, var(--navy) 0%, #1a3a6b 100%); color: #fff; padding: 48px 0 56px; position: relative; overflow: hidden; }
+    .hero::before { content: '✈'; position: absolute; right: -20px; top: -20px; font-size: 220px; opacity: 0.04; transform: rotate(25deg); }
+    .hero-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .breadcrumb { font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 20px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .breadcrumb a:hover { color: rgba(255,255,255,0.8); }
+    .breadcrumb span.sep { color: rgba(255,255,255,0.3); }
+    .hero-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .hero-title { display: flex; align-items: flex-start; gap: 24px; }
+    .iata-badge { background: var(--blue); border: 2px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 14px 20px; text-align: center; min-width: 100px; flex-shrink: 0; }
+    .iata-badge .code { font-size: 40px; font-weight: 800; letter-spacing: 2px; color: #fff; line-height: 1; }
+    .iata-badge .label { font-size: 10px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
+    .hero-name { padding-top: 4px; }
+    .hero-name h1 { font-size: 38px; font-weight: 800; line-height: 1.1; color: #fff; }
+    .hero-name .location { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.65); font-size: 15px; margin-top: 6px; }
+    .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+    .badge { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.3px; }
+    .badge-large { background: rgba(16,185,129,0.2); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
+    .badge-medium { background: rgba(56,189,248,0.15); color: #7dd3fc; border: 1px solid rgba(56,189,248,0.3); }
+    .badge-small { background: rgba(245,158,11,0.15); color: #fcd34d; border: 1px solid rgba(245,158,11,0.3); }
+    .hero-stats { display: flex; gap: 32px; margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
+    .hero-stat .value { font-size: 22px; font-weight: 700; color: #fff; }
+    .hero-stat .label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
+    .time-widget { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 16px 20px; text-align: center; min-width: 160px; }
+    .time-widget .time-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+    .time-widget .time-value { font-size: 28px; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+    .time-widget .time-tz { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+    .main { max-width: 1100px; margin: 0 auto; padding: 32px 24px; display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
+    @media (max-width: 768px) { .main { grid-template-columns: 1fr; } .hero-name h1 { font-size: 26px; } .nav-links { display: none; } .nav-search { width: 200px; } }
+    .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .card-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .card-header h2 { font-size: 14px; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.5px; }
+    .card-body { padding: 20px; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .info-item { padding: 14px 16px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+    .info-item:nth-child(even) { border-right: none; }
+    .info-item:nth-last-child(-n+2) { border-bottom: none; }
+    .info-item .key { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px; }
+    .info-item .val { font-size: 15px; font-weight: 600; color: var(--text); }
+    .info-item .val a { color: var(--blue); text-decoration: none; }
+    .info-item .val a:hover { text-decoration: underline; }
+    .weather-widget { display: flex; align-items: center; gap: 20px; padding: 16px; background: linear-gradient(135deg, #e0f2fe, #f0f9ff); border-radius: 10px; margin-bottom: 16px; min-height: 100px; }
+    .weather-icon { font-size: 48px; line-height: 1; }
+    .weather-main .temp { font-size: 32px; font-weight: 700; color: var(--text); }
+    .weather-main .desc { font-size: 14px; color: var(--muted); text-transform: capitalize; }
+    .weather-details { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .weather-detail { font-size: 13px; color: var(--muted); }
+    .weather-detail strong { color: var(--text); font-weight: 600; }
+    .nearby-list { list-style: none; }
+    .nearby-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .nearby-item:last-child { border-bottom: none; }
+    .nearby-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 13px; padding: 3px 8px; border-radius: 6px; min-width: 44px; text-align: center; text-decoration: none; }
+    .nearby-code:hover { background: #ccdcfb; }
+    .nearby-info { flex: 1; margin: 0 12px; }
+    .nearby-info .name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .nearby-info .city { font-size: 11px; color: var(--muted); }
+    .nearby-dist { font-size: 12px; color: var(--muted); white-space: nowrap; }
+    .carbon-form { display: flex; flex-direction: column; gap: 12px; }
+    .carbon-form label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .carbon-form input, .carbon-form select { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-family: 'Outfit', sans-serif; color: var(--text); outline: none; transition: border-color 0.2s; }
+    .carbon-form input:focus, .carbon-form select:focus { border-color: var(--blue); }
+    .carbon-btn { background: var(--blue); color: #fff; border: none; padding: 11px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Outfit', sans-serif; transition: background 0.2s; }
+    .carbon-btn:hover { background: #1447c0; }
+    .carbon-result { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px; text-align: center; display: none; }
+    .carbon-result .co2 { font-size: 24px; font-weight: 800; color: var(--green); }
+    .carbon-result .co2-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .sidebar-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .sidebar-card .card-header { padding: 14px 16px; }
+    .sidebar-card .card-body { padding: 16px; }
+    .codes-display { display: flex; gap: 12px; }
+    .code-box { flex: 1; text-align: center; padding: 16px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; }
+    .code-box .code-val { font-size: 28px; font-weight: 800; color: var(--navy); letter-spacing: 1px; }
+    .code-box .code-type { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; }
+    footer { background: var(--navy); color: rgba(255,255,255,0.5); text-align: center; padding: 24px; font-size: 13px; margin-top: 40px; }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; margin: 0 12px; }
+    footer a:hover { color: #fff; }
+
+    table { width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden; }
+    thead th { padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid var(--border);background:#f8fafc; }
+    tbody tr { border-bottom:1px solid #f5f5f5; }
+    tbody tr:last-child { border-bottom:none; }
+    tbody tr:hover { background:#fafbfc; }
+    .az-nav { display:flex; gap:6px; flex-wrap:wrap; padding:20px 0; }
+    .az-nav a { display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:6px;text-decoration:none;font-weight:700;font-size:14px; }
+    .az-nav a.active { background:var(--blue);color:#fff; }
+    .az-nav a:not(.active) { background:#fff;color:var(--blue);border:1px solid var(--border); }
+    .az-nav a:not(.active):hover { background:var(--blue-light); }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/index.html" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="9" fill="#1a56db"/><path d="M24.5 8.5C25.3 9.3 25.3 10.6 24.5 11.4L19.8 16.1L22 25L19.5 27.5L16 19L11.5 23.5L12 26L10 28L8 24L4 22L6 20L8.5 20.5L13 16L5.5 12.5L8 10L17 12.2L21.6 7.5C22.4 6.7 23.7 6.7 24.5 8.5Z" fill="white"/></svg>
+    Airport<span>Code</span>
+  </a>
+  <div class="nav-search">
+    <svg width="14" height="14" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="navSearchInput" placeholder="Search airport or code…" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <div class="nav-links">
+    <a href="/az.html">A–Z</a>
+    <a href="/countries.html">By Country</a>
+  </div>
+</nav>
+<div style="max-width:1100px;margin:0 auto;padding:32px 24px">
+  <div style="margin-bottom:8px;font-size:12px;color:var(--muted)"><a href="/index.html" style="color:var(--blue);text-decoration:none">Home</a> › Airport Name › V</div>
+  <h1 style="font-size:28px;font-weight:800;color:var(--navy);margin-bottom:4px">Airports: Airport Name Starting With V</h1>
+  <p style="color:var(--muted);margin-bottom:16px">142 airports</p>
+  <div class="az-nav">
+    <a href="/az-name/a.html" class="">A</a><a href="/az-name/b.html" class="">B</a><a href="/az-name/c.html" class="">C</a><a href="/az-name/d.html" class="">D</a><a href="/az-name/e.html" class="">E</a><a href="/az-name/f.html" class="">F</a><a href="/az-name/g.html" class="">G</a><a href="/az-name/h.html" class="">H</a><a href="/az-name/i.html" class="">I</a><a href="/az-name/j.html" class="">J</a><a href="/az-name/k.html" class="">K</a><a href="/az-name/l.html" class="">L</a><a href="/az-name/m.html" class="">M</a><a href="/az-name/n.html" class="">N</a><a href="/az-name/o.html" class="">O</a><a href="/az-name/p.html" class="">P</a><a href="/az-name/q.html" class="">Q</a><a href="/az-name/r.html" class="">R</a><a href="/az-name/s.html" class="">S</a><a href="/az-name/t.html" class="">T</a><a href="/az-name/u.html" class="">U</a><a href="/az-name/v.html" class="active">V</a><a href="/az-name/w.html" class="">W</a><a href="/az-name/x.html" class="">X</a><a href="/az-name/y.html" class="">Y</a><a href="/az-name/z.html" class="">Z</a>
+  </div>
+  <table>
+    <thead><tr><th>IATA</th><th>Airport Name</th><th>City</th><th>Country</th></tr></thead>
+    <tbody>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/anu/index.html" style="color:var(--blue);text-decoration:none;">ANU</a></td>
+        <td style="padding:12px 16px;"><a href="/anu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">V. C. Bird International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Osbourn</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇬 Antigua dan Barbuda</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vaa/index.html" style="color:var(--blue);text-decoration:none;">VAA</a></td>
+        <td style="padding:12px 16px;"><a href="/vaa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vaasa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vaasa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇮 Finland</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vcc/index.html" style="color:var(--blue);text-decoration:none;">VCC</a></td>
+        <td style="padding:12px 16px;"><a href="/vcc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vacaria Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vacaria</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bdq/index.html" style="color:var(--blue);text-decoration:none;">BDQ</a></td>
+        <td style="padding:12px 16px;"><a href="/bdq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vadodara International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vadodara</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vds/index.html" style="color:var(--blue);text-decoration:none;">VDS</a></td>
+        <td style="padding:12px 16px;"><a href="/vds/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vadsø Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vadsø</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇴 Norway</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vhz/index.html" style="color:var(--blue);text-decoration:none;">VHZ</a></td>
+        <td style="padding:12px 16px;"><a href="/vhz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vahitahi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vahitahi</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇫 French Polynesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bel/index.html" style="color:var(--blue);text-decoration:none;">BEL</a></td>
+        <td style="padding:12px 16px;"><a href="/bel/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Val de Cans/Júlio Cezar Ribeiro International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Belém</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yvo/index.html" style="color:var(--blue);text-decoration:none;">YVO</a></td>
+        <td style="padding:12px 16px;"><a href="/yvo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Val-d'Or Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Val-d'Or</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vcf/index.html" style="color:var(--blue);text-decoration:none;">VCF</a></td>
+        <td style="padding:12px 16px;"><a href="/vcf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Valcheta Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Valcheta</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇷 Argentina</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vdz/index.html" style="color:var(--blue);text-decoration:none;">VDZ</a></td>
+        <td style="padding:12px 16px;"><a href="/vdz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Valdez Pioneer Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Valdez</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vld/index.html" style="color:var(--blue);text-decoration:none;">VLD</a></td>
+        <td style="padding:12px 16px;"><a href="/vld/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Valdosta Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Valdosta</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vaf/index.html" style="color:var(--blue);text-decoration:none;">VAF</a></td>
+        <td style="padding:12px 16px;"><a href="/vaf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Valence-Chabeuil Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Chabeuil, Drôme</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇷 Perancis</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vlc/index.html" style="color:var(--blue);text-decoration:none;">VLC</a></td>
+        <td style="padding:12px 16px;"><a href="/vlc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Valencia Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Valencia</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇸 Sepanyol</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/val/index.html" style="color:var(--blue);text-decoration:none;">VAL</a></td>
+        <td style="padding:12px 16px;"><a href="/val/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Valença Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Valença</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vls/index.html" style="color:var(--blue);text-decoration:none;">VLS</a></td>
+        <td style="padding:12px 16px;"><a href="/vls/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Valesdir Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Epi Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇻🇺 Vanuatu</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vll/index.html" style="color:var(--blue);text-decoration:none;">VLL</a></td>
+        <td style="padding:12px 16px;"><a href="/vll/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Valladolid Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Valladolid</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇸 Sepanyol</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vle/index.html" style="color:var(--blue);text-decoration:none;">VLE</a></td>
+        <td style="padding:12px 16px;"><a href="/vle/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Valle Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Grand Canyon</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rlo/index.html" style="color:var(--blue);text-decoration:none;">RLO</a></td>
+        <td style="padding:12px 16px;"><a href="/rlo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Valle Del Conlara International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Merlo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇷 Argentina</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vdp/index.html" style="color:var(--blue);text-decoration:none;">VDP</a></td>
+        <td style="padding:12px 16px;"><a href="/vdp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Valle de La Pascua Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇻🇪 Venezuela</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lmm/index.html" style="color:var(--blue);text-decoration:none;">LMM</a></td>
+        <td style="padding:12px 16px;"><a href="/lmm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Valle del Fuerte International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Los Mochis</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇽 Mexico</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vlr/index.html" style="color:var(--blue);text-decoration:none;">VLR</a></td>
+        <td style="padding:12px 16px;"><a href="/vlr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vallenar Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vallenar</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇱 Chile</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hrl/index.html" style="color:var(--blue);text-decoration:none;">HRL</a></td>
+        <td style="padding:12px 16px;"><a href="/hrl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Valley International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Harlingen</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vdo/index.html" style="color:var(--blue);text-decoration:none;">VDO</a></td>
+        <td style="padding:12px 16px;"><a href="/vdo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Van Don International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Van Don</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇻🇳 Vietnam</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/van/index.html" style="color:var(--blue);text-decoration:none;">VAN</a></td>
+        <td style="padding:12px 16px;"><a href="/van/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Van Ferit Melen Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Van</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇷 Turkiye</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vny/index.html" style="color:var(--blue);text-decoration:none;">VNY</a></td>
+        <td style="padding:12px 16px;"><a href="/vny/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Van Nuys Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Van Nuys</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vaq/index.html" style="color:var(--blue);text-decoration:none;">VAQ</a></td>
+        <td style="padding:12px 16px;"><a href="/vaq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vanavara Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vanavara</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/end/index.html" style="color:var(--blue);text-decoration:none;">END</a></td>
+        <td style="padding:12px 16px;"><a href="/end/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vance Air Force Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Enid</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nev/index.html" style="color:var(--blue);text-decoration:none;">NEV</a></td>
+        <td style="padding:12px 16px;"><a href="/nev/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vance W. Amory International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Charlestown</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇰🇳 Saint Kitts dan Nevis</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yvr/index.html" style="color:var(--blue);text-decoration:none;">YVR</a></td>
+        <td style="padding:12px 16px;"><a href="/yvr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vancouver International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vancouver</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vla/index.html" style="color:var(--blue);text-decoration:none;">VLA</a></td>
+        <td style="padding:12px 16px;"><a href="/vla/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vandalia Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vandalia</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vbg/index.html" style="color:var(--blue);text-decoration:none;">VBG</a></td>
+        <td style="padding:12px 16px;"><a href="/vbg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vandenberg Space Force Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lompoc</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vnd/index.html" style="color:var(--blue);text-decoration:none;">VND</a></td>
+        <td style="padding:12px 16px;"><a href="/vnd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vangaindrano Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vangaindrano</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇬 Madagaskar</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vvc/index.html" style="color:var(--blue);text-decoration:none;">VVC</a></td>
+        <td style="padding:12px 16px;"><a href="/vvc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vanguardia Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Villavicencio</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇴 Colombia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vai/index.html" style="color:var(--blue);text-decoration:none;">VAI</a></td>
+        <td style="padding:12px 16px;"><a href="/vai/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vanimo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vanimo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vne/index.html" style="color:var(--blue);text-decoration:none;">VNE</a></td>
+        <td style="padding:12px 16px;"><a href="/vne/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vannes-Meucon Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vannes/Meucon</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇷 Perancis</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vnr/index.html" style="color:var(--blue);text-decoration:none;">VNR</a></td>
+        <td style="padding:12px 16px;"><a href="/vnr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vanrook Station Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vbv/index.html" style="color:var(--blue);text-decoration:none;">VBV</a></td>
+        <td style="padding:12px 16px;"><a href="/vbv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vanua Balavu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vanua Balavu</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇯 Fiji</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vri/index.html" style="color:var(--blue);text-decoration:none;">VRI</a></td>
+        <td style="padding:12px 16px;"><a href="/vri/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Varandey Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Varandey</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vaw/index.html" style="color:var(--blue);text-decoration:none;">VAW</a></td>
+        <td style="padding:12px 16px;"><a href="/vaw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vardø Airport, Svartnes</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vardø</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇴 Norway</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vrk/index.html" style="color:var(--blue);text-decoration:none;">VRK</a></td>
+        <td style="padding:12px 16px;"><a href="/vrk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Varkaus Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Varkaus / Joroinen</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇮 Finland</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/var/index.html" style="color:var(--blue);text-decoration:none;">VAR</a></td>
+        <td style="padding:12px 16px;"><a href="/var/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Varna Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Varna</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇬 Bulgaria</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vac/index.html" style="color:var(--blue);text-decoration:none;">VAC</a></td>
+        <td style="padding:12px 16px;"><a href="/vac/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Varrelbusch Airfield</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cloppenburg</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇪 Jerman</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vkv/index.html" style="color:var(--blue);text-decoration:none;">VKV</a></td>
+        <td style="padding:12px 16px;"><a href="/vkv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vaskovo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Arkhangelsk</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vat/index.html" style="color:var(--blue);text-decoration:none;">VAT</a></td>
+        <td style="padding:12px 16px;"><a href="/vat/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vatomandry Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vatomandry</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇬 Madagaskar</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vtf/index.html" style="color:var(--blue);text-decoration:none;">VTF</a></td>
+        <td style="padding:12px 16px;"><a href="/vtf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vatulele Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vatulele</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇯 Fiji</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vav/index.html" style="color:var(--blue);text-decoration:none;">VAV</a></td>
+        <td style="padding:12px 16px;"><a href="/vav/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vava'u International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vava'u Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇴 Tonga</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ixz/index.html" style="color:var(--blue);text-decoration:none;">IXZ</a></td>
+        <td style="padding:12px 16px;"><a href="/ixz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Veer Savarkar International Airport / INS Utkrosh</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Port Blair</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mle/index.html" style="color:var(--blue);text-decoration:none;">MLE</a></td>
+        <td style="padding:12px 16px;"><a href="/mle/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Velana International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Malé</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇻 Maldives</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vus/index.html" style="color:var(--blue);text-decoration:none;">VUS</a></td>
+        <td style="padding:12px 16px;"><a href="/vus/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Velikiy Ustyug Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Velikiy Ustyug</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pya/index.html" style="color:var(--blue);text-decoration:none;">PYA</a></td>
+        <td style="padding:12px 16px;"><a href="/pya/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Velásquez Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Puerto Boyacá</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇴 Colombia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fkl/index.html" style="color:var(--blue);text-decoration:none;">FKL</a></td>
+        <td style="padding:12px 16px;"><a href="/fkl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Venango Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Franklin</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vee/index.html" style="color:var(--blue);text-decoration:none;">VEE</a></td>
+        <td style="padding:12px 16px;"><a href="/vee/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Venetie Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Venetie</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vce/index.html" style="color:var(--blue);text-decoration:none;">VCE</a></td>
+        <td style="padding:12px 16px;"><a href="/vce/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Venice Marco Polo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Venezia (VE)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇹 Itali</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vnc/index.html" style="color:var(--blue);text-decoration:none;">VNC</a></td>
+        <td style="padding:12px 16px;"><a href="/vnc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Venice Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Venice</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vnt/index.html" style="color:var(--blue);text-decoration:none;">VNT</a></td>
+        <td style="padding:12px 16px;"><a href="/vnt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ventspils International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ventspils</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇱🇻 Latvia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vhv/index.html" style="color:var(--blue);text-decoration:none;">VHV</a></td>
+        <td style="padding:12px 16px;"><a href="/vhv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Verkhnevilyuisk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Verkhnevilyuisk</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yvg/index.html" style="color:var(--blue);text-decoration:none;">YVG</a></td>
+        <td style="padding:12px 16px;"><a href="/yvg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vermilion Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vermilion</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dnv/index.html" style="color:var(--blue);text-decoration:none;">DNV</a></td>
+        <td style="padding:12px 16px;"><a href="/dnv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vermilion Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Danville</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vel/index.html" style="color:var(--blue);text-decoration:none;">VEL</a></td>
+        <td style="padding:12px 16px;"><a href="/vel/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vernal Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vernal</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yve/index.html" style="color:var(--blue);text-decoration:none;">YVE</a></td>
+        <td style="padding:12px 16px;"><a href="/yve/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vernon Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vernon</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vrb/index.html" style="color:var(--blue);text-decoration:none;">VRB</a></td>
+        <td style="padding:12px 16px;"><a href="/vrb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vero Beach Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vero Beach</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vrn/index.html" style="color:var(--blue);text-decoration:none;">VRN</a></td>
+        <td style="padding:12px 16px;"><a href="/vrn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Verona Villafranca Valerio Catullo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Caselle (VR)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇹 Itali</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vey/index.html" style="color:var(--blue);text-decoration:none;">VEY</a></td>
+        <td style="padding:12px 16px;"><a href="/vey/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vestmannaeyjar Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vestmannaeyjar</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇸 Iceland</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mwa/index.html" style="color:var(--blue);text-decoration:none;">MWA</a></td>
+        <td style="padding:12px 16px;"><a href="/mwa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Veterans Airport of Southern Illinois</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Marion</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sde/index.html" style="color:var(--blue);text-decoration:none;">SDE</a></td>
+        <td style="padding:12px 16px;"><a href="/sde/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vicecomodoro Angel D. La Paz Aragonés Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Santiago del Estero</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇷 Argentina</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vch/index.html" style="color:var(--blue);text-decoration:none;">VCH</a></td>
+        <td style="padding:12px 16px;"><a href="/vch/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vichadero Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vichadero</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇾 Uruguay</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vhy/index.html" style="color:var(--blue);text-decoration:none;">VHY</a></td>
+        <td style="padding:12px 16px;"><a href="/vhy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vichy-Charmeil Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Charmeil, Allier</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇷 Perancis</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vks/index.html" style="color:var(--blue);text-decoration:none;">VKS</a></td>
+        <td style="padding:12px 16px;"><a href="/vks/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vicksburg Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vicksburg</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zic/index.html" style="color:var(--blue);text-decoration:none;">ZIC</a></td>
+        <td style="padding:12px 16px;"><a href="/zic/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Victoria Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Victoria</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇱 Chile</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vfa/index.html" style="color:var(--blue);text-decoration:none;">VFA</a></td>
+        <td style="padding:12px 16px;"><a href="/vfa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Victoria Falls International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Victoria Falls</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇿🇼 Zimbabwe</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yyj/index.html" style="color:var(--blue);text-decoration:none;">YYJ</a></td>
+        <td style="padding:12px 16px;"><a href="/yyj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Victoria International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Victoria</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vct/index.html" style="color:var(--blue);text-decoration:none;">VCT</a></td>
+        <td style="padding:12px 16px;"><a href="/vct/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Victoria Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Victoria</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vcd/index.html" style="color:var(--blue);text-decoration:none;">VCD</a></td>
+        <td style="padding:12px 16px;"><a href="/vcd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Victoria River Downs Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Victoria River</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vdi/index.html" style="color:var(--blue);text-decoration:none;">VDI</a></td>
+        <td style="padding:12px 16px;"><a href="/vdi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vidalia Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vidalia</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/via/index.html" style="color:var(--blue);text-decoration:none;">VIA</a></td>
+        <td style="padding:12px 16px;"><a href="/via/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Videira Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Videira</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vie/index.html" style="color:var(--blue);text-decoration:none;">VIE</a></td>
+        <td style="padding:12px 16px;"><a href="/vie/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vienna International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vienna</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇹 Austria</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vgo/index.html" style="color:var(--blue);text-decoration:none;">VGO</a></td>
+        <td style="padding:12px 16px;"><a href="/vgo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vigo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vigo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇸 Sepanyol</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vga/index.html" style="color:var(--blue);text-decoration:none;">VGA</a></td>
+        <td style="padding:12px 16px;"><a href="/vga/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vijayawada International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vijayawada</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mtg/index.html" style="color:var(--blue);text-decoration:none;">MTG</a></td>
+        <td style="padding:12px 16px;"><a href="/mtg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vila Bela da Santíssima Trindade Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vila Bela Da Santíssima Trindade</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vrl/index.html" style="color:var(--blue);text-decoration:none;">VRL</a></td>
+        <td style="padding:12px 16px;"><a href="/vrl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vila Real Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vila Real</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇹 Portugal</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vlp/index.html" style="color:var(--blue);text-decoration:none;">VLP</a></td>
+        <td style="padding:12px 16px;"><a href="/vlp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vila Rica Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vila Rica</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vnx/index.html" style="color:var(--blue);text-decoration:none;">VNX</a></td>
+        <td style="padding:12px 16px;"><a href="/vnx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vilankulo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vilanculo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇿 Mozambique</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vhm/index.html" style="color:var(--blue);text-decoration:none;">VHM</a></td>
+        <td style="padding:12px 16px;"><a href="/vhm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vilhelmina South Lapland Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vilhelmina</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇪 Sweden</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vdr/index.html" style="color:var(--blue);text-decoration:none;">VDR</a></td>
+        <td style="padding:12px 16px;"><a href="/vdr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Villa Dolores Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Villa Dolores</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇷 Argentina</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vgz/index.html" style="color:var(--blue);text-decoration:none;">VGZ</a></td>
+        <td style="padding:12px 16px;"><a href="/vgz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Villa Garzón Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Villa Garzón</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇴 Colombia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vlg/index.html" style="color:var(--blue);text-decoration:none;">VLG</a></td>
+        <td style="padding:12px 16px;"><a href="/vlg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Villa Gesell Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Villa Gesell</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇷 Argentina</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vam/index.html" style="color:var(--blue);text-decoration:none;">VAM</a></td>
+        <td style="padding:12px 16px;"><a href="/vam/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Villa International Airport Maamigili</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Maamigili</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇻 Maldives</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vme/index.html" style="color:var(--blue);text-decoration:none;">VME</a></td>
+        <td style="padding:12px 16px;"><a href="/vme/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Villa Reynolds Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Villa Mercedes</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇷 Argentina</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kdj/index.html" style="color:var(--blue);text-decoration:none;">KDJ</a></td>
+        <td style="padding:12px 16px;"><a href="/kdj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ville Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">N'Djolé</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇦 Gabon</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vno/index.html" style="color:var(--blue);text-decoration:none;">VNO</a></td>
+        <td style="padding:12px 16px;"><a href="/vno/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vilnius International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vilnius</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇱🇹 Lithuania</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cyo/index.html" style="color:var(--blue);text-decoration:none;">CYO</a></td>
+        <td style="padding:12px 16px;"><a href="/cyo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vilo Acuña International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cayo Largo del Sur</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇺 Cuba</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vyi/index.html" style="color:var(--blue);text-decoration:none;">VYI</a></td>
+        <td style="padding:12px 16px;"><a href="/vyi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vilyuisk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vilyuisk</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/oem/index.html" style="color:var(--blue);text-decoration:none;">OEM</a></td>
+        <td style="padding:12px 16px;"><a href="/oem/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vincent Fayks Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Paloemeu</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇷 Surinam</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tps/index.html" style="color:var(--blue);text-decoration:none;">TPS</a></td>
+        <td style="padding:12px 16px;"><a href="/tps/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vincenzo Florio Airport Trapani-Birgi</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Trapani (TP)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇹 Itali</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vii/index.html" style="color:var(--blue);text-decoration:none;">VII</a></td>
+        <td style="padding:12px 16px;"><a href="/vii/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vinh Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vinh</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇻🇳 Vietnam</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vin/index.html" style="color:var(--blue);text-decoration:none;">VIN</a></td>
+        <td style="padding:12px 16px;"><a href="/vin/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vinnytsia/Gavyryshivka International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vinnitsa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇦 Ukraine</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vpg/index.html" style="color:var(--blue);text-decoration:none;">VPG</a></td>
+        <td style="padding:12px 16px;"><a href="/vpg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vipingo Estate Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kikambala</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇰🇪 Kenya</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/viq/index.html" style="color:var(--blue);text-decoration:none;">VIQ</a></td>
+        <td style="padding:12px 16px;"><a href="/viq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Viqueque Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Viqueque</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇱 Timor-Leste</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vrc/index.html" style="color:var(--blue);text-decoration:none;">VRC</a></td>
+        <td style="padding:12px 16px;"><a href="/vrc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Virac Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Virac</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇭 Filipina</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vcp/index.html" style="color:var(--blue);text-decoration:none;">VCP</a></td>
+        <td style="padding:12px 16px;"><a href="/vcp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Viracopos International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Campinas</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bfr/index.html" style="color:var(--blue);text-decoration:none;">BFR</a></td>
+        <td style="padding:12px 16px;"><a href="/bfr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Virgil I Grissom Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bedford</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lcr/index.html" style="color:var(--blue);text-decoration:none;">LCR</a></td>
+        <td style="padding:12px 16px;"><a href="/lcr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Virgilio Barco Vargas (La Chorrera) Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">La Chorrera</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇴 Colombia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vij/index.html" style="color:var(--blue);text-decoration:none;">VIJ</a></td>
+        <td style="padding:12px 16px;"><a href="/vij/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Virgin Gorda Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Spanish Town</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇻🇬 Kepulauan Virgin British</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vir/index.html" style="color:var(--blue);text-decoration:none;">VIR</a></td>
+        <td style="padding:12px 16px;"><a href="/vir/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Virginia Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Durban</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇿🇦 Afrika Selatan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vji/index.html" style="color:var(--blue);text-decoration:none;">VJI</a></td>
+        <td style="padding:12px 16px;"><a href="/vji/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Virginia Highlands Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Abingdon</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bcb/index.html" style="color:var(--blue);text-decoration:none;">BCB</a></td>
+        <td style="padding:12px 16px;"><a href="/bcb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Virginia Tech Montgomery Executive Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Blacksburg</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/viu/index.html" style="color:var(--blue);text-decoration:none;">VIU</a></td>
+        <td style="padding:12px 16px;"><a href="/viu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Viru Harbour Airstrip</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Viru</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇧 Kepulauan Solomon</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vvi/index.html" style="color:var(--blue);text-decoration:none;">VVI</a></td>
+        <td style="padding:12px 16px;"><a href="/vvi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Viru Viru International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Santa Cruz</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇴 Bolivia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vtz/index.html" style="color:var(--blue);text-decoration:none;">VTZ</a></td>
+        <td style="padding:12px 16px;"><a href="/vtz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Visakhapatnam International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Visakhapatnam</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vis/index.html" style="color:var(--blue);text-decoration:none;">VIS</a></td>
+        <td style="padding:12px 16px;"><a href="/vis/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Visalia Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Visalia</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vby/index.html" style="color:var(--blue);text-decoration:none;">VBY</a></td>
+        <td style="padding:12px 16px;"><a href="/vby/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Visby Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Visby</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇪 Sweden</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vtb/index.html" style="color:var(--blue);text-decoration:none;">VTB</a></td>
+        <td style="padding:12px 16px;"><a href="/vtb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vitebsk Vostochny Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vitebsk</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇾 Belarus</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vit/index.html" style="color:var(--blue);text-decoration:none;">VIT</a></td>
+        <td style="padding:12px 16px;"><a href="/vit/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vitoria Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Alava</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇸 Sepanyol</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ivi/index.html" style="color:var(--blue);text-decoration:none;">IVI</a></td>
+        <td style="padding:12px 16px;"><a href="/ivi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Viveros Island Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Isla Viveros</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇦 Panama</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/viv/index.html" style="color:var(--blue);text-decoration:none;">VIV</a></td>
+        <td style="padding:12px 16px;"><a href="/viv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vivigani Airfield</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vivigani</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kna/index.html" style="color:var(--blue);text-decoration:none;">KNA</a></td>
+        <td style="padding:12px 16px;"><a href="/kna/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Viña del Mar Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Viña del Mar</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇱 Chile</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ogz/index.html" style="color:var(--blue);text-decoration:none;">OGZ</a></td>
+        <td style="padding:12px 16px;"><a href="/ogz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vladikavkaz Beslan International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Beslan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sui/index.html" style="color:var(--blue);text-decoration:none;">SUI</a></td>
+        <td style="padding:12px 16px;"><a href="/sui/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vladislav Ardzinba Sukhum International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sukhumi</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇪 Georgia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vvo/index.html" style="color:var(--blue);text-decoration:none;">VVO</a></td>
+        <td style="padding:12px 16px;"><a href="/vvo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vladivostok International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Artyom</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vko/index.html" style="color:var(--blue);text-decoration:none;">VKO</a></td>
+        <td style="padding:12px 16px;"><a href="/vko/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vnukovo International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Moscow</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vod/index.html" style="color:var(--blue);text-decoration:none;">VOD</a></td>
+        <td style="padding:12px 16px;"><a href="/vod/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vodochody Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vodochody</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇿 Czechia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/voh/index.html" style="color:var(--blue);text-decoration:none;">VOH</a></td>
+        <td style="padding:12px 16px;"><a href="/voh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vohemar Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vohemar</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇬 Madagaskar</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/voi/index.html" style="color:var(--blue);text-decoration:none;">VOI</a></td>
+        <td style="padding:12px 16px;"><a href="/voi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Voinjama Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Voinjama</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇱🇷 Liberia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vog/index.html" style="color:var(--blue);text-decoration:none;">VOG</a></td>
+        <td style="padding:12px 16px;"><a href="/vog/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Volgograd International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Volgograd</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vok/index.html" style="color:var(--blue);text-decoration:none;">VOK</a></td>
+        <td style="padding:12px 16px;"><a href="/vok/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Volk Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Camp Douglas</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ude/index.html" style="color:var(--blue);text-decoration:none;">UDE</a></td>
+        <td style="padding:12px 16px;"><a href="/ude/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Volkel Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Uden</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇱 Belanda</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vgd/index.html" style="color:var(--blue);text-decoration:none;">VGD</a></td>
+        <td style="padding:12px 16px;"><a href="/vgd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vologda Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vologda</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vpn/index.html" style="color:var(--blue);text-decoration:none;">VPN</a></td>
+        <td style="padding:12px 16px;"><a href="/vpn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vopnafjörður Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vopnafjörður</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇸 Iceland</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vkt/index.html" style="color:var(--blue);text-decoration:none;">VKT</a></td>
+        <td style="padding:12px 16px;"><a href="/vkt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vorkuta Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vorkuta</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/voz/index.html" style="color:var(--blue);text-decoration:none;">VOZ</a></td>
+        <td style="padding:12px 16px;"><a href="/voz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Voronezh International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Voronezh</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vre/index.html" style="color:var(--blue);text-decoration:none;">VRE</a></td>
+        <td style="padding:12px 16px;"><a href="/vre/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vredendal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vredendal</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇿🇦 Afrika Selatan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vru/index.html" style="color:var(--blue);text-decoration:none;">VRU</a></td>
+        <td style="padding:12px 16px;"><a href="/vru/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vryburg Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vyrburg</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇿🇦 Afrika Selatan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vyd/index.html" style="color:var(--blue);text-decoration:none;">VYD</a></td>
+        <td style="padding:12px 16px;"><a href="/vyd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vryheid Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vryheid</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇿🇦 Afrika Selatan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vtg/index.html" style="color:var(--blue);text-decoration:none;">VTG</a></td>
+        <td style="padding:12px 16px;"><a href="/vtg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vung Tau Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vũng Tàu</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇻🇳 Vietnam</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kdv/index.html" style="color:var(--blue);text-decoration:none;">KDV</a></td>
+        <td style="padding:12px 16px;"><a href="/kdv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vunisea Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vunisea</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇯 Fiji</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/prg/index.html" style="color:var(--blue);text-decoration:none;">PRG</a></td>
+        <td style="padding:12px 16px;"><a href="/prg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Václav Havel Airport Prague</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Prague</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇿 Czechia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fae/index.html" style="color:var(--blue);text-decoration:none;">FAE</a></td>
+        <td style="padding:12px 16px;"><a href="/fae/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vágar Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vágar</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇴 Kepulauan Faroe</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cgb/index.html" style="color:var(--blue);text-decoration:none;">CGB</a></td>
+        <td style="padding:12px 16px;"><a href="/cgb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Várzea Grande–Marechal Rondon International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cuiabá</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vvk/index.html" style="color:var(--blue);text-decoration:none;">VVK</a></td>
+        <td style="padding:12px 16px;"><a href="/vvk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Västervik Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Västervik</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇪 Sweden</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vxo/index.html" style="color:var(--blue);text-decoration:none;">VXO</a></td>
+        <td style="padding:12px 16px;"><a href="/vxo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Växjö Kronoberg Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Växjö</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇪 Sweden</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/viy/index.html" style="color:var(--blue);text-decoration:none;">VIY</a></td>
+        <td style="padding:12px 16px;"><a href="/viy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Vélizy-Villacoublay Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vélizy-Villacoublay, Yvelines</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇷 Perancis</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ssd/index.html" style="color:var(--blue);text-decoration:none;">SSD</a></td>
+        <td style="padding:12px 16px;"><a href="/ssd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Víctor Lafón Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">San Felipe</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇱 Chile</td>
+      </tr></tbody>
+  </table>
+</div>
+<footer>
+  <div style="margin-bottom:10px">
+    <a href="/az.html">A–Z Index</a>
+    <a href="/countries.html">By Country</a>
+    <a href="/about.html">About</a>
+  </div>
+  <div>© 2025 airport-code.com · Data sourced from OurAirports &amp; Open-Meteo · <a href="https://ourairports.com">OurAirports</a></div>
+</footer>
+
+<script>
+(function(){
+  let db = null;
+  const input = document.getElementById('navSearchInput');
+  const results = document.getElementById('search-results');
+  if (!input) return;
+
+  async function loadDB() {
+    if (db) return;
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    const r = await fetch(root + 'airports.json');
+    db = await r.json();
+  }
+
+  input.addEventListener('focus', loadDB);
+  input.addEventListener('input', async function() {
+    const q = this.value.trim().toUpperCase();
+    if (q.length < 2) { results.style.display = 'none'; return; }
+    await loadDB();
+    const matches = db.filter(a =>
+      a.iata.startsWith(q) ||
+      a.name.toUpperCase().includes(q) ||
+      a.city.toUpperCase().includes(q)
+    ).slice(0, 7);
+    if (!matches.length) { results.style.display = 'none'; return; }
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    results.innerHTML = matches.map(a =>
+      `<a href="${root}${a.iata.toLowerCase()}/index.html">
+        <span class="sr-code">${a.iata}</span>
+        <div><div class="sr-name">${a.name}</div><div class="sr-city">${a.city}, ${a.country}</div></div>
+      </a>`
+    ).join('');
+    results.style.display = 'block';
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!input.contains(e.target) && !results.contains(e.target)) results.style.display = 'none';
+  });
+})();
+</script>
+
+</body>
+</html>

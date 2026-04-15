@@ -1,0 +1,1687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="site-root" content="/">
+  <title>Airports with City Name Starting With W | Airport Code</title>
+  <meta name="description" content="All airports with city name starting with W. Browse 246 airports.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0f1f3d;
+      --blue: #1a56db;
+      --blue-light: #e8f0fe;
+      --sky: #38bdf8;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --green: #10b981;
+    }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; zoom: 1.12; }
+    nav { background: var(--navy); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { color: #fff; font-size: 19px; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; display: flex; align-items: center; gap: 10px; line-height: 1; }
+    .nav-logo svg { flex-shrink: 0; }
+    .nav-logo span { color: var(--sky); }
+    .nav-search { display: flex; align-items: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 6px 14px; gap: 8px; width: 280px; position: relative; }
+    .nav-search input { background: none; border: none; outline: none; color: #fff; font-size: 14px; width: 100%; font-family: 'Outfit', sans-serif; }
+    .nav-search input::placeholder { color: rgba(255,255,255,0.4); }
+    #search-results { position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: #fff; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 200; overflow: hidden; display: none; }
+    #search-results a { display: flex; align-items: center; gap: 10px; padding: 10px 14px; text-decoration: none; color: var(--text); font-size: 13px; border-bottom: 1px solid var(--border); transition: background 0.15s; }
+    #search-results a:last-child { border-bottom: none; }
+    #search-results a:hover { background: var(--bg); }
+    #search-results .sr-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 12px; padding: 2px 7px; border-radius: 5px; min-width: 38px; text-align: center; }
+    #search-results .sr-name { font-weight: 600; }
+    #search-results .sr-city { color: var(--muted); font-size: 11px; }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .hero { background: linear-gradient(135deg, var(--navy) 0%, #1a3a6b 100%); color: #fff; padding: 48px 0 56px; position: relative; overflow: hidden; }
+    .hero::before { content: '✈'; position: absolute; right: -20px; top: -20px; font-size: 220px; opacity: 0.04; transform: rotate(25deg); }
+    .hero-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .breadcrumb { font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 20px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .breadcrumb a:hover { color: rgba(255,255,255,0.8); }
+    .breadcrumb span.sep { color: rgba(255,255,255,0.3); }
+    .hero-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .hero-title { display: flex; align-items: flex-start; gap: 24px; }
+    .iata-badge { background: var(--blue); border: 2px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 14px 20px; text-align: center; min-width: 100px; flex-shrink: 0; }
+    .iata-badge .code { font-size: 40px; font-weight: 800; letter-spacing: 2px; color: #fff; line-height: 1; }
+    .iata-badge .label { font-size: 10px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
+    .hero-name { padding-top: 4px; }
+    .hero-name h1 { font-size: 38px; font-weight: 800; line-height: 1.1; color: #fff; }
+    .hero-name .location { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.65); font-size: 15px; margin-top: 6px; }
+    .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+    .badge { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.3px; }
+    .badge-large { background: rgba(16,185,129,0.2); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
+    .badge-medium { background: rgba(56,189,248,0.15); color: #7dd3fc; border: 1px solid rgba(56,189,248,0.3); }
+    .badge-small { background: rgba(245,158,11,0.15); color: #fcd34d; border: 1px solid rgba(245,158,11,0.3); }
+    .hero-stats { display: flex; gap: 32px; margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
+    .hero-stat .value { font-size: 22px; font-weight: 700; color: #fff; }
+    .hero-stat .label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
+    .time-widget { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 16px 20px; text-align: center; min-width: 160px; }
+    .time-widget .time-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+    .time-widget .time-value { font-size: 28px; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+    .time-widget .time-tz { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+    .main { max-width: 1100px; margin: 0 auto; padding: 32px 24px; display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
+    @media (max-width: 768px) { .main { grid-template-columns: 1fr; } .hero-name h1 { font-size: 26px; } .nav-links { display: none; } .nav-search { width: 200px; } }
+    .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .card-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .card-header h2 { font-size: 14px; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.5px; }
+    .card-body { padding: 20px; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .info-item { padding: 14px 16px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+    .info-item:nth-child(even) { border-right: none; }
+    .info-item:nth-last-child(-n+2) { border-bottom: none; }
+    .info-item .key { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px; }
+    .info-item .val { font-size: 15px; font-weight: 600; color: var(--text); }
+    .info-item .val a { color: var(--blue); text-decoration: none; }
+    .info-item .val a:hover { text-decoration: underline; }
+    .weather-widget { display: flex; align-items: center; gap: 20px; padding: 16px; background: linear-gradient(135deg, #e0f2fe, #f0f9ff); border-radius: 10px; margin-bottom: 16px; min-height: 100px; }
+    .weather-icon { font-size: 48px; line-height: 1; }
+    .weather-main .temp { font-size: 32px; font-weight: 700; color: var(--text); }
+    .weather-main .desc { font-size: 14px; color: var(--muted); text-transform: capitalize; }
+    .weather-details { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .weather-detail { font-size: 13px; color: var(--muted); }
+    .weather-detail strong { color: var(--text); font-weight: 600; }
+    .nearby-list { list-style: none; }
+    .nearby-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .nearby-item:last-child { border-bottom: none; }
+    .nearby-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 13px; padding: 3px 8px; border-radius: 6px; min-width: 44px; text-align: center; text-decoration: none; }
+    .nearby-code:hover { background: #ccdcfb; }
+    .nearby-info { flex: 1; margin: 0 12px; }
+    .nearby-info .name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .nearby-info .city { font-size: 11px; color: var(--muted); }
+    .nearby-dist { font-size: 12px; color: var(--muted); white-space: nowrap; }
+    .carbon-form { display: flex; flex-direction: column; gap: 12px; }
+    .carbon-form label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .carbon-form input, .carbon-form select { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-family: 'Outfit', sans-serif; color: var(--text); outline: none; transition: border-color 0.2s; }
+    .carbon-form input:focus, .carbon-form select:focus { border-color: var(--blue); }
+    .carbon-btn { background: var(--blue); color: #fff; border: none; padding: 11px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Outfit', sans-serif; transition: background 0.2s; }
+    .carbon-btn:hover { background: #1447c0; }
+    .carbon-result { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px; text-align: center; display: none; }
+    .carbon-result .co2 { font-size: 24px; font-weight: 800; color: var(--green); }
+    .carbon-result .co2-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .sidebar-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .sidebar-card .card-header { padding: 14px 16px; }
+    .sidebar-card .card-body { padding: 16px; }
+    .codes-display { display: flex; gap: 12px; }
+    .code-box { flex: 1; text-align: center; padding: 16px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; }
+    .code-box .code-val { font-size: 28px; font-weight: 800; color: var(--navy); letter-spacing: 1px; }
+    .code-box .code-type { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; }
+    footer { background: var(--navy); color: rgba(255,255,255,0.5); text-align: center; padding: 24px; font-size: 13px; margin-top: 40px; }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; margin: 0 12px; }
+    footer a:hover { color: #fff; }
+
+    table { width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden; }
+    thead th { padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid var(--border);background:#f8fafc; }
+    tbody tr { border-bottom:1px solid #f5f5f5; }
+    tbody tr:last-child { border-bottom:none; }
+    tbody tr:hover { background:#fafbfc; }
+    .az-nav { display:flex; gap:6px; flex-wrap:wrap; padding:20px 0; }
+    .az-nav a { display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:6px;text-decoration:none;font-weight:700;font-size:14px; }
+    .az-nav a.active { background:var(--blue);color:#fff; }
+    .az-nav a:not(.active) { background:#fff;color:var(--blue);border:1px solid var(--border); }
+    .az-nav a:not(.active):hover { background:var(--blue-light); }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/index.html" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="9" fill="#1a56db"/><path d="M24.5 8.5C25.3 9.3 25.3 10.6 24.5 11.4L19.8 16.1L22 25L19.5 27.5L16 19L11.5 23.5L12 26L10 28L8 24L4 22L6 20L8.5 20.5L13 16L5.5 12.5L8 10L17 12.2L21.6 7.5C22.4 6.7 23.7 6.7 24.5 8.5Z" fill="white"/></svg>
+    Airport<span>Code</span>
+  </a>
+  <div class="nav-search">
+    <svg width="14" height="14" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="navSearchInput" placeholder="Search airport or code…" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <div class="nav-links">
+    <a href="/az.html">A–Z</a>
+    <a href="/countries.html">By Country</a>
+  </div>
+</nav>
+<div style="max-width:1100px;margin:0 auto;padding:32px 24px">
+  <div style="margin-bottom:8px;font-size:12px;color:var(--muted)"><a href="/index.html" style="color:var(--blue);text-decoration:none">Home</a> › City Name › W</div>
+  <h1 style="font-size:28px;font-weight:800;color:var(--navy);margin-bottom:4px">Airports: City Name Starting With W</h1>
+  <p style="color:var(--muted);margin-bottom:16px">246 airports</p>
+  <div class="az-nav">
+    <a href="/az-city/a.html" class="">A</a><a href="/az-city/b.html" class="">B</a><a href="/az-city/c.html" class="">C</a><a href="/az-city/d.html" class="">D</a><a href="/az-city/e.html" class="">E</a><a href="/az-city/f.html" class="">F</a><a href="/az-city/g.html" class="">G</a><a href="/az-city/h.html" class="">H</a><a href="/az-city/i.html" class="">I</a><a href="/az-city/j.html" class="">J</a><a href="/az-city/k.html" class="">K</a><a href="/az-city/l.html" class="">L</a><a href="/az-city/m.html" class="">M</a><a href="/az-city/n.html" class="">N</a><a href="/az-city/o.html" class="">O</a><a href="/az-city/p.html" class="">P</a><a href="/az-city/q.html" class="">Q</a><a href="/az-city/r.html" class="">R</a><a href="/az-city/s.html" class="">S</a><a href="/az-city/t.html" class="">T</a><a href="/az-city/u.html" class="">U</a><a href="/az-city/v.html" class="">V</a><a href="/az-city/w.html" class="active">W</a><a href="/az-city/x.html" class="">X</a><a href="/az-city/y.html" class="">Y</a><a href="/az-city/z.html" class="">Z</a>
+  </div>
+  <table>
+    <thead><tr><th>IATA</th><th>Airport Name</th><th>City</th><th>Country</th></tr></thead>
+    <tbody>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wza/index.html" style="color:var(--blue);text-decoration:none;">WZA</a></td>
+        <td style="padding:12px 16px;"><a href="/wza/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇭 Ghana</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bmy/index.html" style="color:var(--blue);text-decoration:none;">BMY</a></td>
+        <td style="padding:12px 16px;"><a href="/bmy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Île Art - Waala Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Waala</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇨 New Caledonia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/waf/index.html" style="color:var(--blue);text-decoration:none;">WAF</a></td>
+        <td style="padding:12px 16px;"><a href="/waf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wana Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Waana</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇰 Pakistan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wao/index.html" style="color:var(--blue);text-decoration:none;">WAO</a></td>
+        <td style="padding:12px 16px;"><a href="/wao/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wabo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wabo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ywk/index.html" style="color:var(--blue);text-decoration:none;">YWK</a></td>
+        <td style="padding:12px 16px;"><a href="/ywk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wabush Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wabush</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/act/index.html" style="color:var(--blue);text-decoration:none;">ACT</a></td>
+        <td style="padding:12px 16px;"><a href="/act/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Waco Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Waco</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cnw/index.html" style="color:var(--blue);text-decoration:none;">CNW</a></td>
+        <td style="padding:12px 16px;"><a href="/cnw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">TSTC Waco Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Waco</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ceo/index.html" style="color:var(--blue);text-decoration:none;">CEO</a></td>
+        <td style="padding:12px 16px;"><a href="/ceo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Waco Kungo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Waco Kungo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇴 Angola</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pkt/index.html" style="color:var(--blue);text-decoration:none;">PKT</a></td>
+        <td style="padding:12px 16px;"><a href="/pkt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Port Keats Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wadeye</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wae/index.html" style="color:var(--blue);text-decoration:none;">WAE</a></td>
+        <td style="padding:12px 16px;"><a href="/wae/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wadi Al Dawasir Domestic Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wadi Al Dawasir</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇦 Arab Saudi</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/whf/index.html" style="color:var(--blue);text-decoration:none;">WHF</a></td>
+        <td style="padding:12px 16px;"><a href="/whf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wadi Halfa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wadi Halfa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇩 Sudan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/oke/index.html" style="color:var(--blue);text-decoration:none;">OKE</a></td>
+        <td style="padding:12px 16px;"><a href="/oke/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Okinoerabu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wadomari</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇯🇵 Jepun</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/agi/index.html" style="color:var(--blue);text-decoration:none;">AGI</a></td>
+        <td style="padding:12px 16px;"><a href="/agi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wageningen Airstrip</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wageningen</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇷 Surinam</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tqq/index.html" style="color:var(--blue);text-decoration:none;">TQQ</a></td>
+        <td style="padding:12px 16px;"><a href="/tqq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Maranggo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Waha-Tomea Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wba/index.html" style="color:var(--blue);text-decoration:none;">WBA</a></td>
+        <td style="padding:12px 16px;"><a href="/wba/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wahai Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wahai</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hhi/index.html" style="color:var(--blue);text-decoration:none;">HHI</a></td>
+        <td style="padding:12px 16px;"><a href="/hhi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wheeler Army Airfield</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wahiawa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wah/index.html" style="color:var(--blue);text-decoration:none;">WAH</a></td>
+        <td style="padding:12px 16px;"><a href="/wah/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Harry Stern Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wahpeton</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wik/index.html" style="color:var(--blue);text-decoration:none;">WIK</a></td>
+        <td style="padding:12px 16px;"><a href="/wik/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Waiheke Island Aerodrome</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Waiheke Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇿 New Zealand</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bsf/index.html" style="color:var(--blue);text-decoration:none;">BSF</a></td>
+        <td style="padding:12px 16px;"><a href="/bsf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bradshaw Army Airfield</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Waimea (Kamuela)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mue/index.html" style="color:var(--blue);text-decoration:none;">MUE</a></td>
+        <td style="padding:12px 16px;"><a href="/mue/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Waimea Kohala Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Waimea (Kamuela)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wgp/index.html" style="color:var(--blue);text-decoration:none;">WGP</a></td>
+        <td style="padding:12px 16px;"><a href="/wgp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Umbu Mehang Kunda Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Waingapu-Sumba Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ain/index.html" style="color:var(--blue);text-decoration:none;">AIN</a></td>
+        <td style="padding:12px 16px;"><a href="/ain/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wainwright Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wainwright</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mof/index.html" style="color:var(--blue);text-decoration:none;">MOF</a></td>
+        <td style="padding:12px 16px;"><a href="/mof/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Frans Xavier Seda Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Waioti</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wir/index.html" style="color:var(--blue);text-decoration:none;">WIR</a></td>
+        <td style="padding:12px 16px;"><a href="/wir/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wairoa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wairoa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇿 New Zealand</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rjm/index.html" style="color:var(--blue);text-decoration:none;">RJM</a></td>
+        <td style="padding:12px 16px;"><a href="/rjm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Marinda Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Waisai</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ntq/index.html" style="color:var(--blue);text-decoration:none;">NTQ</a></td>
+        <td style="padding:12px 16px;"><a href="/ntq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Noto Satoyama Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wajima</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇯🇵 Jepun</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wjr/index.html" style="color:var(--blue);text-decoration:none;">WJR</a></td>
+        <td style="padding:12px 16px;"><a href="/wjr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wajir Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wajir</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇰🇪 Kenya</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kay/index.html" style="color:var(--blue);text-decoration:none;">KAY</a></td>
+        <td style="padding:12px 16px;"><a href="/kay/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wakaya Island Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wakaya Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇯 Fiji</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/awk/index.html" style="color:var(--blue);text-decoration:none;">AWK</a></td>
+        <td style="padding:12px 16px;"><a href="/awk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wake Island Airfield</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wake Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇲 Kepulauan Terpencil A.S.</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wkj/index.html" style="color:var(--blue);text-decoration:none;">WKJ</a></td>
+        <td style="padding:12px 16px;"><a href="/wkj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wakkanai Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wakkanai</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇯🇵 Jepun</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wkn/index.html" style="color:var(--blue);text-decoration:none;">WKN</a></td>
+        <td style="padding:12px 16px;"><a href="/wkn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wakunai Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wakunai</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wlh/index.html" style="color:var(--blue);text-decoration:none;">WLH</a></td>
+        <td style="padding:12px 16px;"><a href="/wlh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Walaha Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Walaha</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇻🇺 Vanuatu</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/waa/index.html" style="color:var(--blue);text-decoration:none;">WAA</a></td>
+        <td style="padding:12px 16px;"><a href="/waa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wales Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wales</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wkr/index.html" style="color:var(--blue);text-decoration:none;">WKR</a></td>
+        <td style="padding:12px 16px;"><a href="/wkr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Walkers Cay Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Walkers Cay</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇸 Bahamas</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/alw/index.html" style="color:var(--blue);text-decoration:none;">ALW</a></td>
+        <td style="padding:12px 16px;"><a href="/alw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Walla Walla Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Walla Walla</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bex/index.html" style="color:var(--blue);text-decoration:none;">BEX</a></td>
+        <td style="padding:12px 16px;"><a href="/bex/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">RAF Benson</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wallingford, Oxfordshire</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇧 UK</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wls/index.html" style="color:var(--blue);text-decoration:none;">WLS</a></td>
+        <td style="padding:12px 16px;"><a href="/wls/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Hihifo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wallis Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇼🇫 Wallis dan Futuna</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wal/index.html" style="color:var(--blue);text-decoration:none;">WAL</a></td>
+        <td style="padding:12px 16px;"><a href="/wal/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wallops Flight Facility Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wallops Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/arg/index.html" style="color:var(--blue);text-decoration:none;">ARG</a></td>
+        <td style="padding:12px 16px;"><a href="/arg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Walnut Ridge Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Walnut Ridge</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rbw/index.html" style="color:var(--blue);text-decoration:none;">RBW</a></td>
+        <td style="padding:12px 16px;"><a href="/rbw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Lowcountry Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Walterboro</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wvb/index.html" style="color:var(--blue);text-decoration:none;">WVB</a></td>
+        <td style="padding:12px 16px;"><a href="/wvb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Walvis Bay International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Walvis Bay(Rooikop)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇦 Namibia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wmx/index.html" style="color:var(--blue);text-decoration:none;">WMX</a></td>
+        <td style="padding:12px 16px;"><a href="/wmx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wamena Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wamena</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wka/index.html" style="color:var(--blue);text-decoration:none;">WKA</a></td>
+        <td style="padding:12px 16px;"><a href="/wka/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wanaka Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wanaka</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇿 New Zealand</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mfl/index.html" style="color:var(--blue);text-decoration:none;">MFL</a></td>
+        <td style="padding:12px 16px;"><a href="/mfl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mount Full Stop Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wando Vale</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wot/index.html" style="color:var(--blue);text-decoration:none;">WOT</a></td>
+        <td style="padding:12px 16px;"><a href="/wot/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wang'an Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wang'an</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇼 Taiwan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wag/index.html" style="color:var(--blue);text-decoration:none;">WAG</a></td>
+        <td style="padding:12px 16px;"><a href="/wag/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wanganui Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wanganui</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇿 New Zealand</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/age/index.html" style="color:var(--blue);text-decoration:none;">AGE</a></td>
+        <td style="padding:12px 16px;"><a href="/age/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wangerooge Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wangerooge</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇪 Jerman</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wni/index.html" style="color:var(--blue);text-decoration:none;">WNI</a></td>
+        <td style="padding:12px 16px;"><a href="/wni/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Matahora Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wangi-wangi Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cxq/index.html" style="color:var(--blue);text-decoration:none;">CXQ</a></td>
+        <td style="padding:12px 16px;"><a href="/cxq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Christmas Creek Station Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wangkat Jungka</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/agl/index.html" style="color:var(--blue);text-decoration:none;">AGL</a></td>
+        <td style="padding:12px 16px;"><a href="/agl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wanigela Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wanigela</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wtt/index.html" style="color:var(--blue);text-decoration:none;">WTT</a></td>
+        <td style="padding:12px 16px;"><a href="/wtt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wantoat Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wantoat</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wnu/index.html" style="color:var(--blue);text-decoration:none;">WNU</a></td>
+        <td style="padding:12px 16px;"><a href="/wnu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wanuma Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wanuma</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wxn/index.html" style="color:var(--blue);text-decoration:none;">WXN</a></td>
+        <td style="padding:12px 16px;"><a href="/wxn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wanzhou Wuqiao Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wanzhou</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/axv/index.html" style="color:var(--blue);text-decoration:none;">AXV</a></td>
+        <td style="padding:12px 16px;"><a href="/axv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Neil Armstrong Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wapakoneta</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wbm/index.html" style="color:var(--blue);text-decoration:none;">WBM</a></td>
+        <td style="padding:12px 16px;"><a href="/wbm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wapenamanda Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wapenamanda</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wbc/index.html" style="color:var(--blue);text-decoration:none;">WBC</a></td>
+        <td style="padding:12px 16px;"><a href="/wbc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wapolu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wapolu</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wgc/index.html" style="color:var(--blue);text-decoration:none;">WGC</a></td>
+        <td style="padding:12px 16px;"><a href="/wgc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Warangal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Warangal</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wra/index.html" style="color:var(--blue);text-decoration:none;">WRA</a></td>
+        <td style="padding:12px 16px;"><a href="/wra/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Warder Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Warder</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇹 Ethiopia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uwa/index.html" style="color:var(--blue);text-decoration:none;">UWA</a></td>
+        <td style="padding:12px 16px;"><a href="/uwa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ware Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ware</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wrb/index.html" style="color:var(--blue);text-decoration:none;">WRB</a></td>
+        <td style="padding:12px 16px;"><a href="/wrb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Robins Air Force Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Warner Robins</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rrt/index.html" style="color:var(--blue);text-decoration:none;">RRT</a></td>
+        <td style="padding:12px 16px;"><a href="/rrt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Warroad International Memorial Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Warroad</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/waw/index.html" style="color:var(--blue);text-decoration:none;">WAW</a></td>
+        <td style="padding:12px 16px;"><a href="/waw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Warsaw Chopin Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Warsaw</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇱 Poland</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wrt/index.html" style="color:var(--blue);text-decoration:none;">WRT</a></td>
+        <td style="padding:12px 16px;"><a href="/wrt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Warton Aerodrome</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Warton</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇧 UK</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wso/index.html" style="color:var(--blue);text-decoration:none;">WSO</a></td>
+        <td style="padding:12px 16px;"><a href="/wso/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Washabo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Washabo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇷 Surinam</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dca/index.html" style="color:var(--blue);text-decoration:none;">DCA</a></td>
+        <td style="padding:12px 16px;"><a href="/dca/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ronald Reagan Washington National Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Washington</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ocw/index.html" style="color:var(--blue);text-decoration:none;">OCW</a></td>
+        <td style="padding:12px 16px;"><a href="/ocw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Warren Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Washington</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wsg/index.html" style="color:var(--blue);text-decoration:none;">WSG</a></td>
+        <td style="padding:12px 16px;"><a href="/wsg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Washington County Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Washington</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wwa/index.html" style="color:var(--blue);text-decoration:none;">WWA</a></td>
+        <td style="padding:12px 16px;"><a href="/wwa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wasilla Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wasilla</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wsr/index.html" style="color:var(--blue);text-decoration:none;">WSR</a></td>
+        <td style="padding:12px 16px;"><a href="/wsr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wasior Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wasior</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ykq/index.html" style="color:var(--blue);text-decoration:none;">YKQ</a></td>
+        <td style="padding:12px 16px;"><a href="/ykq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Waskaganish Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Waskaganish</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wsp/index.html" style="color:var(--blue);text-decoration:none;">WSP</a></td>
+        <td style="padding:12px 16px;"><a href="/wsp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Waspam Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Waspam</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇮 Nicaragua</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wsu/index.html" style="color:var(--blue);text-decoration:none;">WSU</a></td>
+        <td style="padding:12px 16px;"><a href="/wsu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wasu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wasu</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wsa/index.html" style="color:var(--blue);text-decoration:none;">WSA</a></td>
+        <td style="padding:12px 16px;"><a href="/wsa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wasua Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wasua</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wum/index.html" style="color:var(--blue);text-decoration:none;">WUM</a></td>
+        <td style="padding:12px 16px;"><a href="/wum/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wasum Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wasum</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wat/index.html" style="color:var(--blue);text-decoration:none;">WAT</a></td>
+        <td style="padding:12px 16px;"><a href="/wat/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Waterford Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Waterford</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇪 Ireland</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/alo/index.html" style="color:var(--blue);text-decoration:none;">ALO</a></td>
+        <td style="padding:12px 16px;"><a href="/alo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Waterloo Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Waterloo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/art/index.html" style="color:var(--blue);text-decoration:none;">ART</a></td>
+        <td style="padding:12px 16px;"><a href="/art/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Watertown International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Watertown</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/aty/index.html" style="color:var(--blue);text-decoration:none;">ATY</a></td>
+        <td style="padding:12px 16px;"><a href="/aty/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Watertown Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Watertown</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wvl/index.html" style="color:var(--blue);text-decoration:none;">WVL</a></td>
+        <td style="padding:12px 16px;"><a href="/wvl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Waterville Robert Lafleur Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Waterville</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yqh/index.html" style="color:var(--blue);text-decoration:none;">YQH</a></td>
+        <td style="padding:12px 16px;"><a href="/yqh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Watson Lake Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Watson Lake</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wvi/index.html" style="color:var(--blue);text-decoration:none;">WVI</a></td>
+        <td style="padding:12px 16px;"><a href="/wvi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Watsonville Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Watsonville</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wug/index.html" style="color:var(--blue);text-decoration:none;">WUG</a></td>
+        <td style="padding:12px 16px;"><a href="/wug/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wau Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wau</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wuu/index.html" style="color:var(--blue);text-decoration:none;">WUU</a></td>
+        <td style="padding:12px 16px;"><a href="/wuu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wau Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wau</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇸 Sudan Selatan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wau/index.html" style="color:var(--blue);text-decoration:none;">WAU</a></td>
+        <td style="padding:12px 16px;"><a href="/wau/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wauchope Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wauchope</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ues/index.html" style="color:var(--blue);text-decoration:none;">UES</a></td>
+        <td style="padding:12px 16px;"><a href="/ues/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Waukesha County Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Waukesha</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ukn/index.html" style="color:var(--blue);text-decoration:none;">UKN</a></td>
+        <td style="padding:12px 16px;"><a href="/ukn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Waukon Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Waukon</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/auw/index.html" style="color:var(--blue);text-decoration:none;">AUW</a></td>
+        <td style="padding:12px 16px;"><a href="/auw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wausau Downtown Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wausau</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/waj/index.html" style="color:var(--blue);text-decoration:none;">WAJ</a></td>
+        <td style="padding:12px 16px;"><a href="/waj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wawoi Falls Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wavoi Falls</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yxz/index.html" style="color:var(--blue);text-decoration:none;">YXZ</a></td>
+        <td style="padding:12px 16px;"><a href="/yxz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wawa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wawa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ays/index.html" style="color:var(--blue);text-decoration:none;">AYS</a></td>
+        <td style="padding:12px 16px;"><a href="/ays/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Waycross Ware County Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Waycross</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/way/index.html" style="color:var(--blue);text-decoration:none;">WAY</a></td>
+        <td style="padding:12px 16px;"><a href="/way/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Greene County Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Waynesburg</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wep/index.html" style="color:var(--blue);text-decoration:none;">WEP</a></td>
+        <td style="padding:12px 16px;"><a href="/wep/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Weam Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Weam</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wea/index.html" style="color:var(--blue);text-decoration:none;">WEA</a></td>
+        <td style="padding:12px 16px;"><a href="/wea/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Parker County Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Weatherford</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ywp/index.html" style="color:var(--blue);text-decoration:none;">YWP</a></td>
+        <td style="padding:12px 16px;"><a href="/ywp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Webequie Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Webequie</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ebs/index.html" style="color:var(--blue);text-decoration:none;">EBS</a></td>
+        <td style="padding:12px 16px;"><a href="/ebs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Webster City Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Webster City</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wdb/index.html" style="color:var(--blue);text-decoration:none;">WDB</a></td>
+        <td style="padding:12px 16px;"><a href="/wdb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Weda Bay Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Weda</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wed/index.html" style="color:var(--blue);text-decoration:none;">WED</a></td>
+        <td style="padding:12px 16px;"><a href="/wed/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wedau Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wedau</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/epg/index.html" style="color:var(--blue);text-decoration:none;">EPG</a></td>
+        <td style="padding:12px 16px;"><a href="/epg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Browns Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Weeping Water</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wrz/index.html" style="color:var(--blue);text-decoration:none;">WRZ</a></td>
+        <td style="padding:12px 16px;"><a href="/wrz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Weerawila Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Weerawila</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇱🇰 Sri Lanka</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nrn/index.html" style="color:var(--blue);text-decoration:none;">NRN</a></td>
+        <td style="padding:12px 16px;"><a href="/nrn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Weeze (Niederrhein) Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Weeze</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇪 Jerman</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wef/index.html" style="color:var(--blue);text-decoration:none;">WEF</a></td>
+        <td style="padding:12px 16px;"><a href="/wef/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Weifang Nanyuan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Weifang (Kuiwen)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/weh/index.html" style="color:var(--blue);text-decoration:none;">WEH</a></td>
+        <td style="padding:12px 16px;"><a href="/weh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Weihai Dashuibo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Weihai</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wei/index.html" style="color:var(--blue);text-decoration:none;">WEI</a></td>
+        <td style="padding:12px 16px;"><a href="/wei/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Weipa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Weipa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yfj/index.html" style="color:var(--blue);text-decoration:none;">YFJ</a></td>
+        <td style="padding:12px 16px;"><a href="/yfj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wekweètì Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wekweètì</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wel/index.html" style="color:var(--blue);text-decoration:none;">WEL</a></td>
+        <td style="padding:12px 16px;"><a href="/wel/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Welkom Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Welkom</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇿🇦 Afrika Selatan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wlg/index.html" style="color:var(--blue);text-decoration:none;">WLG</a></td>
+        <td style="padding:12px 16px;"><a href="/wlg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wellington International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wellington</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇿 New Zealand</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lwl/index.html" style="color:var(--blue);text-decoration:none;">LWL</a></td>
+        <td style="padding:12px 16px;"><a href="/lwl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wells Municipal Airport/Harriet Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wells</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/elz/index.html" style="color:var(--blue);text-decoration:none;">ELZ</a></td>
+        <td style="padding:12px 16px;"><a href="/elz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wellsville Municipal Airport - Tarantine Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wellsville</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/whl/index.html" style="color:var(--blue);text-decoration:none;">WHL</a></td>
+        <td style="padding:12px 16px;"><a href="/whl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Welshpool Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Welshpool</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ync/index.html" style="color:var(--blue);text-decoration:none;">YNC</a></td>
+        <td style="padding:12px 16px;"><a href="/ync/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wemindji Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wemindji</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eat/index.html" style="color:var(--blue);text-decoration:none;">EAT</a></td>
+        <td style="padding:12px 16px;"><a href="/eat/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Pangborn Memorial Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wenatchee</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/env/index.html" style="color:var(--blue);text-decoration:none;">ENV</a></td>
+        <td style="padding:12px 16px;"><a href="/env/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wendover Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wendover</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tkk/index.html" style="color:var(--blue);text-decoration:none;">TKK</a></td>
+        <td style="padding:12px 16px;"><a href="/tkk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Chuuk International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Weno Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇲 Micronesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wnh/index.html" style="color:var(--blue);text-decoration:none;">WNH</a></td>
+        <td style="padding:12px 16px;"><a href="/wnh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wenshan Puzhehei Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wenshan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wnz/index.html" style="color:var(--blue);text-decoration:none;">WNZ</a></td>
+        <td style="padding:12px 16px;"><a href="/wnz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wenzhou Longwan International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wenzhou (Longwan)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/etb/index.html" style="color:var(--blue);text-decoration:none;">ETB</a></td>
+        <td style="padding:12px 16px;"><a href="/etb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">West Bend Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">West Bend</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wbk/index.html" style="color:var(--blue);text-decoration:none;">WBK</a></td>
+        <td style="padding:12px 16px;"><a href="/wbk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">West Branch Community Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">West Branch</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cyb/index.html" style="color:var(--blue);text-decoration:none;">CYB</a></td>
+        <td style="padding:12px 16px;"><a href="/cyb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Charles Kirkconnell International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">West End</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇰🇾 Kepulauan Cayman</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wtd/index.html" style="color:var(--blue);text-decoration:none;">WTD</a></td>
+        <td style="padding:12px 16px;"><a href="/wtd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">West End Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">West End</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇸 Bahamas</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hee/index.html" style="color:var(--blue);text-decoration:none;">HEE</a></td>
+        <td style="padding:12px 16px;"><a href="/hee/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Thompson-Robbins Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">West Helena</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cck/index.html" style="color:var(--blue);text-decoration:none;">CCK</a></td>
+        <td style="padding:12px 16px;"><a href="/cck/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Cocos (Keeling) Islands Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">West Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇨 Kepulauan Cocos (Keeling)</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/laf/index.html" style="color:var(--blue);text-decoration:none;">LAF</a></td>
+        <td style="padding:12px 16px;"><a href="/laf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Purdue University Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">West Lafayette</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/awm/index.html" style="color:var(--blue);text-decoration:none;">AWM</a></td>
+        <td style="padding:12px 16px;"><a href="/awm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">West Memphis Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">West Memphis</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lna/index.html" style="color:var(--blue);text-decoration:none;">LNA</a></td>
+        <td style="padding:12px 16px;"><a href="/lna/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Palm Beach County Park Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">West Palm Beach</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pbi/index.html" style="color:var(--blue);text-decoration:none;">PBI</a></td>
+        <td style="padding:12px 16px;"><a href="/pbi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Palm Beach International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">West Palm Beach</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wwy/index.html" style="color:var(--blue);text-decoration:none;">WWY</a></td>
+        <td style="padding:12px 16px;"><a href="/wwy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">West Wyalong Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">West Wyalong</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wys/index.html" style="color:var(--blue);text-decoration:none;">WYS</a></td>
+        <td style="padding:12px 16px;"><a href="/wys/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Yellowstone Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">West Yellowstone</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wst/index.html" style="color:var(--blue);text-decoration:none;">WST</a></td>
+        <td style="padding:12px 16px;"><a href="/wst/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Westerly State Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Westerly</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tga/index.html" style="color:var(--blue);text-decoration:none;">TGA</a></td>
+        <td style="padding:12px 16px;"><a href="/tga/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tengah Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Western Water Catchment</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇬 Singapura</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/baf/index.html" style="color:var(--blue);text-decoration:none;">BAF</a></td>
+        <td style="padding:12px 16px;"><a href="/baf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Westfield-Barnes Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Westfield</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fok/index.html" style="color:var(--blue);text-decoration:none;">FOK</a></td>
+        <td style="padding:12px 16px;"><a href="/fok/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Francis S Gabreski Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Westhampton Beach</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wsz/index.html" style="color:var(--blue);text-decoration:none;">WSZ</a></td>
+        <td style="padding:12px 16px;"><a href="/wsz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Westport Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Westport</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇿 New Zealand</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wry/index.html" style="color:var(--blue);text-decoration:none;">WRY</a></td>
+        <td style="padding:12px 16px;"><a href="/wry/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Westray Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Westray, Orkney Islands</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇧 UK</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kjk/index.html" style="color:var(--blue);text-decoration:none;">KJK</a></td>
+        <td style="padding:12px 16px;"><a href="/kjk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Flanders International Airport Kortrijk-Wevelgem</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wevelgem</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇪 Belgium</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wwk/index.html" style="color:var(--blue);text-decoration:none;">WWK</a></td>
+        <td style="padding:12px 16px;"><a href="/wwk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wewak International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wewak</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/shd/index.html" style="color:var(--blue);text-decoration:none;">SHD</a></td>
+        <td style="padding:12px 16px;"><a href="/shd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Shenandoah Valley Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Weyers Cave</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/obf/index.html" style="color:var(--blue);text-decoration:none;">OBF</a></td>
+        <td style="padding:12px 16px;"><a href="/obf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Oberpfaffenhofen Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Weßling</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇪 Jerman</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/whk/index.html" style="color:var(--blue);text-decoration:none;">WHK</a></td>
+        <td style="padding:12px 16px;"><a href="/whk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Whakatāne Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Whakatāne</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇿 New Zealand</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yxn/index.html" style="color:var(--blue);text-decoration:none;">YXN</a></td>
+        <td style="padding:12px 16px;"><a href="/yxn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Whale Cove Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Whale Cove</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/whs/index.html" style="color:var(--blue);text-decoration:none;">WHS</a></td>
+        <td style="padding:12px 16px;"><a href="/whs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Whalsay Airstrip</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Whalsay, Shetlands</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇧 UK</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wre/index.html" style="color:var(--blue);text-decoration:none;">WRE</a></td>
+        <td style="padding:12px 16px;"><a href="/wre/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Whangarei Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Whangarei</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇿 New Zealand</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wht/index.html" style="color:var(--blue);text-decoration:none;">WHT</a></td>
+        <td style="padding:12px 16px;"><a href="/wht/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wharton Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wharton</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yle/index.html" style="color:var(--blue);text-decoration:none;">YLE</a></td>
+        <td style="padding:12px 16px;"><a href="/yle/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Whatì Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Whatì</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ean/index.html" style="color:var(--blue);text-decoration:none;">EAN</a></td>
+        <td style="padding:12px 16px;"><a href="/ean/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Phifer Airfield</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wheatland</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hlg/index.html" style="color:var(--blue);text-decoration:none;">HLG</a></td>
+        <td style="padding:12px 16px;"><a href="/hlg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wheeling Ohio County Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wheeling</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wmo/index.html" style="color:var(--blue);text-decoration:none;">WMO</a></td>
+        <td style="padding:12px 16px;"><a href="/wmo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">White Mountain Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">White Mountain</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hpn/index.html" style="color:var(--blue);text-decoration:none;">HPN</a></td>
+        <td style="padding:12px 16px;"><a href="/hpn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Westchester County Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">White Plains</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yzu/index.html" style="color:var(--blue);text-decoration:none;">YZU</a></td>
+        <td style="padding:12px 16px;"><a href="/yzu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Whitecourt Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Whitecourt</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hie/index.html" style="color:var(--blue);text-decoration:none;">HIE</a></td>
+        <td style="padding:12px 16px;"><a href="/hie/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mount Washington Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Whitefield</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yxy/index.html" style="color:var(--blue);text-decoration:none;">YXY</a></td>
+        <td style="padding:12px 16px;"><a href="/yxy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Whitehorse / Erik Nielsen International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Whitehorse</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fls/index.html" style="color:var(--blue);text-decoration:none;">FLS</a></td>
+        <td style="padding:12px 16px;"><a href="/fls/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Flinders Island Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Whitemark</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wtr/index.html" style="color:var(--blue);text-decoration:none;">WTR</a></td>
+        <td style="padding:12px 16px;"><a href="/wtr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Whiteriver Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Whiteriver</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wtz/index.html" style="color:var(--blue);text-decoration:none;">WTZ</a></td>
+        <td style="padding:12px 16px;"><a href="/wtz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Whitianga Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Whitianga</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇿 New Zealand</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wya/index.html" style="color:var(--blue);text-decoration:none;">WYA</a></td>
+        <td style="padding:12px 16px;"><a href="/wya/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Whyalla Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Whyalla</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yvv/index.html" style="color:var(--blue);text-decoration:none;">YVV</a></td>
+        <td style="padding:12px 16px;"><a href="/yvv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wiarton Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wiarton</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bec/index.html" style="color:var(--blue);text-decoration:none;">BEC</a></td>
+        <td style="padding:12px 16px;"><a href="/bec/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Beech Factory Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wichita</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cea/index.html" style="color:var(--blue);text-decoration:none;">CEA</a></td>
+        <td style="padding:12px 16px;"><a href="/cea/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Cessna Aircraft Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wichita</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iab/index.html" style="color:var(--blue);text-decoration:none;">IAB</a></td>
+        <td style="padding:12px 16px;"><a href="/iab/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">McConnell Air Force Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wichita</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ict/index.html" style="color:var(--blue);text-decoration:none;">ICT</a></td>
+        <td style="padding:12px 16px;"><a href="/ict/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wichita Dwight D. Eisenhower National Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wichita</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kip/index.html" style="color:var(--blue);text-decoration:none;">KIP</a></td>
+        <td style="padding:12px 16px;"><a href="/kip/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Kickapoo Downtown Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wichita Falls</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sps/index.html" style="color:var(--blue);text-decoration:none;">SPS</a></td>
+        <td style="padding:12px 16px;"><a href="/sps/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wichita Falls Municipal Airport / Sheppard Air Force Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wichita Falls</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wic/index.html" style="color:var(--blue);text-decoration:none;">WIC</a></td>
+        <td style="padding:12px 16px;"><a href="/wic/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wick John O'Groats Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wick</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇧 UK</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wie/index.html" style="color:var(--blue);text-decoration:none;">WIE</a></td>
+        <td style="padding:12px 16px;"><a href="/wie/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wiesbaden Army Airfield</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wiesbaden</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇪 Jerman</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wwd/index.html" style="color:var(--blue);text-decoration:none;">WWD</a></td>
+        <td style="padding:12px 16px;"><a href="/wwd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Cape May County Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wildwood</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cbe/index.html" style="color:var(--blue);text-decoration:none;">CBE</a></td>
+        <td style="padding:12px 16px;"><a href="/cbe/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Greater Cumberland Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wiley Ford</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wvn/index.html" style="color:var(--blue);text-decoration:none;">WVN</a></td>
+        <td style="padding:12px 16px;"><a href="/wvn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">JadeWeser Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wilhelmshaven</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇪 Jerman</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wbw/index.html" style="color:var(--blue);text-decoration:none;">WBW</a></td>
+        <td style="padding:12px 16px;"><a href="/wbw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wilkes Barre Wyoming Valley Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wilkes-Barre</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/avp/index.html" style="color:var(--blue);text-decoration:none;">AVP</a></td>
+        <td style="padding:12px 16px;"><a href="/avp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wilkes-Barre/Scranton International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wilkes-Barre/Scranton</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cwx/index.html" style="color:var(--blue);text-decoration:none;">CWX</a></td>
+        <td style="padding:12px 16px;"><a href="/cwx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Cochise County Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Willcox</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cur/index.html" style="color:var(--blue);text-decoration:none;">CUR</a></td>
+        <td style="padding:12px 16px;"><a href="/cur/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Hato International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Willemstad</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇼 Curaçao</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ywm/index.html" style="color:var(--blue);text-decoration:none;">YWM</a></td>
+        <td style="padding:12px 16px;"><a href="/ywm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Williams Harbour Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Williams Harbour</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ywl/index.html" style="color:var(--blue);text-decoration:none;">YWL</a></td>
+        <td style="padding:12px 16px;"><a href="/ywl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Williams Lake Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Williams Lake</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ipt/index.html" style="color:var(--blue);text-decoration:none;">IPT</a></td>
+        <td style="padding:12px 16px;"><a href="/ipt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Williamsport Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Williamsport</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ntl/index.html" style="color:var(--blue);text-decoration:none;">NTL</a></td>
+        <td style="padding:12px 16px;"><a href="/ntl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Newcastle Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Williamtown</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/xwa/index.html" style="color:var(--blue);text-decoration:none;">XWA</a></td>
+        <td style="padding:12px 16px;"><a href="/xwa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Williston Basin International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Williston</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ill/index.html" style="color:var(--blue);text-decoration:none;">ILL</a></td>
+        <td style="padding:12px 16px;"><a href="/ill/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Willmar Municipal Airport John L Rice Field (2006)</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Willmar</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lnn/index.html" style="color:var(--blue);text-decoration:none;">LNN</a></td>
+        <td style="padding:12px 16px;"><a href="/lnn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Lake County Executive Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Willoughby</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wow/index.html" style="color:var(--blue);text-decoration:none;">WOW</a></td>
+        <td style="padding:12px 16px;"><a href="/wow/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Willow Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Willow</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wlw/index.html" style="color:var(--blue);text-decoration:none;">WLW</a></td>
+        <td style="padding:12px 16px;"><a href="/wlw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Willows Glenn County Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Willows</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ilg/index.html" style="color:var(--blue);text-decoration:none;">ILG</a></td>
+        <td style="padding:12px 16px;"><a href="/ilg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wilmington Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wilmington</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ilm/index.html" style="color:var(--blue);text-decoration:none;">ILM</a></td>
+        <td style="padding:12px 16px;"><a href="/ilm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wilmington International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wilmington</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iln/index.html" style="color:var(--blue);text-decoration:none;">ILN</a></td>
+        <td style="padding:12px 16px;"><a href="/iln/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wilmington Airpark</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wilmington</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wgo/index.html" style="color:var(--blue);text-decoration:none;">WGO</a></td>
+        <td style="padding:12px 16px;"><a href="/wgo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Winchester Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Winchester</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wrn/index.html" style="color:var(--blue);text-decoration:none;">WRN</a></td>
+        <td style="padding:12px 16px;"><a href="/wrn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Windarling Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Windarling Mine</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wdr/index.html" style="color:var(--blue);text-decoration:none;">WDR</a></td>
+        <td style="padding:12px 16px;"><a href="/wdr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Barrow County Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Winder</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ers/index.html" style="color:var(--blue);text-decoration:none;">ERS</a></td>
+        <td style="padding:12px 16px;"><a href="/ers/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Eros Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Windhoek</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇦 Namibia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wdh/index.html" style="color:var(--blue);text-decoration:none;">WDH</a></td>
+        <td style="padding:12px 16px;"><a href="/wdh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Hosea Kutako International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Windhoek</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇦 Namibia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mwm/index.html" style="color:var(--blue);text-decoration:none;">MWM</a></td>
+        <td style="padding:12px 16px;"><a href="/mwm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Windom Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Windom</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wnr/index.html" style="color:var(--blue);text-decoration:none;">WNR</a></td>
+        <td style="padding:12px 16px;"><a href="/wnr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Windorah Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Windorah</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yqg/index.html" style="color:var(--blue);text-decoration:none;">YQG</a></td>
+        <td style="padding:12px 16px;"><a href="/yqg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Windsor International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Windsor</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wld/index.html" style="color:var(--blue);text-decoration:none;">WLD</a></td>
+        <td style="padding:12px 16px;"><a href="/wld/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Strother Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Winfield / Arkansas City</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ink/index.html" style="color:var(--blue);text-decoration:none;">INK</a></td>
+        <td style="padding:12px 16px;"><a href="/ink/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Winkler County Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wink</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wmc/index.html" style="color:var(--blue);text-decoration:none;">WMC</a></td>
+        <td style="padding:12px 16px;"><a href="/wmc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Winnemucca Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Winnemucca</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ywg/index.html" style="color:var(--blue);text-decoration:none;">YWG</a></td>
+        <td style="padding:12px 16px;"><a href="/ywg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Winnipeg / James Armstrong Richardson International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Winnipeg</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ona/index.html" style="color:var(--blue);text-decoration:none;">ONA</a></td>
+        <td style="padding:12px 16px;"><a href="/ona/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Winona Municipal Airport Max Conrad Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Winona</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/inw/index.html" style="color:var(--blue);text-decoration:none;">INW</a></td>
+        <td style="padding:12px 16px;"><a href="/inw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Winslow Lindbergh Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Winslow</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/int/index.html" style="color:var(--blue);text-decoration:none;">INT</a></td>
+        <td style="padding:12px 16px;"><a href="/int/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Smith Reynolds Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Winston Salem</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gif/index.html" style="color:var(--blue);text-decoration:none;">GIF</a></td>
+        <td style="padding:12px 16px;"><a href="/gif/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Winter Haven Regional Airport - Gilbert Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Winter Haven</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wpm/index.html" style="color:var(--blue);text-decoration:none;">WPM</a></td>
+        <td style="padding:12px 16px;"><a href="/wpm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wipim Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wipim</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iss/index.html" style="color:var(--blue);text-decoration:none;">ISS</a></td>
+        <td style="padding:12px 16px;"><a href="/iss/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wiscasset Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wiscasset</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/isw/index.html" style="color:var(--blue);text-decoration:none;">ISW</a></td>
+        <td style="padding:12px 16px;"><a href="/isw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Alexander Field South Wood County Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wisconsin Rapids</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lnp/index.html" style="color:var(--blue);text-decoration:none;">LNP</a></td>
+        <td style="padding:12px 16px;"><a href="/lnp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Lonesome Pine Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wise</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wsm/index.html" style="color:var(--blue);text-decoration:none;">WSM</a></td>
+        <td style="padding:12px 16px;"><a href="/wsm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wiseman Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wiseman</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gyb/index.html" style="color:var(--blue);text-decoration:none;">GYB</a></td>
+        <td style="padding:12px 16px;"><a href="/gyb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Port Hedland/Wodgina Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wodgina</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wja/index.html" style="color:var(--blue);text-decoration:none;">WJA</a></td>
+        <td style="padding:12px 16px;"><a href="/wja/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Woja Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Woja</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇭 Kepulauan Marshall</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/olf/index.html" style="color:var(--blue);text-decoration:none;">OLF</a></td>
+        <td style="padding:12px 16px;"><a href="/olf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">L M Clayton Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wolf Point</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zwl/index.html" style="color:var(--blue);text-decoration:none;">ZWL</a></td>
+        <td style="padding:12px 16px;"><a href="/zwl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wollaston Lake Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wollaston Lake</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/won/index.html" style="color:var(--blue);text-decoration:none;">WON</a></td>
+        <td style="padding:12px 16px;"><a href="/won/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wondoola Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wondoola</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/woa/index.html" style="color:var(--blue);text-decoration:none;">WOA</a></td>
+        <td style="padding:12px 16px;"><a href="/woa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wonenara Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wonenara</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/awe/index.html" style="color:var(--blue);text-decoration:none;">AWE</a></td>
+        <td style="padding:12px 16px;"><a href="/awe/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Alowe Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wonga Wongué Presidential Reserve</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇦 Gabon</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wju/index.html" style="color:var(--blue);text-decoration:none;">WJU</a></td>
+        <td style="padding:12px 16px;"><a href="/wju/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wonju Airport / Hoengseong Air Base (K-38/K-46)</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wonju</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇰🇷 Korea Selatan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wos/index.html" style="color:var(--blue);text-decoration:none;">WOS</a></td>
+        <td style="padding:12px 16px;"><a href="/wos/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wonsan Kalma Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wonsan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇰🇵 Korea Utara</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wwi/index.html" style="color:var(--blue);text-decoration:none;">WWI</a></td>
+        <td style="padding:12px 16px;"><a href="/wwi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Woodie Woodie Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Woodie Woodie</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gaz/index.html" style="color:var(--blue);text-decoration:none;">GAZ</a></td>
+        <td style="padding:12px 16px;"><a href="/gaz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Guasopa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Woodlark (Muyua) Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/arv/index.html" style="color:var(--blue);text-decoration:none;">ARV</a></td>
+        <td style="padding:12px 16px;"><a href="/arv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Lakeland Airport Noble F Lee Memorial Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Woodruff</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wwr/index.html" style="color:var(--blue);text-decoration:none;">WWR</a></td>
+        <td style="padding:12px 16px;"><a href="/wwr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">West Woodward Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Woodward</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/umr/index.html" style="color:var(--blue);text-decoration:none;">UMR</a></td>
+        <td style="padding:12px 16px;"><a href="/umr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Woomera Airfield</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Woomera</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bjj/index.html" style="color:var(--blue);text-decoration:none;">BJJ</a></td>
+        <td style="padding:12px 16px;"><a href="/bjj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wayne County Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wooster</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/orh/index.html" style="color:var(--blue);text-decoration:none;">ORH</a></td>
+        <td style="padding:12px 16px;"><a href="/orh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Worcester Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Worcester</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wrl/index.html" style="color:var(--blue);text-decoration:none;">WRL</a></td>
+        <td style="padding:12px 16px;"><a href="/wrl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Worland Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Worland</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/otg/index.html" style="color:var(--blue);text-decoration:none;">OTG</a></td>
+        <td style="padding:12px 16px;"><a href="/otg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Worthington Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Worthington</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wto/index.html" style="color:var(--blue);text-decoration:none;">WTO</a></td>
+        <td style="padding:12px 16px;"><a href="/wto/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wotho Island Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wotho Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇭 Kepulauan Marshall</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wte/index.html" style="color:var(--blue);text-decoration:none;">WTE</a></td>
+        <td style="padding:12px 16px;"><a href="/wte/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wotje Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wotje</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇭 Kepulauan Marshall</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wrg/index.html" style="color:var(--blue);text-decoration:none;">WRG</a></td>
+        <td style="padding:12px 16px;"><a href="/wrg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wrangell Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wrangell</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wri/index.html" style="color:var(--blue);text-decoration:none;">WRI</a></td>
+        <td style="padding:12px 16px;"><a href="/wri/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mc Guire Air Force Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wrightstown</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ywy/index.html" style="color:var(--blue);text-decoration:none;">YWY</a></td>
+        <td style="padding:12px 16px;"><a href="/ywy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wrigley Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wrigley</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wro/index.html" style="color:var(--blue);text-decoration:none;">WRO</a></td>
+        <td style="padding:12px 16px;"><a href="/wro/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Copernicus Wrocław Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wrocław</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇱 Poland</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wpk/index.html" style="color:var(--blue);text-decoration:none;">WPK</a></td>
+        <td style="padding:12px 16px;"><a href="/wpk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wrotham Park Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wrotham Park</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wua/index.html" style="color:var(--blue);text-decoration:none;">WUA</a></td>
+        <td style="padding:12px 16px;"><a href="/wua/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wuhai Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wuhai</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/whn/index.html" style="color:var(--blue);text-decoration:none;">WHN</a></td>
+        <td style="padding:12px 16px;"><a href="/whn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wuhan Hannan Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wuhan (Hannan)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wuh/index.html" style="color:var(--blue);text-decoration:none;">WUH</a></td>
+        <td style="padding:12px 16px;"><a href="/wuh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wuhan Tianhe International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wuhan (Huangpi)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wha/index.html" style="color:var(--blue);text-decoration:none;">WHA</a></td>
+        <td style="padding:12px 16px;"><a href="/wha/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wuhu Xuanzhou Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wuhu</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/whu/index.html" style="color:var(--blue);text-decoration:none;">WHU</a></td>
+        <td style="padding:12px 16px;"><a href="/whu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wuhu Wanli Airport / Wuhu Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wuhu</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/oto/index.html" style="color:var(--blue);text-decoration:none;">OTO</a></td>
+        <td style="padding:12px 16px;"><a href="/oto/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Otog Banner Wulan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wulan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cqw/index.html" style="color:var(--blue);text-decoration:none;">CQW</a></td>
+        <td style="padding:12px 16px;"><a href="/cqw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Chongqing Xiannüshan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wulong</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bvz/index.html" style="color:var(--blue);text-decoration:none;">BVZ</a></td>
+        <td style="padding:12px 16px;"><a href="/bvz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Beverley Springs Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wunaamin Miliwundi Ranges</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mbn/index.html" style="color:var(--blue);text-decoration:none;">MBN</a></td>
+        <td style="padding:12px 16px;"><a href="/mbn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mount Barnett Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wunaamin Miliwundi Ranges</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mho/index.html" style="color:var(--blue);text-decoration:none;">MHO</a></td>
+        <td style="padding:12px 16px;"><a href="/mho/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mount House Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wunaamin Miliwundi Ranges</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wnn/index.html" style="color:var(--blue);text-decoration:none;">WNN</a></td>
+        <td style="padding:12px 16px;"><a href="/wnn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wunnumin Lake Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wunnumin Lake</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/brt/index.html" style="color:var(--blue);text-decoration:none;">BRT</a></td>
+        <td style="padding:12px 16px;"><a href="/brt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bathurst Island Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wurrumiyanga</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fcn/index.html" style="color:var(--blue);text-decoration:none;">FCN</a></td>
+        <td style="padding:12px 16px;"><a href="/fcn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sea-Airport Cuxhaven/Nordholz / Nordholz Naval Airbase</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wurster Nordseeküste</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇪 Jerman</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wsk/index.html" style="color:var(--blue);text-decoration:none;">WSK</a></td>
+        <td style="padding:12px 16px;"><a href="/wsk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Chongqing Wushan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wushan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wuv/index.html" style="color:var(--blue);text-decoration:none;">WUV</a></td>
+        <td style="padding:12px 16px;"><a href="/wuv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wuvulu Island Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wuvulu Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wux/index.html" style="color:var(--blue);text-decoration:none;">WUX</a></td>
+        <td style="padding:12px 16px;"><a href="/wux/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sunan Shuofang International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wuxi</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wus/index.html" style="color:var(--blue);text-decoration:none;">WUS</a></td>
+        <td style="padding:12px 16px;"><a href="/wus/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nanping Wuyishan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wuyishan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ohr/index.html" style="color:var(--blue);text-decoration:none;">OHR</a></td>
+        <td style="padding:12px 16px;"><a href="/ohr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Wyk auf Föhr Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wyk auf Föhr</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇪 Jerman</td>
+      </tr></tbody>
+  </table>
+</div>
+<footer>
+  <div style="margin-bottom:10px">
+    <a href="/az.html">A–Z Index</a>
+    <a href="/countries.html">By Country</a>
+    <a href="/about.html">About</a>
+  </div>
+  <div>© 2025 airport-code.com · Data sourced from OurAirports &amp; Open-Meteo · <a href="https://ourairports.com">OurAirports</a></div>
+</footer>
+
+<script>
+(function(){
+  let db = null;
+  const input = document.getElementById('navSearchInput');
+  const results = document.getElementById('search-results');
+  if (!input) return;
+
+  async function loadDB() {
+    if (db) return;
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    const r = await fetch(root + 'airports.json');
+    db = await r.json();
+  }
+
+  input.addEventListener('focus', loadDB);
+  input.addEventListener('input', async function() {
+    const q = this.value.trim().toUpperCase();
+    if (q.length < 2) { results.style.display = 'none'; return; }
+    await loadDB();
+    const matches = db.filter(a =>
+      a.iata.startsWith(q) ||
+      a.name.toUpperCase().includes(q) ||
+      a.city.toUpperCase().includes(q)
+    ).slice(0, 7);
+    if (!matches.length) { results.style.display = 'none'; return; }
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    results.innerHTML = matches.map(a =>
+      `<a href="${root}${a.iata.toLowerCase()}/index.html">
+        <span class="sr-code">${a.iata}</span>
+        <div><div class="sr-name">${a.name}</div><div class="sr-city">${a.city}, ${a.country}</div></div>
+      </a>`
+    ).join('');
+    results.style.display = 'block';
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!input.contains(e.target) && !results.contains(e.target)) results.style.display = 'none';
+  });
+})();
+</script>
+
+</body>
+</html>

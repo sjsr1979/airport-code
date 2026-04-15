@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="site-root" content="/">
+  <title>Airports with City Name Starting With I | Airport Code</title>
+  <meta name="description" content="All airports with city name starting with I. Browse 161 airports.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0f1f3d;
+      --blue: #1a56db;
+      --blue-light: #e8f0fe;
+      --sky: #38bdf8;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --green: #10b981;
+    }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; zoom: 1.12; }
+    nav { background: var(--navy); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { color: #fff; font-size: 19px; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; display: flex; align-items: center; gap: 10px; line-height: 1; }
+    .nav-logo svg { flex-shrink: 0; }
+    .nav-logo span { color: var(--sky); }
+    .nav-search { display: flex; align-items: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 6px 14px; gap: 8px; width: 280px; position: relative; }
+    .nav-search input { background: none; border: none; outline: none; color: #fff; font-size: 14px; width: 100%; font-family: 'Outfit', sans-serif; }
+    .nav-search input::placeholder { color: rgba(255,255,255,0.4); }
+    #search-results { position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: #fff; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 200; overflow: hidden; display: none; }
+    #search-results a { display: flex; align-items: center; gap: 10px; padding: 10px 14px; text-decoration: none; color: var(--text); font-size: 13px; border-bottom: 1px solid var(--border); transition: background 0.15s; }
+    #search-results a:last-child { border-bottom: none; }
+    #search-results a:hover { background: var(--bg); }
+    #search-results .sr-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 12px; padding: 2px 7px; border-radius: 5px; min-width: 38px; text-align: center; }
+    #search-results .sr-name { font-weight: 600; }
+    #search-results .sr-city { color: var(--muted); font-size: 11px; }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .hero { background: linear-gradient(135deg, var(--navy) 0%, #1a3a6b 100%); color: #fff; padding: 48px 0 56px; position: relative; overflow: hidden; }
+    .hero::before { content: '✈'; position: absolute; right: -20px; top: -20px; font-size: 220px; opacity: 0.04; transform: rotate(25deg); }
+    .hero-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .breadcrumb { font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 20px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .breadcrumb a:hover { color: rgba(255,255,255,0.8); }
+    .breadcrumb span.sep { color: rgba(255,255,255,0.3); }
+    .hero-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .hero-title { display: flex; align-items: flex-start; gap: 24px; }
+    .iata-badge { background: var(--blue); border: 2px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 14px 20px; text-align: center; min-width: 100px; flex-shrink: 0; }
+    .iata-badge .code { font-size: 40px; font-weight: 800; letter-spacing: 2px; color: #fff; line-height: 1; }
+    .iata-badge .label { font-size: 10px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
+    .hero-name { padding-top: 4px; }
+    .hero-name h1 { font-size: 38px; font-weight: 800; line-height: 1.1; color: #fff; }
+    .hero-name .location { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.65); font-size: 15px; margin-top: 6px; }
+    .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+    .badge { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.3px; }
+    .badge-large { background: rgba(16,185,129,0.2); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
+    .badge-medium { background: rgba(56,189,248,0.15); color: #7dd3fc; border: 1px solid rgba(56,189,248,0.3); }
+    .badge-small { background: rgba(245,158,11,0.15); color: #fcd34d; border: 1px solid rgba(245,158,11,0.3); }
+    .hero-stats { display: flex; gap: 32px; margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
+    .hero-stat .value { font-size: 22px; font-weight: 700; color: #fff; }
+    .hero-stat .label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
+    .time-widget { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 16px 20px; text-align: center; min-width: 160px; }
+    .time-widget .time-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+    .time-widget .time-value { font-size: 28px; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+    .time-widget .time-tz { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+    .main { max-width: 1100px; margin: 0 auto; padding: 32px 24px; display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
+    @media (max-width: 768px) { .main { grid-template-columns: 1fr; } .hero-name h1 { font-size: 26px; } .nav-links { display: none; } .nav-search { width: 200px; } }
+    .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .card-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .card-header h2 { font-size: 14px; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.5px; }
+    .card-body { padding: 20px; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .info-item { padding: 14px 16px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+    .info-item:nth-child(even) { border-right: none; }
+    .info-item:nth-last-child(-n+2) { border-bottom: none; }
+    .info-item .key { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px; }
+    .info-item .val { font-size: 15px; font-weight: 600; color: var(--text); }
+    .info-item .val a { color: var(--blue); text-decoration: none; }
+    .info-item .val a:hover { text-decoration: underline; }
+    .weather-widget { display: flex; align-items: center; gap: 20px; padding: 16px; background: linear-gradient(135deg, #e0f2fe, #f0f9ff); border-radius: 10px; margin-bottom: 16px; min-height: 100px; }
+    .weather-icon { font-size: 48px; line-height: 1; }
+    .weather-main .temp { font-size: 32px; font-weight: 700; color: var(--text); }
+    .weather-main .desc { font-size: 14px; color: var(--muted); text-transform: capitalize; }
+    .weather-details { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .weather-detail { font-size: 13px; color: var(--muted); }
+    .weather-detail strong { color: var(--text); font-weight: 600; }
+    .nearby-list { list-style: none; }
+    .nearby-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .nearby-item:last-child { border-bottom: none; }
+    .nearby-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 13px; padding: 3px 8px; border-radius: 6px; min-width: 44px; text-align: center; text-decoration: none; }
+    .nearby-code:hover { background: #ccdcfb; }
+    .nearby-info { flex: 1; margin: 0 12px; }
+    .nearby-info .name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .nearby-info .city { font-size: 11px; color: var(--muted); }
+    .nearby-dist { font-size: 12px; color: var(--muted); white-space: nowrap; }
+    .carbon-form { display: flex; flex-direction: column; gap: 12px; }
+    .carbon-form label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .carbon-form input, .carbon-form select { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-family: 'Outfit', sans-serif; color: var(--text); outline: none; transition: border-color 0.2s; }
+    .carbon-form input:focus, .carbon-form select:focus { border-color: var(--blue); }
+    .carbon-btn { background: var(--blue); color: #fff; border: none; padding: 11px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Outfit', sans-serif; transition: background 0.2s; }
+    .carbon-btn:hover { background: #1447c0; }
+    .carbon-result { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px; text-align: center; display: none; }
+    .carbon-result .co2 { font-size: 24px; font-weight: 800; color: var(--green); }
+    .carbon-result .co2-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .sidebar-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .sidebar-card .card-header { padding: 14px 16px; }
+    .sidebar-card .card-body { padding: 16px; }
+    .codes-display { display: flex; gap: 12px; }
+    .code-box { flex: 1; text-align: center; padding: 16px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; }
+    .code-box .code-val { font-size: 28px; font-weight: 800; color: var(--navy); letter-spacing: 1px; }
+    .code-box .code-type { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; }
+    footer { background: var(--navy); color: rgba(255,255,255,0.5); text-align: center; padding: 24px; font-size: 13px; margin-top: 40px; }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; margin: 0 12px; }
+    footer a:hover { color: #fff; }
+
+    table { width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden; }
+    thead th { padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid var(--border);background:#f8fafc; }
+    tbody tr { border-bottom:1px solid #f5f5f5; }
+    tbody tr:last-child { border-bottom:none; }
+    tbody tr:hover { background:#fafbfc; }
+    .az-nav { display:flex; gap:6px; flex-wrap:wrap; padding:20px 0; }
+    .az-nav a { display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:6px;text-decoration:none;font-weight:700;font-size:14px; }
+    .az-nav a.active { background:var(--blue);color:#fff; }
+    .az-nav a:not(.active) { background:#fff;color:var(--blue);border:1px solid var(--border); }
+    .az-nav a:not(.active):hover { background:var(--blue-light); }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/index.html" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="9" fill="#1a56db"/><path d="M24.5 8.5C25.3 9.3 25.3 10.6 24.5 11.4L19.8 16.1L22 25L19.5 27.5L16 19L11.5 23.5L12 26L10 28L8 24L4 22L6 20L8.5 20.5L13 16L5.5 12.5L8 10L17 12.2L21.6 7.5C22.4 6.7 23.7 6.7 24.5 8.5Z" fill="white"/></svg>
+    Airport<span>Code</span>
+  </a>
+  <div class="nav-search">
+    <svg width="14" height="14" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="navSearchInput" placeholder="Search airport or code…" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <div class="nav-links">
+    <a href="/az.html">A–Z</a>
+    <a href="/countries.html">By Country</a>
+  </div>
+</nav>
+<div style="max-width:1100px;margin:0 auto;padding:32px 24px">
+  <div style="margin-bottom:8px;font-size:12px;color:var(--muted)"><a href="/index.html" style="color:var(--blue);text-decoration:none">Home</a> › City Name › I</div>
+  <h1 style="font-size:28px;font-weight:800;color:var(--navy);margin-bottom:4px">Airports: City Name Starting With I</h1>
+  <p style="color:var(--muted);margin-bottom:16px">161 airports</p>
+  <div class="az-nav">
+    <a href="/az-city/a.html" class="">A</a><a href="/az-city/b.html" class="">B</a><a href="/az-city/c.html" class="">C</a><a href="/az-city/d.html" class="">D</a><a href="/az-city/e.html" class="">E</a><a href="/az-city/f.html" class="">F</a><a href="/az-city/g.html" class="">G</a><a href="/az-city/h.html" class="">H</a><a href="/az-city/i.html" class="active">I</a><a href="/az-city/j.html" class="">J</a><a href="/az-city/k.html" class="">K</a><a href="/az-city/l.html" class="">L</a><a href="/az-city/m.html" class="">M</a><a href="/az-city/n.html" class="">N</a><a href="/az-city/o.html" class="">O</a><a href="/az-city/p.html" class="">P</a><a href="/az-city/q.html" class="">Q</a><a href="/az-city/r.html" class="">R</a><a href="/az-city/s.html" class="">S</a><a href="/az-city/t.html" class="">T</a><a href="/az-city/u.html" class="">U</a><a href="/az-city/v.html" class="">V</a><a href="/az-city/w.html" class="">W</a><a href="/az-city/x.html" class="">X</a><a href="/az-city/y.html" class="">Y</a><a href="/az-city/z.html" class="">Z</a>
+  </div>
+  <table>
+    <thead><tr><th>IATA</th><th>Airport Name</th><th>City</th><th>Country</th></tr></thead>
+    <tbody>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/spn/index.html" style="color:var(--blue);text-decoration:none;">SPN</a></td>
+        <td style="padding:12px 16px;"><a href="/spn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Saipan International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">I Fadang, Saipan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇵 Kepulauan Mariana Utara</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cbd/index.html" style="color:var(--blue);text-decoration:none;">CBD</a></td>
+        <td style="padding:12px 16px;"><a href="/cbd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Car Nicobar Air Force Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">IAF Camp</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ial/index.html" style="color:var(--blue);text-decoration:none;">IAL</a></td>
+        <td style="padding:12px 16px;"><a href="/ial/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ialibu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ialibu</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ima/index.html" style="color:var(--blue);text-decoration:none;">IMA</a></td>
+        <td style="padding:12px 16px;"><a href="/ima/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Iamalele Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Iamalele, Fergusson Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ias/index.html" style="color:var(--blue);text-decoration:none;">IAS</a></td>
+        <td style="padding:12px 16px;"><a href="/ias/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Iaşi International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Iaşi</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇴 Romania</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iba/index.html" style="color:var(--blue);text-decoration:none;">IBA</a></td>
+        <td style="padding:12px 16px;"><a href="/iba/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ibadan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ibadan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇬 Nigeria</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ibe/index.html" style="color:var(--blue);text-decoration:none;">IBE</a></td>
+        <td style="padding:12px 16px;"><a href="/ibe/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Perales Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ibagué</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇴 Colombia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ibp/index.html" style="color:var(--blue);text-decoration:none;">IBP</a></td>
+        <td style="padding:12px 16px;"><a href="/ibp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Iberia Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Iberia</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇪 Peru</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ibz/index.html" style="color:var(--blue);text-decoration:none;">IBZ</a></td>
+        <td style="padding:12px 16px;"><a href="/ibz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ibiza Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ibiza (Eivissa)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇸 Sepanyol</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ibo/index.html" style="color:var(--blue);text-decoration:none;">IBO</a></td>
+        <td style="padding:12px 16px;"><a href="/ibo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ibo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ibo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇿 Mozambique</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ibi/index.html" style="color:var(--blue);text-decoration:none;">IBI</a></td>
+        <td style="padding:12px 16px;"><a href="/ibi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Iboki Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Iboki</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/icy/index.html" style="color:var(--blue);text-decoration:none;">ICY</a></td>
+        <td style="padding:12px 16px;"><a href="/icy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Icy Bay Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Icy Bay</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/idg/index.html" style="color:var(--blue);text-decoration:none;">IDG</a></td>
+        <td style="padding:12px 16px;"><a href="/idg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ida Grove Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ida Grove</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ida/index.html" style="color:var(--blue);text-decoration:none;">IDA</a></td>
+        <td style="padding:12px 16px;"><a href="/ida/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Idaho Falls Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Idaho Falls</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/idf/index.html" style="color:var(--blue);text-decoration:none;">IDF</a></td>
+        <td style="padding:12px 16px;"><a href="/idf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Idiofa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Idiofa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇩 Congo - Kinshasa</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/idb/index.html" style="color:var(--blue);text-decoration:none;">IDB</a></td>
+        <td style="padding:12px 16px;"><a href="/idb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Idre Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Idre</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇪 Sweden</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iej/index.html" style="color:var(--blue);text-decoration:none;">IEJ</a></td>
+        <td style="padding:12px 16px;"><a href="/iej/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Iejima Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ie</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇯🇵 Jepun</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ifu/index.html" style="color:var(--blue);text-decoration:none;">IFU</a></td>
+        <td style="padding:12px 16px;"><a href="/ifu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ifuru Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ifuru Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇻 Maldives</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iaa/index.html" style="color:var(--blue);text-decoration:none;">IAA</a></td>
+        <td style="padding:12px 16px;"><a href="/iaa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Igarka Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Igarka</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/igg/index.html" style="color:var(--blue);text-decoration:none;">IGG</a></td>
+        <td style="padding:12px 16px;"><a href="/igg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Igiugig Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Igiugig</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ygt/index.html" style="color:var(--blue);text-decoration:none;">YGT</a></td>
+        <td style="padding:12px 16px;"><a href="/ygt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Igloolik Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Igloolik</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zuc/index.html" style="color:var(--blue);text-decoration:none;">ZUC</a></td>
+        <td style="padding:12px 16px;"><a href="/zuc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ignace Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ignace</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/qig/index.html" style="color:var(--blue);text-decoration:none;">QIG</a></td>
+        <td style="padding:12px 16px;"><a href="/qig/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Iguatu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Iguatu</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ige/index.html" style="color:var(--blue);text-decoration:none;">IGE</a></td>
+        <td style="padding:12px 16px;"><a href="/ige/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tchongorove Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Iguela</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇦 Gabon</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iho/index.html" style="color:var(--blue);text-decoration:none;">IHO</a></td>
+        <td style="padding:12px 16px;"><a href="/iho/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ihosy Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ihosy</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇬 Madagaskar</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ihu/index.html" style="color:var(--blue);text-decoration:none;">IHU</a></td>
+        <td style="padding:12px 16px;"><a href="/ihu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ihu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ihu</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iju/index.html" style="color:var(--blue);text-decoration:none;">IJU</a></td>
+        <td style="padding:12px 16px;"><a href="/iju/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">João Batista Bos Filho Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ijuí</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ica/index.html" style="color:var(--blue);text-decoration:none;">ICA</a></td>
+        <td style="padding:12px 16px;"><a href="/ica/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ikabaru Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ikabarú</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇻🇪 Venezuela</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jik/index.html" style="color:var(--blue);text-decoration:none;">JIK</a></td>
+        <td style="padding:12px 16px;"><a href="/jik/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ikaria Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ikaria Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇷 Greece</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ikl/index.html" style="color:var(--blue);text-decoration:none;">IKL</a></td>
+        <td style="padding:12px 16px;"><a href="/ikl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ikela Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ikela</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇩 Congo - Kinshasa</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iki/index.html" style="color:var(--blue);text-decoration:none;">IKI</a></td>
+        <td style="padding:12px 16px;"><a href="/iki/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Iki Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Iki</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇯🇵 Jepun</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ila/index.html" style="color:var(--blue);text-decoration:none;">ILA</a></td>
+        <td style="padding:12px 16px;"><a href="/ila/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ilaga Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ilaga</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ilk/index.html" style="color:var(--blue);text-decoration:none;">ILK</a></td>
+        <td style="padding:12px 16px;"><a href="/ilk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Atsinanana Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ilaka</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇬 Madagaskar</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iil/index.html" style="color:var(--blue);text-decoration:none;">IIL</a></td>
+        <td style="padding:12px 16px;"><a href="/iil/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ilam Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ilam</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇷 Iran</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pfr/index.html" style="color:var(--blue);text-decoration:none;">PFR</a></td>
+        <td style="padding:12px 16px;"><a href="/pfr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ilebo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ilebo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇩 Congo - Kinshasa</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ilf/index.html" style="color:var(--blue);text-decoration:none;">ILF</a></td>
+        <td style="padding:12px 16px;"><a href="/ilf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ilford Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ilford</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ios/index.html" style="color:var(--blue);text-decoration:none;">IOS</a></td>
+        <td style="padding:12px 16px;"><a href="/ios/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bahia - Jorge Amado Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ilhéus</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yin/index.html" style="color:var(--blue);text-decoration:none;">YIN</a></td>
+        <td style="padding:12px 16px;"><a href="/yin/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ili Yining International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ili (Yining / Ghulja)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ili/index.html" style="color:var(--blue);text-decoration:none;">ILI</a></td>
+        <td style="padding:12px 16px;"><a href="/ili/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Iliamna Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Iliamna</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/skp/index.html" style="color:var(--blue);text-decoration:none;">SKP</a></td>
+        <td style="padding:12px 16px;"><a href="/skp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Skopje International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ilinden</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇰 Macedonia Utara</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vvz/index.html" style="color:var(--blue);text-decoration:none;">VVZ</a></td>
+        <td style="padding:12px 16px;"><a href="/vvz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Illizi Takhamalt Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Illizi</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇿 Algeria</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ilq/index.html" style="color:var(--blue);text-decoration:none;">ILQ</a></td>
+        <td style="padding:12px 16px;"><a href="/ilq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">General Jorge Fernandez Maldon Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ilo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇪 Peru</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ilr/index.html" style="color:var(--blue);text-decoration:none;">ILR</a></td>
+        <td style="padding:12px 16px;"><a href="/ilr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">General Tunde Idiagbon International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ilorin/Ogbomosho</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇬 Nigeria</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iul/index.html" style="color:var(--blue);text-decoration:none;">IUL</a></td>
+        <td style="padding:12px 16px;"><a href="/iul/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ilu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ilu</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jav/index.html" style="color:var(--blue);text-decoration:none;">JAV</a></td>
+        <td style="padding:12px 16px;"><a href="/jav/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ilulissat Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ilulissat</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇱 Greenland</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iaq/index.html" style="color:var(--blue);text-decoration:none;">IAQ</a></td>
+        <td style="padding:12px 16px;"><a href="/iaq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bahregan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Imam Hassan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇷 Iran</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/imn/index.html" style="color:var(--blue);text-decoration:none;">IMN</a></td>
+        <td style="padding:12px 16px;"><a href="/imn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Imane Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Imane</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/imb/index.html" style="color:var(--blue);text-decoration:none;">IMB</a></td>
+        <td style="padding:12px 16px;"><a href="/imb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Imbaimadai Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Imbaimadai</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇾 Guyana</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/imm/index.html" style="color:var(--blue);text-decoration:none;">IMM</a></td>
+        <td style="padding:12px 16px;"><a href="/imm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Immokalee Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Immokalee</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/imd/index.html" style="color:var(--blue);text-decoration:none;">IMD</a></td>
+        <td style="padding:12px 16px;"><a href="/imd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Imonda Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Imonda</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/imp/index.html" style="color:var(--blue);text-decoration:none;">IMP</a></td>
+        <td style="padding:12px 16px;"><a href="/imp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Prefeito Renato Moreira Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Imperatriz</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iml/index.html" style="color:var(--blue);text-decoration:none;">IML</a></td>
+        <td style="padding:12px 16px;"><a href="/iml/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Imperial Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Imperial</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ipl/index.html" style="color:var(--blue);text-decoration:none;">IPL</a></td>
+        <td style="padding:12px 16px;"><a href="/ipl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Imperial County Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Imperial</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nrs/index.html" style="color:var(--blue);text-decoration:none;">NRS</a></td>
+        <td style="padding:12px 16px;"><a href="/nrs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Naval Outlying Field Imperial Beach (Ream Field)</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Imperial Beach</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ion/index.html" style="color:var(--blue);text-decoration:none;">ION</a></td>
+        <td style="padding:12px 16px;"><a href="/ion/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Impfondo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Impfondo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇬 Congo - Brazzaville</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/imf/index.html" style="color:var(--blue);text-decoration:none;">IMF</a></td>
+        <td style="padding:12px 16px;"><a href="/imf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bir Tikendrajit International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Imphal</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iam/index.html" style="color:var(--blue);text-decoration:none;">IAM</a></td>
+        <td style="padding:12px 16px;"><a href="/iam/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Zarzaitine - In Aménas Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">In Aménas</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇿 Algeria</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/inf/index.html" style="color:var(--blue);text-decoration:none;">INF</a></td>
+        <td style="padding:12px 16px;"><a href="/inf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">In Guezzam Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">In Guezzam</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇿 Algeria</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/inz/index.html" style="color:var(--blue);text-decoration:none;">INZ</a></td>
+        <td style="padding:12px 16px;"><a href="/inz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">In Salah Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">In Salah</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇿 Algeria</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/inx/index.html" style="color:var(--blue);text-decoration:none;">INX</a></td>
+        <td style="padding:12px 16px;"><a href="/inx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Inanwatan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Inanwatan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/idn/index.html" style="color:var(--blue);text-decoration:none;">IDN</a></td>
+        <td style="padding:12px 16px;"><a href="/idn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Indagen Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Indagen</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/idp/index.html" style="color:var(--blue);text-decoration:none;">IDP</a></td>
+        <td style="padding:12px 16px;"><a href="/idp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Independence Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Independence</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/inb/index.html" style="color:var(--blue);text-decoration:none;">INB</a></td>
+        <td style="padding:12px 16px;"><a href="/inb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Independence Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Independence</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇿 Belize</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ins/index.html" style="color:var(--blue);text-decoration:none;">INS</a></td>
+        <td style="padding:12px 16px;"><a href="/ins/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Creech Air Force Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Indian Springs</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/idi/index.html" style="color:var(--blue);text-decoration:none;">IDI</a></td>
+        <td style="padding:12px 16px;"><a href="/idi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Indiana County–Jimmy Stewart Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Indiana</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ind/index.html" style="color:var(--blue);text-decoration:none;">IND</a></td>
+        <td style="padding:12px 16px;"><a href="/ind/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Indianapolis International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Indianapolis</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/idr/index.html" style="color:var(--blue);text-decoration:none;">IDR</a></td>
+        <td style="padding:12px 16px;"><a href="/idr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Devi Ahilya Bai Holkar International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Indore</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/idk/index.html" style="color:var(--blue);text-decoration:none;">IDK</a></td>
+        <td style="padding:12px 16px;"><a href="/idk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Indulkana Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Indulkana</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/igb/index.html" style="color:var(--blue);text-decoration:none;">IGB</a></td>
+        <td style="padding:12px 16px;"><a href="/igb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ingeniero Jacobacci - Captain H R Bordón Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ingeniero Jacobacci</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇷 Argentina</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ihc/index.html" style="color:var(--blue);text-decoration:none;">IHC</a></td>
+        <td style="padding:12px 16px;"><a href="/ihc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Inhaca Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Inhaca</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇿 Mozambique</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/inh/index.html" style="color:var(--blue);text-decoration:none;">INH</a></td>
+        <td style="padding:12px 16px;"><a href="/inh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Inhambane Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Inhambane</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇿 Mozambique</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/img/index.html" style="color:var(--blue);text-decoration:none;">IMG</a></td>
+        <td style="padding:12px 16px;"><a href="/img/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Inhaminga Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Inhaminga</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇿 Mozambique</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iia/index.html" style="color:var(--blue);text-decoration:none;">IIA</a></td>
+        <td style="padding:12px 16px;"><a href="/iia/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Inishmaan Aerodrome</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Inis Meáin</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇪 Ireland</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ior/index.html" style="color:var(--blue);text-decoration:none;">IOR</a></td>
+        <td style="padding:12px 16px;"><a href="/ior/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Inishmore Aerodrome</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Inis Mór</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇪 Ireland</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/inq/index.html" style="color:var(--blue);text-decoration:none;">INQ</a></td>
+        <td style="padding:12px 16px;"><a href="/inq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Inisheer Aerodrome</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Inis Oírr</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇪 Ireland</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/inj/index.html" style="color:var(--blue);text-decoration:none;">INJ</a></td>
+        <td style="padding:12px 16px;"><a href="/inj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Injune Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Injune</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ikp/index.html" style="color:var(--blue);text-decoration:none;">IKP</a></td>
+        <td style="padding:12px 16px;"><a href="/ikp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Inkerman Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Inkerman</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/inn/index.html" style="color:var(--blue);text-decoration:none;">INN</a></td>
+        <td style="padding:12px 16px;"><a href="/inn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Innsbruck Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Innsbruck</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇹 Austria</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ino/index.html" style="color:var(--blue);text-decoration:none;">INO</a></td>
+        <td style="padding:12px 16px;"><a href="/ino/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Inongo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Inongo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇩 Congo - Kinshasa</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ina/index.html" style="color:var(--blue);text-decoration:none;">INA</a></td>
+        <td style="padding:12px 16px;"><a href="/ina/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Inta Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Inta</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/inl/index.html" style="color:var(--blue);text-decoration:none;">INL</a></td>
+        <td style="padding:12px 16px;"><a href="/inl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Falls International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">International Falls</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yph/index.html" style="color:var(--blue);text-decoration:none;">YPH</a></td>
+        <td style="padding:12px 16px;"><a href="/yph/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Inukjuak Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Inukjuak</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yev/index.html" style="color:var(--blue);text-decoration:none;">YEV</a></td>
+        <td style="padding:12px 16px;"><a href="/yev/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Inuvik Mike Zubko Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Inuvik</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ivc/index.html" style="color:var(--blue);text-decoration:none;">IVC</a></td>
+        <td style="padding:12px 16px;"><a href="/ivc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Invercargill Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Invercargill</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇿 New Zealand</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ivr/index.html" style="color:var(--blue);text-decoration:none;">IVR</a></td>
+        <td style="padding:12px 16px;"><a href="/ivr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Inverell Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Inverell</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nnr/index.html" style="color:var(--blue);text-decoration:none;">NNR</a></td>
+        <td style="padding:12px 16px;"><a href="/nnr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Connemara Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Inverin</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇪 Ireland</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/inv/index.html" style="color:var(--blue);text-decoration:none;">INV</a></td>
+        <td style="padding:12px 16px;"><a href="/inv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Inverness Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Inverness</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇧 UK</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ivw/index.html" style="color:var(--blue);text-decoration:none;">IVW</a></td>
+        <td style="padding:12px 16px;"><a href="/ivw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Inverway Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Inverway</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iny/index.html" style="color:var(--blue);text-decoration:none;">INY</a></td>
+        <td style="padding:12px 16px;"><a href="/iny/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Inyati Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Inyati</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇿🇦 Afrika Selatan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iyk/index.html" style="color:var(--blue);text-decoration:none;">IYK</a></td>
+        <td style="padding:12px 16px;"><a href="/iyk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Inyokern Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Inyokern</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ioa/index.html" style="color:var(--blue);text-decoration:none;">IOA</a></td>
+        <td style="padding:12px 16px;"><a href="/ioa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ioannina King Pyrrhus National Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ioannina</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇷 Greece</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iok/index.html" style="color:var(--blue);text-decoration:none;">IOK</a></td>
+        <td style="padding:12px 16px;"><a href="/iok/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Iokea Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Iokea</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iop/index.html" style="color:var(--blue);text-decoration:none;">IOP</a></td>
+        <td style="padding:12px 16px;"><a href="/iop/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ioma Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ioma</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iow/index.html" style="color:var(--blue);text-decoration:none;">IOW</a></td>
+        <td style="padding:12px 16px;"><a href="/iow/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Iowa City Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Iowa City</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ifa/index.html" style="color:var(--blue);text-decoration:none;">IFA</a></td>
+        <td style="padding:12px 16px;"><a href="/ifa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Iowa Falls Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Iowa Falls</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ipn/index.html" style="color:var(--blue);text-decoration:none;">IPN</a></td>
+        <td style="padding:12px 16px;"><a href="/ipn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Usiminas Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ipatinga</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ipi/index.html" style="color:var(--blue);text-decoration:none;">IPI</a></td>
+        <td style="padding:12px 16px;"><a href="/ipi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">San Luis Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ipiales</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇴 Colombia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ipu/index.html" style="color:var(--blue);text-decoration:none;">IPU</a></td>
+        <td style="padding:12px 16px;"><a href="/ipu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ipiaú Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ipiaú</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ipe/index.html" style="color:var(--blue);text-decoration:none;">IPE</a></td>
+        <td style="padding:12px 16px;"><a href="/ipe/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ipil Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ipil</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇭 Filipina</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iph/index.html" style="color:var(--blue);text-decoration:none;">IPH</a></td>
+        <td style="padding:12px 16px;"><a href="/iph/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Sultan Azlan Shah Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ipoh</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇾 Malaysia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ipa/index.html" style="color:var(--blue);text-decoration:none;">IPA</a></td>
+        <td style="padding:12px 16px;"><a href="/ipa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ipota Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ipota</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇻🇺 Vanuatu</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yfb/index.html" style="color:var(--blue);text-decoration:none;">YFB</a></td>
+        <td style="padding:12px 16px;"><a href="/yfb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Iqaluit Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Iqaluit</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iqq/index.html" style="color:var(--blue);text-decoration:none;">IQQ</a></td>
+        <td style="padding:12px 16px;"><a href="/iqq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Diego Aracena International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Iquique</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇱 Chile</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iqt/index.html" style="color:var(--blue);text-decoration:none;">IQT</a></td>
+        <td style="padding:12px 16px;"><a href="/iqt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Coronel FAP Francisco Secada Vignetta International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Iquitos</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇪 Peru</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/irb/index.html" style="color:var(--blue);text-decoration:none;">IRB</a></td>
+        <td style="padding:12px 16px;"><a href="/irb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Iraan Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Iraan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ihr/index.html" style="color:var(--blue);text-decoration:none;">IHR</a></td>
+        <td style="padding:12px 16px;"><a href="/ihr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Iranshahr Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Iranshahr</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇷 Iran</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ire/index.html" style="color:var(--blue);text-decoration:none;">IRE</a></td>
+        <td style="padding:12px 16px;"><a href="/ire/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Irecê Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Irecê</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/irn/index.html" style="color:var(--blue);text-decoration:none;">IRN</a></td>
+        <td style="padding:12px 16px;"><a href="/irn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Iriona Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Iriona</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇭🇳 Honduras</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ikt/index.html" style="color:var(--blue);text-decoration:none;">IKT</a></td>
+        <td style="padding:12px 16px;"><a href="/ikt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Irkutsk International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Irkutsk</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pea/index.html" style="color:var(--blue);text-decoration:none;">PEA</a></td>
+        <td style="padding:12px 16px;"><a href="/pea/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Penneshaw Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ironstone</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iwd/index.html" style="color:var(--blue);text-decoration:none;">IWD</a></td>
+        <td style="padding:12px 16px;"><a href="/iwd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Gogebic Iron County Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ironwood</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rlr/index.html" style="color:var(--blue);text-decoration:none;">RLR</a></td>
+        <td style="padding:12px 16px;"><a href="/rlr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Relais de la Reine Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Isalo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇬 Madagaskar</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/isd/index.html" style="color:var(--blue);text-decoration:none;">ISD</a></td>
+        <td style="padding:12px 16px;"><a href="/isd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Santa Bárbara Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Iscuandé</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇴 Colombia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ifn/index.html" style="color:var(--blue);text-decoration:none;">IFN</a></td>
+        <td style="padding:12px 16px;"><a href="/ifn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Isfahan Shahid Beheshti International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Isfahan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇷 Iran</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/isg/index.html" style="color:var(--blue);text-decoration:none;">ISG</a></td>
+        <td style="padding:12px 16px;"><a href="/isg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">New Ishigaki Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ishigaki</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇯🇵 Jepun</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ird/index.html" style="color:var(--blue);text-decoration:none;">IRD</a></td>
+        <td style="padding:12px 16px;"><a href="/ird/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ishurdi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ishurdi</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇩 Bangladesh</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uas/index.html" style="color:var(--blue);text-decoration:none;">UAS</a></td>
+        <td style="padding:12px 16px;"><a href="/uas/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Samburu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Isiolo West</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇰🇪 Kenya</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/irp/index.html" style="color:var(--blue);text-decoration:none;">IRP</a></td>
+        <td style="padding:12px 16px;"><a href="/irp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Matari Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Isiro</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇩 Congo - Kinshasa</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cms/index.html" style="color:var(--blue);text-decoration:none;">CMS</a></td>
+        <td style="padding:12px 16px;"><a href="/cms/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Iskushuban Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Iskushuban</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇴 Somalia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gps/index.html" style="color:var(--blue);text-decoration:none;">GPS</a></td>
+        <td style="padding:12px 16px;"><a href="/gps/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Seymour Galapagos Ecological Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Isla Baltra</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇨 Ecuador</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/boc/index.html" style="color:var(--blue);text-decoration:none;">BOC</a></td>
+        <td style="padding:12px 16px;"><a href="/boc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Bocas del Toro &quot;Isla Colón&quot; International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Isla Colón</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇦 Panama</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ipc/index.html" style="color:var(--blue);text-decoration:none;">IPC</a></td>
+        <td style="padding:12px 16px;"><a href="/ipc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Mataveri International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Isla De Pascua</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇱 Chile</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ail/index.html" style="color:var(--blue);text-decoration:none;">AIL</a></td>
+        <td style="padding:12px 16px;"><a href="/ail/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ailigandí Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Isla Lorenzo Bello</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇦 Panama</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pmv/index.html" style="color:var(--blue);text-decoration:none;">PMV</a></td>
+        <td style="padding:12px 16px;"><a href="/pmv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Del Caribe Santiago Mariño International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Isla Margarita</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇻🇪 Venezuela</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/isj/index.html" style="color:var(--blue);text-decoration:none;">ISJ</a></td>
+        <td style="padding:12px 16px;"><a href="/isj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Isla Mujeres National Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Isla Mujeres</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇽 Mexico</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ivi/index.html" style="color:var(--blue);text-decoration:none;">IVI</a></td>
+        <td style="padding:12px 16px;"><a href="/ivi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Viveros Island Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Isla Viveros</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇦 Panama</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/icc/index.html" style="color:var(--blue);text-decoration:none;">ICC</a></td>
+        <td style="padding:12px 16px;"><a href="/icc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Andrés Miguel Salazar Marcano Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Isla de Coche</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇻🇪 Venezuela</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/szj/index.html" style="color:var(--blue);text-decoration:none;">SZJ</a></td>
+        <td style="padding:12px 16px;"><a href="/szj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Siguanea Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Isla de la Juventud</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇺 Cuba</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nmg/index.html" style="color:var(--blue);text-decoration:none;">NMG</a></td>
+        <td style="padding:12px 16px;"><a href="/nmg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">San Miguel Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Isla del Rey</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇦 Panama</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yiv/index.html" style="color:var(--blue);text-decoration:none;">YIV</a></td>
+        <td style="padding:12px 16px;"><a href="/yiv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Island Lake Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Island Lake</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ily/index.html" style="color:var(--blue);text-decoration:none;">ILY</a></td>
+        <td style="padding:12px 16px;"><a href="/ily/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Islay Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Isle of Islay, Argyll and Bute</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇧 UK</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/isp/index.html" style="color:var(--blue);text-decoration:none;">ISP</a></td>
+        <td style="padding:12px 16px;"><a href="/isp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Long Island MacArthur Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Islip</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/crv/index.html" style="color:var(--blue);text-decoration:none;">CRV</a></td>
+        <td style="padding:12px 16px;"><a href="/crv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Crotone Sant'Anna Pythagoras Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Isola di Capo Rizzuto (KR)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇹 Itali</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ise/index.html" style="color:var(--blue);text-decoration:none;">ISE</a></td>
+        <td style="padding:12px 16px;"><a href="/ise/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Süleyman Demirel International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Isparta</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇷 Turkiye</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ist/index.html" style="color:var(--blue);text-decoration:none;">IST</a></td>
+        <td style="padding:12px 16px;"><a href="/ist/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">İstanbul Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Istanbul</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇷 Turkiye</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/isl/index.html" style="color:var(--blue);text-decoration:none;">ISL</a></td>
+        <td style="padding:12px 16px;"><a href="/isl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">İstanbul Atatürk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Istanbul(Bakırköy)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇷 Turkiye</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/itn/index.html" style="color:var(--blue);text-decoration:none;">ITN</a></td>
+        <td style="padding:12px 16px;"><a href="/itn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Tertuliano Guedes de Pinho Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Itabuna</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ita/index.html" style="color:var(--blue);text-decoration:none;">ITA</a></td>
+        <td style="padding:12px 16px;"><a href="/ita/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Itacoatiara Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Itacoatiara</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/itb/index.html" style="color:var(--blue);text-decoration:none;">ITB</a></td>
+        <td style="padding:12px 16px;"><a href="/itb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Itaituba Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Itaituba</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/itj/index.html" style="color:var(--blue);text-decoration:none;">ITJ</a></td>
+        <td style="padding:12px 16px;"><a href="/itj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Campo Comandantes Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Itajaí</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iti/index.html" style="color:var(--blue);text-decoration:none;">ITI</a></td>
+        <td style="padding:12px 16px;"><a href="/iti/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fazenda Americana Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Itambacuri</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jtn/index.html" style="color:var(--blue);text-decoration:none;">JTN</a></td>
+        <td style="padding:12px 16px;"><a href="/jtn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Itanhaém Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Itanhaém</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/itp/index.html" style="color:var(--blue);text-decoration:none;">ITP</a></td>
+        <td style="padding:12px 16px;"><a href="/itp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Itaperuna Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Itaperuna</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/qit/index.html" style="color:var(--blue);text-decoration:none;">QIT</a></td>
+        <td style="padding:12px 16px;"><a href="/qit/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Itapetinga Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Itapetinga</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/itq/index.html" style="color:var(--blue);text-decoration:none;">ITQ</a></td>
+        <td style="padding:12px 16px;"><a href="/itq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Itaqui Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Itaqui</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bvk/index.html" style="color:var(--blue);text-decoration:none;">BVK</a></td>
+        <td style="padding:12px 16px;"><a href="/bvk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Huacaraje Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Itenes</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇴 Bolivia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ith/index.html" style="color:var(--blue);text-decoration:none;">ITH</a></td>
+        <td style="padding:12px 16px;"><a href="/ith/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ithaca Tompkins Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ithaca</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/itk/index.html" style="color:var(--blue);text-decoration:none;">ITK</a></td>
+        <td style="padding:12px 16px;"><a href="/itk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Itokama Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Itokama</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ite/index.html" style="color:var(--blue);text-decoration:none;">ITE</a></td>
+        <td style="padding:12px 16px;"><a href="/ite/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ituberá Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ituberá</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/itr/index.html" style="color:var(--blue);text-decoration:none;">ITR</a></td>
+        <td style="padding:12px 16px;"><a href="/itr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Francisco Vilela do Amaral Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Itumbiara</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ivl/index.html" style="color:var(--blue);text-decoration:none;">IVL</a></td>
+        <td style="padding:12px 16px;"><a href="/ivl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ivalo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ivalo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇮 Finland</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ifo/index.html" style="color:var(--blue);text-decoration:none;">IFO</a></td>
+        <td style="padding:12px 16px;"><a href="/ifo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ivano-Frankivsk International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ivano-Frankivsk</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇦 Ukraine</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iwa/index.html" style="color:var(--blue);text-decoration:none;">IWA</a></td>
+        <td style="padding:12px 16px;"><a href="/iwa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ivanovo South Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ivanovo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yik/index.html" style="color:var(--blue);text-decoration:none;">YIK</a></td>
+        <td style="padding:12px 16px;"><a href="/yik/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ivujivik Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ivujivik</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iwk/index.html" style="color:var(--blue);text-decoration:none;">IWK</a></td>
+        <td style="padding:12px 16px;"><a href="/iwk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Iwakuni Kintaikyo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Iwakuni</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇯🇵 Jepun</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zih/index.html" style="color:var(--blue);text-decoration:none;">ZIH</a></td>
+        <td style="padding:12px 16px;"><a href="/zih/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ixtapa-Zihuatanejo International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ixtapa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇽 Mexico</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/izt/index.html" style="color:var(--blue);text-decoration:none;">IZT</a></td>
+        <td style="padding:12px 16px;"><a href="/izt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">General Antonio Cárdenas Rodríguez National Airport / Ixtepec Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ixtepec</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇽 Mexico</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ijk/index.html" style="color:var(--blue);text-decoration:none;">IJK</a></td>
+        <td style="padding:12px 16px;"><a href="/ijk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Izhevsk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Izhevsk</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/oim/index.html" style="color:var(--blue);text-decoration:none;">OIM</a></td>
+        <td style="padding:12px 16px;"><a href="/oim/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Oshima Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Izu Oshima</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇯🇵 Jepun</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/izo/index.html" style="color:var(--blue);text-decoration:none;">IZO</a></td>
+        <td style="padding:12px 16px;"><a href="/izo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Izumo Enmusubi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Izumo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇯🇵 Jepun</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/igd/index.html" style="color:var(--blue);text-decoration:none;">IGD</a></td>
+        <td style="padding:12px 16px;"><a href="/igd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Iğdır Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Iğdır</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇷 Turkiye</td>
+      </tr></tbody>
+  </table>
+</div>
+<footer>
+  <div style="margin-bottom:10px">
+    <a href="/az.html">A–Z Index</a>
+    <a href="/countries.html">By Country</a>
+    <a href="/about.html">About</a>
+  </div>
+  <div>© 2025 airport-code.com · Data sourced from OurAirports &amp; Open-Meteo · <a href="https://ourairports.com">OurAirports</a></div>
+</footer>
+
+<script>
+(function(){
+  let db = null;
+  const input = document.getElementById('navSearchInput');
+  const results = document.getElementById('search-results');
+  if (!input) return;
+
+  async function loadDB() {
+    if (db) return;
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    const r = await fetch(root + 'airports.json');
+    db = await r.json();
+  }
+
+  input.addEventListener('focus', loadDB);
+  input.addEventListener('input', async function() {
+    const q = this.value.trim().toUpperCase();
+    if (q.length < 2) { results.style.display = 'none'; return; }
+    await loadDB();
+    const matches = db.filter(a =>
+      a.iata.startsWith(q) ||
+      a.name.toUpperCase().includes(q) ||
+      a.city.toUpperCase().includes(q)
+    ).slice(0, 7);
+    if (!matches.length) { results.style.display = 'none'; return; }
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    results.innerHTML = matches.map(a =>
+      `<a href="${root}${a.iata.toLowerCase()}/index.html">
+        <span class="sr-code">${a.iata}</span>
+        <div><div class="sr-name">${a.name}</div><div class="sr-city">${a.city}, ${a.country}</div></div>
+      </a>`
+    ).join('');
+    results.style.display = 'block';
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!input.contains(e.target) && !results.contains(e.target)) results.style.display = 'none';
+  });
+})();
+</script>
+
+</body>
+</html>

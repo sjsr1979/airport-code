@@ -1,0 +1,1531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="site-root" content="/">
+  <title>Airports with Airport Name Starting With F | Airport Code</title>
+  <meta name="description" content="All airports with airport name starting with F. Browse 220 airports.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0f1f3d;
+      --blue: #1a56db;
+      --blue-light: #e8f0fe;
+      --sky: #38bdf8;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --green: #10b981;
+    }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; zoom: 1.12; }
+    nav { background: var(--navy); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { color: #fff; font-size: 19px; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; display: flex; align-items: center; gap: 10px; line-height: 1; }
+    .nav-logo svg { flex-shrink: 0; }
+    .nav-logo span { color: var(--sky); }
+    .nav-search { display: flex; align-items: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 6px 14px; gap: 8px; width: 280px; position: relative; }
+    .nav-search input { background: none; border: none; outline: none; color: #fff; font-size: 14px; width: 100%; font-family: 'Outfit', sans-serif; }
+    .nav-search input::placeholder { color: rgba(255,255,255,0.4); }
+    #search-results { position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: #fff; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 200; overflow: hidden; display: none; }
+    #search-results a { display: flex; align-items: center; gap: 10px; padding: 10px 14px; text-decoration: none; color: var(--text); font-size: 13px; border-bottom: 1px solid var(--border); transition: background 0.15s; }
+    #search-results a:last-child { border-bottom: none; }
+    #search-results a:hover { background: var(--bg); }
+    #search-results .sr-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 12px; padding: 2px 7px; border-radius: 5px; min-width: 38px; text-align: center; }
+    #search-results .sr-name { font-weight: 600; }
+    #search-results .sr-city { color: var(--muted); font-size: 11px; }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .hero { background: linear-gradient(135deg, var(--navy) 0%, #1a3a6b 100%); color: #fff; padding: 48px 0 56px; position: relative; overflow: hidden; }
+    .hero::before { content: '✈'; position: absolute; right: -20px; top: -20px; font-size: 220px; opacity: 0.04; transform: rotate(25deg); }
+    .hero-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .breadcrumb { font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 20px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .breadcrumb a:hover { color: rgba(255,255,255,0.8); }
+    .breadcrumb span.sep { color: rgba(255,255,255,0.3); }
+    .hero-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .hero-title { display: flex; align-items: flex-start; gap: 24px; }
+    .iata-badge { background: var(--blue); border: 2px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 14px 20px; text-align: center; min-width: 100px; flex-shrink: 0; }
+    .iata-badge .code { font-size: 40px; font-weight: 800; letter-spacing: 2px; color: #fff; line-height: 1; }
+    .iata-badge .label { font-size: 10px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
+    .hero-name { padding-top: 4px; }
+    .hero-name h1 { font-size: 38px; font-weight: 800; line-height: 1.1; color: #fff; }
+    .hero-name .location { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.65); font-size: 15px; margin-top: 6px; }
+    .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+    .badge { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.3px; }
+    .badge-large { background: rgba(16,185,129,0.2); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
+    .badge-medium { background: rgba(56,189,248,0.15); color: #7dd3fc; border: 1px solid rgba(56,189,248,0.3); }
+    .badge-small { background: rgba(245,158,11,0.15); color: #fcd34d; border: 1px solid rgba(245,158,11,0.3); }
+    .hero-stats { display: flex; gap: 32px; margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
+    .hero-stat .value { font-size: 22px; font-weight: 700; color: #fff; }
+    .hero-stat .label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
+    .time-widget { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 16px 20px; text-align: center; min-width: 160px; }
+    .time-widget .time-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+    .time-widget .time-value { font-size: 28px; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+    .time-widget .time-tz { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+    .main { max-width: 1100px; margin: 0 auto; padding: 32px 24px; display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
+    @media (max-width: 768px) { .main { grid-template-columns: 1fr; } .hero-name h1 { font-size: 26px; } .nav-links { display: none; } .nav-search { width: 200px; } }
+    .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .card-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .card-header h2 { font-size: 14px; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.5px; }
+    .card-body { padding: 20px; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .info-item { padding: 14px 16px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+    .info-item:nth-child(even) { border-right: none; }
+    .info-item:nth-last-child(-n+2) { border-bottom: none; }
+    .info-item .key { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px; }
+    .info-item .val { font-size: 15px; font-weight: 600; color: var(--text); }
+    .info-item .val a { color: var(--blue); text-decoration: none; }
+    .info-item .val a:hover { text-decoration: underline; }
+    .weather-widget { display: flex; align-items: center; gap: 20px; padding: 16px; background: linear-gradient(135deg, #e0f2fe, #f0f9ff); border-radius: 10px; margin-bottom: 16px; min-height: 100px; }
+    .weather-icon { font-size: 48px; line-height: 1; }
+    .weather-main .temp { font-size: 32px; font-weight: 700; color: var(--text); }
+    .weather-main .desc { font-size: 14px; color: var(--muted); text-transform: capitalize; }
+    .weather-details { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .weather-detail { font-size: 13px; color: var(--muted); }
+    .weather-detail strong { color: var(--text); font-weight: 600; }
+    .nearby-list { list-style: none; }
+    .nearby-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .nearby-item:last-child { border-bottom: none; }
+    .nearby-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 13px; padding: 3px 8px; border-radius: 6px; min-width: 44px; text-align: center; text-decoration: none; }
+    .nearby-code:hover { background: #ccdcfb; }
+    .nearby-info { flex: 1; margin: 0 12px; }
+    .nearby-info .name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .nearby-info .city { font-size: 11px; color: var(--muted); }
+    .nearby-dist { font-size: 12px; color: var(--muted); white-space: nowrap; }
+    .carbon-form { display: flex; flex-direction: column; gap: 12px; }
+    .carbon-form label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .carbon-form input, .carbon-form select { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-family: 'Outfit', sans-serif; color: var(--text); outline: none; transition: border-color 0.2s; }
+    .carbon-form input:focus, .carbon-form select:focus { border-color: var(--blue); }
+    .carbon-btn { background: var(--blue); color: #fff; border: none; padding: 11px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Outfit', sans-serif; transition: background 0.2s; }
+    .carbon-btn:hover { background: #1447c0; }
+    .carbon-result { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px; text-align: center; display: none; }
+    .carbon-result .co2 { font-size: 24px; font-weight: 800; color: var(--green); }
+    .carbon-result .co2-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .sidebar-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .sidebar-card .card-header { padding: 14px 16px; }
+    .sidebar-card .card-body { padding: 16px; }
+    .codes-display { display: flex; gap: 12px; }
+    .code-box { flex: 1; text-align: center; padding: 16px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; }
+    .code-box .code-val { font-size: 28px; font-weight: 800; color: var(--navy); letter-spacing: 1px; }
+    .code-box .code-type { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; }
+    footer { background: var(--navy); color: rgba(255,255,255,0.5); text-align: center; padding: 24px; font-size: 13px; margin-top: 40px; }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; margin: 0 12px; }
+    footer a:hover { color: #fff; }
+
+    table { width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden; }
+    thead th { padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid var(--border);background:#f8fafc; }
+    tbody tr { border-bottom:1px solid #f5f5f5; }
+    tbody tr:last-child { border-bottom:none; }
+    tbody tr:hover { background:#fafbfc; }
+    .az-nav { display:flex; gap:6px; flex-wrap:wrap; padding:20px 0; }
+    .az-nav a { display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:6px;text-decoration:none;font-weight:700;font-size:14px; }
+    .az-nav a.active { background:var(--blue);color:#fff; }
+    .az-nav a:not(.active) { background:#fff;color:var(--blue);border:1px solid var(--border); }
+    .az-nav a:not(.active):hover { background:var(--blue-light); }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/index.html" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="9" fill="#1a56db"/><path d="M24.5 8.5C25.3 9.3 25.3 10.6 24.5 11.4L19.8 16.1L22 25L19.5 27.5L16 19L11.5 23.5L12 26L10 28L8 24L4 22L6 20L8.5 20.5L13 16L5.5 12.5L8 10L17 12.2L21.6 7.5C22.4 6.7 23.7 6.7 24.5 8.5Z" fill="white"/></svg>
+    Airport<span>Code</span>
+  </a>
+  <div class="nav-search">
+    <svg width="14" height="14" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="navSearchInput" placeholder="Search airport or code…" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <div class="nav-links">
+    <a href="/az.html">A–Z</a>
+    <a href="/countries.html">By Country</a>
+  </div>
+</nav>
+<div style="max-width:1100px;margin:0 auto;padding:32px 24px">
+  <div style="margin-bottom:8px;font-size:12px;color:var(--muted)"><a href="/index.html" style="color:var(--blue);text-decoration:none">Home</a> › Airport Name › F</div>
+  <h1 style="font-size:28px;font-weight:800;color:var(--navy);margin-bottom:4px">Airports: Airport Name Starting With F</h1>
+  <p style="color:var(--muted);margin-bottom:16px">220 airports</p>
+  <div class="az-nav">
+    <a href="/az-name/a.html" class="">A</a><a href="/az-name/b.html" class="">B</a><a href="/az-name/c.html" class="">C</a><a href="/az-name/d.html" class="">D</a><a href="/az-name/e.html" class="">E</a><a href="/az-name/f.html" class="active">F</a><a href="/az-name/g.html" class="">G</a><a href="/az-name/h.html" class="">H</a><a href="/az-name/i.html" class="">I</a><a href="/az-name/j.html" class="">J</a><a href="/az-name/k.html" class="">K</a><a href="/az-name/l.html" class="">L</a><a href="/az-name/m.html" class="">M</a><a href="/az-name/n.html" class="">N</a><a href="/az-name/o.html" class="">O</a><a href="/az-name/p.html" class="">P</a><a href="/az-name/q.html" class="">Q</a><a href="/az-name/r.html" class="">R</a><a href="/az-name/s.html" class="">S</a><a href="/az-name/t.html" class="">T</a><a href="/az-name/u.html" class="">U</a><a href="/az-name/v.html" class="">V</a><a href="/az-name/w.html" class="">W</a><a href="/az-name/x.html" class="">X</a><a href="/az-name/y.html" class="">Y</a><a href="/az-name/z.html" class="">Z</a>
+  </div>
+  <table>
+    <thead><tr><th>IATA</th><th>Airport Name</th><th>City</th><th>Country</th></tr></thead>
+    <tbody>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eux/index.html" style="color:var(--blue);text-decoration:none;">EUX</a></td>
+        <td style="padding:12px 16px;"><a href="/eux/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">F. D. Roosevelt Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Oranjestad</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇶 Caribbean Netherlands</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/grx/index.html" style="color:var(--blue);text-decoration:none;">GRX</a></td>
+        <td style="padding:12px 16px;"><a href="/grx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">F.G.L. Airport Granada-Jaén Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Granada</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇸 Sepanyol</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/chm/index.html" style="color:var(--blue);text-decoration:none;">CHM</a></td>
+        <td style="padding:12px 16px;"><a href="/chm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">FAP Lieutenant Jaime Andres de Montreuil Morales Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Chimbote</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇪 Peru</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ppt/index.html" style="color:var(--blue);text-decoration:none;">PPT</a></td>
+        <td style="padding:12px 16px;"><a href="/ppt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fa'a'ā International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Papeete</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇫 French Polynesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fac/index.html" style="color:var(--blue);text-decoration:none;">FAC</a></td>
+        <td style="padding:12px 16px;"><a href="/fac/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Faaite Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Faaite</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇫 French Polynesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mvp/index.html" style="color:var(--blue);text-decoration:none;">MVP</a></td>
+        <td style="padding:12px 16px;"><a href="/mvp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fabio Alberto Leon Bentley Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mitú</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇴 Colombia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fng/index.html" style="color:var(--blue);text-decoration:none;">FNG</a></td>
+        <td style="padding:12px 16px;"><a href="/fng/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fada N'gourma Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fada N'gourma</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇫 Burkina Faso</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fgi/index.html" style="color:var(--blue);text-decoration:none;">FGI</a></td>
+        <td style="padding:12px 16px;"><a href="/fgi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fagali'i Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Apia</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇼🇸 Samoa</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fag/index.html" style="color:var(--blue);text-decoration:none;">FAG</a></td>
+        <td style="padding:12px 16px;"><a href="/fag/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fagurhólsmýri Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fagurhólsmýri</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇸 Iceland</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fau/index.html" style="color:var(--blue);text-decoration:none;">FAU</a></td>
+        <td style="padding:12px 16px;"><a href="/fau/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fahud Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fahud</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇴🇲 Oman</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fie/index.html" style="color:var(--blue);text-decoration:none;">FIE</a></td>
+        <td style="padding:12px 16px;"><a href="/fie/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fair Isle Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fair Isle</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇧 UK</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fai/index.html" style="color:var(--blue);text-decoration:none;">FAI</a></td>
+        <td style="padding:12px 16px;"><a href="/fai/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fairbanks International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fairbanks</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fby/index.html" style="color:var(--blue);text-decoration:none;">FBY</a></td>
+        <td style="padding:12px 16px;"><a href="/fby/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fairbury Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fairbury</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ska/index.html" style="color:var(--blue);text-decoration:none;">SKA</a></td>
+        <td style="padding:12px 16px;"><a href="/ska/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fairchild Air Force Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Spokane</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ffl/index.html" style="color:var(--blue);text-decoration:none;">FFL</a></td>
+        <td style="padding:12px 16px;"><a href="/ffl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fairfield Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fairfield</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ycz/index.html" style="color:var(--blue);text-decoration:none;">YCZ</a></td>
+        <td style="padding:12px 16px;"><a href="/ycz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fairmont Hot Springs Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fairmont Hot Springs</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/frm/index.html" style="color:var(--blue);text-decoration:none;">FRM</a></td>
+        <td style="padding:12px 16px;"><a href="/frm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fairmont Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fairmont</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zfw/index.html" style="color:var(--blue);text-decoration:none;">ZFW</a></td>
+        <td style="padding:12px 16px;"><a href="/zfw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fairview Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fairview</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lyp/index.html" style="color:var(--blue);text-decoration:none;">LYP</a></td>
+        <td style="padding:12px 16px;"><a href="/lyp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Faisalabad International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Faisalabad</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇰 Pakistan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fhz/index.html" style="color:var(--blue);text-decoration:none;">FHZ</a></td>
+        <td style="padding:12px 16px;"><a href="/fhz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fakahina Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fakahina</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇫 French Polynesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fav/index.html" style="color:var(--blue);text-decoration:none;">FAV</a></td>
+        <td style="padding:12px 16px;"><a href="/fav/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fakarava Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇫 French Polynesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fkq/index.html" style="color:var(--blue);text-decoration:none;">FKQ</a></td>
+        <td style="padding:12px 16px;"><a href="/fkq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fakfak Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fakfak</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/msc/index.html" style="color:var(--blue);text-decoration:none;">MSC</a></td>
+        <td style="padding:12px 16px;"><a href="/msc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Falcon Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mesa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pmo/index.html" style="color:var(--blue);text-decoration:none;">PMO</a></td>
+        <td style="padding:12px 16px;"><a href="/pmo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Falcone–Borsellino Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Palermo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇹 Itali</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/apw/index.html" style="color:var(--blue);text-decoration:none;">APW</a></td>
+        <td style="padding:12px 16px;"><a href="/apw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Faleolo International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Apia</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇼🇸 Samoa</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/flx/index.html" style="color:var(--blue);text-decoration:none;">FLX</a></td>
+        <td style="padding:12px 16px;"><a href="/flx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fallon Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fallon</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nfl/index.html" style="color:var(--blue);text-decoration:none;">NFL</a></td>
+        <td style="padding:12px 16px;"><a href="/nfl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fallon Naval Air Station</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fallon</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/inl/index.html" style="color:var(--blue);text-decoration:none;">INL</a></td>
+        <td style="padding:12px 16px;"><a href="/inl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Falls International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">International Falls</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kfp/index.html" style="color:var(--blue);text-decoration:none;">KFP</a></td>
+        <td style="padding:12px 16px;"><a href="/kfp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">False Pass Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">False Pass</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fne/index.html" style="color:var(--blue);text-decoration:none;">FNE</a></td>
+        <td style="padding:12px 16px;"><a href="/fne/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fane Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fane Mission</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fgu/index.html" style="color:var(--blue);text-decoration:none;">FGU</a></td>
+        <td style="padding:12px 16px;"><a href="/fgu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fangatau Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fangatau</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇫 French Polynesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rva/index.html" style="color:var(--blue);text-decoration:none;">RVA</a></td>
+        <td style="padding:12px 16px;"><a href="/rva/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Farafangana Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Farafangana</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇬 Madagaskar</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fah/index.html" style="color:var(--blue);text-decoration:none;">FAH</a></td>
+        <td style="padding:12px 16px;"><a href="/fah/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Farah Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Farah</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇫 Afghanistan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/faa/index.html" style="color:var(--blue);text-decoration:none;">FAA</a></td>
+        <td style="padding:12px 16px;"><a href="/faa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Faranah Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Faranah</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇳 Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fmt/index.html" style="color:var(--blue);text-decoration:none;">FMT</a></td>
+        <td style="padding:12px 16px;"><a href="/fmt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Faresmaathoda Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Faresmaathodaa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇻 Maldives</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fwl/index.html" style="color:var(--blue);text-decoration:none;">FWL</a></td>
+        <td style="padding:12px 16px;"><a href="/fwl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Farewell Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Farewell</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fbl/index.html" style="color:var(--blue);text-decoration:none;">FBL</a></td>
+        <td style="padding:12px 16px;"><a href="/fbl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Faribault Municipal Airport-Liz Wall Strohfus Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Faribault</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fam/index.html" style="color:var(--blue);text-decoration:none;">FAM</a></td>
+        <td style="padding:12px 16px;"><a href="/fam/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Farmington Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Farmington</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fab/index.html" style="color:var(--blue);text-decoration:none;">FAB</a></td>
+        <td style="padding:12px 16px;"><a href="/fab/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Farnborough Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Farnborough, Hampshire</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇧 UK</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fao/index.html" style="color:var(--blue);text-decoration:none;">FAO</a></td>
+        <td style="padding:12px 16px;"><a href="/fao/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Faro - Gago Coutinho International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Faro</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇹 Portugal</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zfa/index.html" style="color:var(--blue);text-decoration:none;">ZFA</a></td>
+        <td style="padding:12px 16px;"><a href="/zfa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Faro Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Faro</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/faz/index.html" style="color:var(--blue);text-decoration:none;">FAZ</a></td>
+        <td style="padding:12px 16px;"><a href="/faz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fasa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fasa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇷 Iran</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bks/index.html" style="color:var(--blue);text-decoration:none;">BKS</a></td>
+        <td style="padding:12px 16px;"><a href="/bks/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fatmawati Soekarno Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bengkulu</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fyt/index.html" style="color:var(--blue);text-decoration:none;">FYT</a></td>
+        <td style="padding:12px 16px;"><a href="/fyt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Faya-Largeau Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Faya-Largeau</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇩 Chad</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fym/index.html" style="color:var(--blue);text-decoration:none;">FYM</a></td>
+        <td style="padding:12px 16px;"><a href="/fym/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fayetteville Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fayetteville</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fay/index.html" style="color:var(--blue);text-decoration:none;">FAY</a></td>
+        <td style="padding:12px 16px;"><a href="/fay/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fayetteville Regional Airport - Grannis Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fayetteville</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fbd/index.html" style="color:var(--blue);text-decoration:none;">FBD</a></td>
+        <td style="padding:12px 16px;"><a href="/fbd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fayzabad Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fayzabad</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇫 Afghanistan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iti/index.html" style="color:var(--blue);text-decoration:none;">ITI</a></td>
+        <td style="padding:12px 16px;"><a href="/iti/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fazenda Americana Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Itambacuri</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pbx/index.html" style="color:var(--blue);text-decoration:none;">PBX</a></td>
+        <td style="padding:12px 16px;"><a href="/pbx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fazenda Piraguassu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Porto Alegre do Norte</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/azl/index.html" style="color:var(--blue);text-decoration:none;">AZL</a></td>
+        <td style="padding:12px 16px;"><a href="/azl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fazenda Tucunaré Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sapezal</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fgd/index.html" style="color:var(--blue);text-decoration:none;">FGD</a></td>
+        <td style="padding:12px 16px;"><a href="/fgd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fderik Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fderik</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇷 Mauritania</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rmi/index.html" style="color:var(--blue);text-decoration:none;">RMI</a></td>
+        <td style="padding:12px 16px;"><a href="/rmi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Federico Fellini International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rimini (RN)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇹 Itali</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fej/index.html" style="color:var(--blue);text-decoration:none;">FEJ</a></td>
+        <td style="padding:12px 16px;"><a href="/fej/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Feijó Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Feijó</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tqo/index.html" style="color:var(--blue);text-decoration:none;">TQO</a></td>
+        <td style="padding:12px 16px;"><a href="/tqo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Felipe Carrillo Puerto International Airport Tulum</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tulum</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇽 Mexico</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nlu/index.html" style="color:var(--blue);text-decoration:none;">NLU</a></td>
+        <td style="padding:12px 16px;"><a href="/nlu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Felipe Ángeles International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mexico City</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇽 Mexico</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/faf/index.html" style="color:var(--blue);text-decoration:none;">FAF</a></td>
+        <td style="padding:12px 16px;"><a href="/faf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Felker Army Air Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Newport News (Fort Eustis)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sff/index.html" style="color:var(--blue);text-decoration:none;">SFF</a></td>
+        <td style="padding:12px 16px;"><a href="/sff/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Felts Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Spokane</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fre/index.html" style="color:var(--blue);text-decoration:none;">FRE</a></td>
+        <td style="padding:12px 16px;"><a href="/fre/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fera/Maringe Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fera Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇧 Kepulauan Solomon</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/frq/index.html" style="color:var(--blue);text-decoration:none;">FRQ</a></td>
+        <td style="padding:12px 16px;"><a href="/frq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Feramin Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Feramin</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/feg/index.html" style="color:var(--blue);text-decoration:none;">FEG</a></td>
+        <td style="padding:12px 16px;"><a href="/feg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fergana International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fergana</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇿 Uzbekistan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ffm/index.html" style="color:var(--blue);text-decoration:none;">FFM</a></td>
+        <td style="padding:12px 16px;"><a href="/ffm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fergus Falls Municipal Airport - Einar Mickelson Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fergus Falls</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sig/index.html" style="color:var(--blue);text-decoration:none;">SIG</a></td>
+        <td style="padding:12px 16px;"><a href="/sig/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fernando Luis Ribas Dominicci Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">San Juan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇷 Puerto Rico</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fen/index.html" style="color:var(--blue);text-decoration:none;">FEN</a></td>
+        <td style="padding:12px 16px;"><a href="/fen/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fernando de Noronha Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fernando de Noronha</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fez/index.html" style="color:var(--blue);text-decoration:none;">FEZ</a></td>
+        <td style="padding:12px 16px;"><a href="/fez/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fes Saïss International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Saïss</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇦 Maghribi</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wfi/index.html" style="color:var(--blue);text-decoration:none;">WFI</a></td>
+        <td style="padding:12px 16px;"><a href="/wfi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fianarantsoa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fianarantsoa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇬 Madagaskar</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fcb/index.html" style="color:var(--blue);text-decoration:none;">FCB</a></td>
+        <td style="padding:12px 16px;"><a href="/fcb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ficksburg Sentraoes Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ficksburg</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇿🇦 Afrika Selatan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fsc/index.html" style="color:var(--blue);text-decoration:none;">FSC</a></td>
+        <td style="padding:12px 16px;"><a href="/fsc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Figari Sud-Corse Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Figari</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇷 Perancis</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fil/index.html" style="color:var(--blue);text-decoration:none;">FIL</a></td>
+        <td style="padding:12px 16px;"><a href="/fil/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fillmore Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fillmore</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fnh/index.html" style="color:var(--blue);text-decoration:none;">FNH</a></td>
+        <td style="padding:12px 16px;"><a href="/fnh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fincha Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fincha</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇹 Ethiopia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fdy/index.html" style="color:var(--blue);text-decoration:none;">FDY</a></td>
+        <td style="padding:12px 16px;"><a href="/fdy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Findlay Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Findlay</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fik/index.html" style="color:var(--blue);text-decoration:none;">FIK</a></td>
+        <td style="padding:12px 16px;"><a href="/fik/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Finke Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Finke</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fly/index.html" style="color:var(--blue);text-decoration:none;">FLY</a></td>
+        <td style="padding:12px 16px;"><a href="/fly/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Finley Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fin/index.html" style="color:var(--blue);text-decoration:none;">FIN</a></td>
+        <td style="padding:12px 16px;"><a href="/fin/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Finschhafen Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Buki</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ffa/index.html" style="color:var(--blue);text-decoration:none;">FFA</a></td>
+        <td style="padding:12px 16px;"><a href="/ffa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">First Flight Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kill Devil Hills</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fti/index.html" style="color:var(--blue);text-decoration:none;">FTI</a></td>
+        <td style="padding:12px 16px;"><a href="/fti/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fitiuta Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fitiuta Village</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇸 Samoa Amerika</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fiz/index.html" style="color:var(--blue);text-decoration:none;">FIZ</a></td>
+        <td style="padding:12px 16px;"><a href="/fiz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fitzroy Crossing Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rir/index.html" style="color:var(--blue);text-decoration:none;">RIR</a></td>
+        <td style="padding:12px 16px;"><a href="/rir/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Flabob Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Riverside</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/flg/index.html" style="color:var(--blue);text-decoration:none;">FLG</a></td>
+        <td style="padding:12px 16px;"><a href="/flg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Flagstaff Pulliam Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Flagstaff</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fmg/index.html" style="color:var(--blue);text-decoration:none;">FMG</a></td>
+        <td style="padding:12px 16px;"><a href="/fmg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Flamingo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Brasilito</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇷 Costa Rica</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bon/index.html" style="color:var(--blue);text-decoration:none;">BON</a></td>
+        <td style="padding:12px 16px;"><a href="/bon/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Flamingo International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kralendijk</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇶 Caribbean Netherlands</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kjk/index.html" style="color:var(--blue);text-decoration:none;">KJK</a></td>
+        <td style="padding:12px 16px;"><a href="/kjk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Flanders International Airport Kortrijk-Wevelgem</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wevelgem</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇪 Belgium</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/flt/index.html" style="color:var(--blue);text-decoration:none;">FLT</a></td>
+        <td style="padding:12px 16px;"><a href="/flt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Flat Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Flat</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/flf/index.html" style="color:var(--blue);text-decoration:none;">FLF</a></td>
+        <td style="padding:12px 16px;"><a href="/flf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Flensburg-Schäferhaus Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Flensburg</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇪 Jerman</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ckm/index.html" style="color:var(--blue);text-decoration:none;">CKM</a></td>
+        <td style="padding:12px 16px;"><a href="/ckm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fletcher Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Clarksdale</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yfo/index.html" style="color:var(--blue);text-decoration:none;">YFO</a></td>
+        <td style="padding:12px 16px;"><a href="/yfo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Flin Flon Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Flin Flon</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fls/index.html" style="color:var(--blue);text-decoration:none;">FLS</a></td>
+        <td style="padding:12px 16px;"><a href="/fls/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Flinders Island Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Whitemark</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fvl/index.html" style="color:var(--blue);text-decoration:none;">FVL</a></td>
+        <td style="padding:12px 16px;"><a href="/fvl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Flora Valley Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/flr/index.html" style="color:var(--blue);text-decoration:none;">FLR</a></td>
+        <td style="padding:12px 16px;"><a href="/flr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Florence Airport, Peretola</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Firenze (FI)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇹 Itali</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fmu/index.html" style="color:var(--blue);text-decoration:none;">FMU</a></td>
+        <td style="padding:12px 16px;"><a href="/fmu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Florence Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Florence</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/flo/index.html" style="color:var(--blue);text-decoration:none;">FLO</a></td>
+        <td style="padding:12px 16px;"><a href="/flo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Florence Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Florence</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/flw/index.html" style="color:var(--blue);text-decoration:none;">FLW</a></td>
+        <td style="padding:12px 16px;"><a href="/flw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Flores Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Santa Cruz das Flores</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇹 Portugal</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mth/index.html" style="color:var(--blue);text-decoration:none;">MTH</a></td>
+        <td style="padding:12px 16px;"><a href="/mth/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Florida Keys Marathon International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Marathon</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fro/index.html" style="color:var(--blue);text-decoration:none;">FRO</a></td>
+        <td style="padding:12px 16px;"><a href="/fro/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Florø Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Florø</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇴 Norway</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/flh/index.html" style="color:var(--blue);text-decoration:none;">FLH</a></td>
+        <td style="padding:12px 16px;"><a href="/flh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Flotta Isle Airstrip</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Flotta Isle</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇧 UK</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gfl/index.html" style="color:var(--blue);text-decoration:none;">GFL</a></td>
+        <td style="padding:12px 16px;"><a href="/gfl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Floyd Bennett Memorial Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Glens Falls</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fcm/index.html" style="color:var(--blue);text-decoration:none;">FCM</a></td>
+        <td style="padding:12px 16px;"><a href="/fcm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Flying Cloud Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Minneapolis</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fog/index.html" style="color:var(--blue);text-decoration:none;">FOG</a></td>
+        <td style="padding:12px 16px;"><a href="/fog/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Foggia Gino Lisa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Foggia (FG)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇹 Itali</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fld/index.html" style="color:var(--blue);text-decoration:none;">FLD</a></td>
+        <td style="padding:12px 16px;"><a href="/fld/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fond du Lac County Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fond du Lac</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zfd/index.html" style="color:var(--blue);text-decoration:none;">ZFD</a></td>
+        <td style="padding:12px 16px;"><a href="/zfd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fond-du-Lac Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fond-du-Lac</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yfg/index.html" style="color:var(--blue);text-decoration:none;">YFG</a></td>
+        <td style="padding:12px 16px;"><a href="/yfg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fontanges Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fontanges</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fba/index.html" style="color:var(--blue);text-decoration:none;">FBA</a></td>
+        <td style="padding:12px 16px;"><a href="/fba/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fonte Boa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fonte Boa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mrn/index.html" style="color:var(--blue);text-decoration:none;">MRN</a></td>
+        <td style="padding:12px 16px;"><a href="/mrn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Foothills Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Morganton</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/frb/index.html" style="color:var(--blue);text-decoration:none;">FRB</a></td>
+        <td style="padding:12px 16px;"><a href="/frb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Forbes Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Forbes</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/imt/index.html" style="color:var(--blue);text-decoration:none;">IMT</a></td>
+        <td style="padding:12px 16px;"><a href="/imt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ford Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kingsford</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fxy/index.html" style="color:var(--blue);text-decoration:none;">FXY</a></td>
+        <td style="padding:12px 16px;"><a href="/fxy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Forest City Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Forest City</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yfe/index.html" style="color:var(--blue);text-decoration:none;">YFE</a></td>
+        <td style="padding:12px 16px;"><a href="/yfe/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Forestville Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Forestville</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/frl/index.html" style="color:var(--blue);text-decoration:none;">FRL</a></td>
+        <td style="padding:12px 16px;"><a href="/frl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Forlì-Luigi Ridolfi International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Forlì (FC)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇹 Itali</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fma/index.html" style="color:var(--blue);text-decoration:none;">FMA</a></td>
+        <td style="padding:12px 16px;"><a href="/fma/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Formosa National Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Formosa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇷 Argentina</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ccm/index.html" style="color:var(--blue);text-decoration:none;">CCM</a></td>
+        <td style="padding:12px 16px;"><a href="/ccm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Forquilhinha - Criciúma  Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Criciúma</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fos/index.html" style="color:var(--blue);text-decoration:none;">FOS</a></td>
+        <td style="padding:12px 16px;"><a href="/fos/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Forrest Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fcy/index.html" style="color:var(--blue);text-decoration:none;">FCY</a></td>
+        <td style="padding:12px 16px;"><a href="/fcy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Forrest City Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Forrest City</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fot/index.html" style="color:var(--blue);text-decoration:none;">FOT</a></td>
+        <td style="padding:12px 16px;"><a href="/fot/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Forster (Wallis Is) Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yfa/index.html" style="color:var(--blue);text-decoration:none;">YFA</a></td>
+        <td style="padding:12px 16px;"><a href="/yfa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fort Albany Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fort Albany</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fob/index.html" style="color:var(--blue);text-decoration:none;">FOB</a></td>
+        <td style="padding:12px 16px;"><a href="/fob/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fort Bragg Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fort Bragg</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fbr/index.html" style="color:var(--blue);text-decoration:none;">FBR</a></td>
+        <td style="padding:12px 16px;"><a href="/fbr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fort Bridger Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fort Bridger</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ypy/index.html" style="color:var(--blue);text-decoration:none;">YPY</a></td>
+        <td style="padding:12px 16px;"><a href="/ypy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fort Chipewyan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fort Chipewyan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fod/index.html" style="color:var(--blue);text-decoration:none;">FOD</a></td>
+        <td style="padding:12px 16px;"><a href="/fod/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fort Dodge Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fort Dodge</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yag/index.html" style="color:var(--blue);text-decoration:none;">YAG</a></td>
+        <td style="padding:12px 16px;"><a href="/yag/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fort Frances Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fort Frances</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ygh/index.html" style="color:var(--blue);text-decoration:none;">YGH</a></td>
+        <td style="padding:12px 16px;"><a href="/ygh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fort Good Hope Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fort Good Hope</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yfh/index.html" style="color:var(--blue);text-decoration:none;">YFH</a></td>
+        <td style="padding:12px 16px;"><a href="/yfh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fort Hope Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fort Hope</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fxe/index.html" style="color:var(--blue);text-decoration:none;">FXE</a></td>
+        <td style="padding:12px 16px;"><a href="/fxe/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fort Lauderdale Executive Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fort Lauderdale</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fll/index.html" style="color:var(--blue);text-decoration:none;">FLL</a></td>
+        <td style="padding:12px 16px;"><a href="/fll/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fort Lauderdale Hollywood International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fort Lauderdale</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yjf/index.html" style="color:var(--blue);text-decoration:none;">YJF</a></td>
+        <td style="padding:12px 16px;"><a href="/yjf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fort Liard Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fort Liard</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jhl/index.html" style="color:var(--blue);text-decoration:none;">JHL</a></td>
+        <td style="padding:12px 16px;"><a href="/jhl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fort MacKay/Albian Aerodrome</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Albian Village</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yfi/index.html" style="color:var(--blue);text-decoration:none;">YFI</a></td>
+        <td style="padding:12px 16px;"><a href="/yfi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fort Mackay / Firebag</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Suncor Energy Site</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hzp/index.html" style="color:var(--blue);text-decoration:none;">HZP</a></td>
+        <td style="padding:12px 16px;"><a href="/hzp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fort Mackay / Horizon Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fort Mackay</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fms/index.html" style="color:var(--blue);text-decoration:none;">FMS</a></td>
+        <td style="padding:12px 16px;"><a href="/fms/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fort Madison Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fort Madison</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nml/index.html" style="color:var(--blue);text-decoration:none;">NML</a></td>
+        <td style="padding:12px 16px;"><a href="/nml/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fort McMurray / Mildred Lake Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fort McMurray</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ymm/index.html" style="color:var(--blue);text-decoration:none;">YMM</a></td>
+        <td style="padding:12px 16px;"><a href="/ymm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fort McMurray International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fort McMurray</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zfm/index.html" style="color:var(--blue);text-decoration:none;">ZFM</a></td>
+        <td style="padding:12px 16px;"><a href="/zfm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fort Mcpherson Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fort Mcpherson</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fme/index.html" style="color:var(--blue);text-decoration:none;">FME</a></td>
+        <td style="padding:12px 16px;"><a href="/fme/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fort Meade Executive Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fort Meade(Odenton)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yye/index.html" style="color:var(--blue);text-decoration:none;">YYE</a></td>
+        <td style="padding:12px 16px;"><a href="/yye/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fort Nelson Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fort Nelson</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yfr/index.html" style="color:var(--blue);text-decoration:none;">YFR</a></td>
+        <td style="padding:12px 16px;"><a href="/yfr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fort Resolution Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fort Resolution</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fsk/index.html" style="color:var(--blue);text-decoration:none;">FSK</a></td>
+        <td style="padding:12px 16px;"><a href="/fsk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fort Scott Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fort Scott</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yer/index.html" style="color:var(--blue);text-decoration:none;">YER</a></td>
+        <td style="padding:12px 16px;"><a href="/yer/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fort Severn Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fort Severn</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yfs/index.html" style="color:var(--blue);text-decoration:none;">YFS</a></td>
+        <td style="padding:12px 16px;"><a href="/yfs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fort Simpson Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fort Simpson</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ysm/index.html" style="color:var(--blue);text-decoration:none;">YSM</a></td>
+        <td style="padding:12px 16px;"><a href="/ysm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fort Smith Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fort Smith</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fsm/index.html" style="color:var(--blue);text-decoration:none;">FSM</a></td>
+        <td style="padding:12px 16px;"><a href="/fsm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fort Smith Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fort Smith</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yxj/index.html" style="color:var(--blue);text-decoration:none;">YXJ</a></td>
+        <td style="padding:12px 16px;"><a href="/yxj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fort St John / North Peace Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fort Saint John</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fst/index.html" style="color:var(--blue);text-decoration:none;">FST</a></td>
+        <td style="padding:12px 16px;"><a href="/fst/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fort Stockton Pecos County Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fort Stockton</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fsu/index.html" style="color:var(--blue);text-decoration:none;">FSU</a></td>
+        <td style="padding:12px 16px;"><a href="/fsu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fort Sumner Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fort Sumner</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fwa/index.html" style="color:var(--blue);text-decoration:none;">FWA</a></td>
+        <td style="padding:12px 16px;"><a href="/fwa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fort Wayne International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fort Wayne</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ftw/index.html" style="color:var(--blue);text-decoration:none;">FTW</a></td>
+        <td style="padding:12px 16px;"><a href="/ftw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fort Worth Meacham International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fort Worth</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fyu/index.html" style="color:var(--blue);text-decoration:none;">FYU</a></td>
+        <td style="padding:12px 16px;"><a href="/fyu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fort Yukon Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fort Yukon</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kfe/index.html" style="color:var(--blue);text-decoration:none;">KFE</a></td>
+        <td style="padding:12px 16px;"><a href="/kfe/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fortescue - Dave Forrest Aerodrome</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cloudbreak Village</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fuo/index.html" style="color:var(--blue);text-decoration:none;">FUO</a></td>
+        <td style="padding:12px 16px;"><a href="/fuo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Foshan Shadi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Foshan (Nanhai)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fsl/index.html" style="color:var(--blue);text-decoration:none;">FSL</a></td>
+        <td style="padding:12px 16px;"><a href="/fsl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fossil Downs Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fossil Downs Station</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fou/index.html" style="color:var(--blue);text-decoration:none;">FOU</a></td>
+        <td style="padding:12px 16px;"><a href="/fou/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fougamou Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fougamou</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇦 Gabon</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/foa/index.html" style="color:var(--blue);text-decoration:none;">FOA</a></td>
+        <td style="padding:12px 16px;"><a href="/foa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Foula Airfield</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Foula</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇧 UK</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fom/index.html" style="color:var(--blue);text-decoration:none;">FOM</a></td>
+        <td style="padding:12px 16px;"><a href="/fom/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Foumban Nkounja Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Foumban</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇲 Cameroon</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fmn/index.html" style="color:var(--blue);text-decoration:none;">FMN</a></td>
+        <td style="padding:12px 16px;"><a href="/fmn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Four Corners Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Farmington</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fgl/index.html" style="color:var(--blue);text-decoration:none;">FGL</a></td>
+        <td style="padding:12px 16px;"><a href="/fgl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fox Glacier Aerodrome</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fox Glacier</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇿 New Zealand</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/foy/index.html" style="color:var(--blue);text-decoration:none;">FOY</a></td>
+        <td style="padding:12px 16px;"><a href="/foy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Foya Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Foya</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇱🇷 Liberia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fok/index.html" style="color:var(--blue);text-decoration:none;">FOK</a></td>
+        <td style="padding:12px 16px;"><a href="/fok/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Francis S Gabreski Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Westhampton Beach</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/usu/index.html" style="color:var(--blue);text-decoration:none;">USU</a></td>
+        <td style="padding:12px 16px;"><a href="/usu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Francisco B. Reyes (Busuanga) Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Coron</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇭 Filipina</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dvo/index.html" style="color:var(--blue);text-decoration:none;">DVO</a></td>
+        <td style="padding:12px 16px;"><a href="/dvo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Francisco Bangoy International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Davao</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇭 Filipina</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jau/index.html" style="color:var(--blue);text-decoration:none;">JAU</a></td>
+        <td style="padding:12px 16px;"><a href="/jau/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Francisco Carle Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jauja</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇪 Peru</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/occ/index.html" style="color:var(--blue);text-decoration:none;">OCC</a></td>
+        <td style="padding:12px 16px;"><a href="/occ/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Francisco De Orellana Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Coca</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇨 Ecuador</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lom/index.html" style="color:var(--blue);text-decoration:none;">LOM</a></td>
+        <td style="padding:12px 16px;"><a href="/lom/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Francisco Primo de Verdad y Ramos Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lagos de Moreno</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇽 Mexico</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/trc/index.html" style="color:var(--blue);text-decoration:none;">TRC</a></td>
+        <td style="padding:12px 16px;"><a href="/trc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Francisco Sarabia Tinoco International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Torreón</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇽 Mexico</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/itr/index.html" style="color:var(--blue);text-decoration:none;">ITR</a></td>
+        <td style="padding:12px 16px;"><a href="/itr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Francisco Vilela do Amaral Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Itumbiara</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jdf/index.html" style="color:var(--blue);text-decoration:none;">JDF</a></td>
+        <td style="padding:12px 16px;"><a href="/jdf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Francisco de Assis Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Juiz de Fora</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/opo/index.html" style="color:var(--blue);text-decoration:none;">OPO</a></td>
+        <td style="padding:12px 16px;"><a href="/opo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Francisco de Sá Carneiro Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Porto</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇹 Portugal</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/smb/index.html" style="color:var(--blue);text-decoration:none;">SMB</a></td>
+        <td style="padding:12px 16px;"><a href="/smb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Franco Bianco Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cerro Sombrero</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇱 Chile</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mii/index.html" style="color:var(--blue);text-decoration:none;">MII</a></td>
+        <td style="padding:12px 16px;"><a href="/mii/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Frank Miloye Milenkowichi–Marília State Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Marília</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hog/index.html" style="color:var(--blue);text-decoration:none;">HOG</a></td>
+        <td style="padding:12px 16px;"><a href="/hog/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Frank Pais International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Holguin</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇺 Cuba</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fra/index.html" style="color:var(--blue);text-decoration:none;">FRA</a></td>
+        <td style="padding:12px 16px;"><a href="/fra/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Frankfurt Main Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Frankfurt am Main</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇪 Jerman</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hhn/index.html" style="color:var(--blue);text-decoration:none;">HHN</a></td>
+        <td style="padding:12px 16px;"><a href="/hhn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Frankfurt-Hahn Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Frankfurt am Main (Lautzenhausen)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇪 Jerman</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uos/index.html" style="color:var(--blue);text-decoration:none;">UOS</a></td>
+        <td style="padding:12px 16px;"><a href="/uos/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Franklin County Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sewanee</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fkn/index.html" style="color:var(--blue);text-decoration:none;">FKN</a></td>
+        <td style="padding:12px 16px;"><a href="/fkn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Franklin Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Franklin</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bik/index.html" style="color:var(--blue);text-decoration:none;">BIK</a></td>
+        <td style="padding:12px 16px;"><a href="/bik/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Frans Kaisiepo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Biak</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rtg/index.html" style="color:var(--blue);text-decoration:none;">RTG</a></td>
+        <td style="padding:12px 16px;"><a href="/rtg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Frans Sales Lega Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Satar Tacik, Manggarai</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mof/index.html" style="color:var(--blue);text-decoration:none;">MOF</a></td>
+        <td style="padding:12px 16px;"><a href="/mof/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Frans Xavier Seda Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Waioti</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/who/index.html" style="color:var(--blue);text-decoration:none;">WHO</a></td>
+        <td style="padding:12px 16px;"><a href="/who/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Franz Josef Aerodrome</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇿 New Zealand</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/roc/index.html" style="color:var(--blue);text-decoration:none;">ROC</a></td>
+        <td style="padding:12px 16px;"><a href="/roc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Frederick Douglass Greater Rochester International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rochester</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fdk/index.html" style="color:var(--blue);text-decoration:none;">FDK</a></td>
+        <td style="padding:12px 16px;"><a href="/fdk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Frederick Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Frederick</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fdr/index.html" style="color:var(--blue);text-decoration:none;">FDR</a></td>
+        <td style="padding:12px 16px;"><a href="/fdr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Frederick Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Frederick</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ggb/index.html" style="color:var(--blue);text-decoration:none;">GGB</a></td>
+        <td style="padding:12px 16px;"><a href="/ggb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Frederico Carlos Müller Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Água Boa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yfc/index.html" style="color:var(--blue);text-decoration:none;">YFC</a></td>
+        <td style="padding:12px 16px;"><a href="/yfc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fredericton International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fredericton</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ser/index.html" style="color:var(--blue);text-decoration:none;">SER</a></td>
+        <td style="padding:12px 16px;"><a href="/ser/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Freeman Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Seymour</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cne/index.html" style="color:var(--blue);text-decoration:none;">CNE</a></td>
+        <td style="padding:12px 16px;"><a href="/cne/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fremont County Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Penrose</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fet/index.html" style="color:var(--blue);text-decoration:none;">FET</a></td>
+        <td style="padding:12px 16px;"><a href="/fet/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fremont Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fremont</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/frh/index.html" style="color:var(--blue);text-decoration:none;">FRH</a></td>
+        <td style="padding:12px 16px;"><a href="/frh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">French Lick Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">French Lick</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rbk/index.html" style="color:var(--blue);text-decoration:none;">RBK</a></td>
+        <td style="padding:12px 16px;"><a href="/rbk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">French Valley Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Murrieta</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fch/index.html" style="color:var(--blue);text-decoration:none;">FCH</a></td>
+        <td style="padding:12px 16px;"><a href="/fch/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fresno Chandler Executive Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fresno</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fat/index.html" style="color:var(--blue);text-decoration:none;">FAT</a></td>
+        <td style="padding:12px 16px;"><a href="/fat/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fresno Yosemite International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fresno</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fig/index.html" style="color:var(--blue);text-decoration:none;">FIG</a></td>
+        <td style="padding:12px 16px;"><a href="/fig/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fria Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fria</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇳 Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/frd/index.html" style="color:var(--blue);text-decoration:none;">FRD</a></td>
+        <td style="padding:12px 16px;"><a href="/frd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Friday Harbor Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Friday Harbor</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/faq/index.html" style="color:var(--blue);text-decoration:none;">FAQ</a></td>
+        <td style="padding:12px 16px;"><a href="/faq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Frieda River Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Frieda River</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sun/index.html" style="color:var(--blue);text-decoration:none;">SUN</a></td>
+        <td style="padding:12px 16px;"><a href="/sun/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Friedman Memorial Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Hailey</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/frz/index.html" style="color:var(--blue);text-decoration:none;">FRZ</a></td>
+        <td style="padding:12px 16px;"><a href="/frz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fritzlar Army Airfield</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fritzlar</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇪 Jerman</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/frr/index.html" style="color:var(--blue);text-decoration:none;">FRR</a></td>
+        <td style="padding:12px 16px;"><a href="/frr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Front Royal Warren County Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Front Royal</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/frk/index.html" style="color:var(--blue);text-decoration:none;">FRK</a></td>
+        <td style="padding:12px 16px;"><a href="/frk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Frégate Island Airport (UNUSABLE)</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Frégate Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇨 Seychelles</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tbu/index.html" style="color:var(--blue);text-decoration:none;">TBU</a></td>
+        <td style="padding:12px 16px;"><a href="/tbu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fua'amotu International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nuku'alofa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇴 Tonga</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fue/index.html" style="color:var(--blue);text-decoration:none;">FUE</a></td>
+        <td style="padding:12px 16px;"><a href="/fue/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fuerteventura Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">El Matorral</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇸 Sepanyol</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fjr/index.html" style="color:var(--blue);text-decoration:none;">FJR</a></td>
+        <td style="padding:12px 16px;"><a href="/fjr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fujairah International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fujairah</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇪 Emiriah Arab Bersatu</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fuj/index.html" style="color:var(--blue);text-decoration:none;">FUJ</a></td>
+        <td style="padding:12px 16px;"><a href="/fuj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fukue Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Goto</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇯🇵 Jepun</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fkj/index.html" style="color:var(--blue);text-decoration:none;">FKJ</a></td>
+        <td style="padding:12px 16px;"><a href="/fkj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fukui Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fukui</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇯🇵 Jepun</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fuk/index.html" style="color:var(--blue);text-decoration:none;">FUK</a></td>
+        <td style="padding:12px 16px;"><a href="/fuk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fukuoka Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fukuoka</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇯🇵 Jepun</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fks/index.html" style="color:var(--blue);text-decoration:none;">FKS</a></td>
+        <td style="padding:12px 16px;"><a href="/fks/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fukushima Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sukagawa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇯🇵 Jepun</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fub/index.html" style="color:var(--blue);text-decoration:none;">FUB</a></td>
+        <td style="padding:12px 16px;"><a href="/fub/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fulleborn Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fulleborn</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ful/index.html" style="color:var(--blue);text-decoration:none;">FUL</a></td>
+        <td style="padding:12px 16px;"><a href="/ful/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fullerton Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fullerton</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rcr/index.html" style="color:var(--blue);text-decoration:none;">RCR</a></td>
+        <td style="padding:12px 16px;"><a href="/rcr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fulton County Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rochester</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fty/index.html" style="color:var(--blue);text-decoration:none;">FTY</a></td>
+        <td style="padding:12px 16px;"><a href="/fty/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fulton County Airport Brown Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Atlanta</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fum/index.html" style="color:var(--blue);text-decoration:none;">FUM</a></td>
+        <td style="padding:12px 16px;"><a href="/fum/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fuma Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fuma</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fnd/index.html" style="color:var(--blue);text-decoration:none;">FND</a></td>
+        <td style="padding:12px 16px;"><a href="/fnd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Funadhoo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Funadhoo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇻 Maldives</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fun/index.html" style="color:var(--blue);text-decoration:none;">FUN</a></td>
+        <td style="padding:12px 16px;"><a href="/fun/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Funafuti International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Funafuti</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇻 Tuvalu</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fda/index.html" style="color:var(--blue);text-decoration:none;">FDA</a></td>
+        <td style="padding:12px 16px;"><a href="/fda/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fundación Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fundación</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇴 Colombia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dth/index.html" style="color:var(--blue);text-decoration:none;">DTH</a></td>
+        <td style="padding:12px 16px;"><a href="/dth/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Furnace Creek Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Death Valley</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ffu/index.html" style="color:var(--blue);text-decoration:none;">FFU</a></td>
+        <td style="padding:12px 16px;"><a href="/ffu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Futaleufú Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Futaleufu</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇱 Chile</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fta/index.html" style="color:var(--blue);text-decoration:none;">FTA</a></td>
+        <td style="padding:12px 16px;"><a href="/fta/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Futuna Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Futuna Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇻🇺 Vanuatu</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fvm/index.html" style="color:var(--blue);text-decoration:none;">FVM</a></td>
+        <td style="padding:12px 16px;"><a href="/fvm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fuvahmulah Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fuvahmulah Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇻 Maldives</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fug/index.html" style="color:var(--blue);text-decoration:none;">FUG</a></td>
+        <td style="padding:12px 16px;"><a href="/fug/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fuyang Xiguan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yingzhou, Fuyang</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fyj/index.html" style="color:var(--blue);text-decoration:none;">FYJ</a></td>
+        <td style="padding:12px 16px;"><a href="/fyj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fuyuan Dongji Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fuyuan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fyn/index.html" style="color:var(--blue);text-decoration:none;">FYN</a></td>
+        <td style="padding:12px 16px;"><a href="/fyn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fuyun Koktokay Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fuyun</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/foc/index.html" style="color:var(--blue);text-decoration:none;">FOC</a></td>
+        <td style="padding:12px 16px;"><a href="/foc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fuzhou Changle International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fuzhou (Changle)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fzl/index.html" style="color:var(--blue);text-decoration:none;">FZL</a></td>
+        <td style="padding:12px 16px;"><a href="/fzl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fuzuli International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fuzuli</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇿 Azerbaijan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pba/index.html" style="color:var(--blue);text-decoration:none;">PBA</a></td>
+        <td style="padding:12px 16px;"><a href="/pba/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Fábio Perini Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cairu</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/abj/index.html" style="color:var(--blue);text-decoration:none;">ABJ</a></td>
+        <td style="padding:12px 16px;"><a href="/abj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Félix-Houphouët-Boigny International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Abidjan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇮 Cote d’Ivoire</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fde/index.html" style="color:var(--blue);text-decoration:none;">FDE</a></td>
+        <td style="padding:12px 16px;"><a href="/fde/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Førde Airport, Bringeland</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Førde</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇴 Norway</td>
+      </tr></tbody>
+  </table>
+</div>
+<footer>
+  <div style="margin-bottom:10px">
+    <a href="/az.html">A–Z Index</a>
+    <a href="/countries.html">By Country</a>
+    <a href="/about.html">About</a>
+  </div>
+  <div>© 2025 airport-code.com · Data sourced from OurAirports &amp; Open-Meteo · <a href="https://ourairports.com">OurAirports</a></div>
+</footer>
+
+<script>
+(function(){
+  let db = null;
+  const input = document.getElementById('navSearchInput');
+  const results = document.getElementById('search-results');
+  if (!input) return;
+
+  async function loadDB() {
+    if (db) return;
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    const r = await fetch(root + 'airports.json');
+    db = await r.json();
+  }
+
+  input.addEventListener('focus', loadDB);
+  input.addEventListener('input', async function() {
+    const q = this.value.trim().toUpperCase();
+    if (q.length < 2) { results.style.display = 'none'; return; }
+    await loadDB();
+    const matches = db.filter(a =>
+      a.iata.startsWith(q) ||
+      a.name.toUpperCase().includes(q) ||
+      a.city.toUpperCase().includes(q)
+    ).slice(0, 7);
+    if (!matches.length) { results.style.display = 'none'; return; }
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    results.innerHTML = matches.map(a =>
+      `<a href="${root}${a.iata.toLowerCase()}/index.html">
+        <span class="sr-code">${a.iata}</span>
+        <div><div class="sr-name">${a.name}</div><div class="sr-city">${a.city}, ${a.country}</div></div>
+      </a>`
+    ).join('');
+    results.style.display = 'block';
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!input.contains(e.target) && !results.contains(e.target)) results.style.display = 'none';
+  });
+})();
+</script>
+
+</body>
+</html>

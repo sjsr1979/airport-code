@@ -1,0 +1,2293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="site-root" content="/">
+  <title>Airports with Airport Name Starting With N | Airport Code</title>
+  <meta name="description" content="All airports with airport name starting with N. Browse 347 airports.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0f1f3d;
+      --blue: #1a56db;
+      --blue-light: #e8f0fe;
+      --sky: #38bdf8;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --green: #10b981;
+    }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; zoom: 1.12; }
+    nav { background: var(--navy); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { color: #fff; font-size: 19px; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; display: flex; align-items: center; gap: 10px; line-height: 1; }
+    .nav-logo svg { flex-shrink: 0; }
+    .nav-logo span { color: var(--sky); }
+    .nav-search { display: flex; align-items: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 6px 14px; gap: 8px; width: 280px; position: relative; }
+    .nav-search input { background: none; border: none; outline: none; color: #fff; font-size: 14px; width: 100%; font-family: 'Outfit', sans-serif; }
+    .nav-search input::placeholder { color: rgba(255,255,255,0.4); }
+    #search-results { position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: #fff; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 200; overflow: hidden; display: none; }
+    #search-results a { display: flex; align-items: center; gap: 10px; padding: 10px 14px; text-decoration: none; color: var(--text); font-size: 13px; border-bottom: 1px solid var(--border); transition: background 0.15s; }
+    #search-results a:last-child { border-bottom: none; }
+    #search-results a:hover { background: var(--bg); }
+    #search-results .sr-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 12px; padding: 2px 7px; border-radius: 5px; min-width: 38px; text-align: center; }
+    #search-results .sr-name { font-weight: 600; }
+    #search-results .sr-city { color: var(--muted); font-size: 11px; }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .hero { background: linear-gradient(135deg, var(--navy) 0%, #1a3a6b 100%); color: #fff; padding: 48px 0 56px; position: relative; overflow: hidden; }
+    .hero::before { content: '✈'; position: absolute; right: -20px; top: -20px; font-size: 220px; opacity: 0.04; transform: rotate(25deg); }
+    .hero-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .breadcrumb { font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 20px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .breadcrumb a:hover { color: rgba(255,255,255,0.8); }
+    .breadcrumb span.sep { color: rgba(255,255,255,0.3); }
+    .hero-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .hero-title { display: flex; align-items: flex-start; gap: 24px; }
+    .iata-badge { background: var(--blue); border: 2px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 14px 20px; text-align: center; min-width: 100px; flex-shrink: 0; }
+    .iata-badge .code { font-size: 40px; font-weight: 800; letter-spacing: 2px; color: #fff; line-height: 1; }
+    .iata-badge .label { font-size: 10px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
+    .hero-name { padding-top: 4px; }
+    .hero-name h1 { font-size: 38px; font-weight: 800; line-height: 1.1; color: #fff; }
+    .hero-name .location { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.65); font-size: 15px; margin-top: 6px; }
+    .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+    .badge { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.3px; }
+    .badge-large { background: rgba(16,185,129,0.2); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
+    .badge-medium { background: rgba(56,189,248,0.15); color: #7dd3fc; border: 1px solid rgba(56,189,248,0.3); }
+    .badge-small { background: rgba(245,158,11,0.15); color: #fcd34d; border: 1px solid rgba(245,158,11,0.3); }
+    .hero-stats { display: flex; gap: 32px; margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
+    .hero-stat .value { font-size: 22px; font-weight: 700; color: #fff; }
+    .hero-stat .label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
+    .time-widget { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 16px 20px; text-align: center; min-width: 160px; }
+    .time-widget .time-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+    .time-widget .time-value { font-size: 28px; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+    .time-widget .time-tz { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+    .main { max-width: 1100px; margin: 0 auto; padding: 32px 24px; display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
+    @media (max-width: 768px) { .main { grid-template-columns: 1fr; } .hero-name h1 { font-size: 26px; } .nav-links { display: none; } .nav-search { width: 200px; } }
+    .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .card-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .card-header h2 { font-size: 14px; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.5px; }
+    .card-body { padding: 20px; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .info-item { padding: 14px 16px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+    .info-item:nth-child(even) { border-right: none; }
+    .info-item:nth-last-child(-n+2) { border-bottom: none; }
+    .info-item .key { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px; }
+    .info-item .val { font-size: 15px; font-weight: 600; color: var(--text); }
+    .info-item .val a { color: var(--blue); text-decoration: none; }
+    .info-item .val a:hover { text-decoration: underline; }
+    .weather-widget { display: flex; align-items: center; gap: 20px; padding: 16px; background: linear-gradient(135deg, #e0f2fe, #f0f9ff); border-radius: 10px; margin-bottom: 16px; min-height: 100px; }
+    .weather-icon { font-size: 48px; line-height: 1; }
+    .weather-main .temp { font-size: 32px; font-weight: 700; color: var(--text); }
+    .weather-main .desc { font-size: 14px; color: var(--muted); text-transform: capitalize; }
+    .weather-details { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .weather-detail { font-size: 13px; color: var(--muted); }
+    .weather-detail strong { color: var(--text); font-weight: 600; }
+    .nearby-list { list-style: none; }
+    .nearby-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .nearby-item:last-child { border-bottom: none; }
+    .nearby-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 13px; padding: 3px 8px; border-radius: 6px; min-width: 44px; text-align: center; text-decoration: none; }
+    .nearby-code:hover { background: #ccdcfb; }
+    .nearby-info { flex: 1; margin: 0 12px; }
+    .nearby-info .name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .nearby-info .city { font-size: 11px; color: var(--muted); }
+    .nearby-dist { font-size: 12px; color: var(--muted); white-space: nowrap; }
+    .carbon-form { display: flex; flex-direction: column; gap: 12px; }
+    .carbon-form label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .carbon-form input, .carbon-form select { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-family: 'Outfit', sans-serif; color: var(--text); outline: none; transition: border-color 0.2s; }
+    .carbon-form input:focus, .carbon-form select:focus { border-color: var(--blue); }
+    .carbon-btn { background: var(--blue); color: #fff; border: none; padding: 11px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Outfit', sans-serif; transition: background 0.2s; }
+    .carbon-btn:hover { background: #1447c0; }
+    .carbon-result { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px; text-align: center; display: none; }
+    .carbon-result .co2 { font-size: 24px; font-weight: 800; color: var(--green); }
+    .carbon-result .co2-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .sidebar-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .sidebar-card .card-header { padding: 14px 16px; }
+    .sidebar-card .card-body { padding: 16px; }
+    .codes-display { display: flex; gap: 12px; }
+    .code-box { flex: 1; text-align: center; padding: 16px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; }
+    .code-box .code-val { font-size: 28px; font-weight: 800; color: var(--navy); letter-spacing: 1px; }
+    .code-box .code-type { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; }
+    footer { background: var(--navy); color: rgba(255,255,255,0.5); text-align: center; padding: 24px; font-size: 13px; margin-top: 40px; }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; margin: 0 12px; }
+    footer a:hover { color: #fff; }
+
+    table { width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden; }
+    thead th { padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid var(--border);background:#f8fafc; }
+    tbody tr { border-bottom:1px solid #f5f5f5; }
+    tbody tr:last-child { border-bottom:none; }
+    tbody tr:hover { background:#fafbfc; }
+    .az-nav { display:flex; gap:6px; flex-wrap:wrap; padding:20px 0; }
+    .az-nav a { display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:6px;text-decoration:none;font-weight:700;font-size:14px; }
+    .az-nav a.active { background:var(--blue);color:#fff; }
+    .az-nav a:not(.active) { background:#fff;color:var(--blue);border:1px solid var(--border); }
+    .az-nav a:not(.active):hover { background:var(--blue-light); }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/index.html" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="9" fill="#1a56db"/><path d="M24.5 8.5C25.3 9.3 25.3 10.6 24.5 11.4L19.8 16.1L22 25L19.5 27.5L16 19L11.5 23.5L12 26L10 28L8 24L4 22L6 20L8.5 20.5L13 16L5.5 12.5L8 10L17 12.2L21.6 7.5C22.4 6.7 23.7 6.7 24.5 8.5Z" fill="white"/></svg>
+    Airport<span>Code</span>
+  </a>
+  <div class="nav-search">
+    <svg width="14" height="14" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="navSearchInput" placeholder="Search airport or code…" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <div class="nav-links">
+    <a href="/az.html">A–Z</a>
+    <a href="/countries.html">By Country</a>
+  </div>
+</nav>
+<div style="max-width:1100px;margin:0 auto;padding:32px 24px">
+  <div style="margin-bottom:8px;font-size:12px;color:var(--muted)"><a href="/index.html" style="color:var(--blue);text-decoration:none">Home</a> › Airport Name › N</div>
+  <h1 style="font-size:28px;font-weight:800;color:var(--navy);margin-bottom:4px">Airports: Airport Name Starting With N</h1>
+  <p style="color:var(--muted);margin-bottom:16px">347 airports</p>
+  <div class="az-nav">
+    <a href="/az-name/a.html" class="">A</a><a href="/az-name/b.html" class="">B</a><a href="/az-name/c.html" class="">C</a><a href="/az-name/d.html" class="">D</a><a href="/az-name/e.html" class="">E</a><a href="/az-name/f.html" class="">F</a><a href="/az-name/g.html" class="">G</a><a href="/az-name/h.html" class="">H</a><a href="/az-name/i.html" class="">I</a><a href="/az-name/j.html" class="">J</a><a href="/az-name/k.html" class="">K</a><a href="/az-name/l.html" class="">L</a><a href="/az-name/m.html" class="">M</a><a href="/az-name/n.html" class="active">N</a><a href="/az-name/o.html" class="">O</a><a href="/az-name/p.html" class="">P</a><a href="/az-name/q.html" class="">Q</a><a href="/az-name/r.html" class="">R</a><a href="/az-name/s.html" class="">S</a><a href="/az-name/t.html" class="">T</a><a href="/az-name/u.html" class="">U</a><a href="/az-name/v.html" class="">V</a><a href="/az-name/w.html" class="">W</a><a href="/az-name/x.html" class="">X</a><a href="/az-name/y.html" class="">Y</a><a href="/az-name/z.html" class="">Z</a>
+  </div>
+  <table>
+    <thead><tr><th>IATA</th><th>Airport Name</th><th>City</th><th>Country</th></tr></thead>
+    <tbody>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ndj/index.html" style="color:var(--blue);text-decoration:none;">NDJ</a></td>
+        <td style="padding:12px 16px;"><a href="/ndj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">N'Djamena International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">N'Djamena</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇩 Chad</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ndl/index.html" style="color:var(--blue);text-decoration:none;">NDL</a></td>
+        <td style="padding:12px 16px;"><a href="/ndl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">N'Délé Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">N'Délé</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇫 Republik Afrika Tengah</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nge/index.html" style="color:var(--blue);text-decoration:none;">NGE</a></td>
+        <td style="padding:12px 16px;"><a href="/nge/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">N'Gaoundéré Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">N'Gaoundéré</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇲 Cameroon</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nkl/index.html" style="color:var(--blue);text-decoration:none;">NKL</a></td>
+        <td style="padding:12px 16px;"><a href="/nkl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">N'Kolo-Fuma Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">N'Kolo-Fuma</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇩 Congo - Kinshasa</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ndf/index.html" style="color:var(--blue);text-decoration:none;">NDF</a></td>
+        <td style="padding:12px 16px;"><a href="/ndf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">N'dalatando Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">N'dalatando</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇴 Angola</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/arz/index.html" style="color:var(--blue);text-decoration:none;">ARZ</a></td>
+        <td style="padding:12px 16px;"><a href="/arz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">N'zeto Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">N'zeto</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇴 Angola</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fwh/index.html" style="color:var(--blue);text-decoration:none;">FWH</a></td>
+        <td style="padding:12px 16px;"><a href="/fwh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">NAS Fort Worth JRB / Carswell Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fort Worth</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sqh/index.html" style="color:var(--blue);text-decoration:none;">SQH</a></td>
+        <td style="padding:12px 16px;"><a href="/sqh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Na San Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mai Son</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇻🇳 Vietnam</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mnc/index.html" style="color:var(--blue);text-decoration:none;">MNC</a></td>
+        <td style="padding:12px 16px;"><a href="/mnc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nacala International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nacala</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇿 Mozambique</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nch/index.html" style="color:var(--blue);text-decoration:none;">NCH</a></td>
+        <td style="padding:12px 16px;"><a href="/nch/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nachingwea Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nachingwea</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇿 Tanzania</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nan/index.html" style="color:var(--blue);text-decoration:none;">NAN</a></td>
+        <td style="padding:12px 16px;"><a href="/nan/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nadi International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nadi</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇯 Fiji</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ndr/index.html" style="color:var(--blue);text-decoration:none;">NDR</a></td>
+        <td style="padding:12px 16px;"><a href="/ndr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nador Al Aaroui International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Al Aaroui</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇦 Maghribi</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ndn/index.html" style="color:var(--blue);text-decoration:none;">NDN</a></td>
+        <td style="padding:12px 16px;"><a href="/ndn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nadunumu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nadunumu</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nym/index.html" style="color:var(--blue);text-decoration:none;">NYM</a></td>
+        <td style="padding:12px 16px;"><a href="/nym/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nadym Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nadym</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lae/index.html" style="color:var(--blue);text-decoration:none;">LAE</a></td>
+        <td style="padding:12px 16px;"><a href="/lae/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nadzab Tomodachi International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lae</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nfr/index.html" style="color:var(--blue);text-decoration:none;">NFR</a></td>
+        <td style="padding:12px 16px;"><a href="/nfr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nafurah 1 Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nafurah 1</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇱🇾 Libya</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wnp/index.html" style="color:var(--blue);text-decoration:none;">WNP</a></td>
+        <td style="padding:12px 16px;"><a href="/wnp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Naga Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Naga</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇭 Filipina</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ngs/index.html" style="color:var(--blue);text-decoration:none;">NGS</a></td>
+        <td style="padding:12px 16px;"><a href="/ngs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nagasaki Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nagasaki</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇯🇵 Jepun</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jpe/index.html" style="color:var(--blue);text-decoration:none;">JPE</a></td>
+        <td style="padding:12px 16px;"><a href="/jpe/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nagib Demachki Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Paragominas</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nkm/index.html" style="color:var(--blue);text-decoration:none;">NKM</a></td>
+        <td style="padding:12px 16px;"><a href="/nkm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nagoya Airport / JASDF Komaki Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nagoya</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇯🇵 Jepun</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nah/index.html" style="color:var(--blue);text-decoration:none;">NAH</a></td>
+        <td style="padding:12px 16px;"><a href="/nah/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Naha Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tabukan Utara, Sangihe Islands</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/oka/index.html" style="color:var(--blue);text-decoration:none;">OKA</a></td>
+        <td style="padding:12px 16px;"><a href="/oka/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Naha International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Naha</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇯🇵 Jepun</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ydp/index.html" style="color:var(--blue);text-decoration:none;">YDP</a></td>
+        <td style="padding:12px 16px;"><a href="/ydp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nain Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nain</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wil/index.html" style="color:var(--blue);text-decoration:none;">WIL</a></td>
+        <td style="padding:12px 16px;"><a href="/wil/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nairobi Wilson Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nairobi</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇰🇪 Kenya</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/niu/index.html" style="color:var(--blue);text-decoration:none;">NIU</a></td>
+        <td style="padding:12px 16px;"><a href="/niu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Naiu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Naiu Atoll</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇫 French Polynesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eam/index.html" style="color:var(--blue);text-decoration:none;">EAM</a></td>
+        <td style="padding:12px 16px;"><a href="/eam/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Najran Domestic Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Najran</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇦 Arab Saudi</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/shb/index.html" style="color:var(--blue);text-decoration:none;">SHB</a></td>
+        <td style="padding:12px 16px;"><a href="/shb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nakashibetsu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nakashibetsu</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇯🇵 Jepun</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/naj/index.html" style="color:var(--blue);text-decoration:none;">NAJ</a></td>
+        <td style="padding:12px 16px;"><a href="/naj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nakhchivan International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nakhchivan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇿 Azerbaijan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kop/index.html" style="color:var(--blue);text-decoration:none;">KOP</a></td>
+        <td style="padding:12px 16px;"><a href="/kop/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nakhon Phanom Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nakhon Phanom</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇭 Thailand</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nak/index.html" style="color:var(--blue);text-decoration:none;">NAK</a></td>
+        <td style="padding:12px 16px;"><a href="/nak/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nakhon Ratchasima Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Chaloem Phra Kiat</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇭 Thailand</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nst/index.html" style="color:var(--blue);text-decoration:none;">NST</a></td>
+        <td style="padding:12px 16px;"><a href="/nst/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nakhon Si Thammarat Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nakhon Si Thammarat</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇭 Thailand</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yqn/index.html" style="color:var(--blue);text-decoration:none;">YQN</a></td>
+        <td style="padding:12px 16px;"><a href="/yqn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nakina Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nakina</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nnk/index.html" style="color:var(--blue);text-decoration:none;">NNK</a></td>
+        <td style="padding:12px 16px;"><a href="/nnk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Naknek Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Naknek</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nuu/index.html" style="color:var(--blue);text-decoration:none;">NUU</a></td>
+        <td style="padding:12px 16px;"><a href="/nuu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nakuru Lanet Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nakuru</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇰🇪 Kenya</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bkb/index.html" style="color:var(--blue);text-decoration:none;">BKB</a></td>
+        <td style="padding:12px 16px;"><a href="/bkb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bikaner</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nal/index.html" style="color:var(--blue);text-decoration:none;">NAL</a></td>
+        <td style="padding:12px 16px;"><a href="/nal/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nalchik Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nalchik</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nma/index.html" style="color:var(--blue);text-decoration:none;">NMA</a></td>
+        <td style="padding:12px 16px;"><a href="/nma/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Namangan International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Namangan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇿 Uzbekistan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/atn/index.html" style="color:var(--blue);text-decoration:none;">ATN</a></td>
+        <td style="padding:12px 16px;"><a href="/atn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Namatanai Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Namatanai</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nba/index.html" style="color:var(--blue);text-decoration:none;">NBA</a></td>
+        <td style="padding:12px 16px;"><a href="/nba/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nambaiyufa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nambaiyufa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nbh/index.html" style="color:var(--blue);text-decoration:none;">NBH</a></td>
+        <td style="padding:12px 16px;"><a href="/nbh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nambucca Heads Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nambucca Heads</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nam/index.html" style="color:var(--blue);text-decoration:none;">NAM</a></td>
+        <td style="padding:12px 16px;"><a href="/nam/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Namniwel Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Namniwel</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ndk/index.html" style="color:var(--blue);text-decoration:none;">NDK</a></td>
+        <td style="padding:12px 16px;"><a href="/ndk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Namorik Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Namorik Atoll</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇭 Kepulauan Marshall</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/apl/index.html" style="color:var(--blue);text-decoration:none;">APL</a></td>
+        <td style="padding:12px 16px;"><a href="/apl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nampula Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nampula</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇿 Mozambique</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nre/index.html" style="color:var(--blue);text-decoration:none;">NRE</a></td>
+        <td style="padding:12px 16px;"><a href="/nre/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Namrole Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Namrole</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nms/index.html" style="color:var(--blue);text-decoration:none;">NMS</a></td>
+        <td style="padding:12px 16px;"><a href="/nms/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Namsang Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Namsang</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇲 Myanmar (Burma)</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/osy/index.html" style="color:var(--blue);text-decoration:none;">OSY</a></td>
+        <td style="padding:12px 16px;"><a href="/osy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Namsos Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Namsos</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇴 Norway</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nmt/index.html" style="color:var(--blue);text-decoration:none;">NMT</a></td>
+        <td style="padding:12px 16px;"><a href="/nmt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Namtu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Namtu</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇲 Myanmar (Burma)</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ndi/index.html" style="color:var(--blue);text-decoration:none;">NDI</a></td>
+        <td style="padding:12px 16px;"><a href="/ndi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Namudi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Namudi</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nni/index.html" style="color:var(--blue);text-decoration:none;">NNI</a></td>
+        <td style="padding:12px 16px;"><a href="/nni/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Namutoni Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Namutoni</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇦 Namibia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nnt/index.html" style="color:var(--blue);text-decoration:none;">NNT</a></td>
+        <td style="padding:12px 16px;"><a href="/nnt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇭 Thailand</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/naz/index.html" style="color:var(--blue);text-decoration:none;">NAZ</a></td>
+        <td style="padding:12px 16px;"><a href="/naz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nana Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Star Harbor</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇧 Kepulauan Solomon</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ycd/index.html" style="color:var(--blue);text-decoration:none;">YCD</a></td>
+        <td style="padding:12px 16px;"><a href="/ycd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nanaimo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nanaimo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/khn/index.html" style="color:var(--blue);text-decoration:none;">KHN</a></td>
+        <td style="padding:12px 16px;"><a href="/khn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nanchang Changbei International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nanchang</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yhj/index.html" style="color:var(--blue);text-decoration:none;">YHJ</a></td>
+        <td style="padding:12px 16px;"><a href="/yhj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nanchang Yaohu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nanchang</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nao/index.html" style="color:var(--blue);text-decoration:none;">NAO</a></td>
+        <td style="padding:12px 16px;"><a href="/nao/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nanchong Gaoping Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nanchong (Gaoping)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/enc/index.html" style="color:var(--blue);text-decoration:none;">ENC</a></td>
+        <td style="padding:12px 16px;"><a href="/enc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nancy-Essey Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tomblaine, Meurthe-et-Moselle</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇷 Perancis</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ndc/index.html" style="color:var(--blue);text-decoration:none;">NDC</a></td>
+        <td style="padding:12px 16px;"><a href="/ndc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nanded Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nanded</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/npo/index.html" style="color:var(--blue);text-decoration:none;">NPO</a></td>
+        <td style="padding:12px 16px;"><a href="/npo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nanga Pinoh Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nanga Pinoh-Borneo Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nnd/index.html" style="color:var(--blue);text-decoration:none;">NND</a></td>
+        <td style="padding:12px 16px;"><a href="/nnd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nangade Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nangade</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇿 Mozambique</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nkg/index.html" style="color:var(--blue);text-decoration:none;">NKG</a></td>
+        <td style="padding:12px 16px;"><a href="/nkg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nanjing Lukou International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nanjing</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/shm/index.html" style="color:var(--blue);text-decoration:none;">SHM</a></td>
+        <td style="padding:12px 16px;"><a href="/shm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nanki Shirahama Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Shirahama</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇯🇵 Jepun</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nkn/index.html" style="color:var(--blue);text-decoration:none;">NKN</a></td>
+        <td style="padding:12px 16px;"><a href="/nkn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nankina Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Gwarawon</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nng/index.html" style="color:var(--blue);text-decoration:none;">NNG</a></td>
+        <td style="padding:12px 16px;"><a href="/nng/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nanning Wuxu International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nanning (Jiangnan)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wus/index.html" style="color:var(--blue);text-decoration:none;">WUS</a></td>
+        <td style="padding:12px 16px;"><a href="/wus/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nanping Wuyishan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wuyishan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nte/index.html" style="color:var(--blue);text-decoration:none;">NTE</a></td>
+        <td style="padding:12px 16px;"><a href="/nte/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nantes Atlantique Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nantes</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇷 Perancis</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ntg/index.html" style="color:var(--blue);text-decoration:none;">NTG</a></td>
+        <td style="padding:12px 16px;"><a href="/ntg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nantong Xingdong International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nantong (Tongzhou)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ack/index.html" style="color:var(--blue);text-decoration:none;">ACK</a></td>
+        <td style="padding:12px 16px;"><a href="/ack/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nantucket Memorial Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nantucket</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/phr/index.html" style="color:var(--blue);text-decoration:none;">PHR</a></td>
+        <td style="padding:12px 16px;"><a href="/phr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nanuku Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nanuku Auberge Resort</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇯 Fiji</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nnu/index.html" style="color:var(--blue);text-decoration:none;">NNU</a></td>
+        <td style="padding:12px 16px;"><a href="/nnu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nanuque Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nanuque</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/keb/index.html" style="color:var(--blue);text-decoration:none;">KEB</a></td>
+        <td style="padding:12px 16px;"><a href="/keb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nanwalek Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nanwalek</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nny/index.html" style="color:var(--blue);text-decoration:none;">NNY</a></td>
+        <td style="padding:12px 16px;"><a href="/nny/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nanyang Jiangying Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nanyang (Wancheng)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nyk/index.html" style="color:var(--blue);text-decoration:none;">NYK</a></td>
+        <td style="padding:12px 16px;"><a href="/nyk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nanyuki Civil Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Gathiuru</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇰🇪 Kenya</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/noo/index.html" style="color:var(--blue);text-decoration:none;">NOO</a></td>
+        <td style="padding:12px 16px;"><a href="/noo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Naoro Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Naoro Vilage</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/apc/index.html" style="color:var(--blue);text-decoration:none;">APC</a></td>
+        <td style="padding:12px 16px;"><a href="/apc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Napa County Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Napa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wna/index.html" style="color:var(--blue);text-decoration:none;">WNA</a></td>
+        <td style="padding:12px 16px;"><a href="/wna/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Napakiak Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Napakiak</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pka/index.html" style="color:var(--blue);text-decoration:none;">PKA</a></td>
+        <td style="padding:12px 16px;"><a href="/pka/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Napaskiak Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Napaskiak</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nap/index.html" style="color:var(--blue);text-decoration:none;">NAP</a></td>
+        <td style="padding:12px 16px;"><a href="/nap/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Naples International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Napoli</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇹 Itali</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/apf/index.html" style="color:var(--blue);text-decoration:none;">APF</a></td>
+        <td style="padding:12px 16px;"><a href="/apf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Naples Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Naples</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nmr/index.html" style="color:var(--blue);text-decoration:none;">NMR</a></td>
+        <td style="padding:12px 16px;"><a href="/nmr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nappa Merrie Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/npp/index.html" style="color:var(--blue);text-decoration:none;">NPP</a></td>
+        <td style="padding:12px 16px;"><a href="/npp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Napperby Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Napperby</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nau/index.html" style="color:var(--blue);text-decoration:none;">NAU</a></td>
+        <td style="padding:12px 16px;"><a href="/nau/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Napuka Island Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Napuka Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇫 French Polynesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nrm/index.html" style="color:var(--blue);text-decoration:none;">NRM</a></td>
+        <td style="padding:12px 16px;"><a href="/nrm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nara Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nara</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇱 Mali</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nac/index.html" style="color:var(--blue);text-decoration:none;">NAC</a></td>
+        <td style="padding:12px 16px;"><a href="/nac/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Naracoorte Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/naw/index.html" style="color:var(--blue);text-decoration:none;">NAW</a></td>
+        <td style="padding:12px 16px;"><a href="/naw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Narathiwat Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇭 Thailand</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nrt/index.html" style="color:var(--blue);text-decoration:none;">NRT</a></td>
+        <td style="padding:12px 16px;"><a href="/nrt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Narita International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Narita</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇯🇵 Jepun</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/naa/index.html" style="color:var(--blue);text-decoration:none;">NAA</a></td>
+        <td style="padding:12px 16px;"><a href="/naa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Narrabri Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Narrabri</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nra/index.html" style="color:var(--blue);text-decoration:none;">NRA</a></td>
+        <td style="padding:12px 16px;"><a href="/nra/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Narrandera Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Narrandera</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nrg/index.html" style="color:var(--blue);text-decoration:none;">NRG</a></td>
+        <td style="padding:12px 16px;"><a href="/nrg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Narrogin Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Narrogin</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/qrm/index.html" style="color:var(--blue);text-decoration:none;">QRM</a></td>
+        <td style="padding:12px 16px;"><a href="/qrm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Narromine Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uak/index.html" style="color:var(--blue);text-decoration:none;">UAK</a></td>
+        <td style="padding:12px 16px;"><a href="/uak/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Narsarsuaq Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Narsarsuaq</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇱 Greenland</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nnm/index.html" style="color:var(--blue);text-decoration:none;">NNM</a></td>
+        <td style="padding:12px 16px;"><a href="/nnm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Naryan Mar Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Naryan Mar</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/isk/index.html" style="color:var(--blue);text-decoration:none;">ISK</a></td>
+        <td style="padding:12px 16px;"><a href="/isk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nashik International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nashik</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ash/index.html" style="color:var(--blue);text-decoration:none;">ASH</a></td>
+        <td style="padding:12px 16px;"><a href="/ash/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nashua Airport / Boire Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nashua</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bna/index.html" style="color:var(--blue);text-decoration:none;">BNA</a></td>
+        <td style="padding:12px 16px;"><a href="/bna/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nashville International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nashville</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yna/index.html" style="color:var(--blue);text-decoration:none;">YNA</a></td>
+        <td style="padding:12px 16px;"><a href="/yna/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Natashquan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Natashquan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hez/index.html" style="color:var(--blue);text-decoration:none;">HEZ</a></td>
+        <td style="padding:12px 16px;"><a href="/hez/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Natchez–Adams County Airport / Hardy-Anders Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Natchez</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mgi/index.html" style="color:var(--blue);text-decoration:none;">MGI</a></td>
+        <td style="padding:12px 16px;"><a href="/mgi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">National Wildlife Refuge Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Matagorda Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nae/index.html" style="color:var(--blue);text-decoration:none;">NAE</a></td>
+        <td style="padding:12px 16px;"><a href="/nae/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Natitingou Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Natitingou</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇯 Benin</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ynp/index.html" style="color:var(--blue);text-decoration:none;">YNP</a></td>
+        <td style="padding:12px 16px;"><a href="/ynp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Natuashish Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Natuashish</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yut/index.html" style="color:var(--blue);text-decoration:none;">YUT</a></td>
+        <td style="padding:12px 16px;"><a href="/yut/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Naujaat Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Repulse Bay</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/inu/index.html" style="color:var(--blue);text-decoration:none;">INU</a></td>
+        <td style="padding:12px 16px;"><a href="/inu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nauru International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yaren</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇷 Nauru</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/suv/index.html" style="color:var(--blue);text-decoration:none;">SUV</a></td>
+        <td style="padding:12px 16px;"><a href="/suv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nausori International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nausori</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇯 Fiji</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ngp/index.html" style="color:var(--blue);text-decoration:none;">NGP</a></td>
+        <td style="padding:12px 16px;"><a href="/ngp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Naval Air Station Corpus Christi Truax Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Corpus Christi</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nqx/index.html" style="color:var(--blue);text-decoration:none;">NQX</a></td>
+        <td style="padding:12px 16px;"><a href="/nqx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Naval Air Station Key West/Boca Chica Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Key West</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/noa/index.html" style="color:var(--blue);text-decoration:none;">NOA</a></td>
+        <td style="padding:12px 16px;"><a href="/noa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Naval Air Station Nowra - HMAS Albatross</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nowra Hill</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/npa/index.html" style="color:var(--blue);text-decoration:none;">NPA</a></td>
+        <td style="padding:12px 16px;"><a href="/npa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Naval Air Station Pensacola Forrest Sherman Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Pensacola</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nhx/index.html" style="color:var(--blue);text-decoration:none;">NHX</a></td>
+        <td style="padding:12px 16px;"><a href="/nhx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Naval Outlying Field Barin</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Foley</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nrs/index.html" style="color:var(--blue);text-decoration:none;">NRS</a></td>
+        <td style="padding:12px 16px;"><a href="/nrs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Naval Outlying Field Imperial Beach (Ream Field)</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Imperial Beach</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nrb/index.html" style="color:var(--blue);text-decoration:none;">NRB</a></td>
+        <td style="padding:12px 16px;"><a href="/nrb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Naval Station Mayport / Admiral David L McDonald Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jacksonville</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nkw/index.html" style="color:var(--blue);text-decoration:none;">NKW</a></td>
+        <td style="padding:12px 16px;"><a href="/nkw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Naval Support Facility Diego Garcia</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Diego Garcia</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇴 Wilayah Lautan Hindi British</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nmi/index.html" style="color:var(--blue);text-decoration:none;">NMI</a></td>
+        <td style="padding:12px 16px;"><a href="/nmi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Navi Mumbai International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Navi Mumbai</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nvi/index.html" style="color:var(--blue);text-decoration:none;">NVI</a></td>
+        <td style="padding:12px 16px;"><a href="/nvi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Navoi International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Navoi</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇿 Uzbekistan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jnx/index.html" style="color:var(--blue);text-decoration:none;">JNX</a></td>
+        <td style="padding:12px 16px;"><a href="/jnx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Naxos Island National Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Naxos</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇷 Greece</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nyt/index.html" style="color:var(--blue);text-decoration:none;">NYT</a></td>
+        <td style="padding:12px 16px;"><a href="/nyt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nay Pyi Taw International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Naypyitaw</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇲 Myanmar (Burma)</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kdn/index.html" style="color:var(--blue);text-decoration:none;">KDN</a></td>
+        <td style="padding:12px 16px;"><a href="/kdn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ndende Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ndende</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇦 Gabon</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fih/index.html" style="color:var(--blue);text-decoration:none;">FIH</a></td>
+        <td style="padding:12px 16px;"><a href="/fih/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ndjili International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kinshasa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇩 Congo - Kinshasa</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nlo/index.html" style="color:var(--blue);text-decoration:none;">NLO</a></td>
+        <td style="padding:12px 16px;"><a href="/nlo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ndolo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">N'dolo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇩 Congo - Kinshasa</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vol/index.html" style="color:var(--blue);text-decoration:none;">VOL</a></td>
+        <td style="padding:12px 16px;"><a href="/vol/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nea Anchialos National Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nea Anchialos</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇷 Greece</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nec/index.html" style="color:var(--blue);text-decoration:none;">NEC</a></td>
+        <td style="padding:12px 16px;"><a href="/nec/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Necochea Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Necochea</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇷 Argentina</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nci/index.html" style="color:var(--blue);text-decoration:none;">NCI</a></td>
+        <td style="padding:12px 16px;"><a href="/nci/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Necocli Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Necocli</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇴 Colombia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eed/index.html" style="color:var(--blue);text-decoration:none;">EED</a></td>
+        <td style="padding:12px 16px;"><a href="/eed/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Needles Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Needles</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cnp/index.html" style="color:var(--blue);text-decoration:none;">CNP</a></td>
+        <td style="padding:12px 16px;"><a href="/cnp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Neerlerit Inaat Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Neerlerit Inaat</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇱 Greenland</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nfg/index.html" style="color:var(--blue);text-decoration:none;">NFG</a></td>
+        <td style="padding:12px 16px;"><a href="/nfg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nefteyugansk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nefteyugansk</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gxg/index.html" style="color:var(--blue);text-decoration:none;">GXG</a></td>
+        <td style="padding:12px 16px;"><a href="/gxg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Negage Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Negage</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇴 Angola</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gbf/index.html" style="color:var(--blue);text-decoration:none;">GBF</a></td>
+        <td style="padding:12px 16px;"><a href="/gbf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Negarbo(Negabo) Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Negarbo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/egl/index.html" style="color:var(--blue);text-decoration:none;">EGL</a></td>
+        <td style="padding:12px 16px;"><a href="/egl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Negele Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Negele Borana</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇹 Ethiopia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/neg/index.html" style="color:var(--blue);text-decoration:none;">NEG</a></td>
+        <td style="padding:12px 16px;"><a href="/neg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Negril Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Negril</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇯🇲 Jamaica</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/axv/index.html" style="color:var(--blue);text-decoration:none;">AXV</a></td>
+        <td style="padding:12px 16px;"><a href="/axv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Neil Armstrong Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wapakoneta</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nej/index.html" style="color:var(--blue);text-decoration:none;">NEJ</a></td>
+        <td style="padding:12px 16px;"><a href="/nej/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nejjo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nejo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇹 Ethiopia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nek/index.html" style="color:var(--blue);text-decoration:none;">NEK</a></td>
+        <td style="padding:12px 16px;"><a href="/nek/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nekemte Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nekemte</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇹 Ethiopia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lsv/index.html" style="color:var(--blue);text-decoration:none;">LSV</a></td>
+        <td style="padding:12px 16px;"><a href="/lsv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nellis Air Force Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Las Vegas</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nsn/index.html" style="color:var(--blue);text-decoration:none;">NSN</a></td>
+        <td style="padding:12px 16px;"><a href="/nsn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nelson Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nelson</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇿 New Zealand</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nlg/index.html" style="color:var(--blue);text-decoration:none;">NLG</a></td>
+        <td style="padding:12px 16px;"><a href="/nlg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nelson Lagoon Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nelson Lagoon</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rai/index.html" style="color:var(--blue);text-decoration:none;">RAI</a></td>
+        <td style="padding:12px 16px;"><a href="/rai/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nelson Mandela International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Praia</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇻 Cape Verde</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/clv/index.html" style="color:var(--blue);text-decoration:none;">CLV</a></td>
+        <td style="padding:12px 16px;"><a href="/clv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nelson Ribeiro Guimarães Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Caldas Novas</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nlp/index.html" style="color:var(--blue);text-decoration:none;">NLP</a></td>
+        <td style="padding:12px 16px;"><a href="/nlp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nelspruit Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nelspruit</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇿🇦 Afrika Selatan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yns/index.html" style="color:var(--blue);text-decoration:none;">YNS</a></td>
+        <td style="padding:12px 16px;"><a href="/yns/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nemiscau Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nemiscau</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/enn/index.html" style="color:var(--blue);text-decoration:none;">ENN</a></td>
+        <td style="padding:12px 16px;"><a href="/enn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nenana Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nenana</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/njj/index.html" style="color:var(--blue);text-decoration:none;">NJJ</a></td>
+        <td style="padding:12px 16px;"><a href="/njj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nenjiang Melgen Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Heihe</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/num/index.html" style="color:var(--blue);text-decoration:none;">NUM</a></td>
+        <td style="padding:12px 16px;"><a href="/num/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Neom Bay Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sharma</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇦 Arab Saudi</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eos/index.html" style="color:var(--blue);text-decoration:none;">EOS</a></td>
+        <td style="padding:12px 16px;"><a href="/eos/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Neosho Hugh Robinson Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Neosho</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kep/index.html" style="color:var(--blue);text-decoration:none;">KEP</a></td>
+        <td style="padding:12px 16px;"><a href="/kep/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nepalgunj Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nepalgunj</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇵 Nepal</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bbv/index.html" style="color:var(--blue);text-decoration:none;">BBV</a></td>
+        <td style="padding:12px 16px;"><a href="/bbv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nero-Mer Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Grand-Béréby</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇮 Cote d’Ivoire</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nvn/index.html" style="color:var(--blue);text-decoration:none;">NVN</a></td>
+        <td style="padding:12px 16px;"><a href="/nvn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nervino Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Beckwourth</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ccu/index.html" style="color:var(--blue);text-decoration:none;">CCU</a></td>
+        <td style="padding:12px 16px;"><a href="/ccu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Netaji Subhash Chandra Bose International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kolkata</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fnb/index.html" style="color:var(--blue);text-decoration:none;">FNB</a></td>
+        <td style="padding:12px 16px;"><a href="/fnb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Neubrandenburg Trollenhagen Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Trollenhagen</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇪 Jerman</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/eum/index.html" style="color:var(--blue);text-decoration:none;">EUM</a></td>
+        <td style="padding:12px 16px;"><a href="/eum/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Neumünster Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Neumünster</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇪 Jerman</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nvd/index.html" style="color:var(--blue);text-decoration:none;">NVD</a></td>
+        <td style="padding:12px 16px;"><a href="/nvd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nevada Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nevada</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vtm/index.html" style="color:var(--blue);text-decoration:none;">VTM</a></td>
+        <td style="padding:12px 16px;"><a href="/vtm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nevatim Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Beersheba</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇱 Israel</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nvs/index.html" style="color:var(--blue);text-decoration:none;">NVS</a></td>
+        <td style="padding:12px 16px;"><a href="/nvs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nevers-Fourchambault Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Marzy, Nièvre</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇷 Perancis</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nav/index.html" style="color:var(--blue);text-decoration:none;">NAV</a></td>
+        <td style="padding:12px 16px;"><a href="/nav/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nevşehir Kapadokya Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nevşehir</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇷 Turkiye</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/qsx/index.html" style="color:var(--blue);text-decoration:none;">QSX</a></td>
+        <td style="padding:12px 16px;"><a href="/qsx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">New Amsterdam Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">New Amsterdam</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇾 Guyana</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/xrq/index.html" style="color:var(--blue);text-decoration:none;">XRQ</a></td>
+        <td style="padding:12px 16px;"><a href="/xrq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">New Barag Right Banner Baogede Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">New Barag Right Banner</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ewb/index.html" style="color:var(--blue);text-decoration:none;">EWB</a></td>
+        <td style="padding:12px 16px;"><a href="/ewb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">New Bedford Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">New Bedford</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tbi/index.html" style="color:var(--blue);text-decoration:none;">TBI</a></td>
+        <td style="padding:12px 16px;"><a href="/tbi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">New Bight Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cat Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇸 Bahamas</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cmt/index.html" style="color:var(--blue);text-decoration:none;">CMT</a></td>
+        <td style="padding:12px 16px;"><a href="/cmt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">New Cametá Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cametá</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jci/index.html" style="color:var(--blue);text-decoration:none;">JCI</a></td>
+        <td style="padding:12px 16px;"><a href="/jci/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">New Century AirCenter Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">New Century</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cts/index.html" style="color:var(--blue);text-decoration:none;">CTS</a></td>
+        <td style="padding:12px 16px;"><a href="/cts/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">New Chitose Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sapporo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇯🇵 Jepun</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/clg/index.html" style="color:var(--blue);text-decoration:none;">CLG</a></td>
+        <td style="padding:12px 16px;"><a href="/clg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">New Coalinga Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Coalinga</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gwd/index.html" style="color:var(--blue);text-decoration:none;">GWD</a></td>
+        <td style="padding:12px 16px;"><a href="/gwd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">New Gwadar International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Gurandani</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇰 Pakistan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nhf/index.html" style="color:var(--blue);text-decoration:none;">NHF</a></td>
+        <td style="padding:12px 16px;"><a href="/nhf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">New Halfa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">New Halfa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇩 Sudan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/isg/index.html" style="color:var(--blue);text-decoration:none;">ISG</a></td>
+        <td style="padding:12px 16px;"><a href="/isg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">New Ishigaki Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ishigaki</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇯🇵 Jepun</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lut/index.html" style="color:var(--blue);text-decoration:none;">LUT</a></td>
+        <td style="padding:12px 16px;"><a href="/lut/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">New Laura Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Laura Station</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nmp/index.html" style="color:var(--blue);text-decoration:none;">NMP</a></td>
+        <td style="padding:12px 16px;"><a href="/nmp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">New Moon Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Basalt</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nbg/index.html" style="color:var(--blue);text-decoration:none;">NBG</a></td>
+        <td style="padding:12px 16px;"><a href="/nbg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">New Orleans NAS JRB/Alvin Callender Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">New Orleans</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/npl/index.html" style="color:var(--blue);text-decoration:none;">NPL</a></td>
+        <td style="padding:12px 16px;"><a href="/npl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">New Plymouth Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">New Plymouth</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇿 New Zealand</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rnh/index.html" style="color:var(--blue);text-decoration:none;">RNH</a></td>
+        <td style="padding:12px 16px;"><a href="/rnh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">New Richmond Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">New Richmond</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/psk/index.html" style="color:var(--blue);text-decoration:none;">PSK</a></td>
+        <td style="padding:12px 16px;"><a href="/psk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">New River Valley Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Dublin</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/knw/index.html" style="color:var(--blue);text-decoration:none;">KNW</a></td>
+        <td style="padding:12px 16px;"><a href="/knw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">New Stuyahok Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">New Stuyahok</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tne/index.html" style="color:var(--blue);text-decoration:none;">TNE</a></td>
+        <td style="padding:12px 16px;"><a href="/tne/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">New Tanegashima Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tanegashima</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇯🇵 Jepun</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ulm/index.html" style="color:var(--blue);text-decoration:none;">ULM</a></td>
+        <td style="padding:12px 16px;"><a href="/ulm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">New Ulm Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">New Ulm</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/swf/index.html" style="color:var(--blue);text-decoration:none;">SWF</a></td>
+        <td style="padding:12px 16px;"><a href="/swf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">New York Stewart International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Newburgh</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ewr/index.html" style="color:var(--blue);text-decoration:none;">EWR</a></td>
+        <td style="padding:12px 16px;"><a href="/ewr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Newark Liberty International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Newark</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ncs/index.html" style="color:var(--blue);text-decoration:none;">NCS</a></td>
+        <td style="padding:12px 16px;"><a href="/ncs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Newcastle Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Newcastle</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇿🇦 Afrika Selatan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ntl/index.html" style="color:var(--blue);text-decoration:none;">NTL</a></td>
+        <td style="padding:12px 16px;"><a href="/ntl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Newcastle Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Williamtown</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ncl/index.html" style="color:var(--blue);text-decoration:none;">NCL</a></td>
+        <td style="padding:12px 16px;"><a href="/ncl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Newcastle International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Newcastle upon Tyne, Tyne and Wear</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇧 UK</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zne/index.html" style="color:var(--blue);text-decoration:none;">ZNE</a></td>
+        <td style="padding:12px 16px;"><a href="/zne/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Newman Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Newman</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/onp/index.html" style="color:var(--blue);text-decoration:none;">ONP</a></td>
+        <td style="padding:12px 16px;"><a href="/onp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Newport Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Newport</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/phf/index.html" style="color:var(--blue);text-decoration:none;">PHF</a></td>
+        <td style="padding:12px 16px;"><a href="/phf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Newport News Williamsburg International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Newport News</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/npt/index.html" style="color:var(--blue);text-decoration:none;">NPT</a></td>
+        <td style="padding:12px 16px;"><a href="/npt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Newport State Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Newport</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nry/index.html" style="color:var(--blue);text-decoration:none;">NRY</a></td>
+        <td style="padding:12px 16px;"><a href="/nry/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Newry Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Newry</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ewk/index.html" style="color:var(--blue);text-decoration:none;">EWK</a></td>
+        <td style="padding:12px 16px;"><a href="/ewk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Newton City-County Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Newton</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tnu/index.html" style="color:var(--blue);text-decoration:none;">TNU</a></td>
+        <td style="padding:12px 16px;"><a href="/tnu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Newton Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Newton</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nvy/index.html" style="color:var(--blue);text-decoration:none;">NVY</a></td>
+        <td style="padding:12px 16px;"><a href="/nvy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Neyveli Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Neyveli</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ngl/index.html" style="color:var(--blue);text-decoration:none;">NGL</a></td>
+        <td style="padding:12px 16px;"><a href="/ngl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ngala Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ngala</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇿🇦 Afrika Selatan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ngq/index.html" style="color:var(--blue);text-decoration:none;">NGQ</a></td>
+        <td style="padding:12px 16px;"><a href="/ngq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ngari Gunsa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Shiquanhe</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ngi/index.html" style="color:var(--blue);text-decoration:none;">NGI</a></td>
+        <td style="padding:12px 16px;"><a href="/ngi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ngau Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ngau</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇯 Fiji</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vpe/index.html" style="color:var(--blue);text-decoration:none;">VPE</a></td>
+        <td style="padding:12px 16px;"><a href="/vpe/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ngjiva Pereira Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ngiva</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇴 Angola</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cpf/index.html" style="color:var(--blue);text-decoration:none;">CPF</a></td>
+        <td style="padding:12px 16px;"><a href="/cpf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ngloram Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Blora</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zgm/index.html" style="color:var(--blue);text-decoration:none;">ZGM</a></td>
+        <td style="padding:12px 16px;"><a href="/zgm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ngoma Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ngoma</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇿🇲 Zambia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ira/index.html" style="color:var(--blue);text-decoration:none;">IRA</a></td>
+        <td style="padding:12px 16px;"><a href="/ira/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ngorangora Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kirakira</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇧 Kepulauan Solomon</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dis/index.html" style="color:var(--blue);text-decoration:none;">DIS</a></td>
+        <td style="padding:12px 16px;"><a href="/dis/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ngot Nzoungou Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Dolisie</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇬 Congo - Brazzaville</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rpm/index.html" style="color:var(--blue);text-decoration:none;">RPM</a></td>
+        <td style="padding:12px 16px;"><a href="/rpm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ngukurr Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hoo/index.html" style="color:var(--blue);text-decoration:none;">HOO</a></td>
+        <td style="padding:12px 16px;"><a href="/hoo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nhon Co Airfield</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Đăk R'Lấp</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇻🇳 Vietnam</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ycm/index.html" style="color:var(--blue);text-decoration:none;">YCM</a></td>
+        <td style="padding:12px 16px;"><a href="/ycm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Niagara District Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Niagara-on-the-Lake</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iag/index.html" style="color:var(--blue);text-decoration:none;">IAG</a></td>
+        <td style="padding:12px 16px;"><a href="/iag/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Niagara Falls International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Niagara Falls</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lrl/index.html" style="color:var(--blue);text-decoration:none;">LRL</a></td>
+        <td style="padding:12px 16px;"><a href="/lrl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Niamtougou International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Niamtougou</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇬 Togo</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nce/index.html" style="color:var(--blue);text-decoration:none;">NCE</a></td>
+        <td style="padding:12px 16px;"><a href="/nce/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nice-Côte d'Azur Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nice, Alpes-Maritimes</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇷 Perancis</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nls/index.html" style="color:var(--blue);text-decoration:none;">NLS</a></td>
+        <td style="padding:12px 16px;"><a href="/nls/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nicholson Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ick/index.html" style="color:var(--blue);text-decoration:none;">ICK</a></td>
+        <td style="padding:12px 16px;"><a href="/ick/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nieuw Nickerie - Major Henk Fernandes Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nieuw Nickerie</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇷 Surinam</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nme/index.html" style="color:var(--blue);text-decoration:none;">NME</a></td>
+        <td style="padding:12px 16px;"><a href="/nme/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nightmute Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nightmute</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kij/index.html" style="color:var(--blue);text-decoration:none;">KIJ</a></td>
+        <td style="padding:12px 16px;"><a href="/kij/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Niigata Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Niigata</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇯🇵 Jepun</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nib/index.html" style="color:var(--blue);text-decoration:none;">NIB</a></td>
+        <td style="padding:12px 16px;"><a href="/nib/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nikolai Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nikolai</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nli/index.html" style="color:var(--blue);text-decoration:none;">NLI</a></td>
+        <td style="padding:12px 16px;"><a href="/nli/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nikolayevsk-na-Amure Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nikolayevsk-na-Amure Airport</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iko/index.html" style="color:var(--blue);text-decoration:none;">IKO</a></td>
+        <td style="padding:12px 16px;"><a href="/iko/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nikolski Air Station</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nikolski</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nig/index.html" style="color:var(--blue);text-decoration:none;">NIG</a></td>
+        <td style="padding:12px 16px;"><a href="/nig/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nikunau Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nikunau</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇰🇮 Kiribati</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nia/index.html" style="color:var(--blue);text-decoration:none;">NIA</a></td>
+        <td style="padding:12px 16px;"><a href="/nia/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nimba Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nimba</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇱🇷 Liberia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/imz/index.html" style="color:var(--blue);text-decoration:none;">IMZ</a></td>
+        <td style="padding:12px 16px;"><a href="/imz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nimroz Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ziarat-e Amiran Saseb</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇫 Afghanistan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ngb/index.html" style="color:var(--blue);text-decoration:none;">NGB</a></td>
+        <td style="padding:12px 16px;"><a href="/ngb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ningbo Lishe International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ningbo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nlh/index.html" style="color:var(--blue);text-decoration:none;">NLH</a></td>
+        <td style="padding:12px 16px;"><a href="/nlh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ninglang Luguhu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ninglang</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nin/index.html" style="color:var(--blue);text-decoration:none;">NIN</a></td>
+        <td style="padding:12px 16px;"><a href="/nin/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ninilchik Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ninilchik</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mnl/index.html" style="color:var(--blue);text-decoration:none;">MNL</a></td>
+        <td style="padding:12px 16px;"><a href="/mnl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ninoy Aquino International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Manila (Pasay)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇭 Filipina</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nio/index.html" style="color:var(--blue);text-decoration:none;">NIO</a></td>
+        <td style="padding:12px 16px;"><a href="/nio/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nioki Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nioki</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇩 Congo - Kinshasa</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nik/index.html" style="color:var(--blue);text-decoration:none;">NIK</a></td>
+        <td style="padding:12px 16px;"><a href="/nik/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Niokolo-Koba Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Niokolo-Koba National Park</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇳 Senegal</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nix/index.html" style="color:var(--blue);text-decoration:none;">NIX</a></td>
+        <td style="padding:12px 16px;"><a href="/nix/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nioro du Sahel Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nioro du Sahel</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇱 Mali</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nit/index.html" style="color:var(--blue);text-decoration:none;">NIT</a></td>
+        <td style="padding:12px 16px;"><a href="/nit/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Niort - Marais Poitevin Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Niort/Souché</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇷 Perancis</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/npg/index.html" style="color:var(--blue);text-decoration:none;">NPG</a></td>
+        <td style="padding:12px 16px;"><a href="/npg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nipa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nipa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nql/index.html" style="color:var(--blue);text-decoration:none;">NQL</a></td>
+        <td style="padding:12px 16px;"><a href="/nql/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Niquelândia Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Niquelândia</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iis/index.html" style="color:var(--blue);text-decoration:none;">IIS</a></td>
+        <td style="padding:12px 16px;"><a href="/iis/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nissan Island Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nissan Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/iue/index.html" style="color:var(--blue);text-decoration:none;">IUE</a></td>
+        <td style="padding:12px 16px;"><a href="/iue/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Niue International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Alofi</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇺 Niue</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nzg/index.html" style="color:var(--blue);text-decoration:none;">NZG</a></td>
+        <td style="padding:12px 16px;"><a href="/nzg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nizhneangarsk International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nizhneangarsk</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/njc/index.html" style="color:var(--blue);text-decoration:none;">NJC</a></td>
+        <td style="padding:12px 16px;"><a href="/njc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nizhnevartovsk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nizhnevartovsk</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/goj/index.html" style="color:var(--blue);text-decoration:none;">GOJ</a></td>
+        <td style="padding:12px 16px;"><a href="/goj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nizhny Novgorod / Strigino International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nizhny Novgorod</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ini/index.html" style="color:var(--blue);text-decoration:none;">INI</a></td>
+        <td style="padding:12px 16px;"><a href="/ini/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Niš Constantine the Great Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Niš</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇸 Serbia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jom/index.html" style="color:var(--blue);text-decoration:none;">JOM</a></td>
+        <td style="padding:12px 16px;"><a href="/jom/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Njombe Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Njombe</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇿 Tanzania</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nka/index.html" style="color:var(--blue);text-decoration:none;">NKA</a></td>
+        <td style="padding:12px 16px;"><a href="/nka/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nkan Airstrip</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ntoum</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇦 Gabon</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nku/index.html" style="color:var(--blue);text-decoration:none;">NKU</a></td>
+        <td style="padding:12px 16px;"><a href="/nku/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nkaus Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nkaus</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇱🇸 Lesotho</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/abv/index.html" style="color:var(--blue);text-decoration:none;">ABV</a></td>
+        <td style="padding:12px 16px;"><a href="/abv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nnamdi Azikiwe International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Abuja</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇬 Nigeria</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wtk/index.html" style="color:var(--blue);text-decoration:none;">WTK</a></td>
+        <td style="padding:12px 16px;"><a href="/wtk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Noatak Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Noatak</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nog/index.html" style="color:var(--blue);text-decoration:none;">NOG</a></td>
+        <td style="padding:12px 16px;"><a href="/nog/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nogales International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nogales</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇽 Mexico</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ols/index.html" style="color:var(--blue);text-decoration:none;">OLS</a></td>
+        <td style="padding:12px 16px;"><a href="/ols/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nogales International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nogales</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ngk/index.html" style="color:var(--blue);text-decoration:none;">NGK</a></td>
+        <td style="padding:12px 16px;"><a href="/ngk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nogliki Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nogliki</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/han/index.html" style="color:var(--blue);text-decoration:none;">HAN</a></td>
+        <td style="padding:12px 16px;"><a href="/han/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Noi Bai International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Hanoi (Soc Son)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇻🇳 Vietnam</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dxn/index.html" style="color:var(--blue);text-decoration:none;">DXN</a></td>
+        <td style="padding:12px 16px;"><a href="/dxn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Noida International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Gautam Buddha Nagar</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nuj/index.html" style="color:var(--blue);text-decoration:none;">NUJ</a></td>
+        <td style="padding:12px 16px;"><a href="/nuj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nojeh Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Amirabad</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇷 Iran</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nom/index.html" style="color:var(--blue);text-decoration:none;">NOM</a></td>
+        <td style="padding:12px 16px;"><a href="/nom/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nomad River Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nomad River</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nmn/index.html" style="color:var(--blue);text-decoration:none;">NMN</a></td>
+        <td style="padding:12px 16px;"><a href="/nmn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nomane Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Namane</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ome/index.html" style="color:var(--blue);text-decoration:none;">OME</a></td>
+        <td style="padding:12px 16px;"><a href="/ome/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nome Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nome</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nnl/index.html" style="color:var(--blue);text-decoration:none;">NNL</a></td>
+        <td style="padding:12px 16px;"><a href="/nnl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nondalton Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nondalton</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/non/index.html" style="color:var(--blue);text-decoration:none;">NON</a></td>
+        <td style="padding:12px 16px;"><a href="/non/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nonouti Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nonouti</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇰🇮 Kiribati</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nkb/index.html" style="color:var(--blue);text-decoration:none;">NKB</a></td>
+        <td style="padding:12px 16px;"><a href="/nkb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Noonkanbah Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nsv/index.html" style="color:var(--blue);text-decoration:none;">NSV</a></td>
+        <td style="padding:12px 16px;"><a href="/nsv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Noosa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dex/index.html" style="color:var(--blue);text-decoration:none;">DEX</a></td>
+        <td style="padding:12px 16px;"><a href="/dex/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nop Goliat Dekai Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Dekai</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nod/index.html" style="color:var(--blue);text-decoration:none;">NOD</a></td>
+        <td style="padding:12px 16px;"><a href="/nod/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Norden-Norddeich Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Norddeich</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇪 Jerman</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nrd/index.html" style="color:var(--blue);text-decoration:none;">NRD</a></td>
+        <td style="padding:12px 16px;"><a href="/nrd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Norderney Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Norderney</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇪 Jerman</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/orf/index.html" style="color:var(--blue);text-decoration:none;">ORF</a></td>
+        <td style="padding:12px 16px;"><a href="/orf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Norfolk International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Norfolk</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nlk/index.html" style="color:var(--blue);text-decoration:none;">NLK</a></td>
+        <td style="padding:12px 16px;"><a href="/nlk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Norfolk Island International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Burnt Pine</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇫 Pulau Norfolk</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ngu/index.html" style="color:var(--blue);text-decoration:none;">NGU</a></td>
+        <td style="padding:12px 16px;"><a href="/ngu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Norfolk Naval Station (Chambers Field)</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Norfolk</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kin/index.html" style="color:var(--blue);text-decoration:none;">KIN</a></td>
+        <td style="padding:12px 16px;"><a href="/kin/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Norman Manley International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kingston</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇯🇲 Jamaica</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yvq/index.html" style="color:var(--blue);text-decoration:none;">YVQ</a></td>
+        <td style="padding:12px 16px;"><a href="/yvq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Norman Wells Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Norman Wells</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sjc/index.html" style="color:var(--blue);text-decoration:none;">SJC</a></td>
+        <td style="padding:12px 16px;"><a href="/sjc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Norman Y. Mineta San Jose International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">San Jose</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nmc/index.html" style="color:var(--blue);text-decoration:none;">NMC</a></td>
+        <td style="padding:12px 16px;"><a href="/nmc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Normans Cay Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Normans Cay</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇸 Bahamas</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ntn/index.html" style="color:var(--blue);text-decoration:none;">NTN</a></td>
+        <td style="padding:12px 16px;"><a href="/ntn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Normanton Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Normanton</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nrk/index.html" style="color:var(--blue);text-decoration:none;">NRK</a></td>
+        <td style="padding:12px 16px;"><a href="/nrk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Norrköping Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Norrköping</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇪 Sweden</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nsm/index.html" style="color:var(--blue);text-decoration:none;">NSM</a></td>
+        <td style="padding:12px 16px;"><a href="/nsm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Norseman Aerodrome</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Norseman</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nus/index.html" style="color:var(--blue);text-decoration:none;">NUS</a></td>
+        <td style="padding:12px 16px;"><a href="/nus/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Norsup Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Norsup</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇻🇺 Vanuatu</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yqw/index.html" style="color:var(--blue);text-decoration:none;">YQW</a></td>
+        <td style="padding:12px 16px;"><a href="/yqw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">North Battleford Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">North Battleford</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yyb/index.html" style="color:var(--blue);text-decoration:none;">YYB</a></td>
+        <td style="padding:12px 16px;"><a href="/yyb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">North Bay Jack Garland Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">North Bay</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nca/index.html" style="color:var(--blue);text-decoration:none;">NCA</a></td>
+        <td style="padding:12px 16px;"><a href="/nca/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">North Caicos Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">North Caicos</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇨 Kepulauan Turks dan Caicos</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sfz/index.html" style="color:var(--blue);text-decoration:none;">SFZ</a></td>
+        <td style="padding:12px 16px;"><a href="/sfz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">North Central State Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Pawtucket</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ckb/index.html" style="color:var(--blue);text-decoration:none;">CKB</a></td>
+        <td style="padding:12px 16px;"><a href="/ckb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">North Central West Virginia Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bridgeport</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/elh/index.html" style="color:var(--blue);text-decoration:none;">ELH</a></td>
+        <td style="padding:12px 16px;"><a href="/elh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">North Eleuthera Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">North Eleuthera</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇸 Bahamas</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wpo/index.html" style="color:var(--blue);text-decoration:none;">WPO</a></td>
+        <td style="padding:12px 16px;"><a href="/wpo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">North Fork Valley Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Paonia</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nzy/index.html" style="color:var(--blue);text-decoration:none;">NZY</a></td>
+        <td style="padding:12px 16px;"><a href="/nzy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">North Island Naval Air Station-Halsey Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">San Diego</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vgt/index.html" style="color:var(--blue);text-decoration:none;">VGT</a></td>
+        <td style="padding:12px 16px;"><a href="/vgt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">North Las Vegas Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Las Vegas</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hwo/index.html" style="color:var(--blue);text-decoration:none;">HWO</a></td>
+        <td style="padding:12px 16px;"><a href="/hwo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">North Perry Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Hollywood</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lbf/index.html" style="color:var(--blue);text-decoration:none;">LBF</a></td>
+        <td style="padding:12px 16px;"><a href="/lbf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">North Platte Regional Airport Lee Bird Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">North Platte</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nrl/index.html" style="color:var(--blue);text-decoration:none;">NRL</a></td>
+        <td style="padding:12px 16px;"><a href="/nrl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">North Ronaldsay Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">North Ronaldsay</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇧 UK</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yno/index.html" style="color:var(--blue);text-decoration:none;">YNO</a></td>
+        <td style="padding:12px 16px;"><a href="/yno/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">North Spirit Lake Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">North Spirit Lake</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pnx/index.html" style="color:var(--blue);text-decoration:none;">PNX</a></td>
+        <td style="padding:12px 16px;"><a href="/pnx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">North Texas Regional Airport Perrin Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Denison</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/olj/index.html" style="color:var(--blue);text-decoration:none;">OLJ</a></td>
+        <td style="padding:12px 16px;"><a href="/olj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">North West Santo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Olpoi</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇻🇺 Vanuatu</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ydw/index.html" style="color:var(--blue);text-decoration:none;">YDW</a></td>
+        <td style="padding:12px 16px;"><a href="/ydw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">North of Sixty Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Obre Lake</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gad/index.html" style="color:var(--blue);text-decoration:none;">GAD</a></td>
+        <td style="padding:12px 16px;"><a href="/gad/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Northeast Alabama Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Gadsden</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ust/index.html" style="color:var(--blue);text-decoration:none;">UST</a></td>
+        <td style="padding:12px 16px;"><a href="/ust/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Northeast Florida Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">St Augustine</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ccy/index.html" style="color:var(--blue);text-decoration:none;">CCY</a></td>
+        <td style="padding:12px 16px;"><a href="/ccy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Northeast Iowa Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Charles City</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/efk/index.html" style="color:var(--blue);text-decoration:none;">EFK</a></td>
+        <td style="padding:12px 16px;"><a href="/efk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Northeast Kingdom International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Newport</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jfn/index.html" style="color:var(--blue);text-decoration:none;">JFN</a></td>
+        <td style="padding:12px 16px;"><a href="/jfn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Northeast Ohio Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ashtabula</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pne/index.html" style="color:var(--blue);text-decoration:none;">PNE</a></td>
+        <td style="padding:12px 16px;"><a href="/pne/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Northeast Philadelphia Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Philadelphia</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gcc/index.html" style="color:var(--blue);text-decoration:none;">GCC</a></td>
+        <td style="padding:12px 16px;"><a href="/gcc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Northeast Wyoming Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Gillette</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ede/index.html" style="color:var(--blue);text-decoration:none;">EDE</a></td>
+        <td style="padding:12px 16px;"><a href="/ede/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Northeastern Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Edenton</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wfk/index.html" style="color:var(--blue);text-decoration:none;">WFK</a></td>
+        <td style="padding:12px 16px;"><a href="/wfk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Northern Aroostook Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Frenchville</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fnl/index.html" style="color:var(--blue);text-decoration:none;">FNL</a></td>
+        <td style="padding:12px 16px;"><a href="/fnl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Northern Colorado Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Loveland</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/abm/index.html" style="color:var(--blue);text-decoration:none;">ABM</a></td>
+        <td style="padding:12px 16px;"><a href="/abm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Northern Peninsula Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bamaga</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ort/index.html" style="color:var(--blue);text-decoration:none;">ORT</a></td>
+        <td style="padding:12px 16px;"><a href="/ort/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Northway Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Northway</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/msl/index.html" style="color:var(--blue);text-decoration:none;">MSL</a></td>
+        <td style="padding:12px 16px;"><a href="/msl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Northwest Alabama Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Muscle Shoals</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/xna/index.html" style="color:var(--blue);text-decoration:none;">XNA</a></td>
+        <td style="padding:12px 16px;"><a href="/xna/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Northwest Arkansas National Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fayetteville/Springdale/Rogers</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ecp/index.html" style="color:var(--blue);text-decoration:none;">ECP</a></td>
+        <td style="padding:12px 16px;"><a href="/ecp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Northwest Florida Beaches International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Panama City Beach</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yxt/index.html" style="color:var(--blue);text-decoration:none;">YXT</a></td>
+        <td style="padding:12px 16px;"><a href="/yxt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Northwest Regional Airport Terrace-Kitimat</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Terrace</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yne/index.html" style="color:var(--blue);text-decoration:none;">YNE</a></td>
+        <td style="padding:12px 16px;"><a href="/yne/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Norway House Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Norway House</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nwi/index.html" style="color:var(--blue);text-decoration:none;">NWI</a></td>
+        <td style="padding:12px 16px;"><a href="/nwi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Norwich Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Norwich, Norfolk</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇧 UK</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/owd/index.html" style="color:var(--blue);text-decoration:none;">OWD</a></td>
+        <td style="padding:12px 16px;"><a href="/owd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Norwood Memorial Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Norwood</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nor/index.html" style="color:var(--blue);text-decoration:none;">NOR</a></td>
+        <td style="padding:12px 16px;"><a href="/nor/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Norðfjörður Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Norðfjörður</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇸 Iceland</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nob/index.html" style="color:var(--blue);text-decoration:none;">NOB</a></td>
+        <td style="padding:12px 16px;"><a href="/nob/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nosara Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nicoya</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇷 Costa Rica</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nos/index.html" style="color:var(--blue);text-decoration:none;">NOS</a></td>
+        <td style="padding:12px 16px;"><a href="/nos/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nosy Be-Fascene International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nosy Be</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇬 Madagaskar</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ntq/index.html" style="color:var(--blue);text-decoration:none;">NTQ</a></td>
+        <td style="padding:12px 16px;"><a href="/ntq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Noto Satoyama Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wajima</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇯🇵 Jepun</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ntb/index.html" style="color:var(--blue);text-decoration:none;">NTB</a></td>
+        <td style="padding:12px 16px;"><a href="/ntb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Notodden Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Notodden</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇴 Norway</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/jbb/index.html" style="color:var(--blue);text-decoration:none;">JBB</a></td>
+        <td style="padding:12px 16px;"><a href="/jbb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Notohadinegoro Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jember</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nqt/index.html" style="color:var(--blue);text-decoration:none;">NQT</a></td>
+        <td style="padding:12px 16px;"><a href="/nqt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nottingham City Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nottingham, Nottinghamshire</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇧 UK</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ndb/index.html" style="color:var(--blue);text-decoration:none;">NDB</a></td>
+        <td style="padding:12px 16px;"><a href="/ndb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nouadhibou International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nouadhibou</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇷 Mauritania</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nkc/index.html" style="color:var(--blue);text-decoration:none;">NKC</a></td>
+        <td style="padding:12px 16px;"><a href="/nkc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nouakchott–Oumtounsy International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nouakchott</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇷 Mauritania</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gea/index.html" style="color:var(--blue);text-decoration:none;">GEA</a></td>
+        <td style="padding:12px 16px;"><a href="/gea/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nouméa Magenta Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nouméa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇨 New Caledonia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gha/index.html" style="color:var(--blue);text-decoration:none;">GHA</a></td>
+        <td style="padding:12px 16px;"><a href="/gha/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Noumérat - Moufdi Zakaria Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">El Atteuf</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇿 Algeria</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/xnu/index.html" style="color:var(--blue);text-decoration:none;">XNU</a></td>
+        <td style="padding:12px 16px;"><a href="/xnu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nouna Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nouna</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇫 Burkina Faso</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nvp/index.html" style="color:var(--blue);text-decoration:none;">NVP</a></td>
+        <td style="padding:12px 16px;"><a href="/nvp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Novo Aripuanã Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Novo Aripuanã</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bcr/index.html" style="color:var(--blue);text-decoration:none;">BCR</a></td>
+        <td style="padding:12px 16px;"><a href="/bcr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Novo Campo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Boca do Acre</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/qhv/index.html" style="color:var(--blue);text-decoration:none;">QHV</a></td>
+        <td style="padding:12px 16px;"><a href="/qhv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Novo Hamburgo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Novo Hamburgo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/npr/index.html" style="color:var(--blue);text-decoration:none;">NPR</a></td>
+        <td style="padding:12px 16px;"><a href="/npr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Novo Progresso Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Novo Progresso</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ovb/index.html" style="color:var(--blue);text-decoration:none;">OVB</a></td>
+        <td style="padding:12px 16px;"><a href="/ovb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Novosibirsk Tolmachevo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Novosibirsk</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nux/index.html" style="color:var(--blue);text-decoration:none;">NUX</a></td>
+        <td style="padding:12px 16px;"><a href="/nux/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Novy Urengoy Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Novy Urengoy</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nwt/index.html" style="color:var(--blue);text-decoration:none;">NWT</a></td>
+        <td style="padding:12px 16px;"><a href="/nwt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nowata Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nowata</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nsh/index.html" style="color:var(--blue);text-decoration:none;">NSH</a></td>
+        <td style="padding:12px 16px;"><a href="/nsh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nowshahr Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nowshahr</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇷 Iran</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/noj/index.html" style="color:var(--blue);text-decoration:none;">NOJ</a></td>
+        <td style="padding:12px 16px;"><a href="/noj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Noyabrsk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Noyabrsk</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sty/index.html" style="color:var(--blue);text-decoration:none;">STY</a></td>
+        <td style="padding:12px 16px;"><a href="/sty/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nueva Hesperides International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Salto</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇾 Uruguay</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lgq/index.html" style="color:var(--blue);text-decoration:none;">LGQ</a></td>
+        <td style="padding:12px 16px;"><a href="/lgq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nueva Loja Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lago Agrio</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇨 Ecuador</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wch/index.html" style="color:var(--blue);text-decoration:none;">WCH</a></td>
+        <td style="padding:12px 16px;"><a href="/wch/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nuevo Chaitén Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Chaitén</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇱 Chile</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nug/index.html" style="color:var(--blue);text-decoration:none;">NUG</a></td>
+        <td style="padding:12px 16px;"><a href="/nug/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nuguria Airstrip</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nuguria Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nui/index.html" style="color:var(--blue);text-decoration:none;">NUI</a></td>
+        <td style="padding:12px 16px;"><a href="/nui/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nuiqsut Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nuiqsut</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uku/index.html" style="color:var(--blue);text-decoration:none;">UKU</a></td>
+        <td style="padding:12px 16px;"><a href="/uku/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nuku Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nuku</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nhv/index.html" style="color:var(--blue);text-decoration:none;">NHV</a></td>
+        <td style="padding:12px 16px;"><a href="/nhv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nuku Hiva Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nuku Hiva</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇫 French Polynesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ncu/index.html" style="color:var(--blue);text-decoration:none;">NCU</a></td>
+        <td style="padding:12px 16px;"><a href="/ncu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nukus International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nukus</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇿 Uzbekistan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nuk/index.html" style="color:var(--blue);text-decoration:none;">NUK</a></td>
+        <td style="padding:12px 16px;"><a href="/nuk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nukutavake Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nukutavake</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇫 French Polynesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nkp/index.html" style="color:var(--blue);text-decoration:none;">NKP</a></td>
+        <td style="padding:12px 16px;"><a href="/nkp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nukutepipi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nukutepipi</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇫 French Polynesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nul/index.html" style="color:var(--blue);text-decoration:none;">NUL</a></td>
+        <td style="padding:12px 16px;"><a href="/nul/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nulato Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nulato</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nur/index.html" style="color:var(--blue);text-decoration:none;">NUR</a></td>
+        <td style="padding:12px 16px;"><a href="/nur/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nullabor Motel Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nll/index.html" style="color:var(--blue);text-decoration:none;">NLL</a></td>
+        <td style="padding:12px 16px;"><a href="/nll/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nullagine Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nub/index.html" style="color:var(--blue);text-decoration:none;">NUB</a></td>
+        <td style="padding:12px 16px;"><a href="/nub/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Numbulwar Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sxp/index.html" style="color:var(--blue);text-decoration:none;">SXP</a></td>
+        <td style="padding:12px 16px;"><a href="/sxp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nunam Iqua Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nunam Iqua</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nup/index.html" style="color:var(--blue);text-decoration:none;">NUP</a></td>
+        <td style="padding:12px 16px;"><a href="/nup/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nunapitchuk Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nunapitchuk</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nuh/index.html" style="color:var(--blue);text-decoration:none;">NUH</a></td>
+        <td style="padding:12px 16px;"><a href="/nuh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nunchia Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nunchia</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇴 Colombia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nnx/index.html" style="color:var(--blue);text-decoration:none;">NNX</a></td>
+        <td style="padding:12px 16px;"><a href="/nnx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nunukan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nunukan-Nunukan Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nue/index.html" style="color:var(--blue);text-decoration:none;">NUE</a></td>
+        <td style="padding:12px 16px;"><a href="/nue/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nuremberg Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nuremberg</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇪 Jerman</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nqz/index.html" style="color:var(--blue);text-decoration:none;">NQZ</a></td>
+        <td style="padding:12px 16px;"><a href="/nqz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nursultan Nazarbayev International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Astana</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇰🇿 Kazakhstan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gzo/index.html" style="color:var(--blue);text-decoration:none;">GZO</a></td>
+        <td style="padding:12px 16px;"><a href="/gzo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nusatupe Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Gizo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇧 Kepulauan Solomon</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/cjn/index.html" style="color:var(--blue);text-decoration:none;">CJN</a></td>
+        <td style="padding:12px 16px;"><a href="/cjn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nusawiru Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cijulang</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/utd/index.html" style="color:var(--blue);text-decoration:none;">UTD</a></td>
+        <td style="padding:12px 16px;"><a href="/utd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nutwood Downs Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nutwood Downs</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/goh/index.html" style="color:var(--blue);text-decoration:none;">GOH</a></td>
+        <td style="padding:12px 16px;"><a href="/goh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nuuk International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nuuk</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇱 Greenland</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/znc/index.html" style="color:var(--blue);text-decoration:none;">ZNC</a></td>
+        <td style="padding:12px 16px;"><a href="/znc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nyac Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nyac</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nya/index.html" style="color:var(--blue);text-decoration:none;">NYA</a></td>
+        <td style="padding:12px 16px;"><a href="/nya/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nyagan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nyagan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uyl/index.html" style="color:var(--blue);text-decoration:none;">UYL</a></td>
+        <td style="padding:12px 16px;"><a href="/uyl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nyala Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nyala</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇩 Sudan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nye/index.html" style="color:var(--blue);text-decoration:none;">NYE</a></td>
+        <td style="padding:12px 16px;"><a href="/nye/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nyeri Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nyeri</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇰🇪 Kenya</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lzy/index.html" style="color:var(--blue);text-decoration:none;">LZY</a></td>
+        <td style="padding:12px 16px;"><a href="/lzy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nyingchi Mainling Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nyingchi (Mainling)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nyn/index.html" style="color:var(--blue);text-decoration:none;">NYN</a></td>
+        <td style="padding:12px 16px;"><a href="/nyn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nyngan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nyr/index.html" style="color:var(--blue);text-decoration:none;">NYR</a></td>
+        <td style="padding:12px 16px;"><a href="/nyr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nyurba Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nyurba</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nza/index.html" style="color:var(--blue);text-decoration:none;">NZA</a></td>
+        <td style="padding:12px 16px;"><a href="/nza/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nzagi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nzagi</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇴 Angola</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nze/index.html" style="color:var(--blue);text-decoration:none;">NZE</a></td>
+        <td style="padding:12px 16px;"><a href="/nze/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nzérékoré Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nzérékoré</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇳 Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/emn/index.html" style="color:var(--blue);text-decoration:none;">EMN</a></td>
+        <td style="padding:12px 16px;"><a href="/emn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Néma Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Néma</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇷 Mauritania</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fni/index.html" style="color:var(--blue);text-decoration:none;">FNI</a></td>
+        <td style="padding:12px 16px;"><a href="/fni/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Nîmes-Arles-Camargue Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nîmes/Garons</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇷 Perancis</td>
+      </tr></tbody>
+  </table>
+</div>
+<footer>
+  <div style="margin-bottom:10px">
+    <a href="/az.html">A–Z Index</a>
+    <a href="/countries.html">By Country</a>
+    <a href="/about.html">About</a>
+  </div>
+  <div>© 2025 airport-code.com · Data sourced from OurAirports &amp; Open-Meteo · <a href="https://ourairports.com">OurAirports</a></div>
+</footer>
+
+<script>
+(function(){
+  let db = null;
+  const input = document.getElementById('navSearchInput');
+  const results = document.getElementById('search-results');
+  if (!input) return;
+
+  async function loadDB() {
+    if (db) return;
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    const r = await fetch(root + 'airports.json');
+    db = await r.json();
+  }
+
+  input.addEventListener('focus', loadDB);
+  input.addEventListener('input', async function() {
+    const q = this.value.trim().toUpperCase();
+    if (q.length < 2) { results.style.display = 'none'; return; }
+    await loadDB();
+    const matches = db.filter(a =>
+      a.iata.startsWith(q) ||
+      a.name.toUpperCase().includes(q) ||
+      a.city.toUpperCase().includes(q)
+    ).slice(0, 7);
+    if (!matches.length) { results.style.display = 'none'; return; }
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    results.innerHTML = matches.map(a =>
+      `<a href="${root}${a.iata.toLowerCase()}/index.html">
+        <span class="sr-code">${a.iata}</span>
+        <div><div class="sr-name">${a.name}</div><div class="sr-city">${a.city}, ${a.country}</div></div>
+      </a>`
+    ).join('');
+    results.style.display = 'block';
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!input.contains(e.target) && !results.contains(e.target)) results.style.display = 'none';
+  });
+})();
+</script>
+
+</body>
+</html>

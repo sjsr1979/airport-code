@@ -827,6 +827,11 @@ def homepage():
       </div>
     </a>'''
 
+    lnk_style = 'display:inline-block;margin:3px;padding:4px 10px;background:#fff;border:1px solid #e2e8f0;border-radius:6px;font-weight:700;font-size:14px;color:#1a56db;text-decoration:none;'
+    az_code_links = ''.join(f'<a href="/az/{c.lower()}.html" style="{lnk_style}">{c}</a>' for c in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+    az_name_links = ''.join(f'<a href="/az-name/{c.lower()}.html" style="{lnk_style}">{c}</a>' for c in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+    az_city_links = ''.join(f'<a href="/az-city/{c.lower()}.html" style="{lnk_style}">{c}</a>' for c in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -897,10 +902,21 @@ def homepage():
 
 <div class="section" style="background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);max-width:100%;padding:40px 0">
   <div style="max-width:1100px;margin:0 auto;padding:0 24px">
-    <h2>🔤 Browse A–Z</h2>
-    <div class="az-grid">
-      {''.join(f'<a href="/az/{c.lower()}.html" class="az-link">{c}</a>' for c in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')}
-    </div>
+    <h2>🔤 Browse Airports</h2>
+    <table style="width:100%;border-collapse:collapse;margin-top:8px">
+      <tr style="border-bottom:1px solid var(--border)">
+        <td style="padding:16px 0;font-weight:700;font-size:15px;width:180px">By Airport Code</td>
+        <td style="padding:16px 0">{az_code_links}</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border)">
+        <td style="padding:16px 0;font-weight:700;font-size:15px">By Airport Name</td>
+        <td style="padding:16px 0">{az_name_links}</td>
+      </tr>
+      <tr>
+        <td style="padding:16px 0;font-weight:700;font-size:15px">By City Name</td>
+        <td style="padding:16px 0">{az_city_links}</td>
+      </tr>
+    </table>
   </div>
 </div>
 
@@ -1165,6 +1181,64 @@ def sitemap(airports):
     parts.append('</urlset>')
     return '\n'.join(parts)
 
+def az_name_city_page(letter, airports_for_letter, kind):
+    """kind = 'name' or 'city'"""
+    kind_label = 'Airport Name' if kind == 'name' else 'City Name'
+    prefix = 'az-name' if kind == 'name' else 'az-city'
+    rows = ''
+    for a in sorted(airports_for_letter, key=lambda x: (x['name'] if kind == 'name' else x['city'])):
+        flag = flag_emoji(a['country_code'])
+        rows += f'''
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/{a['iata'].lower()}/index.html" style="color:var(--blue);text-decoration:none;">{escape_html(a['iata'])}</a></td>
+        <td style="padding:12px 16px;"><a href="/{a['iata'].lower()}/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">{escape_html(a['name'])}</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">{escape_html(a['city'])}</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">{flag} {escape_html(a['country_name'])}</td>
+      </tr>'''
+
+    letter_u = letter.upper()
+    return f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="site-root" content="/">
+  <title>Airports with {kind_label} Starting With {letter_u} | Airport Code</title>
+  <meta name="description" content="All airports with {kind_label.lower()} starting with {letter_u}. Browse {len(airports_for_letter)} airports.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>{SHARED_CSS}
+    table {{ width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden; }}
+    thead th {{ padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid var(--border);background:#f8fafc; }}
+    tbody tr {{ border-bottom:1px solid #f5f5f5; }}
+    tbody tr:last-child {{ border-bottom:none; }}
+    tbody tr:hover {{ background:#fafbfc; }}
+    .az-nav {{ display:flex; gap:6px; flex-wrap:wrap; padding:20px 0; }}
+    .az-nav a {{ display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:6px;text-decoration:none;font-weight:700;font-size:14px; }}
+    .az-nav a.active {{ background:var(--blue);color:#fff; }}
+    .az-nav a:not(.active) {{ background:#fff;color:var(--blue);border:1px solid var(--border); }}
+    .az-nav a:not(.active):hover {{ background:var(--blue-light); }}
+  </style>
+</head>
+<body>
+{nav_html('/')}
+<div style="max-width:1100px;margin:0 auto;padding:32px 24px">
+  <div style="margin-bottom:8px;font-size:12px;color:var(--muted)"><a href="/index.html" style="color:var(--blue);text-decoration:none">Home</a> › {kind_label} › {letter_u}</div>
+  <h1 style="font-size:28px;font-weight:800;color:var(--navy);margin-bottom:4px">Airports: {kind_label} Starting With {letter_u}</h1>
+  <p style="color:var(--muted);margin-bottom:16px">{len(airports_for_letter)} airports</p>
+  <div class="az-nav">
+    {''.join(f'<a href="/{prefix}/{c.lower()}.html" class="{"active" if c == letter_u else ""}">{c}</a>' for c in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')}
+  </div>
+  <table>
+    <thead><tr><th>IATA</th><th>Airport Name</th><th>City</th><th>Country</th></tr></thead>
+    <tbody>{rows}</tbody>
+  </table>
+</div>
+{footer_html()}
+{SEARCH_JS}
+</body>
+</html>'''
+
 # ─── Generate everything ──────────────────────────────────────────────────────
 
 print("\nGenerating airport pages...")
@@ -1209,6 +1283,18 @@ with open(f"{OUT_DIR}/countries.html", 'w', encoding='utf-8') as f:
 for cc, aps in by_country.items():
     with open(f"{OUT_DIR}/countries/{cc.lower()}.html", 'w', encoding='utf-8') as f:
         f.write(country_page(cc, aps))
+
+# A-Z by name and city
+print("Generating A-Z by name and city pages...")
+os.makedirs(f"{OUT_DIR}/az-name", exist_ok=True)
+os.makedirs(f"{OUT_DIR}/az-city", exist_ok=True)
+for letter in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ':
+    by_name = [a for a in airports if a['name'].upper().startswith(letter)]
+    with open(f"{OUT_DIR}/az-name/{letter.lower()}.html", 'w', encoding='utf-8') as f:
+        f.write(az_name_city_page(letter, by_name, 'name'))
+    by_city = [a for a in airports if a['city'].upper().startswith(letter)]
+    with open(f"{OUT_DIR}/az-city/{letter.lower()}.html", 'w', encoding='utf-8') as f:
+        f.write(az_name_city_page(letter, by_city, 'city'))
 
 # Homepage
 print("Generating homepage...")

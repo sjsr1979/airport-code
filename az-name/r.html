@@ -1,0 +1,1993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="site-root" content="/">
+  <title>Airports with Airport Name Starting With R | Airport Code</title>
+  <meta name="description" content="All airports with airport name starting with R. Browse 297 airports.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0f1f3d;
+      --blue: #1a56db;
+      --blue-light: #e8f0fe;
+      --sky: #38bdf8;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --green: #10b981;
+    }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; zoom: 1.12; }
+    nav { background: var(--navy); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { color: #fff; font-size: 19px; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; display: flex; align-items: center; gap: 10px; line-height: 1; }
+    .nav-logo svg { flex-shrink: 0; }
+    .nav-logo span { color: var(--sky); }
+    .nav-search { display: flex; align-items: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 6px 14px; gap: 8px; width: 280px; position: relative; }
+    .nav-search input { background: none; border: none; outline: none; color: #fff; font-size: 14px; width: 100%; font-family: 'Outfit', sans-serif; }
+    .nav-search input::placeholder { color: rgba(255,255,255,0.4); }
+    #search-results { position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: #fff; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 200; overflow: hidden; display: none; }
+    #search-results a { display: flex; align-items: center; gap: 10px; padding: 10px 14px; text-decoration: none; color: var(--text); font-size: 13px; border-bottom: 1px solid var(--border); transition: background 0.15s; }
+    #search-results a:last-child { border-bottom: none; }
+    #search-results a:hover { background: var(--bg); }
+    #search-results .sr-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 12px; padding: 2px 7px; border-radius: 5px; min-width: 38px; text-align: center; }
+    #search-results .sr-name { font-weight: 600; }
+    #search-results .sr-city { color: var(--muted); font-size: 11px; }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .hero { background: linear-gradient(135deg, var(--navy) 0%, #1a3a6b 100%); color: #fff; padding: 48px 0 56px; position: relative; overflow: hidden; }
+    .hero::before { content: '✈'; position: absolute; right: -20px; top: -20px; font-size: 220px; opacity: 0.04; transform: rotate(25deg); }
+    .hero-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .breadcrumb { font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 20px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .breadcrumb a:hover { color: rgba(255,255,255,0.8); }
+    .breadcrumb span.sep { color: rgba(255,255,255,0.3); }
+    .hero-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .hero-title { display: flex; align-items: flex-start; gap: 24px; }
+    .iata-badge { background: var(--blue); border: 2px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 14px 20px; text-align: center; min-width: 100px; flex-shrink: 0; }
+    .iata-badge .code { font-size: 40px; font-weight: 800; letter-spacing: 2px; color: #fff; line-height: 1; }
+    .iata-badge .label { font-size: 10px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
+    .hero-name { padding-top: 4px; }
+    .hero-name h1 { font-size: 38px; font-weight: 800; line-height: 1.1; color: #fff; }
+    .hero-name .location { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.65); font-size: 15px; margin-top: 6px; }
+    .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+    .badge { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.3px; }
+    .badge-large { background: rgba(16,185,129,0.2); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
+    .badge-medium { background: rgba(56,189,248,0.15); color: #7dd3fc; border: 1px solid rgba(56,189,248,0.3); }
+    .badge-small { background: rgba(245,158,11,0.15); color: #fcd34d; border: 1px solid rgba(245,158,11,0.3); }
+    .hero-stats { display: flex; gap: 32px; margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
+    .hero-stat .value { font-size: 22px; font-weight: 700; color: #fff; }
+    .hero-stat .label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
+    .time-widget { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 16px 20px; text-align: center; min-width: 160px; }
+    .time-widget .time-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+    .time-widget .time-value { font-size: 28px; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+    .time-widget .time-tz { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+    .main { max-width: 1100px; margin: 0 auto; padding: 32px 24px; display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
+    @media (max-width: 768px) { .main { grid-template-columns: 1fr; } .hero-name h1 { font-size: 26px; } .nav-links { display: none; } .nav-search { width: 200px; } }
+    .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .card-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .card-header h2 { font-size: 14px; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.5px; }
+    .card-body { padding: 20px; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .info-item { padding: 14px 16px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+    .info-item:nth-child(even) { border-right: none; }
+    .info-item:nth-last-child(-n+2) { border-bottom: none; }
+    .info-item .key { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px; }
+    .info-item .val { font-size: 15px; font-weight: 600; color: var(--text); }
+    .info-item .val a { color: var(--blue); text-decoration: none; }
+    .info-item .val a:hover { text-decoration: underline; }
+    .weather-widget { display: flex; align-items: center; gap: 20px; padding: 16px; background: linear-gradient(135deg, #e0f2fe, #f0f9ff); border-radius: 10px; margin-bottom: 16px; min-height: 100px; }
+    .weather-icon { font-size: 48px; line-height: 1; }
+    .weather-main .temp { font-size: 32px; font-weight: 700; color: var(--text); }
+    .weather-main .desc { font-size: 14px; color: var(--muted); text-transform: capitalize; }
+    .weather-details { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .weather-detail { font-size: 13px; color: var(--muted); }
+    .weather-detail strong { color: var(--text); font-weight: 600; }
+    .nearby-list { list-style: none; }
+    .nearby-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .nearby-item:last-child { border-bottom: none; }
+    .nearby-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 13px; padding: 3px 8px; border-radius: 6px; min-width: 44px; text-align: center; text-decoration: none; }
+    .nearby-code:hover { background: #ccdcfb; }
+    .nearby-info { flex: 1; margin: 0 12px; }
+    .nearby-info .name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .nearby-info .city { font-size: 11px; color: var(--muted); }
+    .nearby-dist { font-size: 12px; color: var(--muted); white-space: nowrap; }
+    .carbon-form { display: flex; flex-direction: column; gap: 12px; }
+    .carbon-form label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .carbon-form input, .carbon-form select { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-family: 'Outfit', sans-serif; color: var(--text); outline: none; transition: border-color 0.2s; }
+    .carbon-form input:focus, .carbon-form select:focus { border-color: var(--blue); }
+    .carbon-btn { background: var(--blue); color: #fff; border: none; padding: 11px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Outfit', sans-serif; transition: background 0.2s; }
+    .carbon-btn:hover { background: #1447c0; }
+    .carbon-result { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px; text-align: center; display: none; }
+    .carbon-result .co2 { font-size: 24px; font-weight: 800; color: var(--green); }
+    .carbon-result .co2-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .sidebar-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .sidebar-card .card-header { padding: 14px 16px; }
+    .sidebar-card .card-body { padding: 16px; }
+    .codes-display { display: flex; gap: 12px; }
+    .code-box { flex: 1; text-align: center; padding: 16px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; }
+    .code-box .code-val { font-size: 28px; font-weight: 800; color: var(--navy); letter-spacing: 1px; }
+    .code-box .code-type { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; }
+    footer { background: var(--navy); color: rgba(255,255,255,0.5); text-align: center; padding: 24px; font-size: 13px; margin-top: 40px; }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; margin: 0 12px; }
+    footer a:hover { color: #fff; }
+
+    table { width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden; }
+    thead th { padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid var(--border);background:#f8fafc; }
+    tbody tr { border-bottom:1px solid #f5f5f5; }
+    tbody tr:last-child { border-bottom:none; }
+    tbody tr:hover { background:#fafbfc; }
+    .az-nav { display:flex; gap:6px; flex-wrap:wrap; padding:20px 0; }
+    .az-nav a { display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:6px;text-decoration:none;font-weight:700;font-size:14px; }
+    .az-nav a.active { background:var(--blue);color:#fff; }
+    .az-nav a:not(.active) { background:#fff;color:var(--blue);border:1px solid var(--border); }
+    .az-nav a:not(.active):hover { background:var(--blue-light); }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/index.html" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="9" fill="#1a56db"/><path d="M24.5 8.5C25.3 9.3 25.3 10.6 24.5 11.4L19.8 16.1L22 25L19.5 27.5L16 19L11.5 23.5L12 26L10 28L8 24L4 22L6 20L8.5 20.5L13 16L5.5 12.5L8 10L17 12.2L21.6 7.5C22.4 6.7 23.7 6.7 24.5 8.5Z" fill="white"/></svg>
+    Airport<span>Code</span>
+  </a>
+  <div class="nav-search">
+    <svg width="14" height="14" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="navSearchInput" placeholder="Search airport or code…" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <div class="nav-links">
+    <a href="/az.html">A–Z</a>
+    <a href="/countries.html">By Country</a>
+  </div>
+</nav>
+<div style="max-width:1100px;margin:0 auto;padding:32px 24px">
+  <div style="margin-bottom:8px;font-size:12px;color:var(--muted)"><a href="/index.html" style="color:var(--blue);text-decoration:none">Home</a> › Airport Name › R</div>
+  <h1 style="font-size:28px;font-weight:800;color:var(--navy);margin-bottom:4px">Airports: Airport Name Starting With R</h1>
+  <p style="color:var(--muted);margin-bottom:16px">297 airports</p>
+  <div class="az-nav">
+    <a href="/az-name/a.html" class="">A</a><a href="/az-name/b.html" class="">B</a><a href="/az-name/c.html" class="">C</a><a href="/az-name/d.html" class="">D</a><a href="/az-name/e.html" class="">E</a><a href="/az-name/f.html" class="">F</a><a href="/az-name/g.html" class="">G</a><a href="/az-name/h.html" class="">H</a><a href="/az-name/i.html" class="">I</a><a href="/az-name/j.html" class="">J</a><a href="/az-name/k.html" class="">K</a><a href="/az-name/l.html" class="">L</a><a href="/az-name/m.html" class="">M</a><a href="/az-name/n.html" class="">N</a><a href="/az-name/o.html" class="">O</a><a href="/az-name/p.html" class="">P</a><a href="/az-name/q.html" class="">Q</a><a href="/az-name/r.html" class="active">R</a><a href="/az-name/s.html" class="">S</a><a href="/az-name/t.html" class="">T</a><a href="/az-name/u.html" class="">U</a><a href="/az-name/v.html" class="">V</a><a href="/az-name/w.html" class="">W</a><a href="/az-name/x.html" class="">X</a><a href="/az-name/y.html" class="">Y</a><a href="/az-name/z.html" class="">Z</a>
+  </div>
+  <table>
+    <thead><tr><th>IATA</th><th>Airport Name</th><th>City</th><th>Country</th></tr></thead>
+    <tbody>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dcn/index.html" style="color:var(--blue);text-decoration:none;">DCN</a></td>
+        <td style="padding:12px 16px;"><a href="/dcn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">RAAF Base Curtin</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Derby</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/xrh/index.html" style="color:var(--blue);text-decoration:none;">XRH</a></td>
+        <td style="padding:12px 16px;"><a href="/xrh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">RAAF Base Richmond</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Richmond</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/akt/index.html" style="color:var(--blue);text-decoration:none;">AKT</a></td>
+        <td style="padding:12px 16px;"><a href="/akt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">RAF Akrotiri</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Akrotiri</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇾 Cyprus</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/asi/index.html" style="color:var(--blue);text-decoration:none;">ASI</a></td>
+        <td style="padding:12px 16px;"><a href="/asi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">RAF Ascension Island</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cat Hill</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇭 Saint Helena</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bex/index.html" style="color:var(--blue);text-decoration:none;">BEX</a></td>
+        <td style="padding:12px 16px;"><a href="/bex/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">RAF Benson</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Wallingford, Oxfordshire</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇧 UK</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bzz/index.html" style="color:var(--blue);text-decoration:none;">BZZ</a></td>
+        <td style="padding:12px 16px;"><a href="/bzz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">RAF Brize Norton</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Carterton, Oxfordshire</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇧 UK</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/qcy/index.html" style="color:var(--blue);text-decoration:none;">QCY</a></td>
+        <td style="padding:12px 16px;"><a href="/qcy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">RAF Coningsby</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lincoln, Lincolnshire</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇧 UK</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ffd/index.html" style="color:var(--blue);text-decoration:none;">FFD</a></td>
+        <td style="padding:12px 16px;"><a href="/ffd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">RAF Fairford</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Fairford, Gloucestershire</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇧 UK</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/beq/index.html" style="color:var(--blue);text-decoration:none;">BEQ</a></td>
+        <td style="padding:12px 16px;"><a href="/beq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">RAF Honington</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bury Saint Edmunds, Suffolk</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇧 UK</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lkz/index.html" style="color:var(--blue);text-decoration:none;">LKZ</a></td>
+        <td style="padding:12px 16px;"><a href="/lkz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">RAF Lakenheath</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Brandon, Suffolk</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇧 UK</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lmo/index.html" style="color:var(--blue);text-decoration:none;">LMO</a></td>
+        <td style="padding:12px 16px;"><a href="/lmo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">RAF Lossiemouth</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lossiemouth, Moray</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇧 UK</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/knf/index.html" style="color:var(--blue);text-decoration:none;">KNF</a></td>
+        <td style="padding:12px 16px;"><a href="/knf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">RAF Marham</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">King's Lynn, Norfolk</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇧 UK</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mhz/index.html" style="color:var(--blue);text-decoration:none;">MHZ</a></td>
+        <td style="padding:12px 16px;"><a href="/mhz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">RAF Mildenhall</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bury Saint Edmunds, Suffolk</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇧 UK</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nht/index.html" style="color:var(--blue);text-decoration:none;">NHT</a></td>
+        <td style="padding:12px 16px;"><a href="/nht/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">RAF Northolt</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Northolt, Greater London</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇧 UK</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/odh/index.html" style="color:var(--blue);text-decoration:none;">ODH</a></td>
+        <td style="padding:12px 16px;"><a href="/odh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">RAF Odiham</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Hook, Hampshire</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇧 UK</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wtn/index.html" style="color:var(--blue);text-decoration:none;">WTN</a></td>
+        <td style="padding:12px 16px;"><a href="/wtn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">RAF Waddington</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lincoln, Lincolnshire</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇧 UK</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/quy/index.html" style="color:var(--blue);text-decoration:none;">QUY</a></td>
+        <td style="padding:12px 16px;"><a href="/quy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">RAF Wyton</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">St Ives, Cambridgeshire</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇧 UK</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/msh/index.html" style="color:var(--blue);text-decoration:none;">MSH</a></td>
+        <td style="padding:12px 16px;"><a href="/msh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">RAFO Masirah</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Masirah</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇴🇲 Oman</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bwh/index.html" style="color:var(--blue);text-decoration:none;">BWH</a></td>
+        <td style="padding:12px 16px;"><a href="/bwh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">RMAF Butterworth Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Butterworth</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇾 Malaysia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yeo/index.html" style="color:var(--blue);text-decoration:none;">YEO</a></td>
+        <td style="padding:12px 16px;"><a href="/yeo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">RNAS Yeovilton</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yeovil, Somerset</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇧 UK</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/oha/index.html" style="color:var(--blue);text-decoration:none;">OHA</a></td>
+        <td style="padding:12px 16px;"><a href="/oha/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">RNZAF Base Ohakea</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇿 New Zealand</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rbp/index.html" style="color:var(--blue);text-decoration:none;">RBP</a></td>
+        <td style="padding:12px 16px;"><a href="/rbp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Raba Raba Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rabaraba</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rba/index.html" style="color:var(--blue);text-decoration:none;">RBA</a></td>
+        <td style="padding:12px 16px;"><a href="/rba/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rabat-Salé Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rabat</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇦 Maghribi</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rbi/index.html" style="color:var(--blue);text-decoration:none;">RBI</a></td>
+        <td style="padding:12px 16px;"><a href="/rbi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rabi Island Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rabi Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇯 Fiji</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vkg/index.html" style="color:var(--blue);text-decoration:none;">VKG</a></td>
+        <td style="padding:12px 16px;"><a href="/vkg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rach Gia Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rach Gia</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇻🇳 Vietnam</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tkg/index.html" style="color:var(--blue);text-decoration:none;">TKG</a></td>
+        <td style="padding:12px 16px;"><a href="/tkg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Radin Inten II International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bandar Lampung</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yra/index.html" style="color:var(--blue);text-decoration:none;">YRA</a></td>
+        <td style="padding:12px 16px;"><a href="/yra/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rae Lakes Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Gamètì</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ger/index.html" style="color:var(--blue);text-decoration:none;">GER</a></td>
+        <td style="padding:12px 16px;"><a href="/ger/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rafael Cabrera Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nueva Gerona</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇺 Cuba</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bqn/index.html" style="color:var(--blue);text-decoration:none;">BQN</a></td>
+        <td style="padding:12px 16px;"><a href="/bqn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rafael Hernández International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Aguadilla</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇷 Puerto Rico</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ctg/index.html" style="color:var(--blue);text-decoration:none;">CTG</a></td>
+        <td style="padding:12px 16px;"><a href="/ctg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rafael Nuñez International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Cartagena</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇴 Colombia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/raf/index.html" style="color:var(--blue);text-decoration:none;">RAF</a></td>
+        <td style="padding:12px 16px;"><a href="/raf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rafaela Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rafaela</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇷 Argentina</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rfa/index.html" style="color:var(--blue);text-decoration:none;">RFA</a></td>
+        <td style="padding:12px 16px;"><a href="/rfa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rafaï Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rafaï</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇫 Republik Afrika Tengah</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rah/index.html" style="color:var(--blue);text-decoration:none;">RAH</a></td>
+        <td style="padding:12px 16px;"><a href="/rah/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rafha Domestic Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rafha</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇦 Arab Saudi</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rjn/index.html" style="color:var(--blue);text-decoration:none;">RJN</a></td>
+        <td style="padding:12px 16px;"><a href="/rjn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rafsanjan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rafsanjan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇷 Iran</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rag/index.html" style="color:var(--blue);text-decoration:none;">RAG</a></td>
+        <td style="padding:12px 16px;"><a href="/rag/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Raglan Aerodrome</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Raglan</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇿 New Zealand</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ktg/index.html" style="color:var(--blue);text-decoration:none;">KTG</a></td>
+        <td style="padding:12px 16px;"><a href="/ktg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rahadi Osman Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ketapang</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rfp/index.html" style="color:var(--blue);text-decoration:none;">RFP</a></td>
+        <td style="padding:12px 16px;"><a href="/rfp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Raiatea Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Uturoa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇫 French Polynesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yop/index.html" style="color:var(--blue);text-decoration:none;">YOP</a></td>
+        <td style="padding:12px 16px;"><a href="/yop/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rainbow Lake Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rainbow Lake</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rvv/index.html" style="color:var(--blue);text-decoration:none;">RVV</a></td>
+        <td style="padding:12px 16px;"><a href="/rvv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Raivavae Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇫 French Polynesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bho/index.html" style="color:var(--blue);text-decoration:none;">BHO</a></td>
+        <td style="padding:12px 16px;"><a href="/bho/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Raja Bhoj International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bhopal</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tjb/index.html" style="color:var(--blue);text-decoration:none;">TJB</a></td>
+        <td style="padding:12px 16px;"><a href="/tjb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Raja Haji Abdullah Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tanjung Balai-Karinmunbesar Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tnj/index.html" style="color:var(--blue);text-decoration:none;">TNJ</a></td>
+        <td style="padding:12px 16px;"><a href="/tnj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Raja Haji Fisabilillah International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tanjung Pinang-Bintan Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rja/index.html" style="color:var(--blue);text-decoration:none;">RJA</a></td>
+        <td style="padding:12px 16px;"><a href="/rja/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rajahmundry Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Madhurapudi</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rjb/index.html" style="color:var(--blue);text-decoration:none;">RJB</a></td>
+        <td style="padding:12px 16px;"><a href="/rjb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rajbiraj Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rajbiraj</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇵 Nepal</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hyd/index.html" style="color:var(--blue);text-decoration:none;">HYD</a></td>
+        <td style="padding:12px 16px;"><a href="/hyd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rajiv Gandhi International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Hyderabad</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/raj/index.html" style="color:var(--blue);text-decoration:none;">RAJ</a></td>
+        <td style="padding:12px 16px;"><a href="/raj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rajkot Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rajkot</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hsr/index.html" style="color:var(--blue);text-decoration:none;">HSR</a></td>
+        <td style="padding:12px 16px;"><a href="/hsr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rajkot International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rajkot</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rji/index.html" style="color:var(--blue);text-decoration:none;">RJI</a></td>
+        <td style="padding:12px 16px;"><a href="/rji/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rajouri Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rajouri</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/raa/index.html" style="color:var(--blue);text-decoration:none;">RAA</a></td>
+        <td style="padding:12px 16px;"><a href="/raa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rakanda Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rakanda</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bkw/index.html" style="color:var(--blue);text-decoration:none;">BKW</a></td>
+        <td style="padding:12px 16px;"><a href="/bkw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Raleigh County Memorial Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Beaver</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rdu/index.html" style="color:var(--blue);text-decoration:none;">RDU</a></td>
+        <td style="padding:12px 16px;"><a href="/rdu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Raleigh-Durham International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Raleigh/Durham</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tal/index.html" style="color:var(--blue);text-decoration:none;">TAL</a></td>
+        <td style="padding:12px 16px;"><a href="/tal/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ralph M Calhoun Memorial Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tanana</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pwy/index.html" style="color:var(--blue);text-decoration:none;">PWY</a></td>
+        <td style="padding:12px 16px;"><a href="/pwy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ralph Wenz Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Pinedale</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/otz/index.html" style="color:var(--blue);text-decoration:none;">OTZ</a></td>
+        <td style="padding:12px 16px;"><a href="/otz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ralph Wien Memorial Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kotzebue</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rbv/index.html" style="color:var(--blue);text-decoration:none;">RBV</a></td>
+        <td style="padding:12px 16px;"><a href="/rbv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ramata Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ramata</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇧 Kepulauan Solomon</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rhp/index.html" style="color:var(--blue);text-decoration:none;">RHP</a></td>
+        <td style="padding:12px 16px;"><a href="/rhp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ramechhap Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ramechhap</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇵 Nepal</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ram/index.html" style="color:var(--blue);text-decoration:none;">RAM</a></td>
+        <td style="padding:12px 16px;"><a href="/ram/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ramingining Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/etm/index.html" style="color:var(--blue);text-decoration:none;">ETM</a></td>
+        <td style="padding:12px 16px;"><a href="/etm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ramon International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Eilat</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇱 Israel</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rmp/index.html" style="color:var(--blue);text-decoration:none;">RMP</a></td>
+        <td style="padding:12px 16px;"><a href="/rmp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rampart Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rampart</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rzr/index.html" style="color:var(--blue);text-decoration:none;">RZR</a></td>
+        <td style="padding:12px 16px;"><a href="/rzr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ramsar Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ramsar</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇷 Iran</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rms/index.html" style="color:var(--blue);text-decoration:none;">RMS</a></td>
+        <td style="padding:12px 16px;"><a href="/rms/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ramstein Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ramstein-Miesenbach</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇪 Jerman</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/sap/index.html" style="color:var(--blue);text-decoration:none;">SAP</a></td>
+        <td style="padding:12px 16px;"><a href="/sap/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ramón Villeda Morales International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">San Pedro Sula</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇭🇳 Honduras</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ntx/index.html" style="color:var(--blue);text-decoration:none;">NTX</a></td>
+        <td style="padding:12px 16px;"><a href="/ntx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ranai Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ranai-Natuna Besar Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rnu/index.html" style="color:var(--blue);text-decoration:none;">RNU</a></td>
+        <td style="padding:12px 16px;"><a href="/rnu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ranau Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ranau</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇾 Malaysia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/qra/index.html" style="color:var(--blue);text-decoration:none;">QRA</a></td>
+        <td style="padding:12px 16px;"><a href="/qra/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rand Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Johannesburg</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇿🇦 Afrika Selatan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rnd/index.html" style="color:var(--blue);text-decoration:none;">RND</a></td>
+        <td style="padding:12px 16px;"><a href="/rnd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Randolph Air Force Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Universal City</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hib/index.html" style="color:var(--blue);text-decoration:none;">HIB</a></td>
+        <td style="padding:12px 16px;"><a href="/hib/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Range Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Hibbing</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rgr/index.html" style="color:var(--blue);text-decoration:none;">RGR</a></td>
+        <td style="padding:12px 16px;"><a href="/rgr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ranger Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ranger</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rgi/index.html" style="color:var(--blue);text-decoration:none;">RGI</a></td>
+        <td style="padding:12px 16px;"><a href="/rgi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rangiroa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇫 French Polynesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yrt/index.html" style="color:var(--blue);text-decoration:none;">YRT</a></td>
+        <td style="padding:12px 16px;"><a href="/yrt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rankin Inlet Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rankin Inlet</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/unn/index.html" style="color:var(--blue);text-decoration:none;">UNN</a></td>
+        <td style="padding:12px 16px;"><a href="/unn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ranong Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ranong</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇭 Thailand</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rap/index.html" style="color:var(--blue);text-decoration:none;">RAP</a></td>
+        <td style="padding:12px 16px;"><a href="/rap/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rapid City Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rapid City</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dob/index.html" style="color:var(--blue);text-decoration:none;">DOB</a></td>
+        <td style="padding:12px 16px;"><a href="/dob/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rar Gwamar Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Dobo-Warmar Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rrr/index.html" style="color:var(--blue);text-decoration:none;">RRR</a></td>
+        <td style="padding:12px 16px;"><a href="/rrr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Raroia Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Raroia</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇫 French Polynesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rar/index.html" style="color:var(--blue);text-decoration:none;">RAR</a></td>
+        <td style="padding:12px 16px;"><a href="/rar/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rarotonga International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Avarua</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇰 Kepulauan Cook</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rkt/index.html" style="color:var(--blue);text-decoration:none;">RKT</a></td>
+        <td style="padding:12px 16px;"><a href="/rkt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ras Al Khaimah International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ras Al Khaimah</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇪 Emiriah Arab Bersatu</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rqy/index.html" style="color:var(--blue);text-decoration:none;">RQY</a></td>
+        <td style="padding:12px 16px;"><a href="/rqy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rashtrakavi Kuvempu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Shimoga</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rbe/index.html" style="color:var(--blue);text-decoration:none;">RBE</a></td>
+        <td style="padding:12px 16px;"><a href="/rbe/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ratanakiri Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ratanakiri</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇰🇭 Kemboja</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rtc/index.html" style="color:var(--blue);text-decoration:none;">RTC</a></td>
+        <td style="padding:12px 16px;"><a href="/rtc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ratnagiri Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rtn/index.html" style="color:var(--blue);text-decoration:none;">RTN</a></td>
+        <td style="padding:12px 16px;"><a href="/rtn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Raton Municipal Airport / Crews Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Raton</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rfn/index.html" style="color:var(--blue);text-decoration:none;">RFN</a></td>
+        <td style="padding:12px 16px;"><a href="/rfn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Raufarhöfn Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Raufarhöfn</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇸 Iceland</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/otd/index.html" style="color:var(--blue);text-decoration:none;">OTD</a></td>
+        <td style="padding:12px 16px;"><a href="/otd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Raul Arias Espinoza Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Contadora Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇦 Panama</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ran/index.html" style="color:var(--blue);text-decoration:none;">RAN</a></td>
+        <td style="padding:12px 16px;"><a href="/ran/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ravenna Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ravenna (RA)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇹 Itali</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rvt/index.html" style="color:var(--blue);text-decoration:none;">RVT</a></td>
+        <td style="padding:12px 16px;"><a href="/rvt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ravensthorpe Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/raz/index.html" style="color:var(--blue);text-decoration:none;">RAZ</a></td>
+        <td style="padding:12px 16px;"><a href="/raz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rawalakot Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rawalakot</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇰 Pakistan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rwl/index.html" style="color:var(--blue);text-decoration:none;">RWL</a></td>
+        <td style="padding:12px 16px;"><a href="/rwl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rawlins Municipal Airport/Harvey Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rawlins</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kur/index.html" style="color:var(--blue);text-decoration:none;">KUR</a></td>
+        <td style="padding:12px 16px;"><a href="/kur/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Razer Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Skazar</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇫 Afghanistan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rdg/index.html" style="color:var(--blue);text-decoration:none;">RDG</a></td>
+        <td style="padding:12px 16px;"><a href="/rdg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Reading Regional Airport (Carl A Spaatz Field)</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Reading</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pvo/index.html" style="color:var(--blue);text-decoration:none;">PVO</a></td>
+        <td style="padding:12px 16px;"><a href="/pvo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Reales Tamarindos Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Portoviejo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇨 Ecuador</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rea/index.html" style="color:var(--blue);text-decoration:none;">REA</a></td>
+        <td style="padding:12px 16px;"><a href="/rea/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Reao Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Reao</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇫 French Polynesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rbj/index.html" style="color:var(--blue);text-decoration:none;">RBJ</a></td>
+        <td style="padding:12px 16px;"><a href="/rbj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rebun Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rebun</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇯🇵 Jepun</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rec/index.html" style="color:var(--blue);text-decoration:none;">REC</a></td>
+        <td style="padding:12px 16px;"><a href="/rec/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Recife/Guararapes - Gilberto Freyre International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Recife</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rcq/index.html" style="color:var(--blue);text-decoration:none;">RCQ</a></td>
+        <td style="padding:12px 16px;"><a href="/rcq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Reconquista Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Reconquista</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇷 Argentina</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rbl/index.html" style="color:var(--blue);text-decoration:none;">RBL</a></td>
+        <td style="padding:12px 16px;"><a href="/rbl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Red Bluff Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Red Bluff</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yqf/index.html" style="color:var(--blue);text-decoration:none;">YQF</a></td>
+        <td style="padding:12px 16px;"><a href="/yqf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Red Deer Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Springbrook</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rdv/index.html" style="color:var(--blue);text-decoration:none;">RDV</a></td>
+        <td style="padding:12px 16px;"><a href="/rdv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Red Devil Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Red Devil</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rdb/index.html" style="color:var(--blue);text-decoration:none;">RDB</a></td>
+        <td style="padding:12px 16px;"><a href="/rdb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Red Dog Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Red Dog</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yrl/index.html" style="color:var(--blue);text-decoration:none;">YRL</a></td>
+        <td style="padding:12px 16px;"><a href="/yrl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Red Lake Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Red Lake</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rsi/index.html" style="color:var(--blue);text-decoration:none;">RSI</a></td>
+        <td style="padding:12px 16px;"><a href="/rsi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Red Sea International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Hanak</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇦 Arab Saudi</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yrs/index.html" style="color:var(--blue);text-decoration:none;">YRS</a></td>
+        <td style="padding:12px 16px;"><a href="/yrs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Red Sucker Lake Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Red Sucker Lake</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rcl/index.html" style="color:var(--blue);text-decoration:none;">RCL</a></td>
+        <td style="padding:12px 16px;"><a href="/rcl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Redcliffe Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Redcliffe</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇻🇺 Vanuatu</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rdd/index.html" style="color:var(--blue);text-decoration:none;">RDD</a></td>
+        <td style="padding:12px 16px;"><a href="/rdd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Redding Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Redding</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rdc/index.html" style="color:var(--blue);text-decoration:none;">RDC</a></td>
+        <td style="padding:12px 16px;"><a href="/rdc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Redenção Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Redenção</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hua/index.html" style="color:var(--blue);text-decoration:none;">HUA</a></td>
+        <td style="padding:12px 16px;"><a href="/hua/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Redstone Army Air Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Redstone Arsnl Huntsville</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rwf/index.html" style="color:var(--blue);text-decoration:none;">RWF</a></td>
+        <td style="padding:12px 16px;"><a href="/rwf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Redwood Falls Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Redwood Falls</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ree/index.html" style="color:var(--blue);text-decoration:none;">REE</a></td>
+        <td style="padding:12px 16px;"><a href="/ree/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Reese Airpark</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lubbock</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/reg/index.html" style="color:var(--blue);text-decoration:none;">REG</a></td>
+        <td style="padding:12px 16px;"><a href="/reg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Reggio Calabria Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Reggio Calabria</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇹 Itali</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yqr/index.html" style="color:var(--blue);text-decoration:none;">YQR</a></td>
+        <td style="padding:12px 16px;"><a href="/yqr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Regina International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Regina</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rmu/index.html" style="color:var(--blue);text-decoration:none;">RMU</a></td>
+        <td style="padding:12px 16px;"><a href="/rmu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Region of Murcia International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Corvera</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇸 Sepanyol</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ykf/index.html" style="color:var(--blue);text-decoration:none;">YKF</a></td>
+        <td style="padding:12px 16px;"><a href="/ykf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Region of Waterloo International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Breslau</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mgf/index.html" style="color:var(--blue);text-decoration:none;">MGF</a></td>
+        <td style="padding:12px 16px;"><a href="/mgf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Regional de Maringá - Sílvio Name Júnior Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Maringá</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rhv/index.html" style="color:var(--blue);text-decoration:none;">RHV</a></td>
+        <td style="padding:12px 16px;"><a href="/rhv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Reid-Hillview Airport of Santa Clara County</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">San Jose</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rvo/index.html" style="color:var(--blue);text-decoration:none;">RVO</a></td>
+        <td style="padding:12px 16px;"><a href="/rvo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Reivilo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Reivilo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇿🇦 Afrika Selatan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/req/index.html" style="color:var(--blue);text-decoration:none;">REQ</a></td>
+        <td style="padding:12px 16px;"><a href="/req/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Reko Diq Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Chagai</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇰 Pakistan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rlr/index.html" style="color:var(--blue);text-decoration:none;">RLR</a></td>
+        <td style="padding:12px 16px;"><a href="/rlr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Relais de la Reine Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Isalo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇬 Madagaskar</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/txe/index.html" style="color:var(--blue);text-decoration:none;">TXE</a></td>
+        <td style="padding:12px 16px;"><a href="/txe/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rembele Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Takengon</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mkw/index.html" style="color:var(--blue);text-decoration:none;">MKW</a></td>
+        <td style="padding:12px 16px;"><a href="/mkw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rendani Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Manokwari</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/kye/index.html" style="color:var(--blue);text-decoration:none;">KYE</a></td>
+        <td style="padding:12px 16px;"><a href="/kye/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rene Mouawad Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tripoli</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇱🇧 Lubnan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rmk/index.html" style="color:var(--blue);text-decoration:none;">RMK</a></td>
+        <td style="padding:12px 16px;"><a href="/rmk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Renmark Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rnl/index.html" style="color:var(--blue);text-decoration:none;">RNL</a></td>
+        <td style="padding:12px 16px;"><a href="/rnl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rennell/Tingoa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rennell Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇧 Kepulauan Solomon</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rns/index.html" style="color:var(--blue);text-decoration:none;">RNS</a></td>
+        <td style="padding:12px 16px;"><a href="/rns/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rennes-Saint-Jacques Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Saint-Jacques-de-la-Lande, Ille-et-Vilaine</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇷 Perancis</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rno/index.html" style="color:var(--blue);text-decoration:none;">RNO</a></td>
+        <td style="padding:12px 16px;"><a href="/rno/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Reno Tahoe International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Reno</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rnt/index.html" style="color:var(--blue);text-decoration:none;">RNT</a></td>
+        <td style="padding:12px 16px;"><a href="/rnt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Renton Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Renton</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/frg/index.html" style="color:var(--blue);text-decoration:none;">FRG</a></td>
+        <td style="padding:12px 16px;"><a href="/frg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Republic Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">East Farmingdale</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rez/index.html" style="color:var(--blue);text-decoration:none;">REZ</a></td>
+        <td style="padding:12px 16px;"><a href="/rez/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Resende Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Resende</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/res/index.html" style="color:var(--blue);text-decoration:none;">RES</a></td>
+        <td style="padding:12px 16px;"><a href="/res/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Resistencia International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Resistencia</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇷 Argentina</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yrb/index.html" style="color:var(--blue);text-decoration:none;">YRB</a></td>
+        <td style="padding:12px 16px;"><a href="/yrb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Resolute Bay Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Resolute Bay</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rer/index.html" style="color:var(--blue);text-decoration:none;">RER</a></td>
+        <td style="padding:12px 16px;"><a href="/rer/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Retalhuleu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Retalhuleu</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇹 Guatemala</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/reu/index.html" style="color:var(--blue);text-decoration:none;">REU</a></td>
+        <td style="padding:12px 16px;"><a href="/reu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Reus Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Reus</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇸 Sepanyol</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yrv/index.html" style="color:var(--blue);text-decoration:none;">YRV</a></td>
+        <td style="padding:12px 16px;"><a href="/yrv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Revelstoke Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Revelstoke</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rew/index.html" style="color:var(--blue);text-decoration:none;">REW</a></td>
+        <td style="padding:12px 16px;"><a href="/rew/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rewa Airport, Chorhata, REWA</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rewa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rxe/index.html" style="color:var(--blue);text-decoration:none;">RXE</a></td>
+        <td style="padding:12px 16px;"><a href="/rxe/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rexburg Madison County Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rexburg</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rey/index.html" style="color:var(--blue);text-decoration:none;">REY</a></td>
+        <td style="padding:12px 16px;"><a href="/rey/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Reyes Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Reyes</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇴 Bolivia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nqu/index.html" style="color:var(--blue);text-decoration:none;">NQU</a></td>
+        <td style="padding:12px 16px;"><a href="/nqu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Reyes Murillo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Nuquí</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇴 Colombia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rha/index.html" style="color:var(--blue);text-decoration:none;">RHA</a></td>
+        <td style="padding:12px 16px;"><a href="/rha/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Reykhólar Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Reykhólar</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇸 Iceland</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rkv/index.html" style="color:var(--blue);text-decoration:none;">RKV</a></td>
+        <td style="padding:12px 16px;"><a href="/rkv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Reykjavík Domestic Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Reykjavík</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇸 Iceland</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rhi/index.html" style="color:var(--blue);text-decoration:none;">RHI</a></td>
+        <td style="padding:12px 16px;"><a href="/rhi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rhinelander Oneida County Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rhinelander</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/pvd/index.html" style="color:var(--blue);text-decoration:none;">PVD</a></td>
+        <td style="padding:12px 16px;"><a href="/pvd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rhode Island T. F. Green International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Providence/Warwick</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rho/index.html" style="color:var(--blue);text-decoration:none;">RHO</a></td>
+        <td style="padding:12px 16px;"><a href="/rho/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rhodes International Airport &quot;Diagoras&quot;</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rhodes</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇷 Greece</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/esr/index.html" style="color:var(--blue);text-decoration:none;">ESR</a></td>
+        <td style="padding:12px 16px;"><a href="/esr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ricardo García Posada Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">El Salvador</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇱 Chile</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rie/index.html" style="color:var(--blue);text-decoration:none;">RIE</a></td>
+        <td style="padding:12px 16px;"><a href="/rie/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rice Lake Regional Airport - Carl's Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rice Lake</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rmg/index.html" style="color:var(--blue);text-decoration:none;">RMG</a></td>
+        <td style="padding:12px 16px;"><a href="/rmg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Richard B Russell Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rome</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/suw/index.html" style="color:var(--blue);text-decoration:none;">SUW</a></td>
+        <td style="padding:12px 16px;"><a href="/suw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Richard I Bong Memorial Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Superior</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rdt/index.html" style="color:var(--blue);text-decoration:none;">RDT</a></td>
+        <td style="padding:12px 16px;"><a href="/rdt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Richard Toll Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Richard Toll</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇳 Senegal</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rcb/index.html" style="color:var(--blue);text-decoration:none;">RCB</a></td>
+        <td style="padding:12px 16px;"><a href="/rcb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Richards Bay Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Richards Bay</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇿🇦 Afrika Selatan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rif/index.html" style="color:var(--blue);text-decoration:none;">RIF</a></td>
+        <td style="padding:12px 16px;"><a href="/rif/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Richfield Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Richfield</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rld/index.html" style="color:var(--blue);text-decoration:none;">RLD</a></td>
+        <td style="padding:12px 16px;"><a href="/rld/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Richland Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Richland</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rcm/index.html" style="color:var(--blue);text-decoration:none;">RCM</a></td>
+        <td style="padding:12px 16px;"><a href="/rcm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Richmond Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ric/index.html" style="color:var(--blue);text-decoration:none;">RIC</a></td>
+        <td style="padding:12px 16px;"><a href="/ric/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Richmond International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Richmond</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rid/index.html" style="color:var(--blue);text-decoration:none;">RID</a></td>
+        <td style="padding:12px 16px;"><a href="/rid/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Richmond Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Richmond</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ama/index.html" style="color:var(--blue);text-decoration:none;">AMA</a></td>
+        <td style="padding:12px 16px;"><a href="/ama/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rick Husband Amarillo International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Amarillo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lck/index.html" style="color:var(--blue);text-decoration:none;">LCK</a></td>
+        <td style="padding:12px 16px;"><a href="/lck/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rickenbacker International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Columbus</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ies/index.html" style="color:var(--blue);text-decoration:none;">IES</a></td>
+        <td style="padding:12px 16px;"><a href="/ies/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Riesa-Göhlis Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Riesa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇪 Jerman</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/oli/index.html" style="color:var(--blue);text-decoration:none;">OLI</a></td>
+        <td style="padding:12px 16px;"><a href="/oli/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rif Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rif</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇸 Iceland</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rix/index.html" style="color:var(--blue);text-decoration:none;">RIX</a></td>
+        <td style="padding:12px 16px;"><a href="/rix/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Riga International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Riga</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇱🇻 Latvia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yrg/index.html" style="color:var(--blue);text-decoration:none;">YRG</a></td>
+        <td style="padding:12px 16px;"><a href="/yrg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rigolet Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rigolet</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rjk/index.html" style="color:var(--blue);text-decoration:none;">RJK</a></td>
+        <td style="padding:12px 16px;"><a href="/rjk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rijeka Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rijeka(Omišalj)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇭🇷 Croatia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rmt/index.html" style="color:var(--blue);text-decoration:none;">RMT</a></td>
+        <td style="padding:12px 16px;"><a href="/rmt/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rimatara Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rimatara Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇫 French Polynesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yxk/index.html" style="color:var(--blue);text-decoration:none;">YXK</a></td>
+        <td style="padding:12px 16px;"><a href="/yxk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rimouski Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rimouski</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rds/index.html" style="color:var(--blue);text-decoration:none;">RDS</a></td>
+        <td style="padding:12px 16px;"><a href="/rds/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rincon De Los Sauces Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rincon de los Sauces</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇷 Argentina</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rin/index.html" style="color:var(--blue);text-decoration:none;">RIN</a></td>
+        <td style="padding:12px 16px;"><a href="/rin/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ringi Cove Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ringi Cove</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇧 Kepulauan Solomon</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bdf/index.html" style="color:var(--blue);text-decoration:none;">BDF</a></td>
+        <td style="padding:12px 16px;"><a href="/bdf/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rinkenberger Restricted Landing Area</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Bradford</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ptz/index.html" style="color:var(--blue);text-decoration:none;">PTZ</a></td>
+        <td style="padding:12px 16px;"><a href="/ptz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rio Amazonas Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Shell Mera</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇨 Ecuador</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rbr/index.html" style="color:var(--blue);text-decoration:none;">RBR</a></td>
+        <td style="padding:12px 16px;"><a href="/rbr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rio Branco-Plácido de Castro International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rio Branco</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rfr/index.html" style="color:var(--blue);text-decoration:none;">RFR</a></td>
+        <td style="padding:12px 16px;"><a href="/rfr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rio Frio / Progreso Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rio Frio / Progreso</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇷 Costa Rica</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gig/index.html" style="color:var(--blue);text-decoration:none;">GIG</a></td>
+        <td style="padding:12px 16px;"><a href="/gig/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rio Galeão – Tom Jobim International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rio De Janeiro</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rig/index.html" style="color:var(--blue);text-decoration:none;">RIG</a></td>
+        <td style="padding:12px 16px;"><a href="/rig/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rio Grande Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rio Grande</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/nat/index.html" style="color:var(--blue);text-decoration:none;">NAT</a></td>
+        <td style="padding:12px 16px;"><a href="/nat/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rio Grande do Norte/São Gonçalo do Amarante–Governador Aluízio Alves International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Natal</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/roy/index.html" style="color:var(--blue);text-decoration:none;">ROY</a></td>
+        <td style="padding:12px 16px;"><a href="/roy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rio Mayo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rio Mayo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇷 Argentina</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ruy/index.html" style="color:var(--blue);text-decoration:none;">RUY</a></td>
+        <td style="padding:12px 16px;"><a href="/ruy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rioamarillo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Copán Ruinas</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇭🇳 Honduras</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ris/index.html" style="color:var(--blue);text-decoration:none;">RIS</a></td>
+        <td style="padding:12px 16px;"><a href="/ris/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rishiri Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rishiri</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇯🇵 Jepun</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rvc/index.html" style="color:var(--blue);text-decoration:none;">RVC</a></td>
+        <td style="padding:12px 16px;"><a href="/rvc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">River Cess Airport and Heliport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">River Cess</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇱🇷 Liberia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ral/index.html" style="color:var(--blue);text-decoration:none;">RAL</a></td>
+        <td style="padding:12px 16px;"><a href="/ral/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Riverside Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Riverside</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yri/index.html" style="color:var(--blue);text-decoration:none;">YRI</a></td>
+        <td style="padding:12px 16px;"><a href="/yri/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rivière-du-Loup Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rivière-du-Loup</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rwn/index.html" style="color:var(--blue);text-decoration:none;">RWN</a></td>
+        <td style="padding:12px 16px;"><a href="/rwn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rivne International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rivne</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇦 Ukraine</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/riy/index.html" style="color:var(--blue);text-decoration:none;">RIY</a></td>
+        <td style="padding:12px 16px;"><a href="/riy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Riyan International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Mukalla(Riyan)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇾🇪 Yaman</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rzv/index.html" style="color:var(--blue);text-decoration:none;">RZV</a></td>
+        <td style="padding:12px 16px;"><a href="/rzv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rize–Artvin Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rize</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇷 Turkiye</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/riz/index.html" style="color:var(--blue);text-decoration:none;">RIZ</a></td>
+        <td style="padding:12px 16px;"><a href="/riz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rizhao Shanzihe Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rizhao (Donggang)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rne/index.html" style="color:var(--blue);text-decoration:none;">RNE</a></td>
+        <td style="padding:12px 16px;"><a href="/rne/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Roanne-Renaison Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Saint-Léger-sur-Roanne</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇷 Perancis</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/roa/index.html" style="color:var(--blue);text-decoration:none;">ROA</a></td>
+        <td style="padding:12px 16px;"><a href="/roa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Roanoke–Blacksburg Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Roanoke</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gob/index.html" style="color:var(--blue);text-decoration:none;">GOB</a></td>
+        <td style="padding:12px 16px;"><a href="/gob/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Robe Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Goba</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇹 Ethiopia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wbr/index.html" style="color:var(--blue);text-decoration:none;">WBR</a></td>
+        <td style="padding:12px 16px;"><a href="/wbr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Roben Hood Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Big Rapids</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/orv/index.html" style="color:var(--blue);text-decoration:none;">ORV</a></td>
+        <td style="padding:12px 16px;"><a href="/orv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Robert (Bob) Curtis Memorial Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Noorvik</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/lnu/index.html" style="color:var(--blue);text-decoration:none;">LNU</a></td>
+        <td style="padding:12px 16px;"><a href="/lnu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Robert Atty Bessing</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Malinau</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇩 Indonesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/adr/index.html" style="color:var(--blue);text-decoration:none;">ADR</a></td>
+        <td style="padding:12px 16px;"><a href="/adr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Robert F Swinnie Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Andrews</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/hre/index.html" style="color:var(--blue);text-decoration:none;">HRE</a></td>
+        <td style="padding:12px 16px;"><a href="/hre/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Robert Gabriel Mugabe International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Harare</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇿🇼 Zimbabwe</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/skb/index.html" style="color:var(--blue);text-decoration:none;">SKB</a></td>
+        <td style="padding:12px 16px;"><a href="/skb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Robert L. Bradshaw International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Basseterre</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇰🇳 Saint Kitts dan Nevis</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rkr/index.html" style="color:var(--blue);text-decoration:none;">RKR</a></td>
+        <td style="padding:12px 16px;"><a href="/rkr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Robert S Kerr Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Poteau</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rdm/index.html" style="color:var(--blue);text-decoration:none;">RDM</a></td>
+        <td style="padding:12px 16px;"><a href="/rdm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Roberts Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Redmond</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rob/index.html" style="color:var(--blue);text-decoration:none;">ROB</a></td>
+        <td style="padding:12px 16px;"><a href="/rob/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Roberts International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Monrovia</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇱🇷 Liberia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rod/index.html" style="color:var(--blue);text-decoration:none;">ROD</a></td>
+        <td style="padding:12px 16px;"><a href="/rod/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Robertson Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Robertson</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇿🇦 Afrika Selatan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yrj/index.html" style="color:var(--blue);text-decoration:none;">YRJ</a></td>
+        <td style="padding:12px 16px;"><a href="/yrj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Roberval Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Roberval</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/roh/index.html" style="color:var(--blue);text-decoration:none;">ROH</a></td>
+        <td style="padding:12px 16px;"><a href="/roh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Robinhood Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/wrb/index.html" style="color:var(--blue);text-decoration:none;">WRB</a></td>
+        <td style="padding:12px 16px;"><a href="/wrb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Robins Air Force Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Warner Robins</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rrv/index.html" style="color:var(--blue);text-decoration:none;">RRV</a></td>
+        <td style="padding:12px 16px;"><a href="/rrv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Robinson River Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rbc/index.html" style="color:var(--blue);text-decoration:none;">RBC</a></td>
+        <td style="padding:12px 16px;"><a href="/rbc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Robinvale Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Robinvale</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rbo/index.html" style="color:var(--blue);text-decoration:none;">RBO</a></td>
+        <td style="padding:12px 16px;"><a href="/rbo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Roboré Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Roboré</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇴 Bolivia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rce/index.html" style="color:var(--blue);text-decoration:none;">RCE</a></td>
+        <td style="padding:12px 16px;"><a href="/rce/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Roche Harbor Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Roche Harbor</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rco/index.html" style="color:var(--blue);text-decoration:none;">RCO</a></td>
+        <td style="padding:12px 16px;"><a href="/rco/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rochefort-Saint-Agnant (BA 721) Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rochefort/Saint-Agnant</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇷 Perancis</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rcs/index.html" style="color:var(--blue);text-decoration:none;">RCS</a></td>
+        <td style="padding:12px 16px;"><a href="/rcs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rochester Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rochester, Kent</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇧 UK</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rst/index.html" style="color:var(--blue);text-decoration:none;">RST</a></td>
+        <td style="padding:12px 16px;"><a href="/rst/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rochester International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rochester</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rkh/index.html" style="color:var(--blue);text-decoration:none;">RKH</a></td>
+        <td style="padding:12px 16px;"><a href="/rkh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rock Hill - York County Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rock Hill</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rsd/index.html" style="color:var(--blue);text-decoration:none;">RSD</a></td>
+        <td style="padding:12px 16px;"><a href="/rsd/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rock Sound International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rock Sound</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇸 Bahamas</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rok/index.html" style="color:var(--blue);text-decoration:none;">ROK</a></td>
+        <td style="padding:12px 16px;"><a href="/rok/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rockhampton Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rockhampton</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rda/index.html" style="color:var(--blue);text-decoration:none;">RDA</a></td>
+        <td style="padding:12px 16px;"><a href="/rda/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rockhampton Downs Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rockhampton Downs</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rkw/index.html" style="color:var(--blue);text-decoration:none;">RKW</a></td>
+        <td style="padding:12px 16px;"><a href="/rkw/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rockwood Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rockwood</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rwi/index.html" style="color:var(--blue);text-decoration:none;">RWI</a></td>
+        <td style="padding:12px 16px;"><a href="/rwi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rocky Mount Wilson Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rocky Mount</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yrm/index.html" style="color:var(--blue);text-decoration:none;">YRM</a></td>
+        <td style="padding:12px 16px;"><a href="/yrm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rocky Mountain House Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rocky Mountain House</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/bjc/index.html" style="color:var(--blue);text-decoration:none;">BJC</a></td>
+        <td style="padding:12px 16px;"><a href="/bjc/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rocky Mountain Metropolitan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Denver</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vap/index.html" style="color:var(--blue);text-decoration:none;">VAP</a></td>
+        <td style="padding:12px 16px;"><a href="/vap/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rodelillo Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Viña Del Mar</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇱 Chile</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rdz/index.html" style="color:var(--blue);text-decoration:none;">RDZ</a></td>
+        <td style="padding:12px 16px;"><a href="/rdz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rodez–Aveyron Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rodez/Marcillac</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇷 Perancis</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/aqp/index.html" style="color:var(--blue);text-decoration:none;">AQP</a></td>
+        <td style="padding:12px 16px;"><a href="/aqp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rodríguez Ballón International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Arequipa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇪 Peru</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rbu/index.html" style="color:var(--blue);text-decoration:none;">RBU</a></td>
+        <td style="padding:12px 16px;"><a href="/rbu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Roebourne Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Roebourne</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rog/index.html" style="color:var(--blue);text-decoration:none;">ROG</a></td>
+        <td style="padding:12px 16px;"><a href="/rog/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rogers Municipal Airport-Carter Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rogers</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mfr/index.html" style="color:var(--blue);text-decoration:none;">MFR</a></td>
+        <td style="padding:12px 16px;"><a href="/mfr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rogue Valley International-Medford Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Medford</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/roi/index.html" style="color:var(--blue);text-decoration:none;">ROI</a></td>
+        <td style="padding:12px 16px;"><a href="/roi/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Roi Et Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Roi Et</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇹🇭 Thailand</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rky/index.html" style="color:var(--blue);text-decoration:none;">RKY</a></td>
+        <td style="padding:12px 16px;"><a href="/rky/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rokeby Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rokeby</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/run/index.html" style="color:var(--blue);text-decoration:none;">RUN</a></td>
+        <td style="padding:12px 16px;"><a href="/run/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Roland Garros Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Sainte-Marie</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇪 Reunion</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rla/index.html" style="color:var(--blue);text-decoration:none;">RLA</a></td>
+        <td style="padding:12px 16px;"><a href="/rla/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rolla Downtown Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rolla</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vih/index.html" style="color:var(--blue);text-decoration:none;">VIH</a></td>
+        <td style="padding:12px 16px;"><a href="/vih/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rolla National Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Vichy</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rfk/index.html" style="color:var(--blue);text-decoration:none;">RFK</a></td>
+        <td style="padding:12px 16px;"><a href="/rfk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rollang Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rolling Fork</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rpa/index.html" style="color:var(--blue);text-decoration:none;">RPA</a></td>
+        <td style="padding:12px 16px;"><a href="/rpa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rolpa Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rolpa</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇵 Nepal</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rma/index.html" style="color:var(--blue);text-decoration:none;">RMA</a></td>
+        <td style="padding:12px 16px;"><a href="/rma/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Roma Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Roma</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ror/index.html" style="color:var(--blue);text-decoration:none;">ROR</a></td>
+        <td style="padding:12px 16px;"><a href="/ror/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Roman Tmetuchl International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Babelthuap Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇼 Palau</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/reo/index.html" style="color:var(--blue);text-decoration:none;">REO</a></td>
+        <td style="padding:12px 16px;"><a href="/reo/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rome State Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rome</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/aax/index.html" style="color:var(--blue);text-decoration:none;">AAX</a></td>
+        <td style="padding:12px 16px;"><a href="/aax/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Romeu Zema Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Araxá</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/fco/index.html" style="color:var(--blue);text-decoration:none;">FCO</a></td>
+        <td style="padding:12px 16px;"><a href="/fco/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rome–Fiumicino Leonardo da Vinci International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rome</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇹 Itali</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/dca/index.html" style="color:var(--blue);text-decoration:none;">DCA</a></td>
+        <td style="padding:12px 16px;"><a href="/dca/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ronald Reagan Washington National Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Washington</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rnp/index.html" style="color:var(--blue);text-decoration:none;">RNP</a></td>
+        <td style="padding:12px 16px;"><a href="/rnp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rongelap Island Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rongelap Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇭 Kepulauan Marshall</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rnb/index.html" style="color:var(--blue);text-decoration:none;">RNB</a></td>
+        <td style="padding:12px 16px;"><a href="/rnb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ronneby Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ronneby</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇪 Sweden</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rfg/index.html" style="color:var(--blue);text-decoration:none;">RFG</a></td>
+        <td style="padding:12px 16px;"><a href="/rfg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rooke Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Refugio</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rol/index.html" style="color:var(--blue);text-decoration:none;">ROL</a></td>
+        <td style="padding:12px 16px;"><a href="/rol/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Roosevelt Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Roosevelt</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rpb/index.html" style="color:var(--blue);text-decoration:none;">RPB</a></td>
+        <td style="padding:12px 16px;"><a href="/rpb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Roper Bar Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Roper Bar</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rpv/index.html" style="color:var(--blue);text-decoration:none;">RPV</a></td>
+        <td style="padding:12px 16px;"><a href="/rpv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Roper Valley Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Roper Valley</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ros/index.html" style="color:var(--blue);text-decoration:none;">ROS</a></td>
+        <td style="padding:12px 16px;"><a href="/ros/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rosario Islas Malvinas International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rosario</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇷 Argentina</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/crx/index.html" style="color:var(--blue);text-decoration:none;">CRX</a></td>
+        <td style="padding:12px 16px;"><a href="/crx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Roscoe Turner Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Corinth</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/htl/index.html" style="color:var(--blue);text-decoration:none;">HTL</a></td>
+        <td style="padding:12px 16px;"><a href="/htl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Roscommon County - Blodgett Memorial Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Houghton Lake</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rox/index.html" style="color:var(--blue);text-decoration:none;">ROX</a></td>
+        <td style="padding:12px 16px;"><a href="/rox/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Roseau Municipal Rudy Billberg Field</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Roseau</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rsb/index.html" style="color:var(--blue);text-decoration:none;">RSB</a></td>
+        <td style="padding:12px 16px;"><a href="/rsb/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Roseberth Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rbg/index.html" style="color:var(--blue);text-decoration:none;">RBG</a></td>
+        <td style="padding:12px 16px;"><a href="/rbg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Roseburg Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Roseburg</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/stj/index.html" style="color:var(--blue);text-decoration:none;">STJ</a></td>
+        <td style="padding:12px 16px;"><a href="/stj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rosecrans Memorial Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">St Joseph</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rlp/index.html" style="color:var(--blue);text-decoration:none;">RLP</a></td>
+        <td style="padding:12px 16px;"><a href="/rlp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rosella Plains Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rosella Plains</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rpn/index.html" style="color:var(--blue);text-decoration:none;">RPN</a></td>
+        <td style="padding:12px 16px;"><a href="/rpn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rosh Pina Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rosh Pina</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇱 Israel</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/tjm/index.html" style="color:var(--blue);text-decoration:none;">TJM</a></td>
+        <td style="padding:12px 16px;"><a href="/tjm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Roshchino International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Tyumen</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇺 Rusia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rfs/index.html" style="color:var(--blue);text-decoration:none;">RFS</a></td>
+        <td style="padding:12px 16px;"><a href="/rfs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rosita Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">La Rosita</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇮 Nicaragua</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/xrr/index.html" style="color:var(--blue);text-decoration:none;">XRR</a></td>
+        <td style="padding:12px 16px;"><a href="/xrr/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ross River Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ross River</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rlg/index.html" style="color:var(--blue);text-decoration:none;">RLG</a></td>
+        <td style="padding:12px 16px;"><a href="/rlg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rostock-Laage Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Laage</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇪 Jerman</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/row/index.html" style="color:var(--blue);text-decoration:none;">ROW</a></td>
+        <td style="padding:12px 16px;"><a href="/row/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Roswell Air Center Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Roswell</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rop/index.html" style="color:var(--blue);text-decoration:none;">ROP</a></td>
+        <td style="padding:12px 16px;"><a href="/rop/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rota International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rota Island</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇲🇵 Kepulauan Mariana Utara</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/roz/index.html" style="color:var(--blue);text-decoration:none;">ROZ</a></td>
+        <td style="padding:12px 16px;"><a href="/roz/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rota Naval Station Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rota</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇪🇸 Sepanyol</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rot/index.html" style="color:var(--blue);text-decoration:none;">ROT</a></td>
+        <td style="padding:12px 16px;"><a href="/rot/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rotorua Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rotorua</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇿 New Zealand</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rtm/index.html" style="color:var(--blue);text-decoration:none;">RTM</a></td>
+        <td style="padding:12px 16px;"><a href="/rtm/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rotterdam The Hague Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rotterdam</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇱 Belanda</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rts/index.html" style="color:var(--blue);text-decoration:none;">RTS</a></td>
+        <td style="padding:12px 16px;"><a href="/rts/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rottnest Island Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rta/index.html" style="color:var(--blue);text-decoration:none;">RTA</a></td>
+        <td style="padding:12px 16px;"><a href="/rta/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rotuma Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rotuma</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇯 Fiji</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/uro/index.html" style="color:var(--blue);text-decoration:none;">URO</a></td>
+        <td style="padding:12px 16px;"><a href="/uro/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rouen Vallée de Seine Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Boos</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇷 Perancis</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/zrj/index.html" style="color:var(--blue);text-decoration:none;">ZRJ</a></td>
+        <td style="padding:12px 16px;"><a href="/zrj/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Round Lake (Weagamow Lake) Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Round Lake</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rpx/index.html" style="color:var(--blue);text-decoration:none;">RPX</a></td>
+        <td style="padding:12px 16px;"><a href="/rpx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Roundup Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Roundup</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rrk/index.html" style="color:var(--blue);text-decoration:none;">RRK</a></td>
+        <td style="padding:12px 16px;"><a href="/rrk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rourkela Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rourkela</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/yuy/index.html" style="color:var(--blue);text-decoration:none;">YUY</a></td>
+        <td style="padding:12px 16px;"><a href="/yuy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rouyn Noranda Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rouyn-Noranda</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇦 Kanada</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rvn/index.html" style="color:var(--blue);text-decoration:none;">RVN</a></td>
+        <td style="padding:12px 16px;"><a href="/rvn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rovaniemi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rovaniemi</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇮 Finland</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rxs/index.html" style="color:var(--blue);text-decoration:none;">RXS</a></td>
+        <td style="padding:12px 16px;"><a href="/rxs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Roxas Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Roxas City</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇭 Filipina</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rhl/index.html" style="color:var(--blue);text-decoration:none;">RHL</a></td>
+        <td style="padding:12px 16px;"><a href="/rhl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Roy Hill Station Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/mif/index.html" style="color:var(--blue);text-decoration:none;">MIF</a></td>
+        <td style="padding:12px 16px;"><a href="/mif/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Roy Hurd Memorial Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Monahans</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/vrs/index.html" style="color:var(--blue);text-decoration:none;">VRS</a></td>
+        <td style="padding:12px 16px;"><a href="/vrs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Roy Otten Memorial Airfield</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Versailles</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ryl/index.html" style="color:var(--blue);text-decoration:none;">RYL</a></td>
+        <td style="padding:12px 16px;"><a href="/ryl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Royal Zambezi Lodge Airstrip</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Lower Zambezi River</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇿🇲 Zambia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ryn/index.html" style="color:var(--blue);text-decoration:none;">RYN</a></td>
+        <td style="padding:12px 16px;"><a href="/ryn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Royan-Médis Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Royan/Médis</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇫🇷 Perancis</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ruv/index.html" style="color:var(--blue);text-decoration:none;">RUV</a></td>
+        <td style="padding:12px 16px;"><a href="/ruv/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rubelsanto Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rubelsanto</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇹 Guatemala</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/urg/index.html" style="color:var(--blue);text-decoration:none;">URG</a></td>
+        <td style="padding:12px 16px;"><a href="/urg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rubem Berta Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Uruguaiana</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇷 Brazil</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/syp/index.html" style="color:var(--blue);text-decoration:none;">SYP</a></td>
+        <td style="padding:12px 16px;"><a href="/syp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ruben Cantu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Santiago</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇦 Panama</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rby/index.html" style="color:var(--blue);text-decoration:none;">RBY</a></td>
+        <td style="padding:12px 16px;"><a href="/rby/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ruby Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ruby</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rug/index.html" style="color:var(--blue);text-decoration:none;">RUG</a></td>
+        <td style="padding:12px 16px;"><a href="/rug/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rugao Air Base</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rugao (Nantong)</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rue/index.html" style="color:var(--blue);text-decoration:none;">RUE</a></td>
+        <td style="padding:12px 16px;"><a href="/rue/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rughenda Airfield</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Butembo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇩 Congo - Kinshasa</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rhg/index.html" style="color:var(--blue);text-decoration:none;">RHG</a></td>
+        <td style="padding:12px 16px;"><a href="/rhg/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ruhengeri Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ruhengeri</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇷🇼 Rwanda</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ruk/index.html" style="color:var(--blue);text-decoration:none;">RUK</a></td>
+        <td style="padding:12px 16px;"><a href="/ruk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rukum Chaurjahari Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rukumkot</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇵 Nepal</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rcy/index.html" style="color:var(--blue);text-decoration:none;">RCY</a></td>
+        <td style="padding:12px 16px;"><a href="/rcy/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rum Cay International Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Port Nelson</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇸 Bahamas</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rbx/index.html" style="color:var(--blue);text-decoration:none;">RBX</a></td>
+        <td style="padding:12px 16px;"><a href="/rbx/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rumbek Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rumbek</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇸🇸 Sudan Selatan</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rmn/index.html" style="color:var(--blue);text-decoration:none;">RMN</a></td>
+        <td style="padding:12px 16px;"><a href="/rmn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rumginae Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rum/index.html" style="color:var(--blue);text-decoration:none;">RUM</a></td>
+        <td style="padding:12px 16px;"><a href="/rum/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rumjatar Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rumjatar</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇵 Nepal</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ndu/index.html" style="color:var(--blue);text-decoration:none;">NDU</a></td>
+        <td style="padding:12px 16px;"><a href="/ndu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rundu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rundu</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇦 Namibia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rqa/index.html" style="color:var(--blue);text-decoration:none;">RQA</a></td>
+        <td style="padding:12px 16px;"><a href="/rqa/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ruoqiang Loulan Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ruoqiang Town</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇨🇳 China</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rup/index.html" style="color:var(--blue);text-decoration:none;">RUP</a></td>
+        <td style="padding:12px 16px;"><a href="/rup/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rupsi Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rupsi</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇮🇳 India</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rbq/index.html" style="color:var(--blue);text-decoration:none;">RBQ</a></td>
+        <td style="padding:12px 16px;"><a href="/rbq/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rurrenabaque Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rurrenabaque</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇴 Bolivia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rur/index.html" style="color:var(--blue);text-decoration:none;">RUR</a></td>
+        <td style="padding:12px 16px;"><a href="/rur/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rurutu Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;"></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇫 French Polynesia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rou/index.html" style="color:var(--blue);text-decoration:none;">ROU</a></td>
+        <td style="padding:12px 16px;"><a href="/rou/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ruse Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Shtraklevo</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇧🇬 Bulgaria</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rsl/index.html" style="color:var(--blue);text-decoration:none;">RSL</a></td>
+        <td style="padding:12px 16px;"><a href="/rsl/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Russell Municipal Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Russell</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rsh/index.html" style="color:var(--blue);text-decoration:none;">RSH</a></td>
+        <td style="padding:12px 16px;"><a href="/rsh/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Russian Mission Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Russian Mission</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rsn/index.html" style="color:var(--blue);text-decoration:none;">RSN</a></td>
+        <td style="padding:12px 16px;"><a href="/rsn/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ruston Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Ruston</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ruu/index.html" style="color:var(--blue);text-decoration:none;">RUU</a></td>
+        <td style="padding:12px 16px;"><a href="/ruu/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ruti Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Kawbenaberi</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇬 Papua New Guinea</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rut/index.html" style="color:var(--blue);text-decoration:none;">RUT</a></td>
+        <td style="padding:12px 16px;"><a href="/rut/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rutland - Southern Vermont Regional Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rutland</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇺🇸 A.S</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rtp/index.html" style="color:var(--blue);text-decoration:none;">RTP</a></td>
+        <td style="padding:12px 16px;"><a href="/rtp/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rutland Plains Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Yagoonya</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇦🇺 Australia</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/szs/index.html" style="color:var(--blue);text-decoration:none;">SZS</a></td>
+        <td style="padding:12px 16px;"><a href="/szs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Ryan's Creek Aerodrome</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Oban</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇿 New Zealand</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rze/index.html" style="color:var(--blue);text-decoration:none;">RZE</a></td>
+        <td style="padding:12px 16px;"><a href="/rze/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rzeszów-Jasionka Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Jasionka</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇵🇱 Poland</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rei/index.html" style="color:var(--blue);text-decoration:none;">REI</a></td>
+        <td style="padding:12px 16px;"><a href="/rei/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Régina Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Régina</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇬🇫 Guiana Perancis</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rrs/index.html" style="color:var(--blue);text-decoration:none;">RRS</a></td>
+        <td style="padding:12px 16px;"><a href="/rrs/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Røros Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Røros</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇴 Norway</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/rvk/index.html" style="color:var(--blue);text-decoration:none;">RVK</a></td>
+        <td style="padding:12px 16px;"><a href="/rvk/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rørvik Airport, Ryum</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Rørvik</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇴 Norway</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/ret/index.html" style="color:var(--blue);text-decoration:none;">RET</a></td>
+        <td style="padding:12px 16px;"><a href="/ret/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Røst Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Røst</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇳🇴 Norway</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 16px;font-weight:700;"><a href="/gti/index.html" style="color:var(--blue);text-decoration:none;">GTI</a></td>
+        <td style="padding:12px 16px;"><a href="/gti/index.html" style="color:var(--text);text-decoration:none;font-weight:600;">Rügen Airport</a></td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">Dreschvitz</td>
+        <td style="padding:12px 16px;color:var(--muted);font-size:13px;">🇩🇪 Jerman</td>
+      </tr></tbody>
+  </table>
+</div>
+<footer>
+  <div style="margin-bottom:10px">
+    <a href="/az.html">A–Z Index</a>
+    <a href="/countries.html">By Country</a>
+    <a href="/about.html">About</a>
+  </div>
+  <div>© 2025 airport-code.com · Data sourced from OurAirports &amp; Open-Meteo · <a href="https://ourairports.com">OurAirports</a></div>
+</footer>
+
+<script>
+(function(){
+  let db = null;
+  const input = document.getElementById('navSearchInput');
+  const results = document.getElementById('search-results');
+  if (!input) return;
+
+  async function loadDB() {
+    if (db) return;
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    const r = await fetch(root + 'airports.json');
+    db = await r.json();
+  }
+
+  input.addEventListener('focus', loadDB);
+  input.addEventListener('input', async function() {
+    const q = this.value.trim().toUpperCase();
+    if (q.length < 2) { results.style.display = 'none'; return; }
+    await loadDB();
+    const matches = db.filter(a =>
+      a.iata.startsWith(q) ||
+      a.name.toUpperCase().includes(q) ||
+      a.city.toUpperCase().includes(q)
+    ).slice(0, 7);
+    if (!matches.length) { results.style.display = 'none'; return; }
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    results.innerHTML = matches.map(a =>
+      `<a href="${root}${a.iata.toLowerCase()}/index.html">
+        <span class="sr-code">${a.iata}</span>
+        <div><div class="sr-name">${a.name}</div><div class="sr-city">${a.city}, ${a.country}</div></div>
+      </a>`
+    ).join('');
+    results.style.display = 'block';
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!input.contains(e.target) && !results.contains(e.target)) results.style.display = 'none';
+  });
+})();
+</script>
+
+</body>
+</html>
