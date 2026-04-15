@@ -13,6 +13,7 @@ import time
 
 CSV_PATH = '/Users/simon/Desktop/airports_refined.csv'
 RUNWAY_CSV = '/Users/simon/Desktop/runways.csv'
+FREQ_CSV = '/Users/simon/Desktop/frequencies.csv'
 OUT_DIR = '/Users/simon/airport-site'
 
 def haversine(lat1, lon1, lat2, lon2):
@@ -112,6 +113,21 @@ for icao in runways_by_icao:
     runways_by_icao[icao].sort(key=lambda r: r['length_ft'], reverse=True)
 
 print(f"  Loaded runways for {len(runways_by_icao)} airports")
+
+# ─── Load frequencies ─────────────────────────────────────────────────────────
+
+print("Loading frequencies...")
+freqs_by_icao = {}
+with open(FREQ_CSV, newline='', encoding='utf-8') as f:
+    reader = csv.DictReader(f)
+    for row in reader:
+        icao = row['airport_ident'].strip().upper()
+        freqs_by_icao.setdefault(icao, []).append({
+            'type': row['type'].strip(),
+            'description': row['description'].strip(),
+            'mhz': row['frequency_mhz'].strip(),
+        })
+print(f"  Loaded frequencies for {len(freqs_by_icao)} airports")
 
 # Index by IATA
 by_iata = {a['iata']: a for a in airports}
@@ -525,6 +541,17 @@ def airport_page(a):
     if not runway_html:
         runway_html = '<p style="color:#94a3b8;font-size:13px">No runway data available.</p>'
 
+    # Frequencies
+    freqs = freqs_by_icao.get(a['icao'], [])
+    freq_rows = ''
+    for fr in freqs:
+        freq_rows += f'''
+        <tr style="border-bottom:1px solid #f5f5f5">
+          <td style="padding:10px 16px;font-weight:600;font-size:13px;color:var(--text)">{escape_html(fr["type"])}</td>
+          <td style="padding:10px 16px;font-size:13px;color:var(--muted)">{escape_html(fr["description"])}</td>
+          <td style="padding:10px 16px;font-weight:700;font-size:13px;color:var(--blue);text-align:right">{escape_html(fr["mhz"])} MHz</td>
+        </tr>'''
+
     nearby_html = ''
     for dist_km, n_iata, n_name, n_city in a['nearby']:
         n_name_e = escape_html(n_name)
@@ -539,6 +566,24 @@ def airport_page(a):
 
     if not nearby_html:
         nearby_html = '<li style="padding:14px 0;color:#94a3b8;font-size:13px;">No nearby airports found within 600 km</li>'
+
+    if freq_rows:
+        freq_card_html = f'''<div class="card">
+      <div class="card-header"><span>📻</span><h2>Radio Frequencies</h2></div>
+      <div class="card-body" style="padding:0">
+        <table style="width:100%;border-collapse:collapse">
+          <thead><tr style="background:#f8fafc">
+            <th style="padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid #e2e8f0">Type</th>
+            <th style="padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid #e2e8f0">Description</th>
+            <th style="padding:10px 16px;text-align:right;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid #e2e8f0">Frequency</th>
+          </tr></thead>
+          <tbody>{freq_rows}
+          </tbody>
+        </table>
+      </div>
+    </div>'''
+    else:
+        freq_card_html = ''
 
     return f'''<!DOCTYPE html>
 <html lang="en">
@@ -646,6 +691,8 @@ def airport_page(a):
       <div class="card-body">{runway_html}
       </div>
     </div>
+
+    {freq_card_html}
 
     <div class="card">
       <div class="card-header"><span>🌱</span><h2>Carbon Footprint Calculator</h2></div>
