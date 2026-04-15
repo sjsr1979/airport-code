@@ -827,7 +827,7 @@ def homepage():
       </div>
     </a>'''
 
-    lnk_style = 'display:inline-block;margin:3px;padding:4px 10px;background:#fff;border:1px solid #e2e8f0;border-radius:6px;font-weight:700;font-size:14px;color:#1a56db;text-decoration:none;'
+    lnk_style = 'display:inline-block;margin:2px;padding:4px 9px;background:#fff;border:1px solid #e2e8f0;border-radius:6px;font-weight:700;font-size:13px;color:#1a56db;text-decoration:none;white-space:nowrap;'
     az_code_links = ''.join(f'<a href="/az/{c.lower()}.html" style="{lnk_style}">{c}</a>' for c in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')
     az_name_links = ''.join(f'<a href="/az-name/{c.lower()}.html" style="{lnk_style}">{c}</a>' for c in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')
     az_city_links = ''.join(f'<a href="/az-city/{c.lower()}.html" style="{lnk_style}">{c}</a>' for c in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')
@@ -902,19 +902,19 @@ def homepage():
 
 <div class="section" style="background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);max-width:100%;padding:40px 0">
   <div style="max-width:1100px;margin:0 auto;padding:0 24px">
-    <h2>🔤 Browse Airports</h2>
+    <h2>Browse by A–Z</h2>
     <table style="width:100%;border-collapse:collapse;margin-top:8px">
       <tr style="border-bottom:1px solid var(--border)">
         <td style="padding:16px 0;font-weight:700;font-size:15px;width:180px">By Airport Code</td>
-        <td style="padding:16px 0">{az_code_links}</td>
+        <td style="padding:12px 0;white-space:nowrap">{az_code_links}</td>
       </tr>
       <tr style="border-bottom:1px solid var(--border)">
-        <td style="padding:16px 0;font-weight:700;font-size:15px">By Airport Name</td>
-        <td style="padding:16px 0">{az_name_links}</td>
+        <td style="padding:12px 0;font-weight:700;font-size:15px">By Airport Name</td>
+        <td style="padding:12px 0;white-space:nowrap">{az_name_links}</td>
       </tr>
       <tr>
-        <td style="padding:16px 0;font-weight:700;font-size:15px">By City Name</td>
-        <td style="padding:16px 0">{az_city_links}</td>
+        <td style="padding:12px 0;font-weight:700;font-size:15px">By City Name</td>
+        <td style="padding:12px 0;white-space:nowrap">{az_city_links}</td>
       </tr>
     </table>
   </div>
@@ -993,7 +993,7 @@ def az_page(letter, airports_for_letter):
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>{SHARED_CSS}
-    .az-nav {{ display:flex; gap:6px; flex-wrap:wrap; padding:20px 0; }}
+    .az-nav {{ display:flex; gap:6px; flex-wrap:nowrap; overflow-x:auto; padding:20px 0; }}
     .az-nav a {{ display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:6px;text-decoration:none;font-weight:700;font-size:14px; }}
     .az-nav a.active {{ background:var(--blue);color:#fff; }}
     .az-nav a:not(.active) {{ background:#fff;color:var(--blue);border:1px solid var(--border); }}
@@ -1172,7 +1172,15 @@ def country_page(cc, aps):
 # ─── Sitemap ──────────────────────────────────────────────────────────────────
 
 def sitemap(airports):
-    urls = ['https://airport-code.com/', 'https://airport-code.com/az.html', 'https://airport-code.com/countries.html']
+    urls = [
+        'https://airport-code.com/',
+        'https://airport-code.com/az.html',
+        'https://airport-code.com/countries.html',
+    ]
+    for c in 'abcdefghijklmnopqrstuvwxyz':
+        urls.append(f'https://airport-code.com/az/{c}.html')
+        urls.append(f'https://airport-code.com/az-name/{c}.html')
+        urls.append(f'https://airport-code.com/az-city/{c}.html')
     for a in airports:
         urls.append(f"https://airport-code.com/{a['iata'].lower()}/")
     parts = ['<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
@@ -1213,7 +1221,7 @@ def az_name_city_page(letter, airports_for_letter, kind):
     tbody tr {{ border-bottom:1px solid #f5f5f5; }}
     tbody tr:last-child {{ border-bottom:none; }}
     tbody tr:hover {{ background:#fafbfc; }}
-    .az-nav {{ display:flex; gap:6px; flex-wrap:wrap; padding:20px 0; }}
+    .az-nav {{ display:flex; gap:6px; flex-wrap:nowrap; overflow-x:auto; padding:20px 0; }}
     .az-nav a {{ display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:6px;text-decoration:none;font-weight:700;font-size:14px; }}
     .az-nav a.active {{ background:var(--blue);color:#fff; }}
     .az-nav a:not(.active) {{ background:#fff;color:var(--blue);border:1px solid var(--border); }}
@@ -1311,9 +1319,6 @@ with open(f"{OUT_DIR}/_redirects", 'w') as f:
     f.write("# Cloudflare Pages redirects\n")
     f.write("/az /az.html 301\n")
     f.write("/countries /countries.html 301\n")
-    for a in airports:
-        slug = a['iata'].lower()
-        f.write(f"/{slug} /{slug}/index.html 301\n")
 
 total = time.time() - t0
 print(f"\nDone! Generated {len(airports)} airport pages + indexes in {total:.0f}s")
