@@ -403,6 +403,52 @@ async function calcCarbon(){{
 }}
 </script>'''
 
+def departures_js(icao):
+    if not icao or icao == 'N/A':
+        return ''
+    return f'''
+<script>
+(function(){{
+  const icao = "{icao}";
+  const now = Math.floor(Date.now()/1000);
+  const begin = now - 21600; // last 6 hours
+  const url = `https://opensky-network.org/api/flights/departure?airport=${{icao}}&begin=${{begin}}&end=${{now}}`;
+  const container = document.getElementById('flights-container');
+
+  fetch(url).then(r=>r.json()).then(flights=>{{
+    if (!flights || !flights.length) {{
+      container.innerHTML = '<p style="color:#94a3b8;font-size:13px;padding:10px 0">No recent departures found.</p>';
+      return;
+    }}
+    // Sort by departure time descending, take latest 8
+    flights.sort((a,b) => b.firstSeen - a.firstSeen);
+    const shown = flights.slice(0,8);
+    const rows = shown.map(f => {{
+      const callsign = (f.callsign||'').trim() || '—';
+      const dest = (f.estArrivalAirport||'').trim() || '—';
+      const deptTime = f.firstSeen ? new Date(f.firstSeen*1000).toLocaleTimeString('en-GB',{{hour:'2-digit',minute:'2-digit'}}) : '—';
+      return `<tr style="border-bottom:1px solid #f0f0f0">
+        <td style="padding:10px 16px;font-weight:700;color:#1e293b;font-size:13px">${{callsign}}</td>
+        <td style="padding:10px 16px;font-size:13px;font-weight:600">${{dest}}</td>
+        <td style="padding:10px 16px;font-size:13px;font-weight:600">${{deptTime}}</td>
+        <td style="padding:10px 16px"><span style="background:#f0fdf4;color:#16a34a;padding:3px 8px;border-radius:4px;font-size:11px;font-weight:700">Departed</span></td>
+      </tr>`;
+    }}).join('');
+    container.outerHTML = `<table style="width:100%;border-collapse:collapse;font-size:13px">
+      <thead><tr style="background:#f8fafc">
+        <th style="padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid #e2e8f0">Flight</th>
+        <th style="padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid #e2e8f0">Destination</th>
+        <th style="padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid #e2e8f0">Time</th>
+        <th style="padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid #e2e8f0">Status</th>
+      </tr></thead>
+      <tbody>${{rows}}</tbody>
+    </table>`;
+  }}).catch(()=>{{
+    container.innerHTML = '<p style="color:#94a3b8;font-size:13px;padding:10px 0">Departure data temporarily unavailable.</p>';
+  }});
+}})();
+</script>'''
+
 # ─── Individual airport page ──────────────────────────────────────────────────
 
 def airport_page(a):
@@ -571,6 +617,16 @@ def airport_page(a):
     </div>
 
     <div class="card">
+      <div class="card-header"><span>✈️</span><h2>Recent Departures <span style="font-size:11px;font-weight:500;color:#10b981;background:#f0fdf4;border:1px solid #bbf7d0;padding:2px 8px;border-radius:20px;margin-left:8px;">● LIVE</span></h2></div>
+      <div class="card-body" style="padding:0">
+        <div id="flights-container" style="padding:20px;color:#94a3b8;font-size:13px;text-align:center;">Loading departures…</div>
+        <div style="padding:10px 16px;border-top:1px solid #e2e8f0;text-align:center;">
+          <p style="font-size:11px;color:#94a3b8;">Recent departures via OpenSky Network · Last 6 hours</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
       <div class="card-header"><span>📍</span><h2>Nearby Airports</h2></div>
       <div class="card-body">
         <ul class="nearby-list">{nearby_html}
@@ -597,12 +653,12 @@ def airport_page(a):
       <div class="card-header"><span>🗺️</span><h2>Location</h2></div>
       <div class="card-body" style="padding:12px">
         <iframe
-          src="https://www.google.com/maps?q={lat},{lon}&z=13&output=embed"
+          src="https://www.openstreetmap.org/export/embed.html?bbox={lon-0.08:.6f}%2C{lat-0.05:.6f}%2C{lon+0.08:.6f}%2C{lat+0.05:.6f}&layer=mapnik&marker={lat:.6f}%2C{lon:.6f}"
           width="100%" height="220" style="border:0;border-radius:10px;display:block" allowfullscreen loading="lazy">
         </iframe>
-        <a href="https://www.google.com/maps?q={lat},{lon}" target="_blank" rel="noopener"
+        <a href="https://www.openstreetmap.org/?mlat={lat}&mlon={lon}#map=13/{lat}/{lon}" target="_blank" rel="noopener"
            style="display:block;margin-top:10px;font-size:12px;color:#1a56db;font-weight:600;text-align:center;">
-          Open in Google Maps ↗
+          Open in OpenStreetMap ↗
         </a>
       </div>
     </div>
@@ -636,6 +692,7 @@ def airport_page(a):
 {time_js(lat, lon)}
 {weather_js(lat, lon)}
 {carbon_js(lat, lon, a['iata'])}
+{departures_js(a['icao'])}
 
 </body>
 </html>'''
