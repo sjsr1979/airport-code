@@ -185,7 +185,7 @@ SHARED_CSS = '''
     }
     body { font-family: \'Outfit\', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; }
     nav { background: var(--navy); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
-    .nav-logo { color: #fff; font-size: 19px; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; display: flex; align-items: center; gap: 10px; line-height: 1; }
+    .nav-logo { color: #fff; font-size: 19px; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; display: flex; align-items: center; gap: 6px; line-height: 1; }
     .nav-logo svg { flex-shrink: 0; }
     .nav-logo span { color: var(--sky); }
     .nav-search { display: flex; align-items: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 6px 14px; gap: 8px; width: 280px; position: relative; }
@@ -296,6 +296,9 @@ SHARED_CSS = '''
     footer { background: var(--navy); color: rgba(255,255,255,0.5); text-align: center; padding: 24px; font-size: 13px; margin-top: 40px; }
     footer a { color: rgba(255,255,255,0.5); text-decoration: none; margin: 0 12px; }
     footer a:hover { color: #fff; }
+    #cookie-banner { position: fixed; bottom: 0; left: 0; right: 0; background: #1a2535; color: rgba(255,255,255,0.85); font-size: 13px; padding: 14px 20px; display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; z-index: 9999; border-top: 1px solid rgba(255,255,255,0.1); }
+    #cookie-banner a { color: var(--sky); text-decoration: underline; }
+    #cookie-accept { background: var(--sky); color: #fff; border: none; border-radius: 6px; padding: 7px 18px; font-size: 13px; font-family: \'Outfit\', sans-serif; font-weight: 600; cursor: pointer; white-space: nowrap; }
 '''
 
 def nav_html(root=''):
@@ -326,7 +329,12 @@ def footer_html():
     <a href="/privacy">Privacy</a>
   </div>
   <div>© 2025 airport-code.com</div>
-</footer>'''
+</footer>
+<div id="cookie-banner" style="display:none">
+  <span>We use cookies to improve your experience. See our <a href="/privacy">Privacy Policy</a>.</span>
+  <button id="cookie-accept" onclick="document.getElementById(\'cookie-banner\').style.display=\'none\';localStorage.setItem(\'cookie-ok\',\'1\')">Accept</button>
+</div>
+<script>if(!localStorage.getItem(\'cookie-ok\')){document.getElementById(\'cookie-banner\').style.display=\'flex\';}</script>'''
 
 def static_page(title, meta_desc, content_html):
     return f'''<!DOCTYPE html>
@@ -955,20 +963,20 @@ def homepage():
 <div class="section" style="background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);max-width:100%;padding:40px 0">
   <div style="max-width:1100px;margin:0 auto;padding:0 24px">
     <h2>Browse by A–Z</h2>
-    <table style="width:100%;border-collapse:collapse;margin-top:8px">
-      <tr style="border-bottom:1px solid var(--border)">
-        <td style="padding:16px 0;font-weight:700;font-size:15px;width:180px">By Airport Code</td>
-        <td style="padding:12px 0;white-space:nowrap">{az_code_links}</td>
-      </tr>
-      <tr style="border-bottom:1px solid var(--border)">
-        <td style="padding:12px 0;font-weight:700;font-size:15px">By Airport Name</td>
-        <td style="padding:12px 0;white-space:nowrap">{az_name_links}</td>
-      </tr>
-      <tr>
-        <td style="padding:12px 0;font-weight:700;font-size:15px">By City Name</td>
-        <td style="padding:12px 0;white-space:nowrap">{az_city_links}</td>
-      </tr>
-    </table>
+    <div style="margin-top:8px">
+      <div style="padding:16px 0;border-bottom:1px solid var(--border)">
+        <div style="font-weight:700;font-size:15px;margin-bottom:10px">By Airport Code</div>
+        <div style="overflow-x:auto;-webkit-overflow-scrolling:touch">{az_code_links}</div>
+      </div>
+      <div style="padding:16px 0;border-bottom:1px solid var(--border)">
+        <div style="font-weight:700;font-size:15px;margin-bottom:10px">By Airport Name</div>
+        <div style="overflow-x:auto;-webkit-overflow-scrolling:touch">{az_name_links}</div>
+      </div>
+      <div style="padding:16px 0">
+        <div style="font-weight:700;font-size:15px;margin-bottom:10px">By City Name</div>
+        <div style="overflow-x:auto;-webkit-overflow-scrolling:touch">{az_city_links}</div>
+      </div>
+    </div>
   </div>
 </div>
 
