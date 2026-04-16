@@ -302,9 +302,42 @@ def footer_html():
     <a href="/az.html">A–Z Index</a>
     <a href="/countries.html">By Country</a>
     <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/terms.html">Terms</a>
+    <a href="/privacy.html">Privacy</a>
   </div>
   <div>© 2025 airport-code.com · Data sourced from OurAirports &amp; Open-Meteo · <a href="https://ourairports.com">OurAirports</a></div>
 </footer>'''
+
+def static_page(title, meta_desc, content_html):
+    return f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="site-root" content="/">
+  <title>{title} | Airport Code</title>
+  <meta name="description" content="{meta_desc}">
+  <link rel="stylesheet" href="/fonts/outfit.css">
+  <style>{SHARED_CSS}
+    .page-content {{ max-width:800px; margin:0 auto; padding:40px 24px; }}
+    .page-content h1 {{ font-size:32px; font-weight:800; color:var(--navy); margin-bottom:8px; }}
+    .page-content h2 {{ font-size:20px; font-weight:700; color:var(--navy); margin:28px 0 10px; }}
+    .page-content p {{ color:var(--text); line-height:1.7; margin-bottom:14px; }}
+    .page-content a {{ color:var(--blue); }}
+    .page-content ul {{ padding-left:20px; margin-bottom:14px; }}
+    .page-content ul li {{ margin-bottom:6px; line-height:1.7; color:var(--text); }}
+  </style>
+</head>
+<body>
+{nav_html('/')}
+<div class="page-content">
+{content_html}
+</div>
+{footer_html()}
+{SEARCH_JS}
+</body>
+</html>'''
 
 SEARCH_JS = '''
 <script>
@@ -1315,6 +1348,77 @@ with open(f"{OUT_DIR}/index.html", 'w', encoding='utf-8') as f:
 print("Generating sitemap...")
 with open(f"{OUT_DIR}/sitemap.xml", 'w', encoding='utf-8') as f:
     f.write(sitemap(airports))
+
+# Static pages
+ABOUT_CONTENT = '''
+<h1>About Airport Code</h1>
+<p style="color:var(--muted);margin-bottom:24px">Your free airport code lookup tool</p>
+<p>Airport-code.com is a free, fast reference site for IATA and ICAO airport codes covering 8,810 airports across 200+ countries.</p>
+<h2>What we provide</h2>
+<ul>
+  <li>IATA and ICAO codes for every airport</li>
+  <li>Live weather conditions via Open-Meteo</li>
+  <li>Runway details and radio frequencies</li>
+  <li>Nearby airports with distances</li>
+  <li>Interactive maps for every airport</li>
+  <li>Carbon footprint calculator</li>
+  <li>Browse by country or A–Z index</li>
+</ul>
+<h2>Data sources</h2>
+<p>Airport data is sourced from <a href="https://ourairports.com">OurAirports</a>, an open-data project. Weather data is provided by <a href="https://open-meteo.com">Open-Meteo</a>.</p>
+<h2>Contact</h2>
+<p>For enquiries please visit our <a href="/contact.html">contact page</a>.</p>
+'''
+
+CONTACT_CONTENT = '''
+<h1>Contact Us</h1>
+<p style="color:var(--muted);margin-bottom:24px">Get in touch with the Airport Code team</p>
+<p>For general enquiries, data corrections, or partnership opportunities, please email us at:</p>
+<p><strong><a href="mailto:hello@airport-code.com">hello@airport-code.com</a></strong></p>
+<h2>Data corrections</h2>
+<p>If you spot an error in our airport data, please email us with the airport IATA code and the correction needed. We aim to respond within 2 business days.</p>
+<h2>Link building &amp; partnerships</h2>
+<p>If you run an aviation, travel, or logistics website and would like to discuss a link exchange or partnership, we'd love to hear from you.</p>
+'''
+
+TERMS_CONTENT = '''
+<h1>Terms of Use</h1>
+<p style="color:var(--muted);margin-bottom:24px">Last updated: April 2025</p>
+<h2>Use of this site</h2>
+<p>Airport-code.com provides airport code and travel reference information for personal and commercial use. You may use the information on this site freely, but you may not scrape or reproduce large portions of our data without permission.</p>
+<h2>Accuracy</h2>
+<p>We strive to keep all information accurate and up to date. However, airport data changes frequently. Always verify critical information — especially for flight planning — with official sources.</p>
+<h2>Weather data</h2>
+<p>Live weather is provided by Open-Meteo and is for informational purposes only. Do not rely on this data for aviation or safety-critical decisions.</p>
+<h2>Links to third parties</h2>
+<p>This site contains links to third-party websites. We are not responsible for the content or privacy practices of those sites.</p>
+<h2>Changes</h2>
+<p>We reserve the right to update these terms at any time. Continued use of the site constitutes acceptance of any changes.</p>
+'''
+
+PRIVACY_CONTENT = '''
+<h1>Privacy Policy</h1>
+<p style="color:var(--muted);margin-bottom:24px">Last updated: April 2025</p>
+<h2>Data we collect</h2>
+<p>Airport-code.com does not collect personal data. We do not require registration or login to use this site.</p>
+<h2>Analytics</h2>
+<p>We may use anonymised analytics to understand how visitors use the site. No personally identifiable information is collected or stored.</p>
+<h2>Cookies</h2>
+<p>This site uses no tracking cookies. Search preferences may be stored locally in your browser using localStorage.</p>
+<h2>Third-party services</h2>
+<p>Weather data is fetched client-side from <a href="https://open-meteo.com">Open-Meteo</a>. Maps are provided by OpenStreetMap. Neither service receives any personal data from you via this site.</p>
+<h2>Contact</h2>
+<p>For privacy-related enquiries, contact us at <a href="mailto:hello@airport-code.com">hello@airport-code.com</a>.</p>
+'''
+
+with open(f"{OUT_DIR}/about.html", 'w', encoding='utf-8') as f:
+    f.write(static_page('About', 'About airport-code.com — free IATA and ICAO airport code lookup for 8,810 airports worldwide.', ABOUT_CONTENT))
+with open(f"{OUT_DIR}/contact.html", 'w', encoding='utf-8') as f:
+    f.write(static_page('Contact', 'Contact the Airport Code team for data corrections, partnerships or general enquiries.', CONTACT_CONTENT))
+with open(f"{OUT_DIR}/terms.html", 'w', encoding='utf-8') as f:
+    f.write(static_page('Terms of Use', 'Terms of use for airport-code.com.', TERMS_CONTENT))
+with open(f"{OUT_DIR}/privacy.html", 'w', encoding='utf-8') as f:
+    f.write(static_page('Privacy Policy', 'Privacy policy for airport-code.com. We do not collect personal data.', PRIVACY_CONTENT))
 
 # _redirects for Cloudflare Pages (clean URLs)
 with open(f"{OUT_DIR}/_redirects", 'w') as f:
