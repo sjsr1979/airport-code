@@ -15,6 +15,7 @@
   <meta name="twitter:description" content="DVR is the IATA airport code for Daly River Airport in Nauiyu, Australia.">
 
   <link rel="stylesheet" href="/fonts/outfit.css">
+  <link rel="stylesheet" href="/leaflet/leaflet.css">
   <link rel="canonical" href="https://airport-code.com/dvr/">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -366,10 +367,19 @@ function closeMenu(){
     <div class="sidebar-card">
       <div class="card-header"><span>🗺️</span><h2>Location</h2></div>
       <div class="card-body" style="padding:12px">
-        <iframe
-          src="https://airport-code.com/osm/export/embed.html?bbox=130.613878%2C-13.799806%2C130.773878%2C-13.699806&layer=mapnik&marker=-13.749806%2C130.693878"
-          width="100%" height="220" style="border:0;border-radius:10px;display:block" allowfullscreen loading="lazy">
-        </iframe>
+        <div id="map-dvr" style="width:100%;height:220px;border-radius:10px;"></div>
+        <script src="/leaflet/leaflet.js"></script>
+        <script>
+        (function(){
+          var m=L.map('map-dvr',{zoomControl:false,attributionControl:true,dragging:false,scrollWheelZoom:false}).setView([-13.749806,130.693878],13);
+          L.tileLayer('https://airport-code.com/osm/tiles/{z}/{x}/{y}.png',{
+            attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            maxZoom:19
+          }).addTo(m);
+          var icon=L.icon({iconUrl:'/leaflet/marker-icon.png',iconRetinaUrl:'/leaflet/marker-icon-2x.png',shadowUrl:'/leaflet/marker-shadow.png',iconSize:[25,41],iconAnchor:[12,41]});
+          L.marker([-13.749806,130.693878],{icon:icon}).addTo(m);
+        })();
+        </script>
         <a href="https://www.openstreetmap.org/?mlat=-13.749806&mlon=130.693878#map=13/-13.749806/130.693878" target="_blank" rel="noopener"
            style="display:block;margin-top:10px;font-size:12px;color:#1a56db;font-weight:600;text-align:center;">
           Open in OpenStreetMap ↗

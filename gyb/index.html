@@ -15,6 +15,7 @@
   <meta name="twitter:description" content="GYB is the IATA airport code for Port Hedland/Wodgina Airport in Wodgina, Australia.">
 
   <link rel="stylesheet" href="/fonts/outfit.css">
+  <link rel="stylesheet" href="/leaflet/leaflet.css">
   <link rel="canonical" href="https://airport-code.com/gyb/">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -366,10 +367,19 @@ function closeMenu(){
     <div class="sidebar-card">
       <div class="card-header"><span>🗺️</span><h2>Location</h2></div>
       <div class="card-body" style="padding:12px">
-        <iframe
-          src="https://airport-code.com/osm/export/embed.html?bbox=118.562936%2C-21.086568%2C118.722936%2C-20.986568&layer=mapnik&marker=-21.036568%2C118.642936"
-          width="100%" height="220" style="border:0;border-radius:10px;display:block" allowfullscreen loading="lazy">
-        </iframe>
+        <div id="map-gyb" style="width:100%;height:220px;border-radius:10px;"></div>
+        <script src="/leaflet/leaflet.js"></script>
+        <script>
+        (function(){
+          var m=L.map('map-gyb',{zoomControl:false,attributionControl:true,dragging:false,scrollWheelZoom:false}).setView([-21.036568,118.642936],13);
+          L.tileLayer('https://airport-code.com/osm/tiles/{z}/{x}/{y}.png',{
+            attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            maxZoom:19
+          }).addTo(m);
+          var icon=L.icon({iconUrl:'/leaflet/marker-icon.png',iconRetinaUrl:'/leaflet/marker-icon-2x.png',shadowUrl:'/leaflet/marker-shadow.png',iconSize:[25,41],iconAnchor:[12,41]});
+          L.marker([-21.036568,118.642936],{icon:icon}).addTo(m);
+        })();
+        </script>
         <a href="https://www.openstreetmap.org/?mlat=-21.036568&mlon=118.642936#map=13/-21.036568/118.642936" target="_blank" rel="noopener"
            style="display:block;margin-top:10px;font-size:12px;color:#1a56db;font-weight:600;text-align:center;">
           Open in OpenStreetMap ↗

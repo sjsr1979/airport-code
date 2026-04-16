@@ -15,6 +15,7 @@
   <meta name="twitter:description" content="HAR is the IATA airport code for Capital City Airport in Harrisburg, United States.">
 
   <link rel="stylesheet" href="/fonts/outfit.css">
+  <link rel="stylesheet" href="/leaflet/leaflet.css">
   <link rel="canonical" href="https://airport-code.com/har/">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -432,10 +433,19 @@ function closeMenu(){
     <div class="sidebar-card">
       <div class="card-header"><span>🗺️</span><h2>Location</h2></div>
       <div class="card-body" style="padding:12px">
-        <iframe
-          src="https://airport-code.com/osm/export/embed.html?bbox=-76.931501%2C40.167098%2C-76.771501%2C40.267098&layer=mapnik&marker=40.217098%2C-76.851501"
-          width="100%" height="220" style="border:0;border-radius:10px;display:block" allowfullscreen loading="lazy">
-        </iframe>
+        <div id="map-har" style="width:100%;height:220px;border-radius:10px;"></div>
+        <script src="/leaflet/leaflet.js"></script>
+        <script>
+        (function(){
+          var m=L.map('map-har',{zoomControl:false,attributionControl:true,dragging:false,scrollWheelZoom:false}).setView([40.217098,-76.851501],13);
+          L.tileLayer('https://airport-code.com/osm/tiles/{z}/{x}/{y}.png',{
+            attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            maxZoom:19
+          }).addTo(m);
+          var icon=L.icon({iconUrl:'/leaflet/marker-icon.png',iconRetinaUrl:'/leaflet/marker-icon-2x.png',shadowUrl:'/leaflet/marker-shadow.png',iconSize:[25,41],iconAnchor:[12,41]});
+          L.marker([40.217098,-76.851501],{icon:icon}).addTo(m);
+        })();
+        </script>
         <a href="https://www.openstreetmap.org/?mlat=40.2170982361&mlon=-76.85150146480001#map=13/40.2170982361/-76.85150146480001" target="_blank" rel="noopener"
            style="display:block;margin-top:10px;font-size:12px;color:#1a56db;font-weight:600;text-align:center;">
           Open in OpenStreetMap ↗

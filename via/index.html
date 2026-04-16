@@ -15,6 +15,7 @@
   <meta name="twitter:description" content="VIA is the IATA airport code for Videira Airport in Videira, Brazil.">
 
   <link rel="stylesheet" href="/fonts/outfit.css">
+  <link rel="stylesheet" href="/leaflet/leaflet.css">
   <link rel="canonical" href="https://airport-code.com/via/">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -375,10 +376,19 @@ function closeMenu(){
     <div class="sidebar-card">
       <div class="card-header"><span>🗺️</span><h2>Location</h2></div>
       <div class="card-body" style="padding:12px">
-        <iframe
-          src="https://airport-code.com/osm/export/embed.html?bbox=-51.221899%2C-27.049701%2C-51.061899%2C-26.949701&layer=mapnik&marker=-26.999701%2C-51.141899"
-          width="100%" height="220" style="border:0;border-radius:10px;display:block" allowfullscreen loading="lazy">
-        </iframe>
+        <div id="map-via" style="width:100%;height:220px;border-radius:10px;"></div>
+        <script src="/leaflet/leaflet.js"></script>
+        <script>
+        (function(){
+          var m=L.map('map-via',{zoomControl:false,attributionControl:true,dragging:false,scrollWheelZoom:false}).setView([-26.999701,-51.141899],13);
+          L.tileLayer('https://airport-code.com/osm/tiles/{z}/{x}/{y}.png',{
+            attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            maxZoom:19
+          }).addTo(m);
+          var icon=L.icon({iconUrl:'/leaflet/marker-icon.png',iconRetinaUrl:'/leaflet/marker-icon-2x.png',shadowUrl:'/leaflet/marker-shadow.png',iconSize:[25,41],iconAnchor:[12,41]});
+          L.marker([-26.999701,-51.141899],{icon:icon}).addTo(m);
+        })();
+        </script>
         <a href="https://www.openstreetmap.org/?mlat=-26.999701&mlon=-51.141899#map=13/-26.999701/-51.141899" target="_blank" rel="noopener"
            style="display:block;margin-top:10px;font-size:12px;color:#1a56db;font-weight:600;text-align:center;">
           Open in OpenStreetMap ↗

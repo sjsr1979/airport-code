@@ -15,6 +15,7 @@
   <meta name="twitter:description" content="HAV is the IATA airport code for José Martí International Airport in Havana, Cuba.">
 
   <link rel="stylesheet" href="/fonts/outfit.css">
+  <link rel="stylesheet" href="/leaflet/leaflet.css">
   <link rel="canonical" href="https://airport-code.com/hav/">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -433,10 +434,19 @@ function closeMenu(){
     <div class="sidebar-card">
       <div class="card-header"><span>🗺️</span><h2>Location</h2></div>
       <div class="card-body" style="padding:12px">
-        <iframe
-          src="https://airport-code.com/osm/export/embed.html?bbox=-82.489103%2C22.939201%2C-82.329103%2C23.039201&layer=mapnik&marker=22.989201%2C-82.409103"
-          width="100%" height="220" style="border:0;border-radius:10px;display:block" allowfullscreen loading="lazy">
-        </iframe>
+        <div id="map-hav" style="width:100%;height:220px;border-radius:10px;"></div>
+        <script src="/leaflet/leaflet.js"></script>
+        <script>
+        (function(){
+          var m=L.map('map-hav',{zoomControl:false,attributionControl:true,dragging:false,scrollWheelZoom:false}).setView([22.989201,-82.409103],13);
+          L.tileLayer('https://airport-code.com/osm/tiles/{z}/{x}/{y}.png',{
+            attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            maxZoom:19
+          }).addTo(m);
+          var icon=L.icon({iconUrl:'/leaflet/marker-icon.png',iconRetinaUrl:'/leaflet/marker-icon-2x.png',shadowUrl:'/leaflet/marker-shadow.png',iconSize:[25,41],iconAnchor:[12,41]});
+          L.marker([22.989201,-82.409103],{icon:icon}).addTo(m);
+        })();
+        </script>
         <a href="https://www.openstreetmap.org/?mlat=22.989200592041016&mlon=-82.40910339355469#map=13/22.989200592041016/-82.40910339355469" target="_blank" rel="noopener"
            style="display:block;margin-top:10px;font-size:12px;color:#1a56db;font-weight:600;text-align:center;">
           Open in OpenStreetMap ↗

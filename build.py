@@ -828,6 +828,7 @@ def airport_page(a):
   <meta name="twitter:description" content="{iata} is the IATA airport code for {name} in {city}, {country}.">
 
   <link rel="stylesheet" href="/fonts/outfit.css">
+  <link rel="stylesheet" href="/leaflet/leaflet.css">
   <link rel="canonical" href="https://airport-code.com/{a['iata'].lower()}/">
   <style>{SHARED_CSS}</style>
 </head>
@@ -960,10 +961,19 @@ def airport_page(a):
     <div class="sidebar-card">
       <div class="card-header"><span>🗺️</span><h2>Location</h2></div>
       <div class="card-body" style="padding:12px">
-        <iframe
-          src="https://airport-code.com/osm/export/embed.html?bbox={lon-0.08:.6f}%2C{lat-0.05:.6f}%2C{lon+0.08:.6f}%2C{lat+0.05:.6f}&layer=mapnik&marker={lat:.6f}%2C{lon:.6f}"
-          width="100%" height="220" style="border:0;border-radius:10px;display:block" allowfullscreen loading="lazy">
-        </iframe>
+        <div id="map-{iata.lower()}" style="width:100%;height:220px;border-radius:10px;"></div>
+        <script src="/leaflet/leaflet.js"></script>
+        <script>
+        (function(){{
+          var m=L.map('map-{iata.lower()}',{{zoomControl:false,attributionControl:true,dragging:false,scrollWheelZoom:false}}).setView([{lat:.6f},{lon:.6f}],13);
+          L.tileLayer('https://airport-code.com/osm/tiles/{{z}}/{{x}}/{{y}}.png',{{
+            attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            maxZoom:19
+          }}).addTo(m);
+          var icon=L.icon({{iconUrl:'/leaflet/marker-icon.png',iconRetinaUrl:'/leaflet/marker-icon-2x.png',shadowUrl:'/leaflet/marker-shadow.png',iconSize:[25,41],iconAnchor:[12,41]}});
+          L.marker([{lat:.6f},{lon:.6f}],{{icon:icon}}).addTo(m);
+        }})();
+        </script>
         <a href="https://www.openstreetmap.org/?mlat={lat}&mlon={lon}#map=13/{lat}/{lon}" target="_blank" rel="noopener"
            style="display:block;margin-top:10px;font-size:12px;color:#1a56db;font-weight:600;text-align:center;">
           Open in OpenStreetMap ↗
