@@ -32,7 +32,8 @@
     }
     body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; }
     nav { background: var(--navy); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
-    .nav-logo { color: #fff; font-size: 19px; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; display: flex; align-items: center; gap: 6px; line-height: 1; }
+    .nav-logo { color: #fff; font-size: 22px; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; display: flex; align-items: center; gap: 6px; line-height: 1; }
+    .nav-logo .tld { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.5); letter-spacing: 0; }
     .nav-logo svg { flex-shrink: 0; }
     .nav-logo span { color: var(--sky); }
     .nav-search { display: flex; align-items: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 6px 14px; gap: 8px; width: 280px; position: relative; }
@@ -157,7 +158,7 @@
 <nav>
   <a href="/" class="nav-logo">
     <svg width="32" height="32" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="9" fill="#1a56db"/><path d="M24.5 8.5C25.3 9.3 25.3 10.6 24.5 11.4L19.8 16.1L22 25L19.5 27.5L16 19L11.5 23.5L12 26L10 28L8 24L4 22L6 20L8.5 20.5L13 16L5.5 12.5L8 10L17 12.2L21.6 7.5C22.4 6.7 23.7 6.7 24.5 8.5Z" fill="white"/></svg>
-    Airport<span>Code</span>
+    Airport-<span>Code</span><span class="tld">.com</span>
   </a>
   <div class="nav-links">
     <a href="/az">A–Z</a>
