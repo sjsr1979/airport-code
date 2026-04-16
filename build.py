@@ -306,7 +306,7 @@ def footer_html():
     <a href="/terms">Terms</a>
     <a href="/privacy">Privacy</a>
   </div>
-  <div>© 2025 airport-code.com · Data sourced from OurAirports &amp; Open-Meteo · <a href="https://ourairports.com">OurAirports</a></div>
+  <div>© 2025 airport-code.com</div>
 </footer>'''
 
 def static_page(title, meta_desc, content_html):
