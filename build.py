@@ -354,10 +354,7 @@ SHARED_CSS = '''
 
 def nav_html(root=''):
     return f'''<nav>
-  <a href="/" class="nav-logo">
-    {NAV_LOGO_SVG}
-    <span style="white-space:nowrap">Airport-<span style="color:var(--sky)">Code</span><span class="tld">.com</span></span>
-  </a>
+  <a href="/" class="nav-logo">{NAV_LOGO_SVG}<span style="white-space:nowrap">Airport-<span style="color:var(--sky)">Code</span><span style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.5)">.com</span></span></a>
   <div class="nav-links">
     <a href="/az">A–Z</a>
     <a href="/countries">By Country</a>
