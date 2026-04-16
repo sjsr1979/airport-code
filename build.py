@@ -237,6 +237,7 @@ SHARED_CSS = '''
     }
     body { font-family: \'Outfit\', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; }
     nav { background: var(--navy); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
+    .nav-right { display: flex; align-items: center; gap: 16px; }
     .nav-logo { color: #fff; font-size: 22px; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; display: flex; align-items: center; gap: 8px; line-height: 1; }
     .nav-logo svg { flex-shrink: 0; }
     .nav-logo .tld { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.5); letter-spacing: 0; }
@@ -355,14 +356,16 @@ SHARED_CSS = '''
 def nav_html(root=''):
     return f'''<nav>
   <a href="/" class="nav-logo">{NAV_LOGO_SVG}<span style="white-space:nowrap">Airport-<span style="color:var(--sky)">Code</span><span style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.5)">.com</span></span></a>
-  <div class="nav-search">
-    <svg width="14" height="14" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-    <input type="text" id="navSearchInput" placeholder="Search airport or code…" autocomplete="off">
-    <div id="search-results"></div>
-  </div>
-  <div class="nav-links">
-    <a href="/az">A–Z</a>
-    <a href="/countries">By Country</a>
+  <div class="nav-right">
+    <div class="nav-search">
+      <svg width="14" height="14" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="navSearchInput" placeholder="Search airport or code…" autocomplete="off">
+      <div id="search-results"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/az">A–Z</a>
+      <a href="/countries">By Country</a>
+    </div>
   </div>
 </nav>'''
 
