@@ -684,7 +684,7 @@ def departures_js(icao, lat, lon):
 (function(){{
   const lat={lat}, lon={lon}, icao="{icao}";
   const pad=1.2;
-  const url=`https://opensky-network.org/api/states/all?lamin=${{lat-pad}}&lomin=${{lon-pad}}&lamax=${{lat+pad}}&lomax=${{lon+pad}}`;
+  const url=`https://airport-code.com/api/flights/states/all?lamin=${{lat-pad}}&lomin=${{lon-pad}}&lamax=${{lat+pad}}&lomax=${{lon+pad}}`;
   const container=document.getElementById('flights-container');
   fetch(url).then(r=>r.json()).then(d=>{{
     const states=(d.states||[]).filter(s=>!s[8]&&s[1]&&s[1].trim()); // not on ground, has callsign
@@ -936,6 +936,14 @@ def airport_page(a):
 
 
     <div class="card">
+      <div class="card-header"><span>✈️</span><h2>Live Flights Overhead</h2></div>
+      <div class="card-body" style="padding:0">
+        <div id="flights-container" style="padding:16px;color:#94a3b8;font-size:13px;text-align:center;">Loading flight data…</div>
+      </div>
+      <div style="padding:10px 16px;font-size:11px;color:#94a3b8;border-top:1px solid var(--border);">Aircraft currently in the airspace around {iata}. Data via <a href="https://opensky-network.org" target="_blank" rel="noopener" style="color:#94a3b8">OpenSky Network</a>.</div>
+    </div>
+
+    <div class="card">
       <div class="card-header"><span>📍</span><h2>Nearby Airports</h2></div>
       <div class="card-body">
         <ul class="nearby-list">{nearby_html}
@@ -1008,6 +1016,7 @@ def airport_page(a):
 
 {SEARCH_JS}
 {carbon_js(lat, lon, a['iata'])}
+{departures_js(a['icao'], lat, lon)}
 
 </body>
 </html>'''
