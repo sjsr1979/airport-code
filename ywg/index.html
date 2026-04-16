@@ -673,7 +673,7 @@ async function calcCarbon(){
 (function(){
   const lat=49.909999847399995, lon=-97.2398986816, icao="CYWG";
   const pad=1.2;
-  const url=`https://airport-code.com/api/flights/states/all?lamin=${lat-pad}&lomin=${lon-pad}&lamax=${lat+pad}&lomax=${lon+pad}`;
+  const url=`https://opensky-network.org/api/states/all?lamin=${lat-pad}&lomin=${lon-pad}&lamax=${lat+pad}&lomax=${lon+pad}`;
   const container=document.getElementById('flights-container');
   fetch(url).then(r=>r.json()).then(d=>{
     const states=(d.states||[]).filter(s=>!s[8]&&s[1]&&s[1].trim()); // not on ground, has callsign
