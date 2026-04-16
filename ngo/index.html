@@ -668,12 +668,13 @@ async function calcCarbon(){
       const callsign=(a.flight||'').trim();
       const reg=a.r||'';
       const type=a.t||'';
-      const alt=a.alt_baro?Math.round(a.alt_baro).toLocaleString()+' ft':'—';
+      const altVal=typeof a.alt_baro==='number'?a.alt_baro:null;
+      const alt=altVal!=null?Math.round(altVal).toLocaleString()+' ft':'—';
       const spd=a.gs?Math.round(a.gs)+' kts':'—';
       const hdg=a.track!=null?Math.round(a.track)+'°':'—';
       const meta=[reg,type,spd,hdg].filter(Boolean).join(' · ');
       return `<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 16px;border-bottom:1px solid #f0f0f0;gap:8px">
-        <div style="text-align:left;min-width:0">
+        <div style="flex:1;min-width:0">
           <div style="font-weight:700;color:#1e293b;font-size:13px">${callsign}</div>
           <div style="font-size:11px;color:#94a3b8;margin-top:2px">${meta}</div>
         </div>
