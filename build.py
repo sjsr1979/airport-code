@@ -281,7 +281,7 @@ SHARED_CSS = '''
 
 def nav_html(root=''):
     return f'''<nav>
-  <a href="{root}index.html" class="nav-logo">
+  <a href="/" class="nav-logo">
     {NAV_LOGO_SVG}
     Airport<span>Code</span>
   </a>
@@ -291,20 +291,20 @@ def nav_html(root=''):
     <div id="search-results"></div>
   </div>
   <div class="nav-links">
-    <a href="{root}az.html">A–Z</a>
-    <a href="{root}countries.html">By Country</a>
+    <a href="/az">A–Z</a>
+    <a href="/countries">By Country</a>
   </div>
 </nav>'''
 
 def footer_html():
     return '''<footer>
   <div style="margin-bottom:10px">
-    <a href="/az.html">A–Z Index</a>
-    <a href="/countries.html">By Country</a>
-    <a href="/about.html">About</a>
-    <a href="/contact.html">Contact</a>
-    <a href="/terms.html">Terms</a>
-    <a href="/privacy.html">Privacy</a>
+    <a href="/az">A–Z Index</a>
+    <a href="/countries">By Country</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+    <a href="/terms">Terms</a>
+    <a href="/privacy">Privacy</a>
   </div>
   <div>© 2025 airport-code.com · Data sourced from OurAirports &amp; Open-Meteo · <a href="https://ourairports.com">OurAirports</a></div>
 </footer>'''
@@ -640,7 +640,7 @@ def airport_page(a):
 <div class="hero">
   <div class="hero-inner">
     <div class="breadcrumb">
-      <a href="/index.html">Home</a><span class="sep">›</span>
+      <a href="/">Home</a><span class="sep">›</span>
       <a href="/countries/{cc.lower()}.html">{flag} {country}</a><span class="sep">›</span>
       <span>{name}</span>
     </div>
@@ -1044,7 +1044,7 @@ def az_page(letter, airports_for_letter):
 {nav_html('/')}
 
 <div style="max-width:1100px;margin:0 auto;padding:32px 24px">
-  <div style="margin-bottom:8px;font-size:12px;color:var(--muted)"><a href="/index.html" style="color:var(--blue);text-decoration:none">Home</a> › <a href="/az.html" style="color:var(--blue);text-decoration:none">A–Z Index</a> › {letter_u}</div>
+  <div style="margin-bottom:8px;font-size:12px;color:var(--muted)"><a href="/" style="color:var(--blue);text-decoration:none">Home</a> › <a href="/az" style="color:var(--blue);text-decoration:none">A–Z Index</a> › {letter_u}</div>
   <h1 style="font-size:28px;font-weight:800;color:var(--navy);margin-bottom:4px">Airports: {letter_u}</h1>
   <p style="color:var(--muted);margin-bottom:16px">{len(airports_for_letter)} airports with IATA codes starting with {letter_u}</p>
 
@@ -1092,7 +1092,7 @@ def az_index():
 {nav_html('/')}
 
 <div style="max-width:1100px;margin:0 auto;padding:32px 24px">
-  <div style="margin-bottom:8px;font-size:12px;color:var(--muted)"><a href="/index.html" style="color:var(--blue);text-decoration:none">Home</a> › A–Z Index</div>
+  <div style="margin-bottom:8px;font-size:12px;color:var(--muted)"><a href="/" style="color:var(--blue);text-decoration:none">Home</a> › A–Z Index</div>
   <h1 style="font-size:32px;font-weight:800;color:var(--navy);margin-bottom:8px">Browse Airports A–Z</h1>
   <p style="color:var(--muted)">8,810 airports sorted by IATA code. Click a letter to browse.</p>
   <div class="az-big-grid" id="az-grid">Loading…</div>
@@ -1145,7 +1145,7 @@ def countries_page(by_country):
 <body>
 {nav_html('/')}
 <div style="max-width:1100px;margin:0 auto;padding:32px 24px">
-  <div style="margin-bottom:8px;font-size:12px;color:var(--muted)"><a href="/index.html" style="color:var(--blue);text-decoration:none">Home</a> › By Country</div>
+  <div style="margin-bottom:8px;font-size:12px;color:var(--muted)"><a href="/" style="color:var(--blue);text-decoration:none">Home</a> › By Country</div>
   <h1 style="font-size:32px;font-weight:800;color:var(--navy);margin-bottom:8px">Airports by Country</h1>
   <p style="color:var(--muted)">{len(by_country)} countries · 8,810 airports total</p>
   <div class="country-grid">{rows}</div>
@@ -1190,7 +1190,7 @@ def country_page(cc, aps):
 <body>
 {nav_html('/')}
 <div style="max-width:1100px;margin:0 auto;padding:32px 24px">
-  <div style="margin-bottom:8px;font-size:12px;color:var(--muted)"><a href="/index.html" style="color:var(--blue);text-decoration:none">Home</a> › <a href="/countries.html" style="color:var(--blue);text-decoration:none">By Country</a> › {cn}</div>
+  <div style="margin-bottom:8px;font-size:12px;color:var(--muted)"><a href="/" style="color:var(--blue);text-decoration:none">Home</a> › <a href="/countries" style="color:var(--blue);text-decoration:none">By Country</a> › {cn}</div>
   <h1 style="font-size:28px;font-weight:800;color:var(--navy);margin-bottom:4px">{flag} Airports in {cn}</h1>
   <p style="color:var(--muted);margin-bottom:24px">{len(aps)} airports with IATA codes</p>
   <table>
@@ -1266,7 +1266,7 @@ def az_name_city_page(letter, airports_for_letter, kind):
 <body>
 {nav_html('/')}
 <div style="max-width:1100px;margin:0 auto;padding:32px 24px">
-  <div style="margin-bottom:8px;font-size:12px;color:var(--muted)"><a href="/index.html" style="color:var(--blue);text-decoration:none">Home</a> › {kind_label} › {letter_u}</div>
+  <div style="margin-bottom:8px;font-size:12px;color:var(--muted)"><a href="/" style="color:var(--blue);text-decoration:none">Home</a> › {kind_label} › {letter_u}</div>
   <h1 style="font-size:28px;font-weight:800;color:var(--navy);margin-bottom:4px">Airports: {kind_label} Starting With {letter_u}</h1>
   <p style="color:var(--muted);margin-bottom:16px">{len(airports_for_letter)} airports</p>
   <div class="az-nav">
@@ -1420,11 +1420,15 @@ with open(f"{OUT_DIR}/terms.html", 'w', encoding='utf-8') as f:
 with open(f"{OUT_DIR}/privacy.html", 'w', encoding='utf-8') as f:
     f.write(static_page('Privacy Policy', 'Privacy policy for airport-code.com. We do not collect personal data.', PRIVACY_CONTENT))
 
-# _redirects for Cloudflare Pages (clean URLs)
+# _redirects for Cloudflare Pages (clean URLs — 200 serves file without redirect loop)
 with open(f"{OUT_DIR}/_redirects", 'w') as f:
     f.write("# Cloudflare Pages redirects\n")
-    f.write("/az /az.html 301\n")
-    f.write("/countries /countries.html 301\n")
+    f.write("/az /az.html 200\n")
+    f.write("/countries /countries.html 200\n")
+    f.write("/about /about.html 200\n")
+    f.write("/contact /contact.html 200\n")
+    f.write("/terms /terms.html 200\n")
+    f.write("/privacy /privacy.html 200\n")
 
 total = time.time() - t0
 print(f"\nDone! Generated {len(airports)} airport pages + indexes in {total:.0f}s")
