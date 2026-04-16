@@ -24,10 +24,10 @@
     }
     body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; }
     nav { background: var(--navy); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
-    .nav-logo { color: #fff; font-size: 22px; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; display: flex; align-items: center; gap: 6px; line-height: 1; }
-    .nav-logo .tld { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.5); letter-spacing: 0; vertical-align: middle; position: relative; top: 1px; }
-    .nav-logo svg { flex-shrink: 0; }
+    .nav-logo { color: #fff; font-size: 22px; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; display: flex; align-items: baseline; gap: 6px; line-height: 1; }
+    .nav-logo svg { flex-shrink: 0; align-self: center; }
     .nav-logo span { color: var(--sky); }
+    .nav-logo .tld { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.5); letter-spacing: 0; }
     .nav-search { display: flex; align-items: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 6px 14px; gap: 8px; width: 280px; position: relative; }
     .nav-search input { background: none; border: none; outline: none; color: #fff; font-size: 14px; width: 100%; font-family: 'Outfit', sans-serif; }
     .nav-search input::placeholder { color: rgba(255,255,255,0.4); }
@@ -64,10 +64,6 @@
     .hero-stats { display: flex; gap: 32px; margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
     .hero-stat .value { font-size: 22px; font-weight: 700; color: #fff; }
     .hero-stat .label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
-    .time-widget { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 16px 20px; text-align: center; min-width: 160px; }
-    .time-widget .time-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
-    .time-widget .time-value { font-size: 28px; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
-    .time-widget .time-tz { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; }
     .main { max-width: 1100px; margin: 0 auto; padding: 32px 24px; display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
     @media (max-width: 768px) {
       .main { grid-template-columns: 1fr; }
@@ -91,7 +87,6 @@
       .hero-stats { gap: 0; display: grid; grid-template-columns: 1fr 1fr; margin-top: 20px; padding-top: 16px; }
       .hero-stat { padding: 12px 0; text-align: center; }
       .hero-stat .value { font-size: 18px; }
-      .time-widget { min-width: unset; width: 100%; margin-top: 16px; }
     }
     .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
     .card-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; background: var(--blue); }
@@ -156,7 +151,7 @@
 <nav>
   <a href="/" class="nav-logo">
     <svg width="32" height="32" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="9" fill="#1a56db"/><path d="M24.5 8.5C25.3 9.3 25.3 10.6 24.5 11.4L19.8 16.1L22 25L19.5 27.5L16 19L11.5 23.5L12 26L10 28L8 24L4 22L6 20L8.5 20.5L13 16L5.5 12.5L8 10L17 12.2L21.6 7.5C22.4 6.7 23.7 6.7 24.5 8.5Z" fill="white"/></svg>
-    <span style="display:inline-flex;align-items:center;gap:0;line-height:1">Airport-<span style="color:var(--sky)">Code</span></span><span class="tld">.com</span>
+    Airport-<span>Code</span><span class="tld">.com</span>
   </a>
   <div class="nav-links">
     <a href="/az">A–Z</a>

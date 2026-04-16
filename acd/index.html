@@ -32,10 +32,10 @@
     }
     body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; }
     nav { background: var(--navy); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
-    .nav-logo { color: #fff; font-size: 22px; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; display: flex; align-items: center; gap: 6px; line-height: 1; }
-    .nav-logo .tld { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.5); letter-spacing: 0; vertical-align: middle; position: relative; top: 1px; }
-    .nav-logo svg { flex-shrink: 0; }
+    .nav-logo { color: #fff; font-size: 22px; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; display: flex; align-items: baseline; gap: 6px; line-height: 1; }
+    .nav-logo svg { flex-shrink: 0; align-self: center; }
     .nav-logo span { color: var(--sky); }
+    .nav-logo .tld { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.5); letter-spacing: 0; }
     .nav-search { display: flex; align-items: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 6px 14px; gap: 8px; width: 280px; position: relative; }
     .nav-search input { background: none; border: none; outline: none; color: #fff; font-size: 14px; width: 100%; font-family: 'Outfit', sans-serif; }
     .nav-search input::placeholder { color: rgba(255,255,255,0.4); }
@@ -72,10 +72,6 @@
     .hero-stats { display: flex; gap: 32px; margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
     .hero-stat .value { font-size: 22px; font-weight: 700; color: #fff; }
     .hero-stat .label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
-    .time-widget { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 16px 20px; text-align: center; min-width: 160px; }
-    .time-widget .time-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
-    .time-widget .time-value { font-size: 28px; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
-    .time-widget .time-tz { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; }
     .main { max-width: 1100px; margin: 0 auto; padding: 32px 24px; display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
     @media (max-width: 768px) {
       .main { grid-template-columns: 1fr; }
@@ -99,7 +95,6 @@
       .hero-stats { gap: 0; display: grid; grid-template-columns: 1fr 1fr; margin-top: 20px; padding-top: 16px; }
       .hero-stat { padding: 12px 0; text-align: center; }
       .hero-stat .value { font-size: 18px; }
-      .time-widget { min-width: unset; width: 100%; margin-top: 16px; }
     }
     .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
     .card-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; background: var(--blue); }
@@ -158,7 +153,7 @@
 <nav>
   <a href="/" class="nav-logo">
     <svg width="32" height="32" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="9" fill="#1a56db"/><path d="M24.5 8.5C25.3 9.3 25.3 10.6 24.5 11.4L19.8 16.1L22 25L19.5 27.5L16 19L11.5 23.5L12 26L10 28L8 24L4 22L6 20L8.5 20.5L13 16L5.5 12.5L8 10L17 12.2L21.6 7.5C22.4 6.7 23.7 6.7 24.5 8.5Z" fill="white"/></svg>
-    <span style="display:inline-flex;align-items:center;gap:0;line-height:1">Airport-<span style="color:var(--sky)">Code</span></span><span class="tld">.com</span>
+    Airport-<span>Code</span><span class="tld">.com</span>
   </a>
   <div class="nav-links">
     <a href="/az">A–Z</a>
@@ -198,11 +193,6 @@
           <div class="hero-stat"><div class="value">-77.27°</div><div class="label">Longitude</div></div>
         </div>
       </div>
-      <div class="time-widget">
-        <div class="time-label">Local Time</div>
-        <div class="time-value" id="localTime">--:--</div>
-        <div class="time-tz" id="localTZ">Loading…</div>
-      </div>
     </div>
   </div>
 </div>
@@ -228,27 +218,6 @@
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-header"><span>🌤️</span><h2>Current Weather at ACD</h2></div>
-      <div class="card-body">
-        <div class="weather-widget" id="wx-widget">
-          <div class="weather-icon" id="wx-icon">⏳</div>
-          <div style="flex:1">
-            <div class="weather-main">
-              <div class="temp" id="wx-temp">Loading…</div>
-              <div class="desc" id="wx-desc"></div>
-            </div>
-            <div class="weather-details">
-              <div class="weather-detail" id="wx-humidity">💧 Humidity: <strong>—</strong></div>
-              <div class="weather-detail" id="wx-wind">💨 Wind: <strong>—</strong></div>
-              <div class="weather-detail" id="wx-visibility">👁️ Visibility: <strong>—</strong></div>
-              <div class="weather-detail" id="wx-feels">🌡️ Feels like: <strong>—</strong></div>
-            </div>
-          </div>
-        </div>
-        <p style="font-size:12px;color:#94a3b8;text-align:center;">Live weather via Open-Meteo · Updates on page load</p>
-      </div>
-    </div>
 
     <div class="card">
       <div class="card-header"><span>🛬</span><h2>Runways</h2></div>
@@ -454,51 +423,6 @@
 })();
 </script>
 
-
-<script>
-(function(){
-  const lat=8.497847, lon=-77.274106;
-  // Fetch timezone from Open-Meteo (included in weather call anyway)
-  let tz = 'UTC';
-  fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m&timezone=auto`)
-    .then(r=>r.json()).then(d=>{ tz = d.timezone || 'UTC'; tick(); }).catch(()=>tick());
-  function tick(){
-    const now = new Date();
-    const s = now.toLocaleTimeString('en-GB', {timeZone: tz, hour:'2-digit', minute:'2-digit', second:'2-digit'});
-    document.getElementById('localTime').textContent = s;
-    const tzShort = tz.split('/').pop().replace('_',' ');
-    document.getElementById('localTZ').textContent = tzShort;
-  }
-  tick();
-  setInterval(tick, 1000);
-})();
-</script>
-
-<script>
-(function(){
-  const lat = 8.497847, lon = -77.274106;
-  const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,wind_direction_10m,apparent_temperature,visibility,weather_code&wind_speed_unit=kmh&timezone=auto`;
-  const icons = {"0": ["\u2600\ufe0f", "Clear sky"], "1": ["\ud83c\udf24\ufe0f", "Mostly clear"], "2": ["\u26c5", "Partly cloudy"], "3": ["\u2601\ufe0f", "Overcast"], "45": ["\ud83c\udf2b\ufe0f", "Foggy"], "48": ["\ud83c\udf2b\ufe0f", "Icy fog"], "51": ["\ud83c\udf26\ufe0f", "Light drizzle"], "53": ["\ud83c\udf26\ufe0f", "Moderate drizzle"], "55": ["\ud83c\udf27\ufe0f", "Heavy drizzle"], "61": ["\ud83c\udf27\ufe0f", "Light rain"], "63": ["\ud83c\udf27\ufe0f", "Moderate rain"], "65": ["\ud83c\udf27\ufe0f", "Heavy rain"], "71": ["\ud83c\udf28\ufe0f", "Light snow"], "73": ["\ud83c\udf28\ufe0f", "Moderate snow"], "75": ["\u2744\ufe0f", "Heavy snow"], "80": ["\ud83c\udf26\ufe0f", "Rain showers"], "81": ["\ud83c\udf27\ufe0f", "Heavy showers"], "82": ["\u26c8\ufe0f", "Violent showers"], "95": ["\u26c8\ufe0f", "Thunderstorm"], "96": ["\u26c8\ufe0f", "Thunderstorm with hail"], "99": ["\u26c8\ufe0f", "Heavy thunderstorm"]};
-  fetch(url).then(r=>r.json()).then(d=>{
-    const c = d.current;
-    const [icon, desc] = icons[c.weather_code] || ['🌡️','Unknown'];
-    const tempC = Math.round(c.temperature_2m);
-    const tempF = Math.round(tempC * 9/5 + 32);
-    const feelsC = Math.round(c.apparent_temperature);
-    const windDir = ['N','NE','E','SE','S','SW','W','NW'][Math.round(c.wind_direction_10m/45)%8];
-    document.getElementById('wx-icon').textContent = icon;
-    document.getElementById('wx-temp').innerHTML = `${tempC}°C <span style="font-size:16px;font-weight:400;color:#64748b">/ ${tempF}°F</span>`;
-    document.getElementById('wx-desc').textContent = desc;
-    document.getElementById('wx-humidity').innerHTML = `💧 Humidity: <strong>${c.relative_humidity_2m}%</strong>`;
-    document.getElementById('wx-wind').innerHTML = `💨 Wind: <strong>${Math.round(c.wind_speed_10m)} km/h ${windDir}</strong>`;
-    document.getElementById('wx-feels').innerHTML = `🌡️ Feels like: <strong>${feelsC}°C</strong>`;
-    const vis = c.visibility ? (c.visibility >= 1000 ? `${(c.visibility/1000).toFixed(0)} km` : `${c.visibility} m`) : '—';
-    document.getElementById('wx-visibility').innerHTML = `👁️ Visibility: <strong>${vis}</strong>`;
-  }).catch(()=>{
-    document.getElementById('wx-widget').innerHTML = '<p style="color:#94a3b8;font-size:13px;text-align:center;padding:20px 0">Weather data unavailable</p>';
-  });
-})();
-</script>
 
 <script>
 const ORIGIN = {lat:8.497847, lon:-77.274106, iata:"ACD"};

@@ -237,10 +237,10 @@ SHARED_CSS = '''
     }
     body { font-family: \'Outfit\', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; }
     nav { background: var(--navy); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
-    .nav-logo { color: #fff; font-size: 22px; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; display: flex; align-items: center; gap: 6px; line-height: 1; }
-    .nav-logo .tld { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.5); letter-spacing: 0; vertical-align: middle; position: relative; top: 1px; }
-    .nav-logo svg { flex-shrink: 0; }
+    .nav-logo { color: #fff; font-size: 22px; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; display: flex; align-items: baseline; gap: 6px; line-height: 1; }
+    .nav-logo svg { flex-shrink: 0; align-self: center; }
     .nav-logo span { color: var(--sky); }
+    .nav-logo .tld { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.5); letter-spacing: 0; }
     .nav-search { display: flex; align-items: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 6px 14px; gap: 8px; width: 280px; position: relative; }
     .nav-search input { background: none; border: none; outline: none; color: #fff; font-size: 14px; width: 100%; font-family: \'Outfit\', sans-serif; }
     .nav-search input::placeholder { color: rgba(255,255,255,0.4); }
@@ -277,10 +277,6 @@ SHARED_CSS = '''
     .hero-stats { display: flex; gap: 32px; margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
     .hero-stat .value { font-size: 22px; font-weight: 700; color: #fff; }
     .hero-stat .label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
-    .time-widget { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 16px 20px; text-align: center; min-width: 160px; }
-    .time-widget .time-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
-    .time-widget .time-value { font-size: 28px; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
-    .time-widget .time-tz { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; }
     .main { max-width: 1100px; margin: 0 auto; padding: 32px 24px; display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
     @media (max-width: 768px) {
       .main { grid-template-columns: 1fr; }
@@ -304,7 +300,6 @@ SHARED_CSS = '''
       .hero-stats { gap: 0; display: grid; grid-template-columns: 1fr 1fr; margin-top: 20px; padding-top: 16px; }
       .hero-stat { padding: 12px 0; text-align: center; }
       .hero-stat .value { font-size: 18px; }
-      .time-widget { min-width: unset; width: 100%; margin-top: 16px; }
     }
     .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
     .card-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; background: var(--blue); }
@@ -362,7 +357,7 @@ def nav_html(root=''):
     return f'''<nav>
   <a href="/" class="nav-logo">
     {NAV_LOGO_SVG}
-    <span style="display:inline-flex;align-items:center;gap:0;line-height:1">Airport-<span style="color:var(--sky)">Code</span></span><span class="tld">.com</span>
+    Airport-<span>Code</span><span class="tld">.com</span>
   </a>
   <div class="nav-links">
     <a href="/az">A–Z</a>
@@ -762,11 +757,6 @@ def airport_page(a):
           <div class="hero-stat"><div class="value">{lon:.2f}°</div><div class="label">Longitude</div></div>
         </div>
       </div>
-      <div class="time-widget">
-        <div class="time-label">Local Time</div>
-        <div class="time-value" id="localTime">--:--</div>
-        <div class="time-tz" id="localTZ">Loading…</div>
-      </div>
     </div>
   </div>
 </div>
@@ -792,27 +782,6 @@ def airport_page(a):
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-header"><span>🌤️</span><h2>Current Weather at {iata}</h2></div>
-      <div class="card-body">
-        <div class="weather-widget" id="wx-widget">
-          <div class="weather-icon" id="wx-icon">⏳</div>
-          <div style="flex:1">
-            <div class="weather-main">
-              <div class="temp" id="wx-temp">Loading…</div>
-              <div class="desc" id="wx-desc"></div>
-            </div>
-            <div class="weather-details">
-              <div class="weather-detail" id="wx-humidity">💧 Humidity: <strong>—</strong></div>
-              <div class="weather-detail" id="wx-wind">💨 Wind: <strong>—</strong></div>
-              <div class="weather-detail" id="wx-visibility">👁️ Visibility: <strong>—</strong></div>
-              <div class="weather-detail" id="wx-feels">🌡️ Feels like: <strong>—</strong></div>
-            </div>
-          </div>
-        </div>
-        <p style="font-size:12px;color:#94a3b8;text-align:center;">Live weather via Open-Meteo · Updates on page load</p>
-      </div>
-    </div>
 
     <div class="card">
       <div class="card-header"><span>🛬</span><h2>Runways</h2></div>
@@ -927,8 +896,6 @@ def airport_page(a):
 {footer_html()}
 
 {SEARCH_JS}
-{time_js(lat, lon)}
-{weather_js(lat, lon)}
 {carbon_js(lat, lon, a['iata'])}
 
 </body>
