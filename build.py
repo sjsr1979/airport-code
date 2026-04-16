@@ -993,11 +993,12 @@ def az_page(letter, airports_for_letter):
 
   <link rel="stylesheet" href="/fonts/outfit.css">
   <style>{SHARED_CSS}
-    .az-nav {{ display:flex; gap:6px; flex-wrap:nowrap; overflow-x:auto; padding:20px 0; }}
-    .az-nav a {{ display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:6px;text-decoration:none;font-weight:700;font-size:14px; }}
+    .az-nav {{ display:grid; grid-template-columns:repeat(13,1fr); gap:6px; padding:20px 0; }}
+    .az-nav a {{ display:flex;align-items:center;justify-content:center;height:44px;border-radius:8px;text-decoration:none;font-weight:700;font-size:15px; }}
     .az-nav a.active {{ background:var(--blue);color:#fff; }}
     .az-nav a:not(.active) {{ background:#fff;color:var(--blue);border:1px solid var(--border); }}
     .az-nav a:not(.active):hover {{ background:var(--blue-light); }}
+    @media(max-width:600px){{ .az-nav {{ grid-template-columns:repeat(9,1fr); gap:5px; }} }}
     table {{ width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden; }}
     thead th {{ padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid var(--border);background:#f8fafc; }}
     tbody tr {{ border-bottom:1px solid #f5f5f5; }}
@@ -1221,11 +1222,12 @@ def az_name_city_page(letter, airports_for_letter, kind):
     tbody tr {{ border-bottom:1px solid #f5f5f5; }}
     tbody tr:last-child {{ border-bottom:none; }}
     tbody tr:hover {{ background:#fafbfc; }}
-    .az-nav {{ display:flex; gap:6px; flex-wrap:nowrap; overflow-x:auto; padding:20px 0; }}
-    .az-nav a {{ display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:6px;text-decoration:none;font-weight:700;font-size:14px; }}
+    .az-nav {{ display:grid; grid-template-columns:repeat(13,1fr); gap:6px; padding:20px 0; }}
+    .az-nav a {{ display:flex;align-items:center;justify-content:center;height:44px;border-radius:8px;text-decoration:none;font-weight:700;font-size:15px; }}
     .az-nav a.active {{ background:var(--blue);color:#fff; }}
     .az-nav a:not(.active) {{ background:#fff;color:var(--blue);border:1px solid var(--border); }}
     .az-nav a:not(.active):hover {{ background:var(--blue-light); }}
+    @media(max-width:600px){{ .az-nav {{ grid-template-columns:repeat(9,1fr); gap:5px; }} }}
   </style>
 </head>
 <body>
