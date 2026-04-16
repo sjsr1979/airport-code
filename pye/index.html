@@ -73,10 +73,25 @@
     .hero-stat .value { font-size: 22px; font-weight: 700; color: #fff; }
     .hero-stat .label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
     .main { max-width: 1100px; margin: 0 auto; padding: 32px 24px; display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; flex-direction: column; gap: 5px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.2s; }
+    .mobile-menu { display: none; position: fixed; top: 60px; left: 0; right: 0; bottom: 0; background: var(--navy); z-index: 99; flex-direction: column; padding: 24px; gap: 8px; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: #fff; text-decoration: none; font-size: 18px; font-weight: 600; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .mobile-menu .mob-search { display: flex; align-items: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 10px 14px; gap: 10px; margin-bottom: 8px; }
+    .mobile-menu .mob-search input { background: none; border: none; outline: none; color: #fff; font-size: 15px; width: 100%; font-family: 'Outfit', sans-serif; }
+    .mobile-menu .mob-search input::placeholder { color: rgba(255,255,255,0.4); }
+    #mob-search-results { background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden; }
+    #mob-search-results a { display: flex; align-items: center; gap: 10px; padding: 10px 14px; text-decoration: none; color: #fff; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    #mob-search-results a:last-child { border-bottom: none; }
+    #mob-search-results .sr-code { background: var(--blue); color: #fff; font-weight: 700; font-size: 12px; padding: 2px 7px; border-radius: 5px; min-width: 38px; text-align: center; }
+    #mob-search-results .sr-name { font-weight: 600; }
+    #mob-search-results .sr-city { color: rgba(255,255,255,0.5); font-size: 11px; }
     @media (max-width: 768px) {
       .main { grid-template-columns: 1fr; }
       .nav-links { display: none; }
       .nav-search { display: none; }
+      .hamburger { display: flex; }
       .nav-logo { flex-shrink: 0; }
       .hero-home { padding: 48px 16px; }
       .hero-home h1 { font-size: 36px; }
@@ -162,8 +177,34 @@
       <a href="/az">A–Z</a>
       <a href="/countries">By Country</a>
     </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mob-search">
+    <svg width="16" height="16" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="mobSearchInput" placeholder="Search airport or code…" autocomplete="off">
+  </div>
+  <div id="mob-search-results"></div>
+  <a href="/az" onclick="closeMenu()">A–Z Index</a>
+  <a href="/countries" onclick="closeMenu()">By Country</a>
+  <a href="/about" onclick="closeMenu()">About</a>
+  <a href="/contact" onclick="closeMenu()">Contact</a>
+</div>
+<script>
+function toggleMenu(){
+  const m=document.getElementById('mobileMenu');
+  const h=document.getElementById('hamburger');
+  m.classList.toggle('open');
+  h.classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+}
+</script>
 
 <div class="hero">
   <div class="hero-inner">
@@ -405,6 +446,39 @@
 
   document.addEventListener('click', function(e) {
     if (!input.contains(e.target) && !results.contains(e.target)) results.style.display = 'none';
+  });
+})();
+
+// Mobile menu search
+(function(){
+  let db = null;
+  const input = document.getElementById('mobSearchInput');
+  const results = document.getElementById('mob-search-results');
+  if (!input) return;
+  async function loadDB() {
+    if (db) return;
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    const r = await fetch(root + 'airports.json');
+    db = await r.json();
+  }
+  input.addEventListener('focus', loadDB);
+  input.addEventListener('input', async function() {
+    const q = this.value.trim().toUpperCase();
+    if (q.length < 2) { results.innerHTML = ''; return; }
+    await loadDB();
+    const matches = db.filter(a =>
+      a.iata.startsWith(q) ||
+      a.name.toUpperCase().includes(q) ||
+      a.city.toUpperCase().includes(q)
+    ).slice(0, 6);
+    if (!matches.length) { results.innerHTML = ''; return; }
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    results.innerHTML = matches.map(a =>
+      `<a href="${root}${a.iata.toLowerCase()}/index.html" onclick="closeMenu()">
+        <span class="sr-code">${a.iata}</span>
+        <div><div class="sr-name">${a.name}</div><div class="sr-city">${a.city}, ${a.country}</div></div>
+      </a>`
+    ).join('');
   });
 })();
 </script>
