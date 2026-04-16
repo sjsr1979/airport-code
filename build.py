@@ -1072,7 +1072,7 @@ def homepage():
     #home-results .sr-name {{ font-weight:600; }}
     #home-results .sr-city {{ color:var(--muted);font-size:11px; }}
     .stats-bar {{ display:flex; justify-content:center; gap:0; padding:28px 24px; background:var(--white); border-bottom:1px solid var(--border); }}
-    .stat-item {{ padding:0 40px; border-right:1px solid var(--border); }}
+    .stat-item {{ padding:0 24px; border-right:1px solid var(--border); }}
     .stat-item:last-child {{ border-right:none; }}
     @media (max-width:768px) {{ .stats-bar {{ display:grid; grid-template-columns:repeat(2,1fr); gap:0; padding:0; }} .stat-item {{ padding:20px; border-right:1px solid var(--border); border-bottom:1px solid var(--border); }} .stat-item:nth-child(2n) {{ border-right:none; }} .stat-item:nth-child(3), .stat-item:nth-child(4) {{ border-bottom:none; }} }}
     .stat-item {{ text-align:center; }}
