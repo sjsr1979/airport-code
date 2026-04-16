@@ -88,6 +88,9 @@
     #mob-search-results .sr-code { background: var(--blue); color: #fff; font-weight: 700; font-size: 12px; padding: 2px 7px; border-radius: 5px; min-width: 38px; text-align: center; }
     #mob-search-results .sr-name { font-weight: 600; }
     #mob-search-results .sr-city { color: rgba(255,255,255,0.5); font-size: 11px; }
+    @media (max-width: 640px) {
+      .freq-desc { display: none; }
+    }
     @media (max-width: 768px) {
       .main { grid-template-columns: 1fr; }
       .nav-links { display: none; }
@@ -112,7 +115,7 @@
       .hero-stat { padding: 12px 0; text-align: center; }
       .hero-stat .value { font-size: 18px; }
     }
-    .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: clip; margin-bottom: 20px; }
+    .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
     .card-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; background: var(--blue); }
     .card-header h2 { font-size: 14px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.5px; }
     .card-body { padding: 20px; }
@@ -327,127 +330,127 @@ function closeMenu(){
 
     <div class="card">
       <div class="card-header"><span>📻</span><h2>Radio Frequencies</h2></div>
-      <div class="card-body" style="padding:0;overflow-x:auto">
-        <table style="width:100%;border-collapse:collapse;min-width:480px">
+      <div class="card-body" style="padding:0">
+        <table style="width:100%;border-collapse:collapse">
           <thead><tr style="background:#f8fafc">
             <th style="padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid #e2e8f0">Type</th>
-            <th style="padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid #e2e8f0">Description</th>
+            <th class="freq-desc" style="padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid #e2e8f0">Description</th>
             <th style="padding:10px 16px;text-align:right;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid #e2e8f0">Frequency</th>
           </tr></thead>
           <tbody>
         <tr style="border-bottom:1px solid #f5f5f5">
           <td style="padding:10px 16px;font-weight:600;font-size:13px;color:var(--text)">APP</td>
-          <td style="padding:10px 16px;font-size:13px;color:var(--muted)">Schiphol Approach</td>
+          <td class="freq-desc" style="padding:10px 16px;font-size:13px;color:var(--muted)">Schiphol Approach</td>
           <td style="padding:10px 16px;font-weight:700;font-size:13px;color:var(--blue);text-align:right">119.055 MHz</td>
         </tr>
         <tr style="border-bottom:1px solid #f5f5f5">
           <td style="padding:10px 16px;font-weight:600;font-size:13px;color:var(--text)">APP</td>
-          <td style="padding:10px 16px;font-size:13px;color:var(--muted)">Schiphol Approach</td>
+          <td class="freq-desc" style="padding:10px 16px;font-size:13px;color:var(--muted)">Schiphol Approach</td>
           <td style="padding:10px 16px;font-weight:700;font-size:13px;color:var(--blue);text-align:right">121.205 MHz</td>
         </tr>
         <tr style="border-bottom:1px solid #f5f5f5">
           <td style="padding:10px 16px;font-weight:600;font-size:13px;color:var(--text)">ARR</td>
-          <td style="padding:10px 16px;font-size:13px;color:var(--muted)">Schiphol Arrival</td>
+          <td class="freq-desc" style="padding:10px 16px;font-size:13px;color:var(--muted)">Schiphol Arrival</td>
           <td style="padding:10px 16px;font-weight:700;font-size:13px;color:var(--blue);text-align:right">118.405 MHz</td>
         </tr>
         <tr style="border-bottom:1px solid #f5f5f5">
           <td style="padding:10px 16px;font-weight:600;font-size:13px;color:var(--text)">ARR</td>
-          <td style="padding:10px 16px;font-size:13px;color:var(--muted)">Schiphol Arrival</td>
+          <td class="freq-desc" style="padding:10px 16px;font-size:13px;color:var(--muted)">Schiphol Arrival</td>
           <td style="padding:10px 16px;font-weight:700;font-size:13px;color:var(--blue);text-align:right">126.68 MHz</td>
         </tr>
         <tr style="border-bottom:1px solid #f5f5f5">
           <td style="padding:10px 16px;font-weight:600;font-size:13px;color:var(--text)">ATIS</td>
-          <td style="padding:10px 16px;font-size:13px;color:var(--muted)">Departure</td>
+          <td class="freq-desc" style="padding:10px 16px;font-size:13px;color:var(--muted)">Departure</td>
           <td style="padding:10px 16px;font-weight:700;font-size:13px;color:var(--blue);text-align:right">122.2 MHz</td>
         </tr>
         <tr style="border-bottom:1px solid #f5f5f5">
           <td style="padding:10px 16px;font-weight:600;font-size:13px;color:var(--text)">ATIS</td>
-          <td style="padding:10px 16px;font-size:13px;color:var(--muted)">Arrival</td>
+          <td class="freq-desc" style="padding:10px 16px;font-size:13px;color:var(--muted)">Arrival</td>
           <td style="padding:10px 16px;font-weight:700;font-size:13px;color:var(--blue);text-align:right">132.98 MHz</td>
         </tr>
         <tr style="border-bottom:1px solid #f5f5f5">
           <td style="padding:10px 16px;font-weight:600;font-size:13px;color:var(--text)">CLD</td>
-          <td style="padding:10px 16px;font-size:13px;color:var(--muted)">Schiphol Planner</td>
+          <td class="freq-desc" style="padding:10px 16px;font-size:13px;color:var(--muted)">Schiphol Planner</td>
           <td style="padding:10px 16px;font-weight:700;font-size:13px;color:var(--blue);text-align:right">121.655 MHz</td>
         </tr>
         <tr style="border-bottom:1px solid #f5f5f5">
           <td style="padding:10px 16px;font-weight:600;font-size:13px;color:var(--text)">CLD</td>
-          <td style="padding:10px 16px;font-size:13px;color:var(--muted)">CLNC DEL</td>
+          <td class="freq-desc" style="padding:10px 16px;font-size:13px;color:var(--muted)">CLNC DEL</td>
           <td style="padding:10px 16px;font-weight:700;font-size:13px;color:var(--blue);text-align:right">121.98 MHz</td>
         </tr>
         <tr style="border-bottom:1px solid #f5f5f5">
           <td style="padding:10px 16px;font-weight:600;font-size:13px;color:var(--text)">DEP</td>
-          <td style="padding:10px 16px;font-size:13px;color:var(--muted)">Schiphol Departure</td>
+          <td class="freq-desc" style="padding:10px 16px;font-size:13px;color:var(--muted)">Schiphol Departure</td>
           <td style="padding:10px 16px;font-weight:700;font-size:13px;color:var(--blue);text-align:right">119.055 MHz</td>
         </tr>
         <tr style="border-bottom:1px solid #f5f5f5">
           <td style="padding:10px 16px;font-weight:600;font-size:13px;color:var(--text)">DEP</td>
-          <td style="padding:10px 16px;font-size:13px;color:var(--muted)">Schiphol Departure</td>
+          <td class="freq-desc" style="padding:10px 16px;font-size:13px;color:var(--muted)">Schiphol Departure</td>
           <td style="padding:10px 16px;font-weight:700;font-size:13px;color:var(--blue);text-align:right">121.205 MHz</td>
         </tr>
         <tr style="border-bottom:1px solid #f5f5f5">
           <td style="padding:10px 16px;font-weight:600;font-size:13px;color:var(--text)">FIS</td>
-          <td style="padding:10px 16px;font-size:13px;color:var(--muted)">Amsterdam Information</td>
+          <td class="freq-desc" style="padding:10px 16px;font-size:13px;color:var(--muted)">Amsterdam Information</td>
           <td style="padding:10px 16px;font-weight:700;font-size:13px;color:var(--blue);text-align:right">124.3 MHz</td>
         </tr>
         <tr style="border-bottom:1px solid #f5f5f5">
           <td style="padding:10px 16px;font-weight:600;font-size:13px;color:var(--text)">GND</td>
-          <td style="padding:10px 16px;font-size:13px;color:var(--muted)">RWY 18R</td>
+          <td class="freq-desc" style="padding:10px 16px;font-size:13px;color:var(--muted)">RWY 18R</td>
           <td style="padding:10px 16px;font-weight:700;font-size:13px;color:var(--blue);text-align:right">121.56 MHz</td>
         </tr>
         <tr style="border-bottom:1px solid #f5f5f5">
           <td style="padding:10px 16px;font-weight:600;font-size:13px;color:var(--text)">GND</td>
-          <td style="padding:10px 16px;font-size:13px;color:var(--muted)">Schiphol Ground ATC Discretion</td>
+          <td class="freq-desc" style="padding:10px 16px;font-size:13px;color:var(--muted)">Schiphol Ground ATC Discretion</td>
           <td style="padding:10px 16px;font-weight:700;font-size:13px;color:var(--blue);text-align:right">121.59 MHz</td>
         </tr>
         <tr style="border-bottom:1px solid #f5f5f5">
           <td style="padding:10px 16px;font-weight:600;font-size:13px;color:var(--text)">GND</td>
-          <td style="padding:10px 16px;font-size:13px;color:var(--muted)">RWY 6/24</td>
+          <td class="freq-desc" style="padding:10px 16px;font-size:13px;color:var(--muted)">RWY 6/24</td>
           <td style="padding:10px 16px;font-weight:700;font-size:13px;color:var(--blue);text-align:right">121.705 MHz</td>
         </tr>
         <tr style="border-bottom:1px solid #f5f5f5">
           <td style="padding:10px 16px;font-weight:600;font-size:13px;color:var(--text)">GND</td>
-          <td style="padding:10px 16px;font-size:13px;color:var(--muted)">RWY 4/22 9/27 18L/36R</td>
+          <td class="freq-desc" style="padding:10px 16px;font-size:13px;color:var(--muted)">RWY 4/22 9/27 18L/36R</td>
           <td style="padding:10px 16px;font-weight:700;font-size:13px;color:var(--blue);text-align:right">121.805 MHz</td>
         </tr>
         <tr style="border-bottom:1px solid #f5f5f5">
           <td style="padding:10px 16px;font-weight:600;font-size:13px;color:var(--text)">GND</td>
-          <td style="padding:10px 16px;font-size:13px;color:var(--muted)">RWY 18C/36C</td>
+          <td class="freq-desc" style="padding:10px 16px;font-size:13px;color:var(--muted)">RWY 18C/36C</td>
           <td style="padding:10px 16px;font-weight:700;font-size:13px;color:var(--blue);text-align:right">121.905 MHz</td>
         </tr>
         <tr style="border-bottom:1px solid #f5f5f5">
           <td style="padding:10px 16px;font-weight:600;font-size:13px;color:var(--text)">RADAR</td>
-          <td style="padding:10px 16px;font-size:13px;color:var(--muted)">Amsterdam Radar ACC</td>
+          <td class="freq-desc" style="padding:10px 16px;font-size:13px;color:var(--muted)">Amsterdam Radar ACC</td>
           <td style="padding:10px 16px;font-weight:700;font-size:13px;color:var(--blue);text-align:right">118.805 MHz</td>
         </tr>
         <tr style="border-bottom:1px solid #f5f5f5">
           <td style="padding:10px 16px;font-weight:600;font-size:13px;color:var(--text)">RADAR</td>
-          <td style="padding:10px 16px;font-size:13px;color:var(--muted)">Amsterdam Radar ACC</td>
+          <td class="freq-desc" style="padding:10px 16px;font-size:13px;color:var(--muted)">Amsterdam Radar ACC</td>
           <td style="padding:10px 16px;font-weight:700;font-size:13px;color:var(--blue);text-align:right">120.555 MHz</td>
         </tr>
         <tr style="border-bottom:1px solid #f5f5f5">
           <td style="padding:10px 16px;font-weight:600;font-size:13px;color:var(--text)">RADAR</td>
-          <td style="padding:10px 16px;font-size:13px;color:var(--muted)">Amsterdam Radar ACC</td>
+          <td class="freq-desc" style="padding:10px 16px;font-size:13px;color:var(--muted)">Amsterdam Radar ACC</td>
           <td style="padding:10px 16px;font-weight:700;font-size:13px;color:var(--blue);text-align:right">127.87 MHz</td>
         </tr>
         <tr style="border-bottom:1px solid #f5f5f5">
           <td style="padding:10px 16px;font-weight:600;font-size:13px;color:var(--text)">TWR</td>
-          <td style="padding:10px 16px;font-size:13px;color:var(--muted)">RWY 18C/36L</td>
+          <td class="freq-desc" style="padding:10px 16px;font-size:13px;color:var(--muted)">RWY 18C/36L</td>
           <td style="padding:10px 16px;font-weight:700;font-size:13px;color:var(--blue);text-align:right">118.105 MHz</td>
         </tr>
         <tr style="border-bottom:1px solid #f5f5f5">
           <td style="padding:10px 16px;font-weight:600;font-size:13px;color:var(--text)">TWR</td>
-          <td style="padding:10px 16px;font-size:13px;color:var(--muted)">RWY 18R/36L</td>
+          <td class="freq-desc" style="padding:10px 16px;font-size:13px;color:var(--muted)">RWY 18R/36L</td>
           <td style="padding:10px 16px;font-weight:700;font-size:13px;color:var(--blue);text-align:right">118.28 MHz</td>
         </tr>
         <tr style="border-bottom:1px solid #f5f5f5">
           <td style="padding:10px 16px;font-weight:600;font-size:13px;color:var(--text)">TWR</td>
-          <td style="padding:10px 16px;font-size:13px;color:var(--muted)">RWY 04/22 18L/36R</td>
+          <td class="freq-desc" style="padding:10px 16px;font-size:13px;color:var(--muted)">RWY 04/22 18L/36R</td>
           <td style="padding:10px 16px;font-weight:700;font-size:13px;color:var(--blue);text-align:right">119.23 MHz</td>
         </tr>
         <tr style="border-bottom:1px solid #f5f5f5">
           <td style="padding:10px 16px;font-weight:600;font-size:13px;color:var(--text)">TWR</td>
-          <td style="padding:10px 16px;font-size:13px;color:var(--muted)">RWY 6/24</td>
+          <td class="freq-desc" style="padding:10px 16px;font-size:13px;color:var(--muted)">RWY 6/24</td>
           <td style="padding:10px 16px;font-weight:700;font-size:13px;color:var(--blue);text-align:right">135.11 MHz</td>
         </tr>
           </tbody>

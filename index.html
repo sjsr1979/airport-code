@@ -87,6 +87,9 @@
     #mob-search-results .sr-code { background: var(--blue); color: #fff; font-weight: 700; font-size: 12px; padding: 2px 7px; border-radius: 5px; min-width: 38px; text-align: center; }
     #mob-search-results .sr-name { font-weight: 600; }
     #mob-search-results .sr-city { color: rgba(255,255,255,0.5); font-size: 11px; }
+    @media (max-width: 640px) {
+      .freq-desc { display: none; }
+    }
     @media (max-width: 768px) {
       .main { grid-template-columns: 1fr; }
       .nav-links { display: none; }
@@ -111,7 +114,7 @@
       .hero-stat { padding: 12px 0; text-align: center; }
       .hero-stat .value { font-size: 18px; }
     }
-    .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: clip; margin-bottom: 20px; }
+    .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
     .card-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; background: var(--blue); }
     .card-header h2 { font-size: 14px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.5px; }
     .card-body { padding: 20px; }
