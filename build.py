@@ -68,7 +68,7 @@ with open(CSV_PATH, newline='', encoding='utf-8') as f:
         airports.append({
             'iata': row['iata_code'].strip().upper(),
             'icao': row['icao_code'].strip().upper(),
-            'name': row['name'].strip(),
+            'name': re.sub(r'^\(Duplicate\)', '', row['name'].strip()).strip(),
             'city': row['city'].strip(),
             'country_code': row['country_code'].strip().upper(),
             'country_name': row['country_name'].strip(),
@@ -1307,10 +1307,12 @@ for letter in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ':
     with open(f"{OUT_DIR}/az/{letter.lower()}.html", 'w', encoding='utf-8') as f:
         f.write(az_page(letter, letter_airports))
 
-# A-Z index
+# A-Z index — write as both az/index.html (clean URL) and az.html (fallback)
+az_content = az_index().replace('__AZ_COUNTS__', json.dumps(az_counts))
 with open(f"{OUT_DIR}/az.html", 'w', encoding='utf-8') as f:
-    content = az_index().replace('__AZ_COUNTS__', json.dumps(az_counts))
-    f.write(content)
+    f.write(az_content)
+with open(f"{OUT_DIR}/az/index.html", 'w', encoding='utf-8') as f:
+    f.write(az_content)
 
 # Countries
 print("Generating country pages...")
@@ -1320,8 +1322,11 @@ for a in airports:
     cc = a['country_code']
     by_country.setdefault(cc, []).append(a)
 
+countries_content = countries_page(by_country)
 with open(f"{OUT_DIR}/countries.html", 'w', encoding='utf-8') as f:
-    f.write(countries_page(by_country))
+    f.write(countries_content)
+with open(f"{OUT_DIR}/countries/index.html", 'w', encoding='utf-8') as f:
+    f.write(countries_content)
 
 for cc, aps in by_country.items():
     with open(f"{OUT_DIR}/countries/{cc.lower()}.html", 'w', encoding='utf-8') as f:
@@ -1411,24 +1416,22 @@ PRIVACY_CONTENT = '''
 <p>For privacy-related enquiries, contact us at <a href="mailto:hello@airport-code.com">hello@airport-code.com</a>.</p>
 '''
 
-with open(f"{OUT_DIR}/about.html", 'w', encoding='utf-8') as f:
-    f.write(static_page('About', 'About airport-code.com — free IATA and ICAO airport code lookup for 8,810 airports worldwide.', ABOUT_CONTENT))
-with open(f"{OUT_DIR}/contact.html", 'w', encoding='utf-8') as f:
-    f.write(static_page('Contact', 'Contact the Airport Code team for data corrections, partnerships or general enquiries.', CONTACT_CONTENT))
-with open(f"{OUT_DIR}/terms.html", 'w', encoding='utf-8') as f:
-    f.write(static_page('Terms of Use', 'Terms of use for airport-code.com.', TERMS_CONTENT))
-with open(f"{OUT_DIR}/privacy.html", 'w', encoding='utf-8') as f:
-    f.write(static_page('Privacy Policy', 'Privacy policy for airport-code.com. We do not collect personal data.', PRIVACY_CONTENT))
+for slug, title, desc, content in [
+    ('about',   'About',          'About airport-code.com — free IATA and ICAO airport code lookup for 8,810 airports worldwide.', ABOUT_CONTENT),
+    ('contact', 'Contact',        'Contact the Airport Code team for data corrections, partnerships or general enquiries.', CONTACT_CONTENT),
+    ('terms',   'Terms of Use',   'Terms of use for airport-code.com.', TERMS_CONTENT),
+    ('privacy', 'Privacy Policy', 'Privacy policy for airport-code.com. We do not collect personal data.', PRIVACY_CONTENT),
+]:
+    os.makedirs(f"{OUT_DIR}/{slug}", exist_ok=True)
+    with open(f"{OUT_DIR}/{slug}/index.html", 'w', encoding='utf-8') as f:
+        f.write(static_page(title, desc, content))
+    # keep .html version too for any old links
+    with open(f"{OUT_DIR}/{slug}.html", 'w', encoding='utf-8') as f:
+        f.write(static_page(title, desc, content))
 
-# _redirects for Cloudflare Pages (clean URLs — 200 serves file without redirect loop)
+# _redirects — no rules needed, all pages served from index.html in folders
 with open(f"{OUT_DIR}/_redirects", 'w') as f:
     f.write("# Cloudflare Pages redirects\n")
-    f.write("/az /az.html 200\n")
-    f.write("/countries /countries.html 200\n")
-    f.write("/about /about.html 200\n")
-    f.write("/contact /contact.html 200\n")
-    f.write("/terms /terms.html 200\n")
-    f.write("/privacy /privacy.html 200\n")
 
 total = time.time() - t0
 print(f"\nDone! Generated {len(airports)} airport pages + indexes in {total:.0f}s")

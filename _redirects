@@ -1,7 +1,1 @@
 # Cloudflare Pages redirects
-/az /az.html 200
-/countries /countries.html 200
-/about /about.html 200
-/contact /contact.html 200
-/terms /terms.html 200
-/privacy /privacy.html 200

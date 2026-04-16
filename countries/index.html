@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="site-root" content="/">
+  <title>Airports by Country | Airport Code</title>
+  <meta name="description" content="Browse airport codes by country. Find all airports in any country worldwide.">
+
+  <link rel="stylesheet" href="/fonts/outfit.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0f1f3d;
+      --blue: #1a56db;
+      --blue-light: #e8f0fe;
+      --sky: #38bdf8;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+      --white: #ffffff;
+      --green: #10b981;
+    }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; }
+    nav { background: var(--navy); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { color: #fff; font-size: 19px; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; display: flex; align-items: center; gap: 10px; line-height: 1; }
+    .nav-logo svg { flex-shrink: 0; }
+    .nav-logo span { color: var(--sky); }
+    .nav-search { display: flex; align-items: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 6px 14px; gap: 8px; width: 280px; position: relative; }
+    .nav-search input { background: none; border: none; outline: none; color: #fff; font-size: 14px; width: 100%; font-family: 'Outfit', sans-serif; }
+    .nav-search input::placeholder { color: rgba(255,255,255,0.4); }
+    #search-results { position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: #fff; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 200; overflow: hidden; display: none; }
+    #search-results a { display: flex; align-items: center; gap: 10px; padding: 10px 14px; text-decoration: none; color: var(--text); font-size: 13px; border-bottom: 1px solid var(--border); transition: background 0.15s; }
+    #search-results a:last-child { border-bottom: none; }
+    #search-results a:hover { background: var(--bg); }
+    #search-results .sr-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 12px; padding: 2px 7px; border-radius: 5px; min-width: 38px; text-align: center; }
+    #search-results .sr-name { font-weight: 600; }
+    #search-results .sr-city { color: var(--muted); font-size: 11px; }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .hero { background: linear-gradient(135deg, var(--navy) 0%, #1a3a6b 100%); color: #fff; padding: 48px 0 56px; position: relative; overflow: hidden; }
+    .hero::before { content: '✈'; position: absolute; right: -20px; top: -20px; font-size: 220px; opacity: 0.04; transform: rotate(25deg); }
+    .hero-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .breadcrumb { font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 20px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .breadcrumb a:hover { color: rgba(255,255,255,0.8); }
+    .breadcrumb span.sep { color: rgba(255,255,255,0.3); }
+    .hero-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .hero-title { display: flex; align-items: flex-start; gap: 24px; }
+    .iata-badge { background: var(--blue); border: 2px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 14px 20px; text-align: center; min-width: 100px; flex-shrink: 0; }
+    .iata-badge .code { font-size: 40px; font-weight: 800; letter-spacing: 2px; color: #fff; line-height: 1; }
+    .iata-badge .label { font-size: 10px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
+    .hero-name { padding-top: 4px; }
+    .hero-name h1 { font-size: 38px; font-weight: 800; line-height: 1.1; color: #fff; }
+    .hero-name .location { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.65); font-size: 15px; margin-top: 6px; }
+    .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+    .badge { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; letter-spacing: 0.3px; }
+    .badge-large { background: rgba(16,185,129,0.2); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
+    .badge-medium { background: rgba(56,189,248,0.15); color: #7dd3fc; border: 1px solid rgba(56,189,248,0.3); }
+    .badge-small { background: rgba(245,158,11,0.15); color: #fcd34d; border: 1px solid rgba(245,158,11,0.3); }
+    .hero-stats { display: flex; gap: 32px; margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
+    .hero-stat .value { font-size: 22px; font-weight: 700; color: #fff; }
+    .hero-stat .label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
+    .time-widget { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 16px 20px; text-align: center; min-width: 160px; }
+    .time-widget .time-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px; }
+    .time-widget .time-value { font-size: 28px; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+    .time-widget .time-tz { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+    .main { max-width: 1100px; margin: 0 auto; padding: 32px 24px; display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
+    @media (max-width: 768px) { .main { grid-template-columns: 1fr; } .hero-name h1 { font-size: 26px; } .nav-links { display: none; } .nav-search { width: 160px; min-width: 0; flex-shrink: 1; } .nav-logo { flex-shrink: 0; } .hero-home { padding: 48px 16px; } .hero-home h1 { font-size: 36px; } .search-big { margin: 0 4px; } }
+    .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .card-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .card-header h2 { font-size: 14px; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.5px; }
+    .card-body { padding: 20px; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .info-item { padding: 14px 16px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+    .info-item:nth-child(even) { border-right: none; }
+    .info-item:nth-last-child(-n+2) { border-bottom: none; }
+    .info-item .key { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px; }
+    .info-item .val { font-size: 15px; font-weight: 600; color: var(--text); }
+    .info-item .val a { color: var(--blue); text-decoration: none; }
+    .info-item .val a:hover { text-decoration: underline; }
+    .weather-widget { display: flex; align-items: center; gap: 20px; padding: 16px; background: linear-gradient(135deg, #e0f2fe, #f0f9ff); border-radius: 10px; margin-bottom: 16px; min-height: 100px; }
+    .weather-icon { font-size: 48px; line-height: 1; }
+    .weather-main .temp { font-size: 32px; font-weight: 700; color: var(--text); }
+    .weather-main .desc { font-size: 14px; color: var(--muted); text-transform: capitalize; }
+    .weather-details { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .weather-detail { font-size: 13px; color: var(--muted); }
+    .weather-detail strong { color: var(--text); font-weight: 600; }
+    .nearby-list { list-style: none; }
+    .nearby-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .nearby-item:last-child { border-bottom: none; }
+    .nearby-code { background: var(--blue-light); color: var(--blue); font-weight: 700; font-size: 13px; padding: 3px 8px; border-radius: 6px; min-width: 44px; text-align: center; text-decoration: none; }
+    .nearby-code:hover { background: #ccdcfb; }
+    .nearby-info { flex: 1; margin: 0 12px; }
+    .nearby-info .name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .nearby-info .city { font-size: 11px; color: var(--muted); }
+    .nearby-dist { font-size: 12px; color: var(--muted); white-space: nowrap; }
+    .carbon-form { display: flex; flex-direction: column; gap: 12px; }
+    .carbon-form label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .carbon-form input, .carbon-form select { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-family: 'Outfit', sans-serif; color: var(--text); outline: none; transition: border-color 0.2s; }
+    .carbon-form input:focus, .carbon-form select:focus { border-color: var(--blue); }
+    .carbon-btn { background: var(--blue); color: #fff; border: none; padding: 11px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: 'Outfit', sans-serif; transition: background 0.2s; }
+    .carbon-btn:hover { background: #1447c0; }
+    .carbon-result { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px; text-align: center; display: none; }
+    .carbon-result .co2 { font-size: 24px; font-weight: 800; color: var(--green); }
+    .carbon-result .co2-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .sidebar-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 20px; }
+    .sidebar-card .card-header { padding: 14px 16px; }
+    .sidebar-card .card-body { padding: 16px; }
+    .codes-display { display: flex; gap: 12px; }
+    .code-box { flex: 1; text-align: center; padding: 16px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; }
+    .code-box .code-val { font-size: 28px; font-weight: 800; color: var(--navy); letter-spacing: 1px; }
+    .code-box .code-type { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; }
+    footer { background: var(--navy); color: rgba(255,255,255,0.5); text-align: center; padding: 24px; font-size: 13px; margin-top: 40px; }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; margin: 0 12px; }
+    footer a:hover { color: #fff; }
+
+    .country-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:10px; margin-top:24px; }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="9" fill="#1a56db"/><path d="M24.5 8.5C25.3 9.3 25.3 10.6 24.5 11.4L19.8 16.1L22 25L19.5 27.5L16 19L11.5 23.5L12 26L10 28L8 24L4 22L6 20L8.5 20.5L13 16L5.5 12.5L8 10L17 12.2L21.6 7.5C22.4 6.7 23.7 6.7 24.5 8.5Z" fill="white"/></svg>
+    Airport<span>Code</span>
+  </a>
+  <div class="nav-search">
+    <svg width="14" height="14" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="navSearchInput" placeholder="Search airport or code…" autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <div class="nav-links">
+    <a href="/az">A–Z</a>
+    <a href="/countries">By Country</a>
+  </div>
+</nav>
+<div style="max-width:1100px;margin:0 auto;padding:32px 24px">
+  <div style="margin-bottom:8px;font-size:12px;color:var(--muted)"><a href="/" style="color:var(--blue);text-decoration:none">Home</a> › By Country</div>
+  <h1 style="font-size:32px;font-weight:800;color:var(--navy);margin-bottom:8px">Airports by Country</h1>
+  <p style="color:var(--muted)">236 countries · 8,810 airports total</p>
+  <div class="country-grid">
+    <a href="/countries/us.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇺🇸</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">A.S</div><div style="font-size:12px;color:var(--muted)">1944 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">US</span>
+    </a>
+    <a href="/countries/af.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇦🇫</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Afghanistan</div><div style="font-size:12px;color:var(--muted)">33 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">AF</span>
+    </a>
+    <a href="/countries/za.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇿🇦</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Afrika Selatan</div><div style="font-size:12px;color:var(--muted)">90 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">ZA</span>
+    </a>
+    <a href="/countries/al.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇦🇱</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Albania</div><div style="font-size:12px;color:var(--muted)">3 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">AL</span>
+    </a>
+    <a href="/countries/dz.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇩🇿</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Algeria</div><div style="font-size:12px;color:var(--muted)">39 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">DZ</span>
+    </a>
+    <a href="/countries/ao.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇦🇴</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Angola</div><div style="font-size:12px;color:var(--muted)">43 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">AO</span>
+    </a>
+    <a href="/countries/ai.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇦🇮</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Anguilla</div><div style="font-size:12px;color:var(--muted)">1 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">AI</span>
+    </a>
+    <a href="/countries/aq.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇦🇶</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Antartika</div><div style="font-size:12px;color:var(--muted)">3 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">AQ</span>
+    </a>
+    <a href="/countries/ag.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇦🇬</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Antigua dan Barbuda</div><div style="font-size:12px;color:var(--muted)">2 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">AG</span>
+    </a>
+    <a href="/countries/sa.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇸🇦</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Arab Saudi</div><div style="font-size:12px;color:var(--muted)">34 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">SA</span>
+    </a>
+    <a href="/countries/ar.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇦🇷</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Argentina</div><div style="font-size:12px;color:var(--muted)">103 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">AR</span>
+    </a>
+    <a href="/countries/am.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇦🇲</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Armenia</div><div style="font-size:12px;color:var(--muted)">3 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">AM</span>
+    </a>
+    <a href="/countries/aw.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇦🇼</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Aruba</div><div style="font-size:12px;color:var(--muted)">1 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">AW</span>
+    </a>
+    <a href="/countries/au.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇦🇺</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Australia</div><div style="font-size:12px;color:var(--muted)">603 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">AU</span>
+    </a>
+    <a href="/countries/at.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇦🇹</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Austria</div><div style="font-size:12px;color:var(--muted)">7 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">AT</span>
+    </a>
+    <a href="/countries/az.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇦🇿</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Azerbaijan</div><div style="font-size:12px;color:var(--muted)">10 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">AZ</span>
+    </a>
+    <a href="/countries/bs.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇧🇸</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Bahamas</div><div style="font-size:12px;color:var(--muted)">32 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">BS</span>
+    </a>
+    <a href="/countries/bh.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇧🇭</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Bahrain</div><div style="font-size:12px;color:var(--muted)">1 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">BH</span>
+    </a>
+    <a href="/countries/bd.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇧🇩</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Bangladesh</div><div style="font-size:12px;color:var(--muted)">12 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">BD</span>
+    </a>
+    <a href="/countries/bb.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇧🇧</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Barbados</div><div style="font-size:12px;color:var(--muted)">1 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">BB</span>
+    </a>
+    <a href="/countries/nl.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇳🇱</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Belanda</div><div style="font-size:12px;color:var(--muted)">12 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">NL</span>
+    </a>
+    <a href="/countries/by.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇧🇾</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Belarus</div><div style="font-size:12px;color:var(--muted)">7 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">BY</span>
+    </a>
+    <a href="/countries/be.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇧🇪</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Belgium</div><div style="font-size:12px;color:var(--muted)">7 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">BE</span>
+    </a>
+    <a href="/countries/bz.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇧🇿</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Belize</div><div style="font-size:12px;color:var(--muted)">20 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">BZ</span>
+    </a>
+    <a href="/countries/bj.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇧🇯</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Benin</div><div style="font-size:12px;color:var(--muted)">6 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">BJ</span>
+    </a>
+    <a href="/countries/bm.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇧🇲</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Bermuda</div><div style="font-size:12px;color:var(--muted)">1 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">BM</span>
+    </a>
+    <a href="/countries/bt.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇧🇹</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Bhutan</div><div style="font-size:12px;color:var(--muted)">4 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">BT</span>
+    </a>
+    <a href="/countries/bo.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇧🇴</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Bolivia</div><div style="font-size:12px;color:var(--muted)">41 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">BO</span>
+    </a>
+    <a href="/countries/ba.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇧🇦</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Bosnia dan Herzegovina</div><div style="font-size:12px;color:var(--muted)">4 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">BA</span>
+    </a>
+    <a href="/countries/bw.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇧🇼</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Botswana</div><div style="font-size:12px;color:var(--muted)">15 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">BW</span>
+    </a>
+    <a href="/countries/br.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇧🇷</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Brazil</div><div style="font-size:12px;color:var(--muted)">346 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">BR</span>
+    </a>
+    <a href="/countries/bn.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇧🇳</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Brunei</div><div style="font-size:12px;color:var(--muted)">1 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">BN</span>
+    </a>
+    <a href="/countries/bg.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇧🇬</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Bulgaria</div><div style="font-size:12px;color:var(--muted)">7 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">BG</span>
+    </a>
+    <a href="/countries/bf.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇧🇫</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Burkina Faso</div><div style="font-size:12px;color:var(--muted)">27 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">BF</span>
+    </a>
+    <a href="/countries/bi.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇧🇮</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Burundi</div><div style="font-size:12px;color:var(--muted)">3 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">BI</span>
+    </a>
+    <a href="/countries/cm.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇨🇲</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Cameroon</div><div style="font-size:12px;color:var(--muted)">19 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">CM</span>
+    </a>
+    <a href="/countries/cv.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇨🇻</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Cape Verde</div><div style="font-size:12px;color:var(--muted)">9 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">CV</span>
+    </a>
+    <a href="/countries/bq.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇧🇶</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Caribbean Netherlands</div><div style="font-size:12px;color:var(--muted)">3 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">BQ</span>
+    </a>
+    <a href="/countries/td.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇹🇩</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Chad</div><div style="font-size:12px;color:var(--muted)">19 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">TD</span>
+    </a>
+    <a href="/countries/cl.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇨🇱</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Chile</div><div style="font-size:12px;color:var(--muted)">51 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">CL</span>
+    </a>
+    <a href="/countries/cn.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇨🇳</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">China</div><div style="font-size:12px;color:var(--muted)">317 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">CN</span>
+    </a>
+    <a href="/countries/co.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇨🇴</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Colombia</div><div style="font-size:12px;color:var(--muted)">161 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">CO</span>
+    </a>
+    <a href="/countries/km.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇰🇲</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Comoros</div><div style="font-size:12px;color:var(--muted)">3 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">KM</span>
+    </a>
+    <a href="/countries/cg.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇨🇬</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Congo - Brazzaville</div><div style="font-size:12px;color:var(--muted)">25 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">CG</span>
+    </a>
+    <a href="/countries/cd.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇨🇩</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Congo - Kinshasa</div><div style="font-size:12px;color:var(--muted)">60 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">CD</span>
+    </a>
+    <a href="/countries/cr.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇨🇷</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Costa Rica</div><div style="font-size:12px;color:var(--muted)">30 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">CR</span>
+    </a>
+    <a href="/countries/ci.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇨🇮</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Cote d’Ivoire</div><div style="font-size:12px;color:var(--muted)">23 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">CI</span>
+    </a>
+    <a href="/countries/hr.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇭🇷</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Croatia</div><div style="font-size:12px;color:var(--muted)">9 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">HR</span>
+    </a>
+    <a href="/countries/cu.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇨🇺</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Cuba</div><div style="font-size:12px;color:var(--muted)">27 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">CU</span>
+    </a>
+    <a href="/countries/cw.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇨🇼</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Curaçao</div><div style="font-size:12px;color:var(--muted)">1 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">CW</span>
+    </a>
+    <a href="/countries/cy.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇨🇾</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Cyprus</div><div style="font-size:12px;color:var(--muted)">5 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">CY</span>
+    </a>
+    <a href="/countries/cz.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇨🇿</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Czechia</div><div style="font-size:12px;color:var(--muted)">12 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">CZ</span>
+    </a>
+    <a href="/countries/dk.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇩🇰</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Denmark</div><div style="font-size:12px;color:var(--muted)">17 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">DK</span>
+    </a>
+    <a href="/countries/dj.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇩🇯</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Djibouti</div><div style="font-size:12px;color:var(--muted)">5 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">DJ</span>
+    </a>
+    <a href="/countries/dm.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇩🇲</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Dominica</div><div style="font-size:12px;color:var(--muted)">2 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">DM</span>
+    </a>
+    <a href="/countries/ec.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇪🇨</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Ecuador</div><div style="font-size:12px;color:var(--muted)">29 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">EC</span>
+    </a>
+    <a href="/countries/sv.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇸🇻</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">El Salvador</div><div style="font-size:12px;color:var(--muted)">2 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">SV</span>
+    </a>
+    <a href="/countries/ae.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇦🇪</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Emiriah Arab Bersatu</div><div style="font-size:12px;color:var(--muted)">12 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">AE</span>
+    </a>
+    <a href="/countries/er.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇪🇷</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Eritrea</div><div style="font-size:12px;color:var(--muted)">4 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">ER</span>
+    </a>
+    <a href="/countries/ee.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇪🇪</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Estonia</div><div style="font-size:12px;color:var(--muted)">5 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">EE</span>
+    </a>
+    <a href="/countries/sz.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇸🇿</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Eswatini</div><div style="font-size:12px;color:var(--muted)">2 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">SZ</span>
+    </a>
+    <a href="/countries/et.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇪🇹</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Ethiopia</div><div style="font-size:12px;color:var(--muted)">47 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">ET</span>
+    </a>
+    <a href="/countries/fj.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇫🇯</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Fiji</div><div style="font-size:12px;color:var(--muted)">23 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">FJ</span>
+    </a>
+    <a href="/countries/ph.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇵🇭</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Filipina</div><div style="font-size:12px;color:var(--muted)">73 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">PH</span>
+    </a>
+    <a href="/countries/fi.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇫🇮</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Finland</div><div style="font-size:12px;color:var(--muted)">31 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">FI</span>
+    </a>
+    <a href="/countries/pf.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇵🇫</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">French Polynesia</div><div style="font-size:12px;color:var(--muted)">51 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">PF</span>
+    </a>
+    <a href="/countries/ga.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇬🇦</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Gabon</div><div style="font-size:12px;color:var(--muted)">31 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">GA</span>
+    </a>
+    <a href="/countries/gm.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇬🇲</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Gambia</div><div style="font-size:12px;color:var(--muted)">1 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">GM</span>
+    </a>
+    <a href="/countries/ge.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇬🇪</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Georgia</div><div style="font-size:12px;color:var(--muted)">4 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">GE</span>
+    </a>
+    <a href="/countries/gh.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇬🇭</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Ghana</div><div style="font-size:12px;color:var(--muted)">6 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">GH</span>
+    </a>
+    <a href="/countries/gi.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇬🇮</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Gibraltar</div><div style="font-size:12px;color:var(--muted)">1 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">GI</span>
+    </a>
+    <a href="/countries/gr.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇬🇷</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Greece</div><div style="font-size:12px;color:var(--muted)">42 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">GR</span>
+    </a>
+    <a href="/countries/gl.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇬🇱</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Greenland</div><div style="font-size:12px;color:var(--muted)">14 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">GL</span>
+    </a>
+    <a href="/countries/gd.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇬🇩</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Grenada</div><div style="font-size:12px;color:var(--muted)">2 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">GD</span>
+    </a>
+    <a href="/countries/gp.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇬🇵</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Guadeloupe</div><div style="font-size:12px;color:var(--muted)">6 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">GP</span>
+    </a>
+    <a href="/countries/gu.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇬🇺</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Guam</div><div style="font-size:12px;color:var(--muted)">2 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">GU</span>
+    </a>
+    <a href="/countries/gt.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇬🇹</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Guatemala</div><div style="font-size:12px;color:var(--muted)">20 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">GT</span>
+    </a>
+    <a href="/countries/gg.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇬🇬</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Guernsey</div><div style="font-size:12px;color:var(--muted)">2 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">GG</span>
+    </a>
+    <a href="/countries/gf.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇬🇫</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Guiana Perancis</div><div style="font-size:12px;color:var(--muted)">8 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">GF</span>
+    </a>
+    <a href="/countries/gn.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇬🇳</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Guinea</div><div style="font-size:12px;color:var(--muted)">11 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">GN</span>
+    </a>
+    <a href="/countries/gw.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇬🇼</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Guinea Bissau</div><div style="font-size:12px;color:var(--muted)">2 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">GW</span>
+    </a>
+    <a href="/countries/gq.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇬🇶</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Guinea Khatulistiwa</div><div style="font-size:12px;color:var(--muted)">6 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">GQ</span>
+    </a>
+    <a href="/countries/gy.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇬🇾</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Guyana</div><div style="font-size:12px;color:var(--muted)">29 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">GY</span>
+    </a>
+    <a href="/countries/ht.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇭🇹</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Haiti</div><div style="font-size:12px;color:var(--muted)">6 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">HT</span>
+    </a>
+    <a href="/countries/hn.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇭🇳</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Honduras</div><div style="font-size:12px;color:var(--muted)">29 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">HN</span>
+    </a>
+    <a href="/countries/hk.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇭🇰</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Hong Kong</div><div style="font-size:12px;color:var(--muted)">1 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">HK</span>
+    </a>
+    <a href="/countries/hu.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇭🇺</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Hungary</div><div style="font-size:12px;color:var(--muted)">5 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">HU</span>
+    </a>
+    <a href="/countries/is.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇮🇸</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Iceland</div><div style="font-size:12px;color:var(--muted)">30 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">IS</span>
+    </a>
+    <a href="/countries/in.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇮🇳</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">India</div><div style="font-size:12px;color:var(--muted)">163 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">IN</span>
+    </a>
+    <a href="/countries/id.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇮🇩</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Indonesia</div><div style="font-size:12px;color:var(--muted)">241 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">ID</span>
+    </a>
+    <a href="/countries/ir.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇮🇷</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Iran</div><div style="font-size:12px;color:var(--muted)">77 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">IR</span>
+    </a>
+    <a href="/countries/iq.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇮🇶</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Iraq</div><div style="font-size:12px;color:var(--muted)">12 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">IQ</span>
+    </a>
+    <a href="/countries/ie.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇮🇪</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Ireland</div><div style="font-size:12px;color:var(--muted)">15 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">IE</span>
+    </a>
+    <a href="/countries/im.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇮🇲</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Isle of Man</div><div style="font-size:12px;color:var(--muted)">1 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">IM</span>
+    </a>
+    <a href="/countries/il.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇮🇱</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Israel</div><div style="font-size:12px;color:var(--muted)">11 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">IL</span>
+    </a>
+    <a href="/countries/it.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇮🇹</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Itali</div><div style="font-size:12px;color:var(--muted)">50 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">IT</span>
+    </a>
+    <a href="/countries/jm.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇯🇲</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Jamaica</div><div style="font-size:12px;color:var(--muted)">6 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">JM</span>
+    </a>
+    <a href="/countries/jp.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇯🇵</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Jepun</div><div style="font-size:12px;color:var(--muted)">96 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">JP</span>
+    </a>
+    <a href="/countries/de.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇩🇪</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Jerman</div><div style="font-size:12px;color:var(--muted)">84 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">DE</span>
+    </a>
+    <a href="/countries/je.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇯🇪</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Jersey</div><div style="font-size:12px;color:var(--muted)">1 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">JE</span>
+    </a>
+    <a href="/countries/jo.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇯🇴</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Jordan</div><div style="font-size:12px;color:var(--muted)">4 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">JO</span>
+    </a>
+    <a href="/countries/ca.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇨🇦</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Kanada</div><div style="font-size:12px;color:var(--muted)">431 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">CA</span>
+    </a>
+    <a href="/countries/kz.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇰🇿</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Kazakhstan</div><div style="font-size:12px;color:var(--muted)">29 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">KZ</span>
+    </a>
+    <a href="/countries/kh.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇰🇭</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Kemboja</div><div style="font-size:12px;color:var(--muted)">11 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">KH</span>
+    </a>
+    <a href="/countries/ke.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇰🇪</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Kenya</div><div style="font-size:12px;color:var(--muted)">45 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">KE</span>
+    </a>
+    <a href="/countries/ky.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇰🇾</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Kepulauan Cayman</div><div style="font-size:12px;color:var(--muted)">3 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">KY</span>
+    </a>
+    <a href="/countries/cc.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇨🇨</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Kepulauan Cocos (Keeling)</div><div style="font-size:12px;color:var(--muted)">1 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">CC</span>
+    </a>
+    <a href="/countries/ck.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇨🇰</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Kepulauan Cook</div><div style="font-size:12px;color:var(--muted)">9 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">CK</span>
+    </a>
+    <a href="/countries/fk.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇫🇰</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Kepulauan Falkland</div><div style="font-size:12px;color:var(--muted)">2 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">FK</span>
+    </a>
+    <a href="/countries/fo.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇫🇴</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Kepulauan Faroe</div><div style="font-size:12px;color:var(--muted)">1 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">FO</span>
+    </a>
+    <a href="/countries/mp.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇲🇵</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Kepulauan Mariana Utara</div><div style="font-size:12px;color:var(--muted)">3 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">MP</span>
+    </a>
+    <a href="/countries/mh.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇲🇭</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Kepulauan Marshall</div><div style="font-size:12px;color:var(--muted)">32 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">MH</span>
+    </a>
+    <a href="/countries/sb.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇸🇧</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Kepulauan Solomon</div><div style="font-size:12px;color:var(--muted)">36 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">SB</span>
+    </a>
+    <a href="/countries/um.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇺🇲</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Kepulauan Terpencil A.S.</div><div style="font-size:12px;color:var(--muted)">2 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">UM</span>
+    </a>
+    <a href="/countries/tc.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇹🇨</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Kepulauan Turks dan Caicos</div><div style="font-size:12px;color:var(--muted)">7 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">TC</span>
+    </a>
+    <a href="/countries/vi.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇻🇮</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Kepulauan Virgin A.S.</div><div style="font-size:12px;color:var(--muted)">2 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">VI</span>
+    </a>
+    <a href="/countries/vg.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇻🇬</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Kepulauan Virgin British</div><div style="font-size:12px;color:var(--muted)">3 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">VG</span>
+    </a>
+    <a href="/countries/ki.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇰🇮</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Kiribati</div><div style="font-size:12px;color:var(--muted)">21 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">KI</span>
+    </a>
+    <a href="/countries/kr.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇰🇷</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Korea Selatan</div><div style="font-size:12px;color:var(--muted)">28 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">KR</span>
+    </a>
+    <a href="/countries/kp.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇰🇵</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Korea Utara</div><div style="font-size:12px;color:var(--muted)">6 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">KP</span>
+    </a>
+    <a href="/countries/xk.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇽🇰</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Kosovo</div><div style="font-size:12px;color:var(--muted)">1 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">XK</span>
+    </a>
+    <a href="/countries/kw.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇰🇼</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Kuwait</div><div style="font-size:12px;color:var(--muted)">2 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">KW</span>
+    </a>
+    <a href="/countries/kg.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇰🇬</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Kyrgyzstan</div><div style="font-size:12px;color:var(--muted)">4 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">KG</span>
+    </a>
+    <a href="/countries/la.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇱🇦</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Laos</div><div style="font-size:12px;color:var(--muted)">16 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">LA</span>
+    </a>
+    <a href="/countries/lv.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇱🇻</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Latvia</div><div style="font-size:12px;color:var(--muted)">4 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">LV</span>
+    </a>
+    <a href="/countries/ls.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇱🇸</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Lesotho</div><div style="font-size:12px;color:var(--muted)">17 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">LS</span>
+    </a>
+    <a href="/countries/lr.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇱🇷</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Liberia</div><div style="font-size:12px;color:var(--muted)">14 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">LR</span>
+    </a>
+    <a href="/countries/ly.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇱🇾</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Libya</div><div style="font-size:12px;color:var(--muted)">18 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">LY</span>
+    </a>
+    <a href="/countries/lt.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇱🇹</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Lithuania</div><div style="font-size:12px;color:var(--muted)">5 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">LT</span>
+    </a>
+    <a href="/countries/lb.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇱🇧</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Lubnan</div><div style="font-size:12px;color:var(--muted)">2 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">LB</span>
+    </a>
+    <a href="/countries/lu.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇱🇺</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Luxembourg</div><div style="font-size:12px;color:var(--muted)">1 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">LU</span>
+    </a>
+    <a href="/countries/mo.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇲🇴</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Macau</div><div style="font-size:12px;color:var(--muted)">1 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">MO</span>
+    </a>
+    <a href="/countries/mk.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇲🇰</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Macedonia Utara</div><div style="font-size:12px;color:var(--muted)">2 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">MK</span>
+    </a>
+    <a href="/countries/mg.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇲🇬</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Madagaskar</div><div style="font-size:12px;color:var(--muted)">67 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">MG</span>
+    </a>
+    <a href="/countries/ma.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇲🇦</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Maghribi</div><div style="font-size:12px;color:var(--muted)">21 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">MA</span>
+    </a>
+    <a href="/countries/mw.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇲🇼</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Malawi</div><div style="font-size:12px;color:var(--muted)">12 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">MW</span>
+    </a>
+    <a href="/countries/my.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇲🇾</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Malaysia</div><div style="font-size:12px;color:var(--muted)">59 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">MY</span>
+    </a>
+    <a href="/countries/mv.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇲🇻</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Maldives</div><div style="font-size:12px;color:var(--muted)">20 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">MV</span>
+    </a>
+    <a href="/countries/ml.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇲🇱</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Mali</div><div style="font-size:12px;color:var(--muted)">12 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">ML</span>
+    </a>
+    <a href="/countries/mt.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇲🇹</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Malta</div><div style="font-size:12px;color:var(--muted)">1 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">MT</span>
+    </a>
+    <a href="/countries/mq.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇲🇶</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Martinique</div><div style="font-size:12px;color:var(--muted)">1 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">MQ</span>
+    </a>
+    <a href="/countries/mr.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇲🇷</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Mauritania</div><div style="font-size:12px;color:var(--muted)">18 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">MR</span>
+    </a>
+    <a href="/countries/mu.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇲🇺</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Mauritius</div><div style="font-size:12px;color:var(--muted)">3 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">MU</span>
+    </a>
+    <a href="/countries/yt.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇾🇹</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Mayotte</div><div style="font-size:12px;color:var(--muted)">1 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">YT</span>
+    </a>
+    <a href="/countries/eg.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇪🇬</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Mesir</div><div style="font-size:12px;color:var(--muted)">29 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">EG</span>
+    </a>
+    <a href="/countries/mx.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇲🇽</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Mexico</div><div style="font-size:12px;color:var(--muted)">99 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">MX</span>
+    </a>
+    <a href="/countries/fm.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇫🇲</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Micronesia</div><div style="font-size:12px;color:var(--muted)">5 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">FM</span>
+    </a>
+    <a href="/countries/md.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇲🇩</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Moldova</div><div style="font-size:12px;color:var(--muted)">2 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">MD</span>
+    </a>
+    <a href="/countries/mn.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇲🇳</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Mongolia</div><div style="font-size:12px;color:var(--muted)">24 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">MN</span>
+    </a>
+    <a href="/countries/me.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇲🇪</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Montenegro</div><div style="font-size:12px;color:var(--muted)">3 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">ME</span>
+    </a>
+    <a href="/countries/ms.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇲🇸</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Montserrat</div><div style="font-size:12px;color:var(--muted)">1 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">MS</span>
+    </a>
+    <a href="/countries/mz.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇲🇿</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Mozambique</div><div style="font-size:12px;color:var(--muted)">37 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">MZ</span>
+    </a>
+    <a href="/countries/mm.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇲🇲</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Myanmar (Burma)</div><div style="font-size:12px;color:var(--muted)">46 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">MM</span>
+    </a>
+    <a href="/countries/na.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇳🇦</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Namibia</div><div style="font-size:12px;color:var(--muted)">31 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">NA</span>
+    </a>
+    <a href="/countries/nr.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇳🇷</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Nauru</div><div style="font-size:12px;color:var(--muted)">1 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">NR</span>
+    </a>
+    <a href="/countries/np.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇳🇵</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Nepal</div><div style="font-size:12px;color:var(--muted)">43 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">NP</span>
+    </a>
+    <a href="/countries/nc.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇳🇨</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">New Caledonia</div><div style="font-size:12px;color:var(--muted)">13 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">NC</span>
+    </a>
+    <a href="/countries/nz.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇳🇿</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">New Zealand</div><div style="font-size:12px;color:var(--muted)">57 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">NZ</span>
+    </a>
+    <a href="/countries/ni.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇳🇮</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Nicaragua</div><div style="font-size:12px;color:var(--muted)">10 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">NI</span>
+    </a>
+    <a href="/countries/ne.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇳🇪</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Niger</div><div style="font-size:12px;color:var(--muted)">6 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">NE</span>
+    </a>
+    <a href="/countries/ng.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇳🇬</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Nigeria</div><div style="font-size:12px;color:var(--muted)">26 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">NG</span>
+    </a>
+    <a href="/countries/nu.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇳🇺</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Niue</div><div style="font-size:12px;color:var(--muted)">1 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">NU</span>
+    </a>
+    <a href="/countries/no.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇳🇴</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Norway</div><div style="font-size:12px;color:var(--muted)">49 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">NO</span>
+    </a>
+    <a href="/countries/om.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇴🇲</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Oman</div><div style="font-size:12px;color:var(--muted)">18 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">OM</span>
+    </a>
+    <a href="/countries/pk.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇵🇰</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Pakistan</div><div style="font-size:12px;color:var(--muted)">57 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">PK</span>
+    </a>
+    <a href="/countries/pw.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇵🇼</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Palau</div><div style="font-size:12px;color:var(--muted)">1 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">PW</span>
+    </a>
+    <a href="/countries/pa.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇵🇦</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Panama</div><div style="font-size:12px;color:var(--muted)">35 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">PA</span>
+    </a>
+    <a href="/countries/pg.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇵🇬</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Papua New Guinea</div><div style="font-size:12px;color:var(--muted)">344 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">PG</span>
+    </a>
+    <a href="/countries/py.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇵🇾</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Paraguay</div><div style="font-size:12px;color:var(--muted)">14 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">PY</span>
+    </a>
+    <a href="/countries/fr.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇫🇷</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Perancis</div><div style="font-size:12px;color:var(--muted)">120 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">FR</span>
+    </a>
+    <a href="/countries/pe.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇵🇪</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Peru</div><div style="font-size:12px;color:var(--muted)">47 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">PE</span>
+    </a>
+    <a href="/countries/pl.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇵🇱</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Poland</div><div style="font-size:12px;color:var(--muted)">15 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">PL</span>
+    </a>
+    <a href="/countries/pt.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇵🇹</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Portugal</div><div style="font-size:12px;color:var(--muted)">20 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">PT</span>
+    </a>
+    <a href="/countries/pr.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇵🇷</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Puerto Rico</div><div style="font-size:12px;color:var(--muted)">10 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">PR</span>
+    </a>
+    <a href="/countries/cx.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇨🇽</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Pulau Krismas</div><div style="font-size:12px;color:var(--muted)">1 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">CX</span>
+    </a>
+    <a href="/countries/nf.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇳🇫</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Pulau Norfolk</div><div style="font-size:12px;color:var(--muted)">1 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">NF</span>
+    </a>
+    <a href="/countries/qa.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇶🇦</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Qatar</div><div style="font-size:12px;color:var(--muted)">3 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">QA</span>
+    </a>
+    <a href="/countries/cf.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇨🇫</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Republik Afrika Tengah</div><div style="font-size:12px;color:var(--muted)">22 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">CF</span>
+    </a>
+    <a href="/countries/do.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇩🇴</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Republik Dominica</div><div style="font-size:12px;color:var(--muted)">10 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">DO</span>
+    </a>
+    <a href="/countries/re.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇷🇪</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Reunion</div><div style="font-size:12px;color:var(--muted)">2 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">RE</span>
+    </a>
+    <a href="/countries/ro.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇷🇴</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Romania</div><div style="font-size:12px;color:var(--muted)">18 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">RO</span>
+    </a>
+    <a href="/countries/ru.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇷🇺</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Rusia</div><div style="font-size:12px;color:var(--muted)">218 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">RU</span>
+    </a>
+    <a href="/countries/rw.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇷🇼</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Rwanda</div><div style="font-size:12px;color:var(--muted)">5 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">RW</span>
+    </a>
+    <a href="/countries/eh.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇪🇭</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Sahara Barat</div><div style="font-size:12px;color:var(--muted)">3 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">EH</span>
+    </a>
+    <a href="/countries/bl.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇧🇱</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Saint Barthélemy</div><div style="font-size:12px;color:var(--muted)">1 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">BL</span>
+    </a>
+    <a href="/countries/sh.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇸🇭</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Saint Helena</div><div style="font-size:12px;color:var(--muted)">2 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">SH</span>
+    </a>
+    <a href="/countries/kn.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇰🇳</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Saint Kitts dan Nevis</div><div style="font-size:12px;color:var(--muted)">2 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">KN</span>
+    </a>
+    <a href="/countries/lc.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇱🇨</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Saint Lucia</div><div style="font-size:12px;color:var(--muted)">2 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">LC</span>
+    </a>
+    <a href="/countries/mf.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇲🇫</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Saint Martin</div><div style="font-size:12px;color:var(--muted)">1 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">MF</span>
+    </a>
+    <a href="/countries/pm.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇵🇲</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Saint Pierre dan Miquelon</div><div style="font-size:12px;color:var(--muted)">2 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">PM</span>
+    </a>
+    <a href="/countries/vc.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇻🇨</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Saint Vincent dan Grenadines</div><div style="font-size:12px;color:var(--muted)">5 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">VC</span>
+    </a>
+    <a href="/countries/ws.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇼🇸</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Samoa</div><div style="font-size:12px;color:var(--muted)">4 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">WS</span>
+    </a>
+    <a href="/countries/as.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇦🇸</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Samoa Amerika</div><div style="font-size:12px;color:var(--muted)">3 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">AS</span>
+    </a>
+    <a href="/countries/st.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇸🇹</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Sao Tome dan Principe</div><div style="font-size:12px;color:var(--muted)">2 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">ST</span>
+    </a>
+    <a href="/countries/sn.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇸🇳</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Senegal</div><div style="font-size:12px;color:var(--muted)">15 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">SN</span>
+    </a>
+    <a href="/countries/es.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇪🇸</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Sepanyol</div><div style="font-size:12px;color:var(--muted)">51 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">ES</span>
+    </a>
+    <a href="/countries/rs.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇷🇸</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Serbia</div><div style="font-size:12px;color:var(--muted)">5 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">RS</span>
+    </a>
+    <a href="/countries/sc.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇸🇨</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Seychelles</div><div style="font-size:12px;color:var(--muted)">6 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">SC</span>
+    </a>
+    <a href="/countries/sl.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇸🇱</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Sierra Leone</div><div style="font-size:12px;color:var(--muted)">7 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">SL</span>
+    </a>
+    <a href="/countries/sg.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇸🇬</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Singapura</div><div style="font-size:12px;color:var(--muted)">4 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">SG</span>
+    </a>
+    <a href="/countries/sx.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇸🇽</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Sint Maarten</div><div style="font-size:12px;color:var(--muted)">1 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">SX</span>
+    </a>
+    <a href="/countries/sk.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇸🇰</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Slovakia</div><div style="font-size:12px;color:var(--muted)">8 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">SK</span>
+    </a>
+    <a href="/countries/si.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇸🇮</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Slovenia</div><div style="font-size:12px;color:var(--muted)">3 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">SI</span>
+    </a>
+    <a href="/countries/so.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇸🇴</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Somalia</div><div style="font-size:12px;color:var(--muted)">24 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">SO</span>
+    </a>
+    <a href="/countries/lk.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇱🇰</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Sri Lanka</div><div style="font-size:12px;color:var(--muted)">13 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">LK</span>
+    </a>
+    <a href="/countries/sd.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇸🇩</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Sudan</div><div style="font-size:12px;color:var(--muted)">22 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">SD</span>
+    </a>
+    <a href="/countries/ss.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇸🇸</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Sudan Selatan</div><div style="font-size:12px;color:var(--muted)">5 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">SS</span>
+    </a>
+    <a href="/countries/sr.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇸🇷</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Surinam</div><div style="font-size:12px;color:var(--muted)">17 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">SR</span>
+    </a>
+    <a href="/countries/se.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇸🇪</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Sweden</div><div style="font-size:12px;color:var(--muted)">52 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">SE</span>
+    </a>
+    <a href="/countries/ch.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇨🇭</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Switzerland</div><div style="font-size:12px;color:var(--muted)">10 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">CH</span>
+    </a>
+    <a href="/countries/sy.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇸🇾</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Syria</div><div style="font-size:12px;color:var(--muted)">7 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">SY</span>
+    </a>
+    <a href="/countries/tw.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇹🇼</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Taiwan</div><div style="font-size:12px;color:var(--muted)">20 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">TW</span>
+    </a>
+    <a href="/countries/tj.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇹🇯</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Tajikistan</div><div style="font-size:12px;color:var(--muted)">4 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">TJ</span>
+    </a>
+    <a href="/countries/tz.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇹🇿</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Tanzania</div><div style="font-size:12px;color:var(--muted)">33 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">TZ</span>
+    </a>
+    <a href="/countries/th.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇹🇭</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Thailand</div><div style="font-size:12px;color:var(--muted)">43 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">TH</span>
+    </a>
+    <a href="/countries/tl.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇹🇱</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Timor-Leste</div><div style="font-size:12px;color:var(--muted)">7 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">TL</span>
+    </a>
+    <a href="/countries/tg.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇹🇬</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Togo</div><div style="font-size:12px;color:var(--muted)">2 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">TG</span>
+    </a>
+    <a href="/countries/to.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇹🇴</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Tonga</div><div style="font-size:12px;color:var(--muted)">6 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">TO</span>
+    </a>
+    <a href="/countries/tt.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇹🇹</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Trinidad dan Tobago</div><div style="font-size:12px;color:var(--muted)">2 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">TT</span>
+    </a>
+    <a href="/countries/tn.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇹🇳</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Tunisia</div><div style="font-size:12px;color:var(--muted)">10 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">TN</span>
+    </a>
+    <a href="/countries/tr.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇹🇷</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Turkiye</div><div style="font-size:12px;color:var(--muted)">66 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">TR</span>
+    </a>
+    <a href="/countries/tm.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇹🇲</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Turkmenistan</div><div style="font-size:12px;color:var(--muted)">7 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">TM</span>
+    </a>
+    <a href="/countries/tv.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇹🇻</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Tuvalu</div><div style="font-size:12px;color:var(--muted)">1 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">TV</span>
+    </a>
+    <a href="/countries/gb.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇬🇧</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">UK</div><div style="font-size:12px;color:var(--muted)">98 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">GB</span>
+    </a>
+    <a href="/countries/ug.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇺🇬</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Uganda</div><div style="font-size:12px;color:var(--muted)">14 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">UG</span>
+    </a>
+    <a href="/countries/ua.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇺🇦</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Ukraine</div><div style="font-size:12px;color:var(--muted)">31 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">UA</span>
+    </a>
+    <a href="/countries/uy.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇺🇾</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Uruguay</div><div style="font-size:12px;color:var(--muted)">13 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">UY</span>
+    </a>
+    <a href="/countries/uz.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇺🇿</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Uzbekistan</div><div style="font-size:12px;color:var(--muted)">17 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">UZ</span>
+    </a>
+    <a href="/countries/vu.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇻🇺</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Vanuatu</div><div style="font-size:12px;color:var(--muted)">29 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">VU</span>
+    </a>
+    <a href="/countries/ve.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇻🇪</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Venezuela</div><div style="font-size:12px;color:var(--muted)">61 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">VE</span>
+    </a>
+    <a href="/countries/vn.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇻🇳</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Vietnam</div><div style="font-size:12px;color:var(--muted)">28 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">VN</span>
+    </a>
+    <a href="/countries/wf.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇼🇫</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Wallis dan Futuna</div><div style="font-size:12px;color:var(--muted)">2 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">WF</span>
+    </a>
+    <a href="/countries/io.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇮🇴</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Wilayah Lautan Hindi British</div><div style="font-size:12px;color:var(--muted)">1 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">IO</span>
+    </a>
+    <a href="/countries/ye.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇾🇪</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Yaman</div><div style="font-size:12px;color:var(--muted)">21 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">YE</span>
+    </a>
+    <a href="/countries/zm.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇿🇲</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Zambia</div><div style="font-size:12px;color:var(--muted)">24 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">ZM</span>
+    </a>
+    <a href="/countries/zw.html" style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.08)'" onmouseout="this.style.boxShadow=''">
+      <span style="font-size:24px">🇿🇼</span>
+      <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--text)">Zimbabwe</div><div style="font-size:12px;color:var(--muted)">13 airports</div></div>
+      <span style="font-size:12px;color:var(--muted);font-weight:600">ZW</span>
+    </a></div>
+</div>
+<footer>
+  <div style="margin-bottom:10px">
+    <a href="/az">A–Z Index</a>
+    <a href="/countries">By Country</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+    <a href="/terms">Terms</a>
+    <a href="/privacy">Privacy</a>
+  </div>
+  <div>© 2025 airport-code.com</div>
+</footer>
+
+<script>
+(function(){
+  let db = null;
+  const input = document.getElementById('navSearchInput');
+  const results = document.getElementById('search-results');
+  if (!input) return;
+
+  async function loadDB() {
+    if (db) return;
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    const r = await fetch(root + 'airports.json');
+    db = await r.json();
+  }
+
+  input.addEventListener('focus', loadDB);
+  input.addEventListener('input', async function() {
+    const q = this.value.trim().toUpperCase();
+    if (q.length < 2) { results.style.display = 'none'; return; }
+    await loadDB();
+    const matches = db.filter(a =>
+      a.iata.startsWith(q) ||
+      a.name.toUpperCase().includes(q) ||
+      a.city.toUpperCase().includes(q)
+    ).slice(0, 7);
+    if (!matches.length) { results.style.display = 'none'; return; }
+    const root = document.querySelector('meta[name="site-root"]')?.content || '/';
+    results.innerHTML = matches.map(a =>
+      `<a href="${root}${a.iata.toLowerCase()}/index.html">
+        <span class="sr-code">${a.iata}</span>
+        <div><div class="sr-name">${a.name}</div><div class="sr-city">${a.city}, ${a.country}</div></div>
+      </a>`
+    ).join('');
+    results.style.display = 'block';
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!input.contains(e.target) && !results.contains(e.target)) results.style.display = 'none';
+  });
+})();
+</script>
+
+</body>
+</html>
