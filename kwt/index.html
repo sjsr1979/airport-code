@@ -320,7 +320,7 @@ function closeMenu(){
       <div class="card-body" style="padding:0">
         <div id="flights-container" style="padding:16px;color:#94a3b8;font-size:13px;text-align:center;">Loading flight data…</div>
       </div>
-      <div style="padding:10px 16px;font-size:11px;color:#94a3b8;border-top:1px solid var(--border);">Aircraft currently in the airspace around KWT. Data via <a href="https://opensky-network.org" target="_blank" rel="noopener" style="color:#94a3b8">OpenSky Network</a>.</div>
+      <div style="padding:10px 16px;font-size:11px;color:#94a3b8;border-top:1px solid var(--border);">Aircraft currently within 50nm of KWT. Data via <a href="https://adsb.lol" target="_blank" rel="noopener" style="color:#94a3b8">adsb.lol</a>.</div>
     </div>
 
     <div class="card">
@@ -594,27 +594,27 @@ async function calcCarbon(){
 
 <script>
 (function(){
-  const lat=60.790298, lon=-161.444, icao="PFKW";
-  const pad=1.2;
-  const url=`https://opensky-network.org/api/states/all?lamin=${lat-pad}&lomin=${lon-pad}&lamax=${lat+pad}&lomax=${lon+pad}`;
+  const url=`https://airport-code.com/api/adsb/lat/60.7903/lon/-161.4440/dist/50`;
   const container=document.getElementById('flights-container');
   fetch(url).then(r=>r.json()).then(d=>{
-    const states=(d.states||[]).filter(s=>!s[8]&&s[1]&&s[1].trim()); // not on ground, has callsign
-    if(!states.length){
+    const ac=(d.ac||[]).filter(a=>a.flight&&a.flight.trim()&&!a.ground);
+    if(!ac.length){
       container.innerHTML='<p style="color:#94a3b8;font-size:13px;text-align:center;padding:12px">No aircraft currently overhead.</p>';
       return;
     }
-    states.sort((a,b)=>(b[9]||0)-(a[9]||0));
-    const shown=states.slice(0,8);
-    const rows=shown.map(s=>{
-      const callsign=(s[1]||'').trim();
-      const country=s[2]||'—';
-      const alt=s[13]?Math.round(s[13]*3.281).toLocaleString()+' ft':'—';
-      const spd=s[9]?Math.round(s[9]*1.944)+' kts':'—';
-      const hdg=s[10]!=null?Math.round(s[10])+'°':'—';
+    ac.sort((a,b)=>(b.gs||0)-(a.gs||0));
+    const shown=ac.slice(0,8);
+    const rows=shown.map(a=>{
+      const callsign=(a.flight||'').trim();
+      const reg=a.r||'—';
+      const type=a.t||'—';
+      const alt=a.alt_baro?Math.round(a.alt_baro).toLocaleString()+' ft':'—';
+      const spd=a.gs?Math.round(a.gs)+' kts':'—';
+      const hdg=a.track!=null?Math.round(a.track)+'°':'—';
       return `<tr style="border-bottom:1px solid #f0f0f0">
         <td style="padding:10px 16px;font-weight:700;color:#1e293b;font-size:13px">${callsign}</td>
-        <td style="padding:10px 16px;font-size:13px;color:#64748b">${country}</td>
+        <td style="padding:10px 16px;font-size:13px;color:#64748b">${reg}</td>
+        <td style="padding:10px 16px;font-size:12px;color:#64748b">${type}</td>
         <td style="padding:10px 16px;font-size:13px;font-weight:600">${alt}</td>
         <td style="padding:10px 16px;font-size:13px">${spd}</td>
         <td style="padding:10px 16px;font-size:13px;color:#64748b">${hdg}</td>
@@ -623,7 +623,8 @@ async function calcCarbon(){
     document.getElementById('flights-container').outerHTML=`<table style="width:100%;border-collapse:collapse;font-size:13px">
       <thead><tr style="background:#f8fafc">
         <th style="padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid #e2e8f0">Callsign</th>
-        <th style="padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid #e2e8f0">Origin</th>
+        <th style="padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid #e2e8f0">Reg</th>
+        <th style="padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid #e2e8f0">Type</th>
         <th style="padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid #e2e8f0">Altitude</th>
         <th style="padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid #e2e8f0">Speed</th>
         <th style="padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid #e2e8f0">Heading</th>
