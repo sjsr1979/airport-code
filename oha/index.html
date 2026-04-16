@@ -355,9 +355,9 @@ function closeMenu(){
               <option value="2.5">First Class</option>
             </select>
           </div>
-          <div style="display:flex;gap:24px;align-items:center">
-            <label style="display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500;cursor:pointer;white-space:nowrap"><input type="radio" name="trip" value="1" checked style="flex-shrink:0;width:16px;height:16px"> One way</label>
-            <label style="display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500;cursor:pointer;white-space:nowrap"><input type="radio" name="trip" value="2" style="flex-shrink:0;width:16px;height:16px"> Return</label>
+          <div style="display:flex;gap:20px">
+            <label style="display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:500;cursor:pointer"><input type="radio" name="trip" value="1" checked>&nbsp;One way</label>
+            <label style="display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:500;cursor:pointer"><input type="radio" name="trip" value="2">&nbsp;Return</label>
           </div>
           <button class="carbon-btn" onclick="calcCarbon()">Calculate Emissions</button>
           <div class="carbon-result" id="carbonResult">
