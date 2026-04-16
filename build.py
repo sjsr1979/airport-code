@@ -697,31 +697,21 @@ def departures_js(icao, lat, lon):
     const shown=ac.slice(0,8);
     const rows=shown.map(a=>{{
       const callsign=(a.flight||'').trim();
-      const reg=a.r||'—';
-      const type=a.t||'—';
+      const reg=a.r||'';
+      const type=a.t||'';
       const alt=a.alt_baro?Math.round(a.alt_baro).toLocaleString()+' ft':'—';
       const spd=a.gs?Math.round(a.gs)+' kts':'—';
       const hdg=a.track!=null?Math.round(a.track)+'°':'—';
-      return `<tr style="border-bottom:1px solid #f0f0f0">
-        <td style="padding:10px 16px;font-weight:700;color:#1e293b;font-size:13px">${{callsign}}</td>
-        <td style="padding:10px 16px;font-size:13px;color:#64748b">${{reg}}</td>
-        <td style="padding:10px 16px;font-size:12px;color:#64748b">${{type}}</td>
-        <td style="padding:10px 16px;font-size:13px;font-weight:600">${{alt}}</td>
-        <td style="padding:10px 16px;font-size:13px">${{spd}}</td>
-        <td style="padding:10px 16px;font-size:13px;color:#64748b">${{hdg}}</td>
-      </tr>`;
+      const meta=[reg,type,spd,hdg].filter(Boolean).join(' · ');
+      return `<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 16px;border-bottom:1px solid #f0f0f0;gap:8px">
+        <div>
+          <div style="font-weight:700;color:#1e293b;font-size:13px">${{callsign}}</div>
+          <div style="font-size:11px;color:#94a3b8;margin-top:2px">${{meta}}</div>
+        </div>
+        <div style="font-size:13px;font-weight:600;color:#1e293b;white-space:nowrap">${{alt}}</div>
+      </div>`;
     }}).join('');
-    document.getElementById('flights-container').outerHTML=`<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:13px;min-width:480px">
-      <thead><tr style="background:#f8fafc">
-        <th style="padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid #e2e8f0">Callsign</th>
-        <th style="padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid #e2e8f0">Reg</th>
-        <th style="padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid #e2e8f0">Type</th>
-        <th style="padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid #e2e8f0">Altitude</th>
-        <th style="padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid #e2e8f0">Speed</th>
-        <th style="padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid #e2e8f0">Heading</th>
-      </tr></thead>
-      <tbody>${{rows}}</tbody>
-    </table></div>`;
+    document.getElementById('flights-container').innerHTML=rows;
   }}).catch(()=>{{
     container.innerHTML='<p style="color:#94a3b8;font-size:13px;text-align:center;padding:12px">Flight data temporarily unavailable.</p>';
   }});
