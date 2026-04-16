@@ -961,7 +961,7 @@ def airport_page(a):
       <div class="card-header"><span>🗺️</span><h2>Location</h2></div>
       <div class="card-body" style="padding:12px">
         <iframe
-          src="https://www.openstreetmap.org/export/embed.html?bbox={lon-0.08:.6f}%2C{lat-0.05:.6f}%2C{lon+0.08:.6f}%2C{lat+0.05:.6f}&layer=mapnik&marker={lat:.6f}%2C{lon:.6f}"
+          src="https://airport-code.com/osm/export/embed.html?bbox={lon-0.08:.6f}%2C{lat-0.05:.6f}%2C{lon+0.08:.6f}%2C{lat+0.05:.6f}&layer=mapnik&marker={lat:.6f}%2C{lon:.6f}"
           width="100%" height="220" style="border:0;border-radius:10px;display:block" allowfullscreen loading="lazy">
         </iframe>
         <a href="https://www.openstreetmap.org/?mlat={lat}&mlon={lon}#map=13/{lat}/{lon}" target="_blank" rel="noopener"
