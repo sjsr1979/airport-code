@@ -1505,13 +1505,13 @@ PRIVACY_CONTENT = '''
 <h1>Privacy Policy</h1>
 <p style="color:var(--muted);margin-bottom:24px">Last updated: April 2025</p>
 <h2>Data we collect</h2>
-<p>Airport-code.com does not collect personal data. We do not require registration or login to use this site.</p>
-<h2>Analytics</h2>
-<p>We may use anonymised analytics to understand how visitors use the site. No personally identifiable information is collected or stored.</p>
+<p>Airport-code.com does not collect personal data. No registration or login is required to use this site.</p>
 <h2>Cookies</h2>
-<p>This site uses no tracking cookies. Search preferences may be stored locally in your browser using localStorage.</p>
+<p>This site does not use tracking or advertising cookies. Your cookie consent preference is saved in your browser\'s localStorage only.</p>
+<h2>Analytics</h2>
+<p>We use Cloudflare\'s built-in analytics which collects anonymised traffic data (page views, country, browser type). No personally identifiable information is stored.</p>
 <h2>Third-party services</h2>
-<p>Weather data is fetched client-side from <a href="https://open-meteo.com">Open-Meteo</a>. Maps are provided by OpenStreetMap. Neither service receives any personal data from you via this site.</p>
+<p>Weather data is fetched client-side from <a href="https://open-meteo.com">Open-Meteo</a>. Maps are provided by OpenStreetMap. Neither service receives personal data from you via this site.</p>
 <h2>Contact</h2>
 <p>For privacy-related enquiries, contact us at <a href="mailto:hello@airport-code.com">hello@airport-code.com</a>.</p>
 '''
