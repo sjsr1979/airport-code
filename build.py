@@ -53,6 +53,58 @@ def fmt_elevation(elev):
     except:
         return elev
 
+# ─── Country name fixes (source data has some names in Indonesian) ────────────
+COUNTRY_NAME_MAP = {
+    'A.S': 'United States',
+    'Afrika Selatan': 'South Africa',
+    'Antartika': 'Antarctica',
+    'Antigua dan Barbuda': 'Antigua and Barbuda',
+    'Arab Saudi': 'Saudi Arabia',
+    'Belanda': 'Netherlands',
+    'Bosnia dan Herzegovina': 'Bosnia and Herzegovina',
+    'Emiriah Arab Bersatu': 'United Arab Emirates',
+    'Filipina': 'Philippines',
+    'Guiana Perancis': 'French Guiana',
+    'Jerman': 'Germany',
+    'Kepulauan Cayman': 'Cayman Islands',
+    'Kepulauan Cocos (Keeling)': 'Cocos (Keeling) Islands',
+    'Kepulauan Cook': 'Cook Islands',
+    'Kepulauan Falkland': 'Falkland Islands',
+    'Kepulauan Faroe': 'Faroe Islands',
+    'Kepulauan Mariana Utara': 'Northern Mariana Islands',
+    'Kepulauan Marshall': 'Marshall Islands',
+    'Kepulauan Solomon': 'Solomon Islands',
+    'Kepulauan Terpencil A.S.': 'U.S. Minor Outlying Islands',
+    'Kepulauan Turks dan Caicos': 'Turks and Caicos Islands',
+    'Kepulauan Virgin A.S': 'US Virgin Islands',
+    'Kepulauan Virgin A.S.': 'US Virgin Islands',
+    'Kepulauan Virgin British': 'British Virgin Islands',
+    'Korea Selatan': 'South Korea',
+    'Korea Utara': 'North Korea',
+    'Macedonia Utara': 'North Macedonia',
+    'Mesir': 'Egypt',
+    'Perancis': 'France',
+    'Pulau Krismas': 'Christmas Island',
+    'Pulau Norfolk': 'Norfolk Island',
+    'Republik Afrika Tengah': 'Central African Republic',
+    'Republik Dominica': 'Dominican Republic',
+    'Rusia': 'Russia',
+    'Sahara Barat': 'Western Sahara',
+    'Saint Kitts dan Nevis': 'Saint Kitts and Nevis',
+    'Saint Pierre dan Miquelon': 'Saint Pierre and Miquelon',
+    'Saint Vincent dan Grenadines': 'Saint Vincent and the Grenadines',
+    'Samoa Amerika': 'American Samoa',
+    'Sao Tome dan Principe': 'Sao Tome and Principe',
+    'Sepanyol': 'Spain',
+    'Singapura': 'Singapore',
+    'Sudan Selatan': 'South Sudan',
+    'Surinam': 'Suriname',
+    'Trinidad dan Tobago': 'Trinidad and Tobago',
+    'Wallis dan Futuna': 'Wallis and Futuna',
+    'Wilayah Lautan Hindi British': 'British Indian Ocean Territory',
+    'Yaman': 'Yemen',
+}
+
 # ─── Load airports ───────────────────────────────────────────────────────────
 
 print("Loading airports...")
@@ -71,7 +123,7 @@ with open(CSV_PATH, newline='', encoding='utf-8') as f:
             'name': re.sub(r'^\(Duplicate\)', '', row['name'].strip()).strip(),
             'city': row['city'].strip(),
             'country_code': row['country_code'].strip().upper(),
-            'country_name': row['country_name'].strip(),
+            'country_name': COUNTRY_NAME_MAP.get(row['country_name'].strip(), row['country_name'].strip()),
             'region': row['region'].strip(),
             'type': row['type'].strip(),
             'lat': lat,
@@ -331,12 +383,13 @@ def footer_html():
   <div>© 2025 airport-code.com</div>
 </footer>
 <div id="cookie-banner" style="display:none">
-  <span>We use cookies to improve your experience. See our <a href="/privacy">Privacy Policy</a>.</span>
+  <span>This site stores preferences locally in your browser. See our <a href="/privacy">Privacy Policy</a>.</span>
   <button id="cookie-accept" onclick="document.getElementById(\'cookie-banner\').style.display=\'none\';localStorage.setItem(\'cookie-ok\',\'1\')">Accept</button>
 </div>
 <script>if(!localStorage.getItem(\'cookie-ok\')){document.getElementById(\'cookie-banner\').style.display=\'flex\';}</script>'''
 
-def static_page(title, meta_desc, content_html):
+def static_page(title, meta_desc, content_html, slug=''):
+    canonical = f"https://airport-code.com/{slug}/" if slug else "https://airport-code.com/"
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -345,6 +398,12 @@ def static_page(title, meta_desc, content_html):
   <meta name="site-root" content="/">
   <title>{title} | Airport Code</title>
   <meta name="description" content="{meta_desc}">
+  <meta property="og:title" content="{title} | Airport Code">
+  <meta property="og:description" content="{meta_desc}">
+  <meta property="og:url" content="{canonical}">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="{canonical}">
   <link rel="stylesheet" href="/fonts/outfit.css">
   <style>{SHARED_CSS}
     .page-content {{ max-width:800px; margin:0 auto; padding:40px 24px; }}
@@ -655,6 +714,13 @@ def airport_page(a):
   <meta name="site-root" content="/">
   <title>{iata} – {name} | Airport Code</title>
   <meta name="description" content="{iata} is the IATA airport code for {name} in {city}, {country}. Find location, weather, runways and nearby airports.">
+  <meta property="og:title" content="{iata} – {name} | Airport Code">
+  <meta property="og:description" content="{iata} is the IATA airport code for {name} in {city}, {country}. Find location, weather, runways and nearby airports.">
+  <meta property="og:url" content="https://airport-code.com/{a['iata'].lower()}/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{iata} – {name} | Airport Code">
+  <meta name="twitter:description" content="{iata} is the IATA airport code for {name} in {city}, {country}.">
 
   <link rel="stylesheet" href="/fonts/outfit.css">
   <link rel="canonical" href="https://airport-code.com/{a['iata'].lower()}/">
@@ -900,6 +966,13 @@ def homepage():
   <meta name="site-root" content="/">
   <title>Airport Code Lookup — IATA &amp; ICAO Codes for 8,800+ Airports</title>
   <meta name="description" content="Look up IATA and ICAO airport codes for 8,800+ airports worldwide. Find location, weather, maps and nearby airports.">
+  <meta property="og:title" content="Airport Code Lookup — IATA &amp; ICAO Codes for 8,800+ Airports">
+  <meta property="og:description" content="Look up IATA and ICAO airport codes for 8,800+ airports worldwide. Find location, weather, maps and nearby airports.">
+  <meta property="og:url" content="https://airport-code.com/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Airport Code Lookup — IATA &amp; ICAO Codes for 8,800+ Airports">
+  <meta name="twitter:description" content="Look up IATA and ICAO airport codes for 8,800+ airports worldwide.">
 
   <link rel="stylesheet" href="/fonts/outfit.css">
   <link rel="canonical" href="https://airport-code.com/">
@@ -1451,10 +1524,10 @@ for slug, title, desc, content in [
 ]:
     os.makedirs(f"{OUT_DIR}/{slug}", exist_ok=True)
     with open(f"{OUT_DIR}/{slug}/index.html", 'w', encoding='utf-8') as f:
-        f.write(static_page(title, desc, content))
+        f.write(static_page(title, desc, content, slug))
     # keep .html version too for any old links
     with open(f"{OUT_DIR}/{slug}.html", 'w', encoding='utf-8') as f:
-        f.write(static_page(title, desc, content))
+        f.write(static_page(title, desc, content, slug))
 
 # _redirects — no rules needed, all pages served from index.html in folders
 with open(f"{OUT_DIR}/_redirects", 'w') as f:
