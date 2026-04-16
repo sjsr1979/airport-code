@@ -363,11 +363,6 @@ def nav_html(root=''):
     {NAV_LOGO_SVG}
     Airport<span>Code</span>
   </a>
-  <div class="nav-search">
-    <svg width="14" height="14" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-    <input type="text" id="navSearchInput" placeholder="Search airport or code…" autocomplete="off">
-    <div id="search-results"></div>
-  </div>
   <div class="nav-links">
     <a href="/az">A–Z</a>
     <a href="/countries">By Country</a>
