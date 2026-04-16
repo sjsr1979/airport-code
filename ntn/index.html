@@ -264,9 +264,10 @@
       <div class="card-body">
         <p style="font-size:13px;color:#64748b;margin-bottom:16px;">Estimate CO₂ emissions for a flight departing from NTN.</p>
         <div class="carbon-form">
-          <div>
-            <label>Destination Airport Code</label>
-            <input type="text" id="destInput" placeholder="e.g. JFK, DXB, SYD" maxlength="4" style="text-transform:uppercase">
+          <div style="position:relative">
+            <label>Destination Airport</label>
+            <input type="text" id="destInput" placeholder="Search airport name or code…" autocomplete="off" style="text-transform:uppercase">
+            <div id="carbonSuggest" style="display:none;position:absolute;left:0;right:0;top:100%;background:#fff;border:1px solid var(--border);border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.1);z-index:50;max-height:220px;overflow-y:auto"></div>
           </div>
           <div>
             <label>Cabin Class</label>
@@ -459,6 +460,7 @@
 <script>
 const ORIGIN = {lat:-17.68409, lon:141.069664, iata:"NTN"};
 let airportDB = null;
+let selectedDestIata = null;
 async function loadAirportDB(){
   if (airportDB) return;
   const root = document.querySelector('meta[name="site-root"]')?.content || '/';
@@ -470,19 +472,50 @@ function haversine(lat1,lon1,lat2,lon2){
   const a=Math.sin(dLat/2)**2+Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLon/2)**2;
   return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
 }
+(async function initCarbonSearch(){
+  await loadAirportDB();
+  const inp = document.getElementById('destInput');
+  const sug = document.getElementById('carbonSuggest');
+  inp.addEventListener('input', function(){
+    const q = this.value.toUpperCase().trim();
+    selectedDestIata = null;
+    if (q.length < 2) { sug.style.display='none'; return; }
+    const matches = airportDB.filter(a =>
+      a.iata.startsWith(q) ||
+      a.name.toUpperCase().includes(q) ||
+      a.city.toUpperCase().includes(q)
+    ).slice(0,8);
+    if (!matches.length) { sug.style.display='none'; return; }
+    sug.innerHTML = matches.map(a =>
+      `<div onclick="selectDest('${a.iata}','${a.name.replace(/'/g,"\\'")}')"
+        style="padding:10px 14px;cursor:pointer;font-size:13px;border-bottom:1px solid #f1f5f9;display:flex;gap:10px;align-items:center"
+        onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background=''"
+      ><span style="font-weight:700;color:var(--blue);min-width:36px">${a.iata}</span>
+       <span style="color:#334155">${a.name}</span>
+       <span style="color:#94a3b8;font-size:11px;margin-left:auto">${a.city}</span></div>`
+    ).join('');
+    sug.style.display='block';
+  });
+  document.addEventListener('click', e => { if (!inp.contains(e.target) && !sug.contains(e.target)) sug.style.display='none'; });
+})();
+function selectDest(iata, name){
+  document.getElementById('destInput').value = iata + ' – ' + name;
+  document.getElementById('carbonSuggest').style.display='none';
+  selectedDestIata = iata;
+}
 async function calcCarbon(){
-  const dest = document.getElementById('destInput').value.toUpperCase().trim();
   const classMult = parseFloat(document.getElementById('classSelect').value);
   const tripMult = parseFloat(document.querySelector('input[name="trip"]:checked').value);
   const resultEl = document.getElementById('carbonResult');
   const co2El = document.getElementById('co2Val');
   const noteEl = document.getElementById('carbonNote');
-  if (dest.length < 2) return;
+  const dest = selectedDestIata || document.getElementById('destInput').value.toUpperCase().trim().split(/[\s–-]/)[0];
+  if (!dest || dest.length < 2) return;
   await loadAirportDB();
   const destAirport = airportDB.find(a => a.iata === dest);
   if (!destAirport) {
     co2El.textContent = '?';
-    noteEl.textContent = `Airport code "${dest}" not found. Try a 3-letter IATA code like JFK, DXB, SYD.`;
+    noteEl.textContent = `Airport "${dest}" not found. Search by name or code above.`;
     resultEl.style.display = 'block';
     return;
   }
@@ -491,7 +524,7 @@ async function calcCarbon(){
   co2El.textContent = co2.toLocaleString() + ' kg';
   const classNames = {'1':'Economy','1.5':'Business','2.5':'First Class'};
   const tripName = tripMult===1?'one-way':'return';
-  noteEl.textContent = `${ORIGIN.iata} → ${dest} is approx ${Math.round(distKm).toLocaleString()} km. ${classNames[String(classMult)]} ${tripName} flight.`;
+  noteEl.textContent = `${ORIGIN.iata} → ${dest} · approx ${Math.round(distKm).toLocaleString()} km · ${classNames[String(classMult)]} ${tripName} flight.`;
   resultEl.style.display = 'block';
 }
 </script>
