@@ -139,6 +139,7 @@
     #cookie-banner { position: fixed; bottom: 0; left: 0; right: 0; background: #1a2535; color: rgba(255,255,255,0.85); font-size: 13px; padding: 14px 20px; display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; z-index: 9999; border-top: 1px solid rgba(255,255,255,0.1); }
     #cookie-banner a { color: var(--sky); text-decoration: underline; }
     #cookie-accept { background: var(--sky); color: #fff; border: none; border-radius: 6px; padding: 7px 18px; font-size: 13px; font-family: 'Outfit', sans-serif; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    #cookie-reject { background: transparent; color: rgba(255,255,255,0.6); border: 1px solid rgba(255,255,255,0.3); border-radius: 6px; padding: 7px 18px; font-size: 13px; font-family: 'Outfit', sans-serif; font-weight: 600; cursor: pointer; white-space: nowrap; }
 </style>
 </head>
 <body>
@@ -468,7 +469,10 @@
 </footer>
 <div id="cookie-banner" style="display:none">
   <span>We use cookies to improve your experience. See our <a href="/privacy">Privacy Policy</a>.</span>
-  <button id="cookie-accept" onclick="document.getElementById('cookie-banner').style.display='none';localStorage.setItem('cookie-ok','1')">Accept</button>
+  <div style="display:flex;gap:8px">
+    <button id="cookie-accept" onclick="document.getElementById('cookie-banner').style.display='none';localStorage.setItem('cookie-ok','1')">Accept</button>
+    <button id="cookie-reject" onclick="document.getElementById('cookie-banner').style.display='none';localStorage.setItem('cookie-ok','0')">Reject</button>
+  </div>
 </div>
 <script>if(!localStorage.getItem('cookie-ok')){document.getElementById('cookie-banner').style.display='flex';}</script>
 
