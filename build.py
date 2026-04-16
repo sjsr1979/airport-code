@@ -595,8 +595,8 @@ def airport_page(a):
   <meta name="site-root" content="/">
   <title>{iata} – {name} | Airport Code</title>
   <meta name="description" content="{iata} is the IATA airport code for {name} in {city}, {country}. Find location, weather, runways and nearby airports.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/fonts/outfit.css">
   <link rel="canonical" href="https://airport-code.com/{a['iata'].lower()}/">
   <style>{SHARED_CSS}</style>
 </head>
@@ -840,8 +840,8 @@ def homepage():
   <meta name="site-root" content="/">
   <title>Airport Code Lookup — IATA &amp; ICAO Codes for 8,800+ Airports</title>
   <meta name="description" content="Look up IATA and ICAO airport codes for 8,800+ airports worldwide. Find location, weather, maps and nearby airports.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/fonts/outfit.css">
   <link rel="canonical" href="https://airport-code.com/">
   <style>{SHARED_CSS}
     .hero-home {{ background: linear-gradient(135deg, var(--navy) 0%, #1a3a6b 100%); color:#fff; padding:80px 24px; text-align:center; position:relative; overflow:hidden; }}
@@ -990,8 +990,8 @@ def az_page(letter, airports_for_letter):
   <meta name="site-root" content="/">
   <title>Airports Starting With {letter_u} | Airport Code</title>
   <meta name="description" content="All airports with IATA codes starting with the letter {letter_u}. Browse airport codes, names and locations.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/fonts/outfit.css">
   <style>{SHARED_CSS}
     .az-nav {{ display:flex; gap:6px; flex-wrap:nowrap; overflow-x:auto; padding:20px 0; }}
     .az-nav a {{ display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:6px;text-decoration:none;font-weight:700;font-size:14px; }}
@@ -1043,8 +1043,8 @@ def az_index():
   <meta name="site-root" content="/">
   <title>Airport Codes A–Z Index | Airport Code</title>
   <meta name="description" content="Browse all 8,800+ IATA airport codes alphabetically. Find airports by the first letter of their code.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/fonts/outfit.css">
   <style>{SHARED_CSS}
     .az-big-grid {{ display:grid; grid-template-columns:repeat(auto-fill, minmax(120px,1fr)); gap:12px; margin-top:24px; }}
     .az-big-item {{ background:#fff; border:1px solid var(--border); border-radius:12px; padding:20px; text-align:center; text-decoration:none; transition:all 0.2s; }}
@@ -1102,8 +1102,8 @@ def countries_page(by_country):
   <meta name="site-root" content="/">
   <title>Airports by Country | Airport Code</title>
   <meta name="description" content="Browse airport codes by country. Find all airports in any country worldwide.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/fonts/outfit.css">
   <style>{SHARED_CSS}
     .country-grid {{ display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:10px; margin-top:24px; }}
   </style>
@@ -1143,8 +1143,8 @@ def country_page(cc, aps):
   <meta name="site-root" content="/">
   <title>Airports in {cn} | Airport Code</title>
   <meta name="description" content="All airport codes for airports in {cn}. Browse IATA and ICAO codes for {len(aps)} airports.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/fonts/outfit.css">
   <style>{SHARED_CSS}
     table {{ width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden; }}
     thead th {{ padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid var(--border);background:#f8fafc; }}
@@ -1213,8 +1213,8 @@ def az_name_city_page(letter, airports_for_letter, kind):
   <meta name="site-root" content="/">
   <title>Airports with {kind_label} Starting With {letter_u} | Airport Code</title>
   <meta name="description" content="All airports with {kind_label.lower()} starting with {letter_u}. Browse {len(airports_for_letter)} airports.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/fonts/outfit.css">
   <style>{SHARED_CSS}
     table {{ width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden; }}
     thead th {{ padding:10px 16px;text-align:left;font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.5px;font-weight:600;border-bottom:1px solid var(--border);background:#f8fafc; }}
