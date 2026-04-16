@@ -420,7 +420,7 @@ def footer_html():
     <a href="/terms">Terms</a>
     <a href="/privacy">Privacy</a>
   </div>
-  <div>© 2025 airport-code.com</div>
+  <div>© 2026 airport-code.com</div>
 </footer>
 <div id="cookie-banner" style="display:none">
   <span>This site stores preferences locally in your browser. See our <a href="/privacy">Privacy Policy</a>.</span>
@@ -1392,8 +1392,8 @@ def country_page(cc, aps):
 def sitemap(airports):
     urls = [
         'https://airport-code.com/',
-        'https://airport-code.com/az.html',
-        'https://airport-code.com/countries.html',
+        'https://airport-code.com/az/',
+        'https://airport-code.com/countries/',
     ]
     for c in 'abcdefghijklmnopqrstuvwxyz':
         urls.append(f'https://airport-code.com/az/{c}.html')
@@ -1546,7 +1546,6 @@ ABOUT_CONTENT = '''
 <h2>What we provide</h2>
 <ul>
   <li>IATA and ICAO codes for every airport</li>
-  <li>Live weather conditions via Open-Meteo</li>
   <li>Runway details and radio frequencies</li>
   <li>Nearby airports with distances</li>
   <li>Interactive maps for every airport</li>
@@ -1572,7 +1571,7 @@ CONTACT_CONTENT = '''
 
 TERMS_CONTENT = '''
 <h1>Terms of Use</h1>
-<p style="color:var(--muted);margin-bottom:24px">Last updated: April 2025</p>
+<p style="color:var(--muted);margin-bottom:24px">Last updated: April 2026</p>
 <h2>Use of this site</h2>
 <p>Airport-code.com provides airport code and travel reference information for personal and commercial use. You may use the information on this site freely, but you may not scrape or reproduce large portions of our data without permission.</p>
 <h2>Accuracy</h2>
@@ -1587,7 +1586,7 @@ TERMS_CONTENT = '''
 
 PRIVACY_CONTENT = '''
 <h1>Privacy Policy</h1>
-<p style="color:var(--muted);margin-bottom:24px">Last updated: April 2025</p>
+<p style="color:var(--muted);margin-bottom:24px">Last updated: April 2026</p>
 <h2>Data we collect</h2>
 <p>Airport-code.com does not collect personal data. No registration or login is required to use this site.</p>
 <h2>Cookies</h2>
@@ -1595,7 +1594,7 @@ PRIVACY_CONTENT = '''
 <h2>Analytics</h2>
 <p>We use Cloudflare\'s built-in analytics which collects anonymised traffic data (page views, country, browser type). No personally identifiable information is stored.</p>
 <h2>Third-party services</h2>
-<p>Weather data is fetched client-side from <a href="https://open-meteo.com">Open-Meteo</a>. Maps are provided by OpenStreetMap. Neither service receives personal data from you via this site.</p>
+<p>Maps are provided by OpenStreetMap via a same-origin proxy. No personal data is sent to OpenStreetMap.</p>
 <h2>Contact</h2>
 <p>For privacy-related enquiries, contact us at <a href="mailto:hello@airport-code.com">hello@airport-code.com</a>.</p>
 '''

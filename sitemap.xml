@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://airport-code.com/</loc></url>
-  <url><loc>https://airport-code.com/az.html</loc></url>
-  <url><loc>https://airport-code.com/countries.html</loc></url>
+  <url><loc>https://airport-code.com/az/</loc></url>
+  <url><loc>https://airport-code.com/countries/</loc></url>
   <url><loc>https://airport-code.com/az/a.html</loc></url>
   <url><loc>https://airport-code.com/az-name/a.html</loc></url>
   <url><loc>https://airport-code.com/az-city/a.html</loc></url>
