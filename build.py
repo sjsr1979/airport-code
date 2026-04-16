@@ -843,8 +843,8 @@ def airport_page(a):
             </select>
           </div>
           <div style="display:flex;gap:16px">
-            <label style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;cursor:pointer"><input type="radio" name="trip" value="1" checked> One way</label>
-            <label style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;cursor:pointer"><input type="radio" name="trip" value="2"> Return</label>
+            <label style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;cursor:pointer;white-space:nowrap"><input type="radio" name="trip" value="1" checked> One way</label>
+            <label style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;cursor:pointer;white-space:nowrap"><input type="radio" name="trip" value="2"> Return</label>
           </div>
           <button class="carbon-btn" onclick="calcCarbon()">Calculate Emissions</button>
           <div class="carbon-result" id="carbonResult">
