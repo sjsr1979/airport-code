@@ -237,9 +237,8 @@ SHARED_CSS = '''
     }
     body { font-family: \'Outfit\', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; }
     nav { background: var(--navy); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100; }
-    .nav-logo { color: #fff; font-size: 22px; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; display: flex; align-items: baseline; gap: 6px; line-height: 1; }
-    .nav-logo svg { flex-shrink: 0; align-self: center; }
-    .nav-logo span { color: var(--sky); }
+    .nav-logo { color: #fff; font-size: 22px; font-weight: 800; letter-spacing: -0.3px; text-decoration: none; display: flex; align-items: center; gap: 8px; line-height: 1; }
+    .nav-logo svg { flex-shrink: 0; }
     .nav-logo .tld { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.5); letter-spacing: 0; }
     .nav-search { display: flex; align-items: center; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 6px 14px; gap: 8px; width: 280px; position: relative; }
     .nav-search input { background: none; border: none; outline: none; color: #fff; font-size: 14px; width: 100%; font-family: \'Outfit\', sans-serif; }
@@ -357,7 +356,7 @@ def nav_html(root=''):
     return f'''<nav>
   <a href="/" class="nav-logo">
     {NAV_LOGO_SVG}
-    Airport-<span>Code</span><span class="tld">.com</span>
+    <span style="white-space:nowrap">Airport-<span style="color:var(--sky)">Code</span><span class="tld">.com</span></span>
   </a>
   <div class="nav-links">
     <a href="/az">A–Z</a>
