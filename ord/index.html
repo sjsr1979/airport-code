@@ -406,10 +406,11 @@ function closeMenu(){
               <option value="2.5">First Class</option>
             </select>
           </div>
-          <div style="display:flex;gap:20px">
-            <label style="display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:500;cursor:pointer"><input type="radio" name="trip" value="1" checked>&nbsp;One way</label>
-            <label style="display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:500;cursor:pointer"><input type="radio" name="trip" value="2">&nbsp;Return</label>
+          <div style="display:flex;gap:0;border:1px solid #cbd5e1;border-radius:8px;overflow:hidden;width:fit-content">
+            <button type="button" id="trip-oneway" onclick="setTrip(1)" style="padding:8px 20px;font-size:14px;font-weight:600;border:none;cursor:pointer;background:#2563eb;color:#fff">One way</button>
+            <button type="button" id="trip-return" onclick="setTrip(2)" style="padding:8px 20px;font-size:14px;font-weight:600;border:none;cursor:pointer;background:#fff;color:#475569">Return</button>
           </div>
+          <input type="hidden" name="trip" id="tripVal" value="1">
           <button class="carbon-btn" onclick="calcCarbon()">Calculate Emissions</button>
           <div class="carbon-result" id="carbonResult">
             <div class="co2" id="co2Val"></div>
@@ -667,6 +668,13 @@ function haversine(lat1,lon1,lat2,lon2){
   });
   document.addEventListener('click', e => { if (!inp.contains(e.target) && !sug.contains(e.target)) sug.style.display='none'; });
 })();
+function setTrip(v){
+  document.getElementById('tripVal').value=v;
+  document.getElementById('trip-oneway').style.background=v===1?'#2563eb':'#fff';
+  document.getElementById('trip-oneway').style.color=v===1?'#fff':'#475569';
+  document.getElementById('trip-return').style.background=v===2?'#2563eb':'#fff';
+  document.getElementById('trip-return').style.color=v===2?'#fff':'#475569';
+}
 function selectDest(iata, name){
   document.getElementById('destInput').value = iata + ' – ' + name;
   document.getElementById('carbonSuggest').style.display='none';
@@ -674,7 +682,7 @@ function selectDest(iata, name){
 }
 async function calcCarbon(){
   const classMult = parseFloat(document.getElementById('classSelect').value);
-  const tripMult = parseFloat(document.querySelector('input[name="trip"]:checked').value);
+  const tripMult = parseFloat(document.getElementById('tripVal').value);
   const resultEl = document.getElementById('carbonResult');
   const co2El = document.getElementById('co2Val');
   const noteEl = document.getElementById('carbonNote');
